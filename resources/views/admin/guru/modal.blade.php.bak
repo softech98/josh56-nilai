@@ -1,0 +1,108 @@
+<div class="modal fade in" id="modalGuru" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary">
+
+                                            <h4 class="modal-title" id="myModalLabel">Tambah Guru</h4>
+                                            <button type="button" class="close resetModal" data-dismiss="modal"
+                                                    aria-hidden="true">×
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form role="form" id="form-validation3" action="$action">
+
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" name="nip" id="nip"
+                                                                   class="form-control input-md" placeholder="Nomor Induk Pegawai"
+                                                                   tabindex="1" data-error="NIP Harus di Isi"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" name="last_name" id="last_name"
+                                                                   class="form-control input-md" placeholder="Last Name"
+                                                                   tabindex="2" data-error="Last name must be entered"
+                                                                   required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="text" name="display_name" id="display_name"
+                                                                   class="form-control input-md" placeholder="Display Name"
+                                                                   tabindex="3" data-error="Username must be enetered" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <input type="email" name="email" class="form-control input-md"
+                                                                   placeholder="Email Address" tabindex="4"
+                                                                   data-error="that email address is invalid" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="password" name="password" id="password"
+                                                                   class="form-control input-md" placeholder="Password"
+                                                                   tabindex="5" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="password" name="confirmpassword"
+                                                                   class="form-control input-md"
+                                                                   placeholder="Confirm Password" data-match="#password"
+                                                                   data-match-error="conform passwork should be same as password"
+                                                                   tabindex="6" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="checkbox">
+                                                                <label for="terms">
+                                                                    <input type="checkbox" name="terms" id="terms"
+                                                                           class="custom-checkbox"> I Agree
+                                                                </label>
+                                                            </div>
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p class="margin-top">
+                                                            By clicking on the
+                                                            <strong class="label label-primary">Register</strong> , you
+                                                            agree the following
+                                                            <a href="#">Terms and Conditions</a>
+                                                            liability as set out in this site, including our Cookie Use.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row marginTop">
+                                                    <div class="col-6 col-md-6">
+                                                        <input type="submit" id="btncheck" value="Register"
+                                                               class="btn btn-primary btn-block btn-md btn-responsive"
+                                                               tabindex="7">
+                                                    </div>
+                                                    <div class="col-6 col-md-6">
+                                                        <a class="btn btn-danger btn-block btn-md btn-responsive resetModal">Reset</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+</div>
