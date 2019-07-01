@@ -14,6 +14,10 @@ class Guru extends Model
 	{
     	return $this->hasOne('App\User', 'email')->withDefault();
     }
+        public function rombel()
+    {
+        return $this->hasOne('App\Rombel')->withDefault();
+    }
 
     public function getCreatedAtAttribute()
     {

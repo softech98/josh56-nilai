@@ -33,43 +33,43 @@ Users List
 <section class="content paddingleft_right15">
     <div class="row">
         <div class="col-12">
-        <div class="card panel-primary ">
-            <div class="card-heading">
-                <h4 class="card-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    Users List
-                </h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive-lg table-responsive-sm table-responsive-md">
-                <table class="table table-bordered width100" id="table">
-                    <thead>
-                        <tr class="filters">
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>User E-mail</th>
-                            <th>Status</th>
-                            <th>Created At</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div class="card panel-primary ">
+                <div class="card-heading">
+                    <h4 class="card-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        Users List
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive-lg table-responsive-sm table-responsive-md">
+                        <table class="table table-bordered width100" id="table">
+                            <thead>
+                                <tr class="filters">
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>User E-mail</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div><!-- row-->
 </section>
 @stop
 
 {{-- page level scripts --}}
 @section('footer_scripts')
-    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
 
 <script>
     $(function() {
@@ -78,13 +78,29 @@ Users List
             serverSide: true,
             ajax: '{!! route('admin.users.data') !!}',
             columns: [
-                { data: 'id', name: 'id' },
-                { data: 'first_name', name: 'first_name' },
-                { data: 'last_name', name: 'last_name' },
-                { data: 'email', name: 'email' },
-                { data: 'status', name: 'status'},
-                { data: 'created_at', name:'created_at'},
-                { data: 'actions', name: 'actions', orderable: false, searchable: false }
+            { data: 'id', name: 'id' },
+            { data: 'first_name', name: 'first_name' },
+            { data: 'last_name', name: 'last_name' },
+            { data: 'email', name: 'email' },
+            { data: 'status', name: 'status'},
+            { data: 'created_at', name:'created_at'},
+            { data: 'actions', name: 'actions', orderable: false, searchable: false }
+            ], 
+            columnDefs: [
+            {
+                targets: 4,
+                render: function (data, type, row, meta) {
+                        var label = 'label-danger';
+                        if (data=='Pending') {
+                            label = 'label-danger';
+                        } else if (data=='Activated') {
+                            label = 'label-success';
+                        }
+                        return '<span class="label ' + label + '">' + data + '</span>';
+                    }
+                    // return data;
+                }
+
             ]
         });
         table.on( 'draw', function () {
@@ -96,38 +112,38 @@ Users List
 
 </script>
 
-    <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="deleteLabel">Delete User</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure to delete this User? This operation is irreversible.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a  type="button" class="btn btn-danger Remove_square">Delete</a>
-                </div>
+<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteLabel">Delete User</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-body">
+                Are you sure to delete this User? This operation is irreversible.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a  type="button" class="btn btn-danger Remove_square">Delete</a>
+            </div>
         </div>
-        
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
+
+</div>
+<!-- /.modal-dialog -->
 <script>
-$(function () {
-	$('body').on('hidden.bs.modal', '.modal', function () {
-		$(this).removeData('bs.modal');
-	});
-});
-var $url_path = '{!! url('/') !!}';
-$('#delete_confirm').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget)
-    var $recipient = button.data('id');
-    var modal = $(this)
-    modal.find('.modal-footer a').prop("href",$url_path+"/admin/users/"+$recipient+"/delete");
-})
+    $(function () {
+       $('body').on('hidden.bs.modal', '.modal', function () {
+          $(this).removeData('bs.modal');
+      });
+   });
+    var $url_path = '{!! url('/') !!}';
+    $('#delete_confirm').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var $recipient = button.data('id');
+        var modal = $(this)
+        modal.find('.modal-footer a').prop("href",$url_path+"/admin/users/"+$recipient+"/delete");
+    })
 </script>
 @stop

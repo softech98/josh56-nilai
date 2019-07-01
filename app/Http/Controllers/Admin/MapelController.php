@@ -2,8 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Mapel;
+use App\Jurusan;
+use App\Http\Controllers\JoshController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use Redirect;
+use URL;
+use View;
+use Validator;
+use DB;
 
 class MapelController extends Controller
 {
@@ -14,7 +24,10 @@ class MapelController extends Controller
      */
     public function index()
     {
-        //
+        $mapel = new Mapel();
+        $jurusan = Jurusan::pluck('nama','id');
+        $jurusan['all']='Select All';
+        return view('admin.mapel.index', compact('mapel', 'jurusan'));
     }
 
     /**
@@ -24,7 +37,13 @@ class MapelController extends Controller
      */
     public function create()
     {
-        //
+        $data['judul']      = "Tambah Mata Pelajaran";
+        $data['mapel'] = new Mapel();
+        $data['jurusan'] = Jurusan::pluck('nama','id');
+        $data['method']     = "POST";
+        $data['btn_submit'] = "Simpan";
+        $data['action']     = 'Admin\MapelController@store';
+        return view('admin.mapel.create', $data, );
     }
 
     /**
@@ -35,7 +54,13 @@ class MapelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required|string|max:50|unique:is_mapel',
+        ]);
+
+        Mapel::create($request->all());
+
+       return back()->with('success', trans('message.success.create'));
     }
 
     /**
@@ -55,9 +80,20 @@ class MapelController extends Controller
      * @param  \App\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mapel $mapel)
+    public function edit($id)
     {
-        //
+       $data['judul']      = "Edit Data Mapel";
+       $data['mapel']     = Mapel::findOrFail($id);
+       // $mapel =  Mapel::all();
+       // $k1     = Mapel()->nama;
+       // dd('k1');
+       // $data['k22']     = Mapel::k2();
+       // $data['k33']     = Mapel::k3();
+       $data['jurusan'] = Jurusan::pluck('nama','id');
+       $data['method']     = "PUT";
+       $data['btn_submit'] = "UPDATE";
+       $data['action']     = array('Admin\MapelController@update', $id);
+        return view('admin.mapel.create',$data);       
     }
 
     /**
@@ -67,9 +103,14 @@ class MapelController extends Controller
      * @param  \App\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mapel $mapel)
+    public function update(Request $request, $id)
     {
-        //
+        $mapel = Mapel::findOrFail($id);
+        $this->validate($request, [
+            'nama' => 'required|string|max:50',
+        ]);
+        $mapel->update($request->all());
+        return redirect('admin/mapel')->with('success', 'Data Berhasil di Ubah');
     }
 
     /**
@@ -81,5 +122,50 @@ class MapelController extends Controller
     public function destroy(Mapel $mapel)
     {
         //
+    }
+
+
+    public function data(Request $request)
+    {
+         
+        if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
+            $mapel = Mapel::with('jurusan')->where('jurusan_id', $request->jurusanSelect);
+        }
+        else{
+        $mapel = Mapel::with('jurusan')->get(['id', 'jurusan_id', 'nama', 'k1', 'k2', 'k3']);
+        }
+        return DataTables::of($mapel)
+        ->addIndexColumn()
+        ->editColumn('k1', function($mapel){
+            if($mapel->k1 == 1){
+                return 'Aktif';
+            }
+            else{
+                return 'Non aktif';
+            }
+        })
+        ->editColumn('k2', function($mapel){
+            if($mapel->k2 == 1){
+                return 'Aktif';
+            }
+            else{
+                return 'Non aktif';
+            }
+        })
+        ->editColumn('k3', function($mapel){
+            if($mapel->k3 == 1){
+                return 'Aktif';
+            }
+            else{
+                return 'Non aktif';
+            }
+        })
+        ->addColumn('actions',function($mapel) {
+            $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$mapel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update mapel"></i></a>';
+            $actions .= '<a href='. route('admin.mapel.confirm-delete', $mapel->id) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete mapel"></i></a>';
+                return $actions;
+            })
+            ->rawColumns(['actions'])
+            ->make(true);
     }
 }

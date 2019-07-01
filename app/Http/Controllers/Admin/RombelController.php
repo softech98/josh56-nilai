@@ -27,10 +27,11 @@ class RombelController extends Controller
     public function index()
     {
         $rombel = new Rombel();
-        $jurusan = Jurusan::pluck('singkatan','id');
-        $wali_kelas = Guru::pluck('nama','nip');
-
-        return view('admin.rombel.index', compact('rombel', 'wali_kelas','jurusan'));    }
+        $tingkat = Rombel::$tingkat;
+        $jurusan = Jurusan::pluck('nama','id');
+        $jurusan['all']='Select All';
+        $wali_kelas = Guru::pluck('nama','id');
+        return view('admin.rombel.index', compact('rombel', 'wali_kelas','jurusan','tingkat'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +44,7 @@ class RombelController extends Controller
         $data['rombel'] = new Rombel();
         $tingkat = Rombel::$tingkat;
         $data['jurusan'] = Jurusan::pluck('singkatan','id');
-        $data['wali_kelas'] = Guru::orderBy('nama')->pluck('nama','nip');
+        $data['wali_kelas'] = Guru::orderBy('nama')->pluck('nama','id');
         $data['periode'] = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
         $data['method']     = "POST";
         $data['btn_submit'] = "Simpan";
@@ -63,11 +64,11 @@ class RombelController extends Controller
             'namaRombel' => 'required|string|max:10',
             'tingkat' => 'required',
             'jurusan_id' => 'required',
-            'walikelas' => 'required|string|unique:is_rombel',
+            'guru_id' => 'required|unique:is_rombel',
         ]);
         Rombel::create($request->all());
 
-       return back()->with('success', 'Data Berhasil diTambahkan');
+      return back()->with('success', 'Data Berhasil diTambahkan');
     }
 
     /**
@@ -94,7 +95,7 @@ class RombelController extends Controller
        $data['periode']    = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
        $data['jurusan']    = Jurusan::pluck('singkatan','id');
        $tingkat            = Rombel::$tingkat;
-       $data['wali_kelas'] = Guru::pluck('nama','nip');
+       $data['wali_kelas'] = Guru::pluck('nama','id');
        $data['method']     = "PUT";
        $data['btn_submit'] = "UPDATE";
        $data['action']     = array('Admin\RombelController@update', $id);
@@ -113,7 +114,7 @@ class RombelController extends Controller
         $rombel = Rombel::findOrFail($id);
         $this->validate($request, [
             'namaRombel' => 'required|string|max:10',
-            'walikelas' => 'required|string',
+            'guru_id' => 'required',
         ]);
         $rombel->update($request->all());
         return redirect('admin/rombel')->with('success', 'Data Berhasil di Ubah');
@@ -158,14 +159,19 @@ class RombelController extends Controller
         }
     }
 
-    public function data()
+    public function data(Request $request)
     {
-        $rombel = Rombel::leftJoin('is_jurusan', 'is_rombel.jurusan_id', '=', 'is_jurusan.id')
-                        ->leftJoin('is_guru', 'is_rombel.walikelas', '=', 'is_guru.nip')
-                        ->leftJoin('is_periode', 'is_rombel.periode_id', '=', 'is_periode.id')
-            ->select(['is_rombel.id','is_rombel.namaRombel','is_rombel.tingkat','is_jurusan.singkatan','is_guru.nama','is_periode.mulai as periode','is_periode.selesai as selesai']);
-        return DataTables::of($rombel)
         
+        if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
+            $rombel = Rombel::with('jurusans','guru','periode')->where('jurusan_id', $request->jurusanSelect);
+        }
+        else if ($request->tingkatSelect != null && $request->tingkatSelect != "all" ) {
+            $rombel = Rombel::with('jurusans','guru','periode')->where('tingkat', $request->tingkatSelect);
+        }
+        else{
+        $rombel = Rombel::with('jurusans','guru','periode')->get(['id', 'namaRombel', 'tingkat', 'periode_id', 'jurusan_id', 'guru_id']);
+        }
+        return DataTables::of($rombel)
          ->addColumn('actions',function($rombel) {
             $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$rombel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update rombel"></i></a>';
             $actions .= '<a href='. route('admin.rombel.confirm-delete', $rombel->id) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete rombel"></i></a>';

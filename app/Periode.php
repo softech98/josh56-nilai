@@ -10,4 +10,9 @@ class Periode extends Model
    	public $timestamps = false;
     public $table = 'is_periode';
     protected $fillable	= ['mulai', 'selesai','semester'];
+
+     public function rombel()
+    {
+           return $this->hasMany('\App\Rombel')->withDefault();
+    }
 }

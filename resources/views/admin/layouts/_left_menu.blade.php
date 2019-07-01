@@ -41,6 +41,12 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
+            <li {!! (Request::is('admin/periode') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to($prefix.'/periode') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                   Data Periode
+                </a>
+            </li>
             <li {!! (Request::is('admin/jurusan') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to($prefix.'/jurusan') }}">
                     <i class="fa fa-angle-double-right"></i>
@@ -51,12 +57,6 @@
                 <a href="{{ URL::to($prefix.'/rombel') }}">
                     <i class="fa fa-angle-double-right"></i>
                     Data Rombel
-                </a>
-            </li>
-            <li {!! (Request::is('admin/periode') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to($prefix.'/periode') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                   Data Periode
                 </a>
             </li>
             <li {!! (Request::is('admin/mapel') ? 'class="active"' : '') !!}>

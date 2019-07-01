@@ -13,6 +13,11 @@ class Jurusan extends Model
 
      public function rombels()
     {
-           return $this->hasMany('\App\Rombel')->withDefault();
+           return $this->hasMany('\App\Rombel');
+    }
+
+    public function mapel()
+    {
+    	return $this->hasMany(Mapel::class);
     }
 }

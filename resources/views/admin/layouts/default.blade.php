@@ -176,6 +176,7 @@
                 <!-- Content -->
         @yield('content')
         @include('admin.layouts.modal')
+        @include('admin.layouts.modalsm')
         {{-- @include('admin.layouts.modal_confirmation') --}}
 
     </aside>

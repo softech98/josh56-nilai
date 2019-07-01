@@ -39,10 +39,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                        {!! Form::label('walikelas', 'Wali Kelas',[ 'class' => 'col-sm-2', 'control-label']) !!}
+                        {!! Form::label('guru_id', 'Wali Kelas',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
-                            {!! Form::select('walikelas', $wali_kelas, null, ['id' => 'walikelas', 'class' => 'form-control select2', 'placeholder'=>'']) !!}
-                            <small class="text-danger">{{ $errors->first('walikelas') }}</small>
+                            {!! Form::select('guru_id', $wali_kelas, null, ['id' => 'walikelas', 'class' => 'form-control select2', 'placeholder'=>'']) !!}
+                            <small class="text-danger">{{ $errors->first('guru_id') }}</small>
                         </div>
                     </div>
                 </div>

@@ -1,70 +1,72 @@
 
-
 <!-- Main content -->
-<section class="content">
-        <div class="col-lg-6">
-            <div class="panel panel-primary ">
-                <div class="panel-heading">
-                    <h4 class="panel-title"> <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        {{$judul}}
-                    </h4>
-                </div>
-                <div class="panel-body">
-                    {!! $errors->first('slug', '<span class="help-block">Another role with same slug exists, please choose another name</span> ') !!}
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+    <div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-body">
+                {{ Form::model($mapel, array('action' => $action, 'files' => true, 'method' => $method)) }}
+                    <!-- CSRF Token -->
+
+                    {{ csrf_field() }}
+                    <br>
+                    <div class="form-group">
+                        <div class="row">
+                        {!! Form::label('Jurusan', 'Jurusan',[ 'class' => 'col-sm-3', 'control-label']) !!}
+                        <div class="col-sm-9">
+                            {!! Form::select('jurusan_id', $jurusan, null, ['id' => 'Jurusan', 'class' => 'form-control', 'required' => 'required','placeholder'=>'--Pilih Jurusan--']) !!}
+                            <small class="text-danger">{{ $errors->first('jurusan_id') }}</small>
                         </div>
-                    @endif
-                    {{ Form::model($mapel, array('action' => $action, 'files' => true, 'method' => $method)) }}
-                        <!-- CSRF Token -->
-
-                        {{ csrf_field() }}
-
-                        <div class="form-group">
+                    </div>
+                    </div>
+                     <div class="form-group">
+                        <div class="row">
                         {!! Form::label('nama', 'Nama Mapel',[ 'class' => 'col-sm-3', 'control-label']) !!}
-                        <div class="col-sm-6">
-                           {{ Form::text('nama',null,array('class'=>'form-control','placeholder' => 'Nama Mapel','autofocus')) }}
-                           <div>
-                         <small class="text-danger">{{ $errors->first('nama') }}</small>
-                         </div>
+                        <div class="col-sm-9">
+                            {!! Form::text('nama', null, ['id' => 'nama', 'class' => 'form-control', 'required' => 'required',]) !!}
+                            <small class="text-danger">{{ $errors->first('nama') }}</small>
                         </div>
-                     </div>
-                        <br><br><br>
-                        <div class="form-group">
-                            <label for="title" class="col-sm-3 control-label">
-                              Kategori
-                            </label>
-                            <div class="col-sm-6">
-                                <select  id="kategori" name="kategori" class="form-control" placeholder="Kategori"> <option selected="selected" value="">-- Pilih Kategori --</option>
-                          <option value="Muatan Nasional">Muatan Nasional</option>
-                          <option value="Muatan Kewilayahan">Muatan Kewilayahan</option>
-                          <option value="Muatan Peminatan Kejuruan">Muatan Peminatan Kejuruan</option>
-                            </select>
-                            </div>
-                            <div class="col-sm-6 col-sm-offset-3">
-                            <small class="text-danger">{{ $errors->first('kategori') }}</small>
-                            </div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                        {!! Form::label('k1', 'Kelas',[ 'class' => 'col-sm-2', 'control-label']) !!}
+                        <div class="col-sm-2">
+                            {!! Form::hidden('k1',  '0', false, ['class'=>'flat-red'] ) !!} 
+                            <input id="k1" name="k1" type="checkbox" class="pos-rel p-l-30 custom-checkbox" value="1" @if($mapel->k1===1) checked="checked" @endif  > Kelas X
+                            <small class="text-danger">{{ $errors->first('k1') }}</small>
                         </div>
-                        <br><br>
-                        <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-6">
-                                <a class="btn btn-danger" href="{{ route('mapel.index') }}">
-                                    @lang('button.cancel')
-                                </a>
-                                <button type="submit" class="btn btn-success">
-                                   {{$btn_submit}}
-                                </button>
-                            </div>
+                        <div class="col-sm-2">
+                            {!! Form::hidden('k2',  '0', false, ['class'=>'flat-red'] ) !!} 
+                            {{-- {!! Form::checkbox('k2',  '1', ['class'=>'flat-red'] ) !!} Kelas XI --}}
+                            <input id="k2" name="k2" type="checkbox" class="pos-rel p-l-30 custom-checkbox" value="1" @if($mapel->k2===1) checked="checked" @endif  > Kelas XI
+                            <small class="text-danger">{{ $errors->first('k1') }}</small>
                         </div>
-                    </form>
+                         <div class="col-sm-2">
+                            {!! Form::hidden('k3',  '0', false, ['class'=>'flat-red'] ) !!} 
+                            {{-- {!! Form::checkbox('k3',  '1', ['checked' => 'checked'] ) !!} Kelas XII --}}
+                            <input id="k3" name="k3" type="checkbox" class="pos-rel p-l-30 custom-checkbox" value="1" @if($mapel->k3===1) checked="checked" @endif  > Kelas XII
+                            <small class="text-danger">{{ $errors->first('k1') }}</small>
+                        </div>
+                        
+
+                    </div>
                 </div>
-            </div>
-        </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                        <div class="col-md-6 col-sm-8">
+                            <button class="btn btn-warning btn-responsive" data-dismiss="modal" id="reload">Kembali</button>
+                            <button type="submit" class="btn btn-success btn-responsive">
+                                {{ $btn_submit }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
     <!-- row-->
-</section>
+
 

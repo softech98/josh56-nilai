@@ -9,13 +9,18 @@ Data Rombel
 @section('header_styles')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap4.css') }}" />
 <link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/buttons.bootstrap4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/colReorder.bootstrap4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/rowReorder.bootstrap4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/scroller.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-slider/css/bootstrap-slider.min.css') }}" />
 
 <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
+
 @stop
 
 
@@ -40,16 +45,29 @@ Data Rombel
     <div class="row">
         <div class="col-md-12">
             <div class="card panel-danger ">
-                <div class="card-heading clearfix">
+                <div class="card-heading clearfix icon-buttons">
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="home" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                        Rombel
                     </h4>
-                    <a class="btn-xs btn-success pull-right" data-toggle="modal" id="add" href="javascript:void(0)">Tambah Rombel</a>
-                    <a class="btn-xs btn-primary pull-right" id="reload" href="javascript:void(0)">Refresh</a>
-                    {{-- <div class="pull-right">
-                    <a href="{{ route('kelas.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
-                    </div> --}}
+                    <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="add" href="javascript:void(0)">
+                                        <span class="btn-label pull-left">
+                                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
+                                                   data-hc="white"></i>
+                                            </span>
+                                <span class="label-text align-middle">Tambah Rombel</span>
+                            </button>
+                   
                 </div>
+                 <div class="row">
+                            <div class="col-md-4 my-2 ml-4">
+                                {{-- <label class="control-label">Filter Jurusan :</label> --}}
+                                {!! Form::select('jurusan', $jurusan , null,['class' => 'form-control', 'id' => 'jurusan', 'placeholder' => '--Filter Jurusan--']) !!}
+                            </div>
+                            <div class="col-md-4 my-2 ml-4">
+                                {{-- <label class="control-label">Filter Jurusan :</label> --}}
+                                {!! Form::select('tingkat', $tingkat , null,['class' => 'form-control', 'id' => 'tingkat', 'placeholder' => '--Filter Tingkat--']) !!}
+                            </div>
+                            </div>
                 <br />
                 <div class="card-body">
 
@@ -70,20 +88,9 @@ Data Rombel
                                 </tr>
                             </thead>
                             <tbody>
-
-                               {{--  @foreach ($kelas as $kelas)
-                                <tr>
-                                    <td>{{$kelas->id}}</td>
-                                    <td>{{$kelas->nama}}</td>
-                                    <td><button>Edit</button><button>Delete</button>  </td>
-                                </tr>
-                                @endforeach --}}
                             </tbody>
                         </table>
                         </div>
-                   {{--  @else
-                        @lang('general.noresults')
-                    @endif    --}}
                 </div>
             </div>
         </div>
@@ -94,22 +101,41 @@ Data Rombel
 {{-- Body Bottom confirm modal --}}
 @section('footer_scripts')
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
-    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/jeditable/js/jquery.jeditable.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.buttons.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.colReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.responsive.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.rowReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.colVis.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.html5.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.print.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.bootstrap4.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/buttons.print.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/pdfmake.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/vfs_fonts.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.scroller.js') }}" ></script>
     <script>
     $(function() {
+        var jurusanSelect, tingkatSelect;
         var table = $('#table').DataTable({
             processing: true,
             serverSide: true,
-            type : "get",
-            ajax: '{!! route('admin.rombel.data') !!}',
+            ajax: {
+            url: '{{route('admin.rombel.data')}}',
+            data: function (d) {
+                d.jurusanSelect = jurusanSelect;
+                d.tingkatSelect = tingkatSelect;
+            }
+        },
             columns: [
-            { data: 'id', name: 'is_rombel.id' },
-            { data: 'namaRombel', name: 'is_rombel.namaRombel' },
-            { data: 'tingkat', name: 'is_rombel.tingkat' },
-            { data: 'singkatan', name: 'is_jurusan.singkatan' },
-            { data: 'nama', name: 'is_guru.nama' },
-            { data: 'periode', name: 'periode'},
+            { data: 'id',},
+            { data: 'namaRombel'},
+            { data: 'tingkat', searchable: false },
+            { data: 'jurusans.singkatan', name: 'singkatan', searchable: false, orderable: false},
+            { data: 'guru.nama', name: 'walikelas', searchable: false, orderable: false },
+            { data: 'periode.mulai', name: 'periode', searchable: false, orderable: false},
             { data: 'actions', name: 'actions', orderable: false, searchable: false }
             ],
             columnDefs: [
@@ -117,7 +143,7 @@ Data Rombel
                                  targets: [ 5 ],
                                  "orderable": false,
                                  render: function ( data, type, row ) {
-                                     return data+'/'+row.selesai;
+                                     return data+'/'+row.periode.selesai;
                                  }
                              },
                              ],
@@ -128,6 +154,17 @@ Data Rombel
                 $(this).updateLivicon();
             });
         } );
+
+         $('#jurusan').click(function () {
+                jurusanSelect = $(this).val();
+                table.draw();
+
+            });
+         $('#tingkat').click(function () {
+                tingkatSelect = $(this).val();
+                table.draw();
+
+            });
     });
 
 </script>

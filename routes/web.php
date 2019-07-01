@@ -1,5 +1,5 @@
 <?php
-include_once 'web_builder.php';
+// include_once 'web_builder.php';
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +11,7 @@ include_once 'web_builder.php';
 |
 */
 
-Route::pattern('slug', '[a-z0-9- _]+');
+// Route::pattern('slug', '[a-z0-9- _]+');
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
 
@@ -161,7 +161,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'admin',
         Route::get('{mapel}/delete', 'MapelController@destroy')->name('mapel.delete');
         Route::get('{mapel}/confirm-delete', 'MapelController@getModalDelete')->name('mapel.confirm-delete');
     });
-    Route::resource('mapel', 'MapelController')->except('create');
+    Route::resource('mapel', 'MapelController');
 
     
     /*routes for file*/
@@ -244,15 +244,6 @@ Route::get('activate/{userId}/{activationCode}','FrontEndController@getActivate'
 Route::get('forgot-password','FrontEndController@getForgotPassword')->name('forgot-password');
 Route::post('forgot-password', 'FrontEndController@postForgotPassword');
 
-#Social Logins
-Route::get('facebook', 'Admin\FacebookAuthController@redirectToProvider');
-Route::get('facebook/callback', 'Admin\FacebookAuthController@handleProviderCallback');
-
-Route::get('linkedin', 'Admin\LinkedinAuthController@redirectToProvider');
-Route::get('linkedin/callback', 'Admin\LinkedinAuthController@handleProviderCallback');
-
-Route::get('google', 'Admin\GoogleAuthController@redirectToProvider');
-Route::get('google/callback', 'Admin\GoogleAuthController@handleProviderCallback');
 
 # Forgot Password Confirmation
 Route::post('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@postForgotPasswordConfirm');

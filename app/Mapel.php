@@ -10,4 +10,9 @@ class Mapel extends Model
    	public $timestamps = false;
     public $table = 'is_mapel';
     protected $fillable	= [];
+
+     public function jurusan()
+    {
+    	return $this->belongsTo(Jurusan::class);
+    }
 }

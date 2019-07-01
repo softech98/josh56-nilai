@@ -13,14 +13,18 @@ class Rombel extends Model
     public static $tingkat = ['10' => '10', '11' => '11', '12' => '12'];
      public function jurusans()
     {
-           return $this->belongsTo('\App\Jurusan')->withDefault();
+           return $this->belongsTo('\App\Jurusan', 'jurusan_id');
     }
-    //  public function tingkatans()
-    // {
-    //        return $this->belongsTo('\App\Tingkatan')->withDefault();
-    // }
+     public function guru()
+    {
+           return $this->belongsTo('\App\Guru','guru_id');
+    }
      public function siswa()
     {
-           return $this->hasMany('\App\Siswa')->withDefault();
+           return $this->hasMany('\App\Siswa');
+    }
+     public function periode()
+    {
+           return $this->belongsTo('\App\Periode', 'periode_id');
     }
 }
