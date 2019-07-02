@@ -19,9 +19,15 @@ class Guru extends Model
         return $this->hasOne('App\Rombel')->withDefault();
     }
 
+    public function mapelguru()
+    {
+      return $this->hasMany('App\MapelGuru');
+    }
+
     public function getCreatedAtAttribute()
     {
     return \Carbon\Carbon::parse($this->attributes['created_at'])
        ->format('d-M-Y');
     }
+
 }

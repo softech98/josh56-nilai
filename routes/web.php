@@ -144,6 +144,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'admin',
         Route::get('data', 'RombelController@data')->name('rombel.data');
         Route::get('{rombel}/delete', 'RombelController@destroy')->name('rombel.delete');
         Route::get('{rombel}/confirm-delete', 'RombelController@getModalDelete')->name('rombel.confirm-delete');
+        Route::get('{rombel}/mapel', 'RombelController@gurumapel')->name('rombel.mapel');
     });
     Route::resource('rombel', 'RombelController');
 

@@ -15,4 +15,8 @@ class Mapel extends Model
     {
     	return $this->belongsTo(Jurusan::class);
     }
+    public function mapelguru()
+    {
+      return $this->hasMany('App\MapelGuru');
+    }
 }

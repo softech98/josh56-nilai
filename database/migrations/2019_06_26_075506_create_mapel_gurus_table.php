@@ -13,9 +13,12 @@ class CreateMapelGurusTable extends Migration
      */
     public function up()
     {
-        Schema::create('mapel_gurus', function (Blueprint $table) {
+        Schema::create('is_mapel_gurus', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('rombel_id')->nullable();
+            $table->integer('mapel_id')->nullable();
+            $table->integer('guru_id')->nullable();
+            $table->integer('jurusan_id')->nullable();
         });
     }
 
@@ -26,6 +29,6 @@ class CreateMapelGurusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mapel_gurus');
+        Schema::dropIfExists('is_mapel_gurus');
     }
 }

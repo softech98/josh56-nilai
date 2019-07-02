@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Rombel;
 use App\Tingkatan;
+use App\Mapel;
+use App\MapelGuru;
 use App\Periode;
 use App\Jurusan;
 use App\Guru;;
@@ -172,12 +174,48 @@ class RombelController extends Controller
         $rombel = Rombel::with('jurusans','guru','periode')->get(['id', 'namaRombel', 'tingkat', 'periode_id', 'jurusan_id', 'guru_id']);
         }
         return DataTables::of($rombel)
+        ->addColumn('mapels', function($rombel){
+            return '<button type="button" class="btn-xs btn-labeled btn-primary mapel" data-toggle="modal" data-id="'.$rombel->id.'" href="javascript:void(0)">
+                                        <span class="btn-label pull-left">
+                                                <i class="livicon" data-name="notebook" data-size="16" data-loop="true" data-c="#fff"
+                                                   data-hc="white"></i>
+                                            </span>
+                                <span class="label-text align-middle">Guru Mapel</span>
+                            </button>';
+        })
          ->addColumn('actions',function($rombel) {
             $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$rombel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update rombel"></i></a>';
             $actions .= '<a href='. route('admin.rombel.confirm-delete', $rombel->id) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete rombel"></i></a>';
                 return $actions;
             })
-            ->rawColumns(['actions'])
+            ->rawColumns(['actions', 'mapels'])
             ->make(true);
+    }
+
+    public function gurumapel($id)
+    {
+    //    $data['judul']      = "Edit Data Rombel";
+       $rombels     = Rombel::findOrFail($id);
+       $jurusan     = Jurusan::get()->where('id', $rombels->jurusan_id);
+       $mapel     = Mapel::get()->where('jurusan_id', $rombels->jurusan_id);
+    //    $data['periode']    = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
+    //    $data['jurusan']    = Jurusan::pluck('singkatan','id');
+    //    $tingkat            = Rombel::$tingkat;
+       $guru = Guru::pluck('nama','id');
+       $data['method']     = "POST";
+       $data['btn_submit'] = "SIMPAN";
+       $data['action']     = array('Admin\RombelController@gurumapelSimpan', $id);
+        return view('admin.rombel.mapelguru', $data, compact('rombels','jurusan','guru','mapel'));       
+    }
+
+    public function gurumapelSimpan(Request $request)
+    {
+        $this->validate($request, [
+            'mapel_id' => 'required|max:10',
+            
+        ]);
+        MapelGuru::create($request->all());
+
+      return back()->with('success', 'Data Berhasil diTambahkan');
     }
 }

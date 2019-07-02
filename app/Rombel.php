@@ -27,4 +27,9 @@ class Rombel extends Model
     {
            return $this->belongsTo('\App\Periode', 'periode_id');
     }
+
+    public function mapelguru()
+    {
+      return $this->hasMany('App\MapelGuru');
+    }
 }

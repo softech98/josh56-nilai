@@ -20,4 +20,8 @@ class Jurusan extends Model
     {
     	return $this->hasMany(Mapel::class);
     }
+    public function mapelguru()
+    {
+      return $this->hasMany('App\MapelGuru');
+    }
 }

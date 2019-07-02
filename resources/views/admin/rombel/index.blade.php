@@ -80,8 +80,9 @@ Data Rombel
                                     <th width="20px">Id</th>
                                     <th>Rombel</th>
                                     <th>Tingkat</th>
-                                    <th>Jurusan</th>
+                                    {{-- <th>Jurusan</th> --}}
                                     <th>Wali Kelas</th>
+                                    <th>Mata Pelajaran</th>
                                     <th>Periode</th>
                                     <th>Action</th>
                                     
@@ -133,8 +134,9 @@ Data Rombel
             { data: 'id',},
             { data: 'namaRombel'},
             { data: 'tingkat', searchable: false },
-            { data: 'jurusans.singkatan', name: 'singkatan', searchable: false, orderable: false},
+            // { data: 'jurusans.singkatan', name: 'singkatan', searchable: false, orderable: false},
             { data: 'guru.nama', name: 'walikelas', searchable: false, orderable: false },
+            { data: 'mapels', name: 'mapels', searchable: false, orderable: false },
             { data: 'periode.mulai', name: 'periode', searchable: false, orderable: false},
             { data: 'actions', name: 'actions', orderable: false, searchable: false }
             ],
@@ -199,16 +201,17 @@ $(function () {
         $('.modal-body').load('{!! route("admin.rombel.create") !!}')
     });
 </script>
-{{-- <script type="text/javascript">
-    $(document).on('click', '.edit{{$rombel->id}}', function(){
-        var id = $(this).data('id');
-    $.get("{{ route('rombel.index') }}" +'/' + id +'/edit', function (data) {
+<script type="text/javascript">
+    $(document).on('click', '.mapel{{$rombel->id}}', function(){
+        var nip = $(this).data('id');
+    $.get("{{ route('admin.rombel.index') }}" +'/' + nip +'/mapel', function (data) {
           $('#myModal').modal('show');
+          $('.modal-title').html('Konfigurasi Guru Mata Pelajaran');
           $('.modal-body').html(data);
           
       })
     });
-</script> --}}
+    </script>
 <script>
     $(document).ready(function() {
 
