@@ -9,8 +9,10 @@
                     </h4>
                 </div>
             <div class="card-body">
+                 {{ Form::model($mapelguru, array('action' => $action, 'files' => true, 'method' => $method)) }}
                 <div class="table-responsive">
-
+                        {!! Form::hidden('jurusan_id', $rombels->jurusan_id) !!}
+                        {!! Form::hidden('rombel_id', $rombels->id) !!}
                         <table class="table table-striped" id="table">
                             <thead>
                                 <tr class="filters">
@@ -23,11 +25,22 @@
                             <tbody>
                                 <td align="center">{{ $loop->iteration }}</td>
                             <td> {{$row->nama}} </td>
-                            <td>{!! Form::select('guru_id', $guru, null, ['id' => 'guru', 'class' => 'form-control select2','placeholder' => "--Pilih Guru Mapel--"]) !!} </td>
+                            <td>{!! Form::select('guru_id', $guru,  ['id' => 'guru', 'class' => 'form-control select2','placeholder' => "--Pilih Guru Mapel--"]) !!} </td>
                             </tbody>
                             @endforeach
                         </table>
                         </div>
+                        <div class="form-group">
+                        <div class="row">
+                        <div class="col-md-6 col-sm-8">
+                            <button class="btn btn-warning btn-responsive" data-dismiss="modal" id="reload">Kembali</button>
+                            <button type="submit" class="btn btn-success btn-responsive">
+                                {{ $btn_submit }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                   {!! Form::close() !!}
             </div>
            </div>
        </div>
