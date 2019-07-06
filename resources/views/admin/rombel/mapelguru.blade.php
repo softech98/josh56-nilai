@@ -24,7 +24,7 @@
                             @foreach($mapel as $row)
                             <tbody>
                                 <td align="center">{{ $loop->iteration }}</td>
-                            <td> {{$row->nama}} </td>
+                            <td> {{$row->nama}}{!! Form::hidden('mapel_id', $row->id) !!} </td>
                             <td>{!! Form::select('guru_id', $guru,  ['id' => 'guru', 'class' => 'form-control select2','placeholder' => "--Pilih Guru Mapel--"]) !!} </td>
                             </tbody>
                             @endforeach

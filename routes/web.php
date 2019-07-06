@@ -59,12 +59,12 @@ Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
 
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'admin.'], function () {
-    # GUI Crud Generator
-    Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('generator_builder');
-    Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
-    Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
-    // Model checking
-    Route::post('modelCheck', 'ModelcheckController@modelCheck');
+    // # GUI Crud Generator
+    // Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('generator_builder');
+    // Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate');
+    // Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate');
+    // // Model checking
+    // Route::post('modelCheck', 'ModelcheckController@modelCheck');
 
     # Dashboard / Index
     Route::get('/', 'JoshController@showHome')->name('dashboard');

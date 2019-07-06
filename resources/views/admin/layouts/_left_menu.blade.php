@@ -11,13 +11,6 @@
         </a>
     </li>
      @if(Sentinel::inRole('admin'))
-    <li {!! (Request::is('admin/generator_builder') ? 'class="active"' : '') !!}>
-        <a href="{{  URL::to($prefix.'/generator_builder') }}">
-            <i class="livicon" data-name="shield" data-size="18" data-c="#F89A14" data-hc="#F89A14"
-               data-loop="true"></i>
-            Generator Builder
-        </a>
-    </li>
     <li {!! (Request::is('admin/guru') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to($prefix.'/guru') }}">
             <i class="livicon" data-name="users" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
