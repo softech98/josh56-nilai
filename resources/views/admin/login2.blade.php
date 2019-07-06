@@ -11,6 +11,7 @@
     <link href="{{ asset('assets/vendors/iCheck/css/minimal/blue.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/css/pages/login2.css') }}" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <!-- styles of the page ends-->
 </head>
 

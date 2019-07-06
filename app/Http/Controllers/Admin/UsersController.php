@@ -32,7 +32,7 @@ class UsersController extends JoshController
     {
 
         // Show the page
-        return view('admin.users.index', );
+        return view('admin.users.index');
     }
 
     /*

@@ -35,7 +35,7 @@ class AuthController extends JoshController
         }
 
         // Show the page
-        return view('admin.login');
+        return view('admin.login2');
     }
 
     /**

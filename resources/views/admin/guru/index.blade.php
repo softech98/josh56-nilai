@@ -103,11 +103,11 @@ type="text/javascript"></script>
             { data: 'foto', name: 'foto',
             render: function( data, type, row ) {
                 if(data)
-                    return "<img src=\"/uploads/image/" + data + "\" height=\"100\" width=\"100\"/>";
+                    return "<img src=\"{{ asset('uploads/image')}}/" + data + "\" height=\"100\" width=\"100\"/>";
                 else if(row.jenis_kelamin === 'L')
-                    return "<img src=\"/assets/images/authors/avatar3.png" + "\" height=\"100\" width=\"100\"/>";
+                    return "<img src=\"{{ asset('assets/images/authors/avatar3.png') }}" + "\" height=\"100\" width=\"100\"/>";
                 else
-                    return "<img src=\"/assets/images/authors/avatar5.png" + "\" height=\"100\" width=\"100\"/>";
+                    return "<img src=\"{{ asset('assets/images/authors/avatar5.png') }}" + "\" height=\"100\" width=\"100\"/>";
                 // return "<img src=\"/assets/images/authors/no_avatar.jpg" + "\" height=\"100\"/>";
                 
             }
