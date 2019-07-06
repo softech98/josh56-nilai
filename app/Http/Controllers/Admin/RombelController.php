@@ -201,6 +201,7 @@ class RombelController extends Controller
     //    $data['periode']    = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
     //    $data['jurusan']    = Jurusan::pluck('singkatan','id');
     //    $tingkat            = Rombel::$tingkat;
+       // $mapel = Mapel::pluck('nama','id');
        $guru = Guru::pluck('nama','id');
        $data['mapelguru']     = new MapelGuru();
        $data['method']     = "POST";
@@ -211,12 +212,20 @@ class RombelController extends Controller
 
     public function gurumapelSimpan(Request $request)
     {
+        for ($i=0; $i < count ($request->mapel_id); $i++) { 
+            $mapelguru[] = [
+                    'rombel_id' => $request->rombel_id[$i],
+                    'jurusan_id' => $request->jurusan_id[$i],
+                    'mapel_id' => $request->mapel_id[$i],
+                    'guru_id' => $request->guru_id[$i],
+                ];
+        }
         // $this->validate($request, [
         //     // 'mapel_id' => 'required|max:10',
             
         // ]);
-        dd($request->all());
-        // MapelGuru::create($request->all());
+        // dd($request->all());
+        MapelGuru::insert($mapelguru);
 
       return back()->with('success', 'Data Berhasil diTambahkan');
     }
