@@ -9,10 +9,10 @@
                     </h4>
                 </div>
             <div class="card-body">
-                 {{ Form::model($mapelguru, array('action' => $action, 'files' => true, 'method' => $method)) }}
+                 {{-- {{ Form::model($mapelguru, array('action' => $action, 'files' => true, 'method' => $method)) }} --}}
+                 <form action="{{$action}}" method="{{$method}}" enctype="multipart/form-data">
+                 @method($method)
                 <div class="table-responsive">
-                        {!! Form::hidden('jurusan_id', $rombels->jurusan_id) !!}
-                        {!! Form::hidden('rombel_id', $rombels->id) !!}
                         <table class="table table-striped" id="table">
                             <thead>
                                 <tr class="filters">
@@ -22,10 +22,12 @@
                                 </tr>
                             </thead>
                             @foreach($mapel as $row)
+                        {!! Form::hidden('jurusan_id[]', $rombels->jurusan_id) !!}
+                        {!! Form::hidden('rombel_id[]', $rombels->id) !!}
                             <tbody>
                                 <td align="center">{{ $loop->iteration }}</td>
-                            <td> {{$row->nama}}{!! Form::hidden('mapel_id', $row->id) !!} </td>
-                            <td>{!! Form::select('guru_id', $guru,  ['id' => 'guru', 'class' => 'form-control select2','placeholder' => "--Pilih Guru Mapel--"]) !!} </td>
+                            <td> {{$row->nama}}{!! Form::hidden('mapel_id[]', $row->id) !!} </td>
+                            <td>{!! Form::select('guru_id[]', $guru,  ['id' => 'guru', 'class' => 'form-control select2','placeholder' => "--Pilih Guru Mapel--"]) !!} </td>
                             </tbody>
                             @endforeach
                         </table>
@@ -40,7 +42,8 @@
                         </div>
                     </div>
                 </div>
-                   {!! Form::close() !!}
+</form>
+                   {{-- {!! Form::close() !!} --}}
             </div>
            </div>
        </div>
