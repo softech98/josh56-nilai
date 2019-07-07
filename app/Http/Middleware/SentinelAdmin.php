@@ -21,7 +21,7 @@ class SentinelAdmin
         if(!Sentinel::check())
             return redirect('admin/signin')->with('info', 'You must be logged in!');
         elseif(!Sentinel::inRole('admin'))
-            return redirect($prefix.'/dashboard');
+             return redirect()->route('401');
 
         $tasks_count = Task::where('user_id', Sentinel::getUser()->id)->count();
         $request->attributes->add(['tasks_count' => $tasks_count]);

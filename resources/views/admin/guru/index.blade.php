@@ -43,13 +43,16 @@ Daftar Guru
         <div class="col-12">
             <div class="card panel-primary ">
                 <div class="card-heading clearfix">
-                    <h4 class="card-title pull-left"> <i class="livicon" data-name="home" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    <h4 class="card-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Guru
                  </h4>
-                 <a class="btn-xs btn-danger pull-right" data-toggle="modal" id="add" {{-- data-target="#modalGuru" --}} href="javascript:void(0)">Tambah Guru</a>
-                    {{-- <div class="pull-right">
-                    <a href="{{ route('kelas.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
-                </div> --}}
+                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="add" href="javascript:void(0)">
+                                        <span class="btn-label pull-left">
+                                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
+                                                   data-hc="white"></i>
+                                            </span>
+                                <span class="label-text align-middle">Tambah Guru</span>
+                            </button>
             </div>
             <br />
             <div class="card-body">

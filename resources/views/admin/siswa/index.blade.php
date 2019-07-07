@@ -41,12 +41,18 @@ Data Siswa
 <section class="content paddingleft_right15">
     <div class="row">
         <div class="col-md-12">
-            <div class="card panel-danger ">
+            <div class="card panel-primary ">
                 <div class="card-heading clearfix">
-                    <h4 class="card-title pull-left"> <i class="livicon" data-name="home" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    <h4 class="card-title pull-left"> <i class="livicon" data-name="flag" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Siswa
                  </h4>
-                 <button type="button" class="btn-xs btn-success pull-right" data-toggle="modal" id="add">Tambah Siswa</button>
+                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="add" href="javascript:void(0)">
+                                        <span class="btn-label pull-left">
+                                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
+                                                   data-hc="white"></i>
+                                            </span>
+                                <span class="label-text align-middle">Tambah Siswa</span>
+                            </button>
                                     
                     {{-- <div class="pull-right">
                     <a href="{{ route('kelas.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>

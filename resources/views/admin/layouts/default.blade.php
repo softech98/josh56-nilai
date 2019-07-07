@@ -170,7 +170,7 @@
 
         <!-- Notifications -->
         <div id="notific">
-        @include('notifications')
+        @include('admin.layouts.notifications')
         </div>
         
                 <!-- Content -->

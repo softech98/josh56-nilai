@@ -67,7 +67,7 @@ View Guru Details
                                         <div class="col-md-4">
                                             <div class="img-file">
                                                 @if($guru->foto)
-                                                <img src="{!! url('/').'/uploads/gurus/'.$guru->foto !!}" alt="img"
+                                                <img src="{!! url('/').'/uploads/image/'.$guru->foto !!}" alt="img"
                                                 class="img-fluid"/>
                                                 @elseif($guru->jenis_kelamin === "L")
                                                 <img src="{{ asset('assets/images/authors/avatar3.png') }}" alt="..."

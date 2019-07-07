@@ -222,10 +222,16 @@ $(function () {
 
    });
 </script>
-<script>
+{{-- <script>
          $("#walikelas").select2({
             placeholder: "--Pilih Walikelas--",
             theme:"bootstrap"
         });
     </script>
+      <script>
+         $("#mapel_guru").select2({
+            placeholder: "--Pilih Guru Mapel--",
+            theme:"bootstrap"
+        });
+    </script> --}}
 @stop

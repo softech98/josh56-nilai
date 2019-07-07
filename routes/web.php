@@ -251,12 +251,20 @@ Route::post('forgot-password', 'FrontEndController@postForgotPassword');
 Route::post('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@postForgotPasswordConfirm');
 Route::get('forgot-password/{userId}/{passwordResetCode}', 'FrontEndController@getForgotPasswordConfirm')->name('forgot-password-confirm');
 # My account display and update details
-Route::group(['prefix' => 'guru','middleware' => 'user'], function () {
+Route::group(['prefix' => 'guru','middleware' => 'guru'], function () {
     // Route::put('my-account', 'FrontEndController@update');
     // Route::get('my-account', 'FrontEndController@myAccount')->name('my-account');
     Route::get('dashboard', 'JoshController@showHome');
+    Route::get('/', 'JoshController@showHome');
 Route::get('logout', 'FrontEndController@getLogout')->name('logout');
 Route::resource('users', 'Admin\UsersController');
+
+    Route::get('404', function () {
+        return view('404');
+    })->name('404');
+     Route::get('401', function () {
+        return view('401');
+    })->name('401');
 });
 # contact form
 Route::post('contact', 'FrontEndController@postContact')->name('contact');
