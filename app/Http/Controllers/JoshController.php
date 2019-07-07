@@ -113,9 +113,16 @@ class JoshController extends Controller {
             ->get();
        
         if(Sentinel::check())
+            if(Sentinel::inRole('admin'))
+            {
             return view('admin.index',[ 'user_count'=>$user_count,'siswa_count'=>$siswa_count,'guru_count'=>$guru_count,'users'=>$users] );
-        else
+        }
+        else{
+            return view ('guru.index');
+        }
+        else{
             return redirect('signin')->with('error', 'You must be logged in!');
+        }
     }
 
 }

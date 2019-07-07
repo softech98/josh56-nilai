@@ -62,6 +62,7 @@ return array(
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
     'App\\Jtable' => $baseDir . '/app/Jtable.php',
     'App\\Jurusan' => $baseDir . '/app/Jurusan.php',
+    'App\\Kompetensi' => $baseDir . '/app/Kompetensi.php',
     'App\\Mail\\Contact' => $baseDir . '/app/Mail/Contact.php',
     'App\\Mail\\ContactUser' => $baseDir . '/app/Mail/ContactUser.php',
     'App\\Mail\\ForgotPassword' => $baseDir . '/app/Mail/ForgotPassword.php',

@@ -55,6 +55,7 @@ Dashboard
             </div>
         </div>
     </div>
+     @if(Sentinel::inRole('admin'))
     <div class="row">
         <div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 margin_10 animated fadeInLeftBig">
             <!-- Trans label pie charts strats here-->
@@ -187,6 +188,7 @@ Dashboard
     </div>
 </div>
 </div>
+@endif
 <!--/row-->
 </section>
 <div class="modal fade" id="editConfirmModal" tabindex="-1" role="dialog">

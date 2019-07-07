@@ -628,6 +628,7 @@ class ComposerStaticInitd661bb4a3a99f90557f2fa994053314f
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Jtable' => __DIR__ . '/../..' . '/app/Jtable.php',
         'App\\Jurusan' => __DIR__ . '/../..' . '/app/Jurusan.php',
+        'App\\Kompetensi' => __DIR__ . '/../..' . '/app/Kompetensi.php',
         'App\\Mail\\Contact' => __DIR__ . '/../..' . '/app/Mail/Contact.php',
         'App\\Mail\\ContactUser' => __DIR__ . '/../..' . '/app/Mail/ContactUser.php',
         'App\\Mail\\ForgotPassword' => __DIR__ . '/../..' . '/app/Mail/ForgotPassword.php',

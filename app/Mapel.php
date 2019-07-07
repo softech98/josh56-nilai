@@ -1,4 +1,4 @@
-<?php
+\<?php
 
 namespace App;
 
@@ -18,5 +18,10 @@ class Mapel extends Model
     public function mapelguru()
     {
       return $this->hasMany('App\MapelGuru');
+    }
+
+    public function kompetensi()
+    {
+      return $this->hasMany('App\Kompetensi');
     }
 }
