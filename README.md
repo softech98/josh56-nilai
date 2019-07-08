@@ -9,13 +9,13 @@
 
 ## Langkah Instalasi
 ### Spesifikasi
-- PHP 7.0
-- Laravel 5.5.45
+- PHP 7.0 ++
+- Laravel 5.6.10
 - MySQL
 
 ### Instalasi
 1. Clone atau download source code
-    - Para terminal, clone repo `git clone https://github.com/softech98/web-pengolahan-nilai.git`
+    - Para terminal, clone repo `git clone https://github.com/softech98/josh56-nilai.git`
     - Jika tidak menggunakan Git, silakan **Download Zip** dan *extract* .
     - Software git dan composer untuk windows => https://www.dropbox.com/s/kyfqdm87syct0sg/4.%20Software-laravel.rar?dl=0
 
