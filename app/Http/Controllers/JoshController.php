@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php 
+
+namespace App\Http\Controllers;
 
 
 use Illuminate\Support\Facades\Redirect;
@@ -11,6 +13,9 @@ use Yajra\DataTables\DataTables;
 use App\Datatable;
 use App\User;
 use App\Guru;
+use App\Mapel;
+use App\Rombel;
+use App\MapelGuru;
 use App\Siswa;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -111,14 +116,26 @@ class JoshController extends Controller {
             ->leftJoin('roles', 'role_users.role_id', '=', 'roles.id')
             ->select('roles.name')
             ->get();
-       
+       /*----------  Guru Mapel Get  ----------*/
+       $guru = Sentinel::getUser();
+       $mapelguru = MapelGuru::where('guru_id', $guru->guru_id)->get();
+       foreach($mapelguru as $m)
+
+        $getnamamapel[] = Mapel::where('id',$m->mapel_id)->first();
+        $getrombel[] = Rombel::where('id',$m->rombel_id)->first();
+                    
+       // $mapels_id = $mapelguru->mapel_id;
+       // $getmapel = Mapel::where('id',$mapelguru)->get();
+       // dd ($m->nama);
+
         if(Sentinel::check())
             if(Sentinel::inRole('admin'))
             {
             return view('admin.index',[ 'user_count'=>$user_count,'siswa_count'=>$siswa_count,'guru_count'=>$guru_count,'users'=>$users] );
         }
         else{
-            return view ('guru.index');
+            // return view ('guru.index',$data, ['mapelguru'=>$mapelguru]);
+            return view ('guru.index', compact('mapelguru','getnamamapel','getrombel'));
         }
         else{
             return redirect('signin')->with('error', 'You must be logged in!');

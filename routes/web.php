@@ -260,10 +260,10 @@ Route::get('logout', 'FrontEndController@getLogout')->name('logout');
 Route::resource('users', 'Admin\UsersController');
 
     Route::get('404', function () {
-        return view('404');
+        return view('errors/404');
     })->name('404');
      Route::get('401', function () {
-        return view('401');
+        return view('errors/401');
     })->name('401');
 });
 
