@@ -122,7 +122,7 @@ class JoshController extends Controller {
        foreach($mapelguru as $m)
 
         $getnamamapel[] = Mapel::where('id',$m->mapel_id)->first();
-        $getrombel[] = Rombel::where('id',$m->rombel_id)->first();
+        // $getrombel[] = Rombel::where('id',$m->rombel_id)->first();
                     
        // $mapels_id = $mapelguru->mapel_id;
        // $getmapel = Mapel::where('id',$mapelguru)->get();
@@ -135,7 +135,7 @@ class JoshController extends Controller {
         }
         else{
             // return view ('guru.index',$data, ['mapelguru'=>$mapelguru]);
-            return view ('guru.index', compact('mapelguru','getnamamapel','getrombel'));
+            return view ('guru.index', compact('mapelguru','getnamamapel'));
         }
         else{
             return redirect('signin')->with('error', 'You must be logged in!');

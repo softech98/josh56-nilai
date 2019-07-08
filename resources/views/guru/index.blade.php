@@ -99,11 +99,11 @@ Dashboard
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $m->nama}}</td>
                         @endforeach
-                        @foreach($getrombel as $m)
+                        {{-- @foreach($getrombel as $m)
                         <td> {{$m->tingkat}}{{$m->namaRombel}}</td>
         
                         </tbody>
-                        @endforeach
+                        @endforeach --}}
                     </table>
                     @else
                     <table class="table table-bordered table-striped table-hover">
