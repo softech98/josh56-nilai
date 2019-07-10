@@ -119,11 +119,17 @@ class JoshController extends Controller {
        /*----------  Guru Mapel Get  ----------*/
        $guru = Sentinel::getUser();
        $mapelguru = MapelGuru::where('guru_id', $guru->guru_id)->get();
-       foreach($mapelguru as $m)
 
-        $getnamamapel[] = Mapel::where('id',$m->mapel_id)->first();
-        // $getrombel[] = Rombel::where('id',$m->rombel_id)->first();
-                    
+       $getnamamapel = [];
+       $getrombel = [];
+       foreach($mapelguru as $m)
+        {
+            $getnamamapel[] = Mapel::find($m->mapel_id);
+            $getrombel[] = Rombel::find($m->rombel_id);
+        }
+
+        // dd($getrombel[1]->namaRombel);
+
        // $mapels_id = $mapelguru->mapel_id;
        // $getmapel = Mapel::where('id',$mapelguru)->get();
        // dd ($m->nama);
@@ -132,11 +138,11 @@ class JoshController extends Controller {
             if(Sentinel::inRole('admin'))
             {
             return view('admin.index',[ 'user_count'=>$user_count,'siswa_count'=>$siswa_count,'guru_count'=>$guru_count,'users'=>$users] );
-        }
+            }
         else{
             // return view ('guru.index',$data, ['mapelguru'=>$mapelguru]);
-            return view ('guru.index', compact('mapelguru','getnamamapel'));
-        }
+            return view ('guru.index', compact('mapelguru','getnamamapel','getrombel'));
+            }
         else{
             return redirect('signin')->with('error', 'You must be logged in!');
         }

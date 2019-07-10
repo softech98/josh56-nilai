@@ -68,6 +68,63 @@
             Activity Log
         </a>
     </li>
+    <li {!! (Request::is('admin/users') || Request::is('admin/users/create') || Request::is('admin/user_profile') || Request::is('admin/users/*') || Request::is('admin/deleted_users') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
+               data-loop="true"></i>
+            <span class="title">Users</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/users') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/users') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Users
+                </a>
+            </li>
+            <li {!! (Request::is('admin/users/create') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/users/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add New User
+                </a>
+            </li>
+            <li {!! ((Request::is('admin/users/*')) && !(Request::is('admin/users/create')) || Request::is('admin/user_profile') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::route('admin.users.show',Sentinel::getUser()->id) }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    View Profile
+                </a>
+            </li>
+            <li {!! (Request::is('admin/deleted_users') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/deleted_users') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Deleted Users
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li {!! (Request::is('admin/groups') || Request::is('admin/groups/create') || Request::is('admin/groups/*') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon" data-name="users" data-size="18" data-c="#418BCA" data-hc="#418BCA"
+               data-loop="true"></i>
+            <span class="title">Groups</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('admin/groups') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/groups') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Group List
+                </a>
+            </li>
+            <li {!! (Request::is('admin/groups/create') ? 'class="active" id="active"' : '') !!}>
+                <a href="{{ URL::to('admin/groups/create') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Add New Group
+                </a>
+            </li>
+        </ul>
+    </li>
+    
     <li {!! (Request::is('admin/datatables') || Request::is('admin/editable_datatables') || Request::is('admin/dropzone') || Request::is('admin/multiple_upload') || Request::is('admin/custom_datatables')|| Request::is('admin/selectfilter') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
@@ -563,104 +620,8 @@
             <span class="badge badge-danger" id="taskcount">{{ Request::get('tasks_count') }}</span>
         </a>
     </li>
-    <li {!! (Request::is('admin/gallery') || Request::is('admin/masonry_gallery') || Request::is('admin/imagecropping') || Request::is('admin/imgmagnifier') ? 'class="active"' : '') !!}>
-        <a href="#">
-            <i class="livicon" data-name="image" data-c="#418BCA" data-hc="#418BCA" data-size="18"
-               data-loop="true"></i>
-            <span class="title">Gallery</span>
-            <span class="fa arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li {!! (Request::is('admin/gallery') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/gallery') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Gallery
-                </a>
-            </li>
-            <li {!! (Request::is('admin/masonry_gallery') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/masonry_gallery') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Masonry Gallery
-                </a>
-            </li>
-            <li {!! (Request::is('admin/imagecropping') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/imagecropping') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Image Cropping
-                </a>
-            </li>
-            <li {!! (Request::is('admin/imgmagnifier') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/imgmagnifier') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Image Magnifier
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li {!! (Request::is('admin/users') || Request::is('admin/users/create') || Request::is('admin/user_profile') || Request::is('admin/users/*') || Request::is('admin/deleted_users') ? 'class="active"' : '') !!}>
-        <a href="#">
-            <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
-               data-loop="true"></i>
-            <span class="title">Users</span>
-            <span class="fa arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li {!! (Request::is('admin/users') ? 'class="active" id="active"' : '') !!}>
-                <a href="{{ URL::to('admin/users') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Users
-                </a>
-            </li>
-            <li {!! (Request::is('admin/users/create') ? 'class="active" id="active"' : '') !!}>
-                <a href="{{ URL::to('admin/users/create') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Add New User
-                </a>
-            </li>
-            <li {!! ((Request::is('admin/users/*')) && !(Request::is('admin/users/create')) || Request::is('admin/user_profile') ? 'class="active" id="active"' : '') !!}>
-                <a href="{{ URL::route('admin.users.show',Sentinel::getUser()->id) }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    View Profile
-                </a>
-            </li>
-            <li {!! (Request::is('admin/deleted_users') ? 'class="active" id="active"' : '') !!}>
-                <a href="{{ URL::to('admin/deleted_users') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Deleted Users
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li {!! (Request::is('admin/groups') || Request::is('admin/groups/create') || Request::is('admin/groups/*') ? 'class="active"' : '') !!}>
-        <a href="#">
-            <i class="livicon" data-name="users" data-size="18" data-c="#418BCA" data-hc="#418BCA"
-               data-loop="true"></i>
-            <span class="title">Groups</span>
-            <span class="fa arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li {!! (Request::is('admin/groups') ? 'class="active" id="active"' : '') !!}>
-                <a href="{{ URL::to('admin/groups') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Group List
-                </a>
-            </li>
-            <li {!! (Request::is('admin/groups/create') ? 'class="active" id="active"' : '') !!}>
-                <a href="{{ URL::to('admin/groups/create') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Add New Group
-                </a>
-            </li>
-        </ul>
-    </li>
     
-    <li {!! (Request::is('admin/minisidebar') ? 'class="active"' : '') !!}>
-        <a href="{{  URL::to('admin/minisidebar') }}">
-            <i class="livicon" data-name="list-ul" data-size="18" data-c="#F89A14" data-hc="#F89A14"
-               data-loop="true"></i>
-            Mini Sidebar
-        </a>
-    </li>
+    
     <li {!! (Request::is('admin/fixedmenu') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to('admin/fixedmenu') }}">
             <i class="livicon" data-name="list-ul" data-size="18" data-c="#1DA1F2" data-hc="#1DA1F2"
@@ -669,6 +630,7 @@
         </a>
     </li>
     @endif
+    @if(Sentinel::inRole('guru'))
     <li {!! (Request::is('guru/kompetensi') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to($prefix.'/kompetensi') }}">
             <i class="livicon" data-name="notebook" data-size="18" data-c="#F89A14" data-hc="#F89A14"
@@ -683,6 +645,7 @@
             Data Siswa
         </a>
     </li>
+    @endif
     <!-- Menus generated by CRUD generator -->
     @include('admin/layouts/menu')
 </ul>

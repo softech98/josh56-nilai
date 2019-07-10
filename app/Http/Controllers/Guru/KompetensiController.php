@@ -1,9 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guru;
 
 use App\Kompetensi;
+use App\Http\Controllers\JoshController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
+use Cartalyst\Sentinel\Laravel\Facades\Activation;
+use Sentinel;
+use Redirect;
+use URL;
+use View;
+use Validator;
+use DB;
 
 class KompetensiController extends Controller
 {

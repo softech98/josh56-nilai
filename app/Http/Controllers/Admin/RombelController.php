@@ -101,6 +101,7 @@ class RombelController extends Controller
        $data['method']     = "PUT";
        $data['btn_submit'] = "UPDATE";
        $data['action']     = array('Admin\RombelController@update', $id);
+
         return view('admin.rombel.create',$data, compact('tingkat'));       
     }
 
@@ -194,6 +195,7 @@ class RombelController extends Controller
 
     public function gurumapel($id)
     {
+
     //    $data['judul']      = "Edit Data Rombel";
        $rombels     = Rombel::findOrFail($id);
        $jurusan[]     = Jurusan::get()->where('id', $rombels->jurusan_id);
@@ -203,15 +205,17 @@ class RombelController extends Controller
     //    $tingkat            = Rombel::$tingkat;
        // $mapel = Mapel::pluck('nama','id');
        $guru = Guru::pluck('nama','id');
-       $data['mapelguru']     = new MapelGuru();
-       $data['method']     = "POST";
+       $data['mapelguru']  = new MapelGuru();
+       $data['method']     = "PUT";
        $data['btn_submit'] = "SIMPAN";
        $data['action']     = array('Admin\RombelController@gurumapelSimpan', $id);
-        return view('admin.rombel.mapelguru', $data, compact('rombels','jurusan','guru','mapel'));       
+
+        return view('admin.rombel.mapelguru', $data, compact('rombels', 'jurusan','guru', 'mapel'));       
     }
 
-    public function gurumapelSimpan(Request $request)
+    public function gurumapelSimpan(Request $request, Rombel $rombel)
     {
+
         for ($i=0; $i < count ($request->mapel_id); $i++) { 
             $mapelguru[] = [
                     'rombel_id' => $request->rombel_id[$i],
@@ -220,12 +224,29 @@ class RombelController extends Controller
                     'guru_id' => $request->guru_id[$i],
                 ];
         }
+
         // $this->validate($request, [
         //     // 'mapel_id' => 'required|max:10',
             
         // ]);
-        // dd($request->all());
-        MapelGuru::insert($mapelguru);
+
+
+        $checkRombelId = MapelGuru::where('rombel_id', '=', $rombel->id)->first();
+
+
+        if($checkRombelId === null)
+        {
+            MapelGuru::insert($mapelguru);
+        }
+        elseif($request->method() == 'PUT')
+        {
+            foreach ($request->mapel_id as $index => $mapel_id)
+            {
+               MapelGuru::where('mapel_id', '=', $mapel_id)->update([
+                'guru_id' => $request->guru_id[$index]
+               ]);
+            }
+        }
 
       return back()->with('success', 'Data Berhasil diTambahkan');
     }

@@ -146,7 +146,9 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'admin',
         Route::get('{rombel}/confirm-delete', 'RombelController@getModalDelete')->name('rombel.confirm-delete');
         Route::get('{rombel}/mapel', 'RombelController@gurumapel')->name('rombel.mapel');
         Route::post('{rombel}/mapel', 'RombelController@gurumapelSimpan')->name('rombel.mapel.simpan');
+        Route::put('{rombel}/mapel', 'RombelController@gurumapelSimpan')->name('rombel.mapel.simpan');
     });
+
     Route::resource('rombel', 'RombelController');
 
      /*routes for Periode*/
@@ -268,10 +270,10 @@ Route::resource('users', 'Admin\UsersController');
 });
 
 Route::group(['prefix' => 'guru','middleware' => 'guru'], function () {
-     Route::get('data', 'KompetensiController@data')->name('kompetensi.data');
-        Route::get('{kompetensi}/delete', 'KompetensiController@destroy')->name('kompetensi.delete');
-        Route::get('{kompetensi}/confirm-delete', 'KompetensiController@getModalDelete')->name('kompetensi.confirm-delete');
-Route::resource('kompetensi', 'KompetensiController');
+     Route::get('data', 'Guru\KompetensiController@data')->name('kompetensi.data');
+        Route::get('{kompetensi}/delete', 'Guru\KompetensiController@destroy')->name('kompetensi.delete');
+        Route::get('{kompetensi}/confirm-delete', 'Guru\KompetensiController@getModalDelete')->name('kompetensi.confirm-delete');
+Route::resource('kompetensi', 'Guru\KompetensiController');
 });
 
 # contact form

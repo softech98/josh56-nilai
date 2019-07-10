@@ -10,7 +10,8 @@
                 </div> --}}
             <div class="card-body">
                  {{ Form::model($mapelguru, array('action' => $action, 'files' => true, 'method' => $method)) }}
-                 <h4 align="">--- Rombongan Belajar {{$rombels->tingkat}} {{$rombels->namaRombel}} ---</h4>
+
+                 <h4 align="">--- Rombongan Belajar | {{$rombels->tingkat}} {{$rombels->namaRombel}} ---</h4>
                  {{-- <form action="{{$action}}" method="{{$method}}" enctype="multipart/form-data"> --}}
                  @method($method)
                 <div class="table-responsive">
@@ -22,15 +23,24 @@
                                     <th>Guru Mata Pelajaran</th>
                                 </tr>
                             </thead>
-                            @foreach($mapel as $row)
-                        {!! Form::hidden('jurusan_id[]', $rombels->jurusan_id) !!}
-                        {!! Form::hidden('rombel_id[]', $rombels->id) !!}
                             <tbody>
+                            @foreach($mapel as $row)
+                            <tr>
+                                {!! Form::hidden('jurusan_id[]', $rombels->jurusan_id) !!}
+                                {!! Form::hidden('rombel_id[]', $rombels->id) !!}
+                                {!! Form::hidden('mapel_id[]', $row->id) !!} 
+
                                 <td align="center">{{ $loop->iteration }}</td>
-                            <td> {{$row->nama}}{!! Form::hidden('mapel_id[]', $row->id) !!} </td>
-                            <td>{!! Form::  select('guru_id[]', $guru, null,['id' => 'guru_mapel', 'class' => 'form-control select2','placeholder' => "Pilih Guru Mapel"]) !!} </td>
-                            </tbody>
+                                <td> {{$row->nama}}</td>
+                                @php
+                                 
+                                 $guruMapel = $mapelguru->where('mapel_id', '=', $row->id)->where('rombel_id', '=', $rombels->id)->first();
+
+                                @endphp
+                                <td> {!! Form::select('guru_id[]', $guru, $guruMapel === null ? null : $guruMapel->guru_id, ['id' => 'guru_mapel', 'class' => 'form-control select2','placeholder' => "Pilih Guru Mapel"]) !!} </td>
+                            </tr>
                             @endforeach
+                            </tbody>
                         </table>
                         </div>
                         <div class="form-group">

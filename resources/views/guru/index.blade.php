@@ -83,7 +83,7 @@ Dashboard
             <br />
             <div class="card-body">
                 <div class="table-responsive-lg table-responsive-sm table-responsive-md">
-                    @if($mapelguru)
+                    @if(count($mapelguru->toArray()) > 0)
                     <table class="table table-bordered " id="table">
                         <thead>
                             <tr class="filters">
@@ -94,16 +94,18 @@ Dashboard
                                 <th>Jumlah Siswa</th>
                             </tr>
                         </thead>
-                        @foreach($getnamamapel as $m)
                         <tbody>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $m->nama}}</td>
-                        @endforeach
-                        {{-- @foreach($getrombel as $m)
-                        <td> {{$m->tingkat}}{{$m->namaRombel}}</td>
-        
+                            @foreach($getnamamapel as $index => $m)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $m->nama}}</td>
+                                <td> {{$getrombel[$index]->tingkat}}{{$getrombel[$index]->namaRombel}}</td>
+                                <td> {{$getrombel[$index]->guru->nama}}</td>
+                                <td> {{$getrombel[$index]->siswa->where('rombel_id', '=', $getrombel[$index]->id)->count()}}</td>
+                            </tr>
+                            @endforeach
+
                         </tbody>
-                        @endforeach --}}
                     </table>
                     @else
                     <table class="table table-bordered table-striped table-hover">
