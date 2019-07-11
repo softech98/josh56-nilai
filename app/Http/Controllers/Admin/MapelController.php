@@ -43,7 +43,7 @@ class MapelController extends Controller
         $data['method']     = "POST";
         $data['btn_submit'] = "Simpan";
         $data['action']     = 'Admin\MapelController@store';
-        return view('admin.mapel.create', $data, );
+        return view('admin.mapel.create', $data);
     }
 
     /**
@@ -55,7 +55,7 @@ class MapelController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|string|max:50|unique:is_mapel',
+            'nama' => 'required|string|max:50|',
         ]);
 
         Mapel::create($request->all());

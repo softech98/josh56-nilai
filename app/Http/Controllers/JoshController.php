@@ -112,7 +112,7 @@ class JoshController extends Controller {
         $users = User::orderBy('id', 'desc')->take(5)->get();
 
         $roles = DB::table('role_users')
-            ->join('users','users.id','=','role_users.user_id')->wherenull('deleted_at')
+            ->join('users','users.id','=','role_users.user_id')
             ->leftJoin('roles', 'role_users.role_id', '=', 'roles.id')
             ->select('roles.name')
             ->get();

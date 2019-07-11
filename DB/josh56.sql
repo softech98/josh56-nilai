@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jul 2019 pada 10.04
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.3
+-- Waktu pembuatan: 11 Jul 2019 pada 13.39
+-- Versi server: 10.1.37-MariaDB
+-- Versi PHP: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -60,9 +60,7 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (17, 17, 'tzFBptf7QtzIsCTdJfdcXQb50YvX1Nbt', 1, '2019-06-28 21:11:03', '2019-06-28 21:11:03', '2019-06-28 21:11:03'),
 (20, 20, 'preWMkgv76ZlI22E5RHCbGsOmaGFSbFS', 1, '2019-06-28 21:54:18', '2019-06-28 21:54:18', '2019-06-28 21:54:18'),
 (21, 21, '4YmuhXEdVrWomTwE5vgdMdc9VxOPRwsV', 1, '2019-06-28 21:54:50', '2019-06-28 21:54:50', '2019-06-28 21:54:50'),
-(22, 22, 'BLgYbLT701joB3Wdly3fkR2g6mzMAT25', 1, '2019-06-28 22:11:24', '2019-06-28 22:11:24', '2019-06-28 22:11:24'),
-(23, 23, 'Ip5yBUIKXd8T1BHslbqYXIzXGUT2NdgF', 1, '2019-06-28 22:12:46', '2019-06-28 22:12:46', '2019-06-28 22:12:46'),
-(24, 24, 'kf3krBzFjXAPbIiNAC2cJ1HVv4OM0n5Y', 1, '2019-07-01 17:24:23', '2019-07-01 17:24:23', '2019-07-01 17:24:23');
+(22, 22, 'BLgYbLT701joB3Wdly3fkR2g6mzMAT25', 1, '2019-06-28 22:11:24', '2019-06-28 22:11:24', '2019-06-28 22:11:24');
 
 -- --------------------------------------------------------
 
@@ -254,7 +252,17 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_id`, `subj
 (164, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 03:41:20', '2019-07-08 03:41:20'),
 (165, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 04:18:45', '2019-07-08 04:18:45'),
 (166, 'Joko Widodo', 'LoggedIn', 24, 'App\\User', 24, 'App\\User', '[]', '2019-07-08 04:18:55', '2019-07-08 04:18:55'),
-(167, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 07:28:59', '2019-07-08 07:28:59');
+(167, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 07:28:59', '2019-07-08 07:28:59'),
+(168, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 02:07:03', '2019-07-11 02:07:03'),
+(169, 'Multimedia Kira', 'User deleted by Ilham Saputra', 23, 'App\\User', 23, 'App\\User', '[]', '2019-07-11 02:57:55', '2019-07-11 02:57:55'),
+(170, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 06:49:15', '2019-07-11 06:49:15'),
+(171, 'Joko Widodo', 'User deleted by Ilham Saputra', 24, 'App\\User', 24, 'App\\User', '[]', '2019-07-11 06:49:46', '2019-07-11 06:49:46'),
+(172, 'Coba 123', 'New User Created by Ilham Saputra', 25, 'App\\User', 25, 'App\\User', '[]', '2019-07-11 06:51:48', '2019-07-11 06:51:48'),
+(173, 'Coba 123', 'User deleted by Ilham Saputra', 25, 'App\\User', 25, 'App\\User', '[]', '2019-07-11 06:53:09', '2019-07-11 06:53:09'),
+(174, ' ', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:19:36', '2019-07-11 07:19:36'),
+(175, ' ', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:19:42', '2019-07-11 07:19:42'),
+(176, ' ', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:27:05', '2019-07-11 07:27:05'),
+(177, ' ', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:37:10', '2019-07-11 07:37:10');
 
 -- --------------------------------------------------------
 
@@ -406,7 +414,8 @@ INSERT INTO `is_mapel` (`id`, `jurusan_id`, `nama`, `k1`, `k2`, `k3`) VALUES
 (1, 1, 'Pendidikan Agama & Budi Pekerti', 1, 1, 1),
 (2, 1, 'Bahasa Indonesia', 1, 1, 1),
 (3, 1, 'Matematika', 1, 1, 1),
-(4, 2, 'Dasar Akuntansi', 1, 0, 0);
+(4, 2, 'Dasar Akuntansi', 1, 0, 0),
+(5, 2, 'Pendidikan Agama & Budi Pekerti', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -429,7 +438,9 @@ CREATE TABLE `is_mapel_gurus` (
 INSERT INTO `is_mapel_gurus` (`id`, `rombel_id`, `mapel_id`, `guru_id`, `jurusan_id`) VALUES
 (3, 1, 1, 15, 1),
 (4, 2, 2, 15, 1),
-(5, 1, 3, 31, 1);
+(5, 1, 3, 31, 1),
+(6, 7, 4, 32, 2),
+(7, 7, 5, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -676,7 +687,9 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (99, 1, '2UEmr2HAeVyKMGklVq53snIE3gowwHI2', '2019-07-08 01:54:12', '2019-07-08 01:54:12'),
 (100, 1, 'X6d8Wa9u75sqjs0R5OXaQQ3SRFQPBvMS', '2019-07-08 02:25:37', '2019-07-08 02:25:37'),
 (103, 24, 'VuXDmXjMp0JOwFVZrVPt3u8cX0kChw0S', '2019-07-08 04:18:55', '2019-07-08 04:18:55'),
-(104, 2, '8dmR8CKSIR7JTICt70nlSODiw6JAM7Ui', '2019-07-08 07:28:59', '2019-07-08 07:28:59');
+(104, 2, '8dmR8CKSIR7JTICt70nlSODiw6JAM7Ui', '2019-07-08 07:28:59', '2019-07-08 07:28:59'),
+(105, 1, 'qtZw3o2FcUWuu89ene8JIrCKNRu7TMBY', '2019-07-11 02:07:02', '2019-07-11 02:07:02'),
+(108, 1, 'ioPc80aAFUP1Dy704fcOnGdmXuIHkgm8', '2019-07-11 07:37:10', '2019-07-11 07:37:10');
 
 -- --------------------------------------------------------
 
@@ -843,14 +856,13 @@ CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `guru_id` int(11) NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `permissions` text COLLATE utf8mb4_unicode_ci,
   `last_login` timestamp NULL DEFAULT NULL,
-  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
   `gender` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pic` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -859,11 +871,9 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `guru_id`, `email`, `password`, `permissions`, `last_login`, `first_name`, `last_name`, `created_at`, `updated_at`, `deleted_at`, `gender`, `pic`) VALUES
-(1, 0, 'admin@admin.com', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-08 03:14:28', 'Ilham', 'Saputra', '2019-06-23 03:29:43', '2019-07-08 03:14:28', NULL, 'male', 'ebMfH2q1wO.jpeg'),
-(2, 15, 'user@user.com', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-08 07:28:59', 'Pengguna', 'Saputra', '2019-06-23 03:29:43', '2019-07-08 07:28:59', NULL, NULL, NULL),
-(23, 0, 'multi@gmail.com', '$2y$10$sOoTiNhY3mFYbg3uRVOkHOuB5IkJ2cIo7Sf0KvRn9z1QOdSl8r0pq', NULL, '2019-07-07 17:00:45', 'Multimedia', 'Kira', '2019-06-28 22:12:45', '2019-07-07 17:00:45', NULL, 'male', NULL),
-(24, 0, 'joko@gmail.com', '$2y$10$pXAAvOrGC.YjExrbOVtskOqwUZdXLPpT613UTgLeSQdFQBbd.p2u6', NULL, '2019-07-08 04:18:55', 'Joko', 'Widodo', '2019-07-01 17:24:23', '2019-07-08 04:18:55', NULL, 'male', NULL);
+INSERT INTO `users` (`id`, `guru_id`, `email`, `username`, `password`, `permissions`, `last_login`, `nama`, `created_at`, `updated_at`, `gender`, `pic`) VALUES
+(1, 0, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-11 07:37:10', 'Ilham', '2019-06-23 03:29:43', '2019-07-11 07:37:10', 'male', 'ebMfH2q1wO.jpeg'),
+(2, 15, 'user@user.com', '', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-08 07:28:59', 'Pengguna', '2019-06-23 03:29:43', '2019-07-08 07:28:59', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1001,13 +1011,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `activations`
 --
 ALTER TABLE `activations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT untuk tabel `datatables`
@@ -1043,13 +1053,13 @@ ALTER TABLE `is_kompetensi`
 -- AUTO_INCREMENT untuk tabel `is_mapel`
 --
 ALTER TABLE `is_mapel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_mapel_gurus`
 --
 ALTER TABLE `is_mapel_gurus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_periode`
@@ -1073,7 +1083,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT untuk tabel `reminders`
@@ -1103,7 +1113,7 @@ ALTER TABLE `throttle`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

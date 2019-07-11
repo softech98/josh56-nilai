@@ -43,7 +43,7 @@ class UsersController extends JoshController
      */
     public function data()
     {
-        $users = User::get(['id', 'first_name', 'last_name', 'email','created_at']);
+        $users = User::get(['id', 'nama', 'email','created_at']);
 
         return DataTables::of($users)
             ->editColumn('created_at',function(User $user) {
@@ -115,7 +115,7 @@ class UsersController extends JoshController
             if (!$request->get('activate')) {
                 // Data to be used on the email view
                 $data =[
-                    'user_name' => $user->first_name .' '. $user->last_name,
+                    'user_name' => $user->nama ,
                     'activationUrl' => URL::route('activate', [$user->id, Activation::create($user)->code])
                 ];
                 // Send the activation code through email
@@ -240,7 +240,7 @@ class UsersController extends JoshController
                     Activation::create($user);
                     //send activation mail
                     $data=[
-                        'user_name' =>$user->first_name .' '. $user->last_name,
+                        'user_name' =>$user->nama,
                     'activationUrl' => URL::route('activate', [$user->id, Activation::exists($user)->code])
                     ];
                     // Send the activation code through email
@@ -282,14 +282,14 @@ class UsersController extends JoshController
      *
      * @return View
      */
-    public function getDeletedUsers()
-    {
-        // Grab deleted users
-        $users = User::onlyTrashed()->get();
+    // public function getDeletedUsers()
+    // {
+    //     // Grab deleted users
+    //     $users = User::onlyTrashed()->get();
 
-        // Show the page
-        return view('admin.deleted_users', compact('users'));
-    }
+    //     // Show the page
+    //     return view('admin.deleted_users', compact('users'));
+    // }
 
 
     /**
@@ -369,39 +369,39 @@ class UsersController extends JoshController
      * @param  int $id
      * @return Redirect
      */
-    public function getRestore($id)
-    {
-        try {
-            // Get user information
-            $user = User::withTrashed()->find($id);
-            // Restore the user
-            $user->restore();
-            // create activation record for user and send mail with activation link
-//            $data->user_name = $user->first_name .' '. $user->last_name;
-//            $data->activationUrl = URL::route('activate', [$user->id, Activation::create($user)->code]);
-            // Send the activation code through email
-           $data=[
-               'user_name' => $user->first_name .' '. $user->last_name,
-            'activationUrl' => URL::route('activate', [$user->id, Activation::create($user)->code])
-           ];
-            Mail::to($user->email)
-                ->send(new Restore($data));
-            // Prepare the success message
-            $success = trans('users/message.success.restored');
-            activity($user->full_name)
-                ->performedOn($user)
-                ->causedBy($user)
-                ->log('User restored by '.Sentinel::getUser()->full_name);
-            // Redirect to the user management page
-            return Redirect::route('admin.deleted_users')->with('success', $success);
-        } catch (UserNotFoundException $e) {
-            // Prepare the error message
-            $error = trans('users/message.user_not_found', compact('id'));
+//     public function getRestore($id)
+//     {
+//         try {
+//             // Get user information
+//             $user = User::withTrashed()->find($id);
+//             // Restore the user
+//             $user->restore();
+//             // create activation record for user and send mail with activation link
+// //            $data->user_name = $user->first_name .' '. $user->last_name;
+// //            $data->activationUrl = URL::route('activate', [$user->id, Activation::create($user)->code]);
+//             // Send the activation code through email
+//            $data=[
+//                'user_name' => $user->first_name .' '. $user->last_name,
+//             'activationUrl' => URL::route('activate', [$user->id, Activation::create($user)->code])
+//            ];
+//             Mail::to($user->email)
+//                 ->send(new Restore($data));
+//             // Prepare the success message
+//             $success = trans('users/message.success.restored');
+//             activity($user->full_name)
+//                 ->performedOn($user)
+//                 ->causedBy($user)
+//                 ->log('User restored by '.Sentinel::getUser()->full_name);
+//             // Redirect to the user management page
+//             return Redirect::route('admin.deleted_users')->with('success', $success);
+//         } catch (UserNotFoundException $e) {
+//             // Prepare the error message
+//             $error = trans('users/message.user_not_found', compact('id'));
 
-            // Redirect to the user management page
-            return Redirect::route('admin.deleted_users')->with('error', $error);
-        }
-    }
+//             // Redirect to the user management page
+//             return Redirect::route('admin.deleted_users')->with('error', $error);
+//         }
+//     }
 
     /**
      * Display specified user profile.

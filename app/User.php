@@ -34,7 +34,7 @@ class User extends EloquentUser
 	/**
 	* To allow soft deletes
 	*/
-	use SoftDeletes;
+	// use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 

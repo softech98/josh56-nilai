@@ -10,6 +10,14 @@ Users List
 @section('header_styles')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap4.css') }}" />
 <link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
+
+<link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
+<link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
 @stop
 
 
@@ -34,20 +42,27 @@ Users List
     <div class="row">
         <div class="col-12">
             <div class="card panel-primary ">
-                <div class="card-heading">
-                    <h4 class="card-title"> <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                        Users List
-                    </h4>
-                </div>
+                <div class="card-heading clearfix">
+                    <h4 class="card-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                     Users List
+                 </h4>
+                 <a class="btn btn-labeled btn-primary pull-right" href="{{ url('admin/users/create') }}">
+                        <span class="btn-label pull-left">
+                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
+                                   data-hc="white"></i>
+                            </span>
+                                <span class="label-text align-middle">Tambah User</span>
+                </a>
+            </div>
+            <br>
                 <div class="card-body">
                     <div class="table-responsive-lg table-responsive-sm table-responsive-md">
                         <table class="table table-bordered width100" id="table">
                             <thead>
                                 <tr class="filters">
                                     <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>User E-mail</th>
+                                    <th>Nama</th>
+                                    <th>E-mail</th>
                                     <th>Status</th>
                                     <th>Created At</th>
                                     <th>Actions</th>
@@ -70,6 +85,10 @@ Users List
 @section('footer_scripts')
 <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
+type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
+<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
 
 <script>
     $(function() {
@@ -79,8 +98,7 @@ Users List
             ajax: '{!! route('admin.users.data') !!}',
             columns: [
             { data: 'id', name: 'id' },
-            { data: 'first_name', name: 'first_name' },
-            { data: 'last_name', name: 'last_name' },
+            { data: 'nama', name: 'nama' },
             { data: 'email', name: 'email' },
             { data: 'status', name: 'status'},
             { data: 'created_at', name:'created_at'},
@@ -146,4 +164,5 @@ Users List
         modal.find('.modal-footer a').prop("href",$url_path+"/admin/users/"+$recipient+"/delete");
     })
 </script>
+ 
 @stop

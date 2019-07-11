@@ -87,16 +87,9 @@
                                                     <table class="table table-bordered table-striped" id="users">
 
                                                         <tr>
-                                                            <td>@lang('users/title.first_name')</td>
+                                                            <td>Nama Lengkap</td>
                                                             <td>
-                                                                <p class="user_name_max">{{ $user->first_name }}</p>
-                                                            </td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td>@lang('users/title.last_name')</td>
-                                                            <td>
-                                                                <p class="user_name_max">{{ $user->last_name }}</p>
+                                                                <p class="user_name_max">{{ $user->nama }}</p>
                                                             </td>
 
                                                         </tr>
@@ -107,8 +100,14 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td>Username</td>
                                                             <td>
-                                                                @lang('users/title.gender')
+                                                                {{ $user->username }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Jenis Kelamin
                                                             </td>
                                                             <td>
                                                                 {{ $user->gender }}
