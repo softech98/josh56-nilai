@@ -12,7 +12,7 @@ View Guru Details
 <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet"/>
 <link href="{{ asset('assets/vendors/x-editable/css/bootstrap-editable.css') }}" rel="stylesheet"/>
 
-<link href="{{ asset('assets/css/pages/guru_profile.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/css/pages/user_profile.css') }}" rel="stylesheet"/>
 @stop
 
 
@@ -38,30 +38,11 @@ View Guru Details
 <section class="content user_profile">
     <div class="row">
         <div class="col-lg-12">
-            <ul class="nav nav-tabs first_svg">
-                <li class="nav-item">
-                    <a href="#tab1" data-toggle="tab" class="nav-link active show">
-                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#777" data-hc="#000"></i>
-                    Guru Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#tab2" data-toggle="tab" class="nav-link">
-                        <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                    Change Password</a>
-                </li>
-            </ul>
             <div  class="tab-content mar-top" id="clothing-nav-content">
                 <div id="tab1" class="tab-pane fade show active">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-heading">
-                                    <h3 class="card-title">
-
-                                        User Profile
-                                    </h3>
-
-                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
@@ -117,7 +98,8 @@ View Guru Details
                                                 <tr>
                                                  <td>Tanggal Lahir</td>
                                                  <td>
-                                                    {{ $guru->tanggal_lahir }}
+                                                    {{ date('d-M-Y', strtotime($guru->tanggal_lahir)) }}
+                                                    {{-- {{ $guru->tanggal_lahir }} --}}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -142,7 +124,7 @@ View Guru Details
                                     </table>
                                 </div>
                                 <a href="{{ route('admin.guru.index') }}" class='btn btn-success'>Back to List</a>
-                                <a href="javascript:void(0)" id="edit{{$guru->nip}}" class='btn btn-warning'>Edit</a>
+                                <a href="javascript:void(0)" id="edit{{$guru->id}}" class='btn btn-warning'>Edit</a>
                             </div>
                         </div>
                     </div>
@@ -150,7 +132,7 @@ View Guru Details
             </div>
         </div>
     </div>
-    <div id="tab2" class="tab-pane fade">
+    {{-- <div id="tab2" class="tab-pane fade">
         <div class="row">
             <div class="col-md-12 pd-top ml-auto">
                 <form class="form-horizontal">
@@ -202,7 +184,7 @@ View Guru Details
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 </div>
 </section>
@@ -220,10 +202,10 @@ View Guru Details
         });
     </script>
     <script type="text/javascript">
-     $('#edit{{$guru->nip}}').click(function(){
+     $('#edit{{$guru->id}}').click(function(){
     
           $('#myModal').modal('show');
-          $('.modal-body').load('{!! url("admin/guru/$guru->nip/edit") !!}');
+          $('.modal-body').load('{!! url("admin/guru/$guru->id/edit") !!}');
           
       // })
     });
