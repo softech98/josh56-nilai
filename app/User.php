@@ -22,7 +22,15 @@ class User extends EloquentUser
 	 */
     use Taggable;
 
-	protected $fillable = [];
+	protected $fillable = [
+        'email',
+        'username',
+        'password',
+        'nama',
+        'permissions',
+    ];
+
+    protected $loginNames = ['email', 'username'];
 	protected $guarded = ['id'];
 	/**
 	 * The attributes excluded from the model's JSON form.

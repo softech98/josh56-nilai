@@ -65,20 +65,32 @@ Edit User
                         <div class="tab-content">
                             <div class="tab-pane " id="tab1">
                                 <h2 class="hidden">&nbsp;</h2>
-                                <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
+                                <div class="form-group {{ $errors->first('nama', 'has-error') }}">
                                     <div class="row">
-                                        <label for="first_name" class="col-sm-2 control-label">First Name *</label>
+                                        <label for="nama" class="col-sm-2 control-label">Nama Lengkap *</label>
                                         <div class="col-sm-10">
-                                            <input id="first_name" name="first_name" type="text"
-                                            placeholder="First Name" class="form-control required"
-                                            value="{!! old('first_name', $user->first_name) !!}"/>
+                                            <input id="first_name" name="nama" type="text"
+                                            placeholder="Nama Lengkap" class="form-control required"
+                                            value="{!! old('nama', $user->nama) !!}"/>
 
-                                            {!! $errors->first('first_name', '<span class="help-block">:message</span>') !!}
+                                            {!! $errors->first('nama', '<span class="help-block">:message</span>') !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group {{ $errors->first('username', 'has-error') }}">
+                                    <div class="row">
+                                        <label for="username" class="col-sm-2 control-label">Username *</label>
+                                        <div class="col-sm-10">
+                                            <input id="first_name" name="username" type="text"
+                                            placeholder="Username" class="form-control required"
+                                            value="{!! old('username', $user->username) !!}"/>
+
+                                            {!! $errors->first('username', '<span class="help-block">:message</span>') !!}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group {{ $errors->first('last_name', 'has-error') }}">
+                                {{-- <div class="form-group {{ $errors->first('last_name', 'has-error') }}">
                                     <div class="row">                                            <label for="last_name" class="col-sm-2 control-label">Last Name *</label>
                                         <div class="col-sm-10">
                                             <input id="last_name" name="last_name" type="text" placeholder="Last Name"
@@ -87,7 +99,7 @@ Edit User
                                             {!! $errors->first('last_name', '<span class="help-block">:message</span>') !!}
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
 
                                 <div class="form-group {{ $errors->first('email', 'has-error') }}">

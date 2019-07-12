@@ -106,7 +106,7 @@ type="text/javascript"></script>
             ], 
             columnDefs: [
             {
-                targets: 4,
+                targets: 3,
                 render: function (data, type, row, meta) {
                         var label = 'label-danger';
                         if (data=='Pending') {

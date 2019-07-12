@@ -51,9 +51,7 @@ class AuthController extends JoshController
             if ($user = Sentinel::authenticate($request->only(['email', 'password']), $request->get('remember-me', false))) {
                 // Redirect to the dashboard page
                 //Activity log
-                dd($user->nama);
-                die;
-                ddactivity($user->nama)
+                activity($user->nama)
                     ->performedOn($user)
                     ->causedBy($user)
                     ->log('LoggedIn');

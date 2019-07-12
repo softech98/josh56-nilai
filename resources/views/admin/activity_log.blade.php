@@ -61,7 +61,7 @@
 <script>
 $(function() {
     var table = $('#table').DataTable({
-        "order": [[3, "asc"]],
+        // "order": [[3, "asc"]],
         processing: true,
         serverSide: true,
         ajax: "{!! route('admin.activity_log.data') !!}",

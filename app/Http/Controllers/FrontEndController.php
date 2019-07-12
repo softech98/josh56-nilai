@@ -65,17 +65,23 @@ class FrontEndController extends JoshController
 
         try {
             // Try to log the user in
-            if ($user=  Sentinel::authenticate($request->only('email', 'password'), $request->get('remember-me', 0))) {
+            if ($user=  Sentinel::authenticate([
+                'login' => $request->email,
+                'password'  => $request->password,
+                ]))
+            {
+                // $request->get('remember-me', 0))) {
                 //Activity log for login
                 activity($user->nama)
                     ->performedOn($user)
                     ->causedBy($user)
                     ->log('LoggedIn');
-                    if(Sentinel::inRole('admin'))
+            if(Sentinel::inRole('admin'))
             {
                 return Redirect("admin/dashboard")->with('success', trans('auth/message.login.success'));
             }
-            else {
+            else
+             {
                 return Redirect("guru/dashboard")->with('success', trans('auth/message.login.success'));
             }
         }

@@ -59,7 +59,7 @@ Dashboard
     <div class="col-12">
         <div class="row">
             <div class="col-8">
-                <h4>Selamat Datang {{ Sentinel::getUser()->first_name }} {{ Sentinel::getUser()->last_name }} | Guru</h4>
+                <h4>Selamat Datang {{ Sentinel::getUser()->nama }} | Guru</h4>
             </div>
             <div class="col-4">
                 <h4 style="float: right;"> IP : {{ Request::ip() }} </h4>

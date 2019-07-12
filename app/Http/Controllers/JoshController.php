@@ -93,7 +93,7 @@ class JoshController extends Controller {
 
     public function activityLogData()
     {
-        $logs = Activity::get(['causer_id', 'log_name', 'description','created_at']);
+        $logs = Activity::orderBy('created_at','desc')->get(['causer_id', 'log_name', 'description','created_at']);
         return DataTables::of($logs)
         ->addIndexColumn()
             ->make(true);

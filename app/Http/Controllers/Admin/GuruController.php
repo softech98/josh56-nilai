@@ -64,11 +64,13 @@ class GuruController extends Controller
             'alamat' => 'required',
         ]);
 
-        Guru::create($request->all());
-       $guru_id = Guru::where('email', $request->email)->get(['id']);
 
+        Guru::create($request->all());
+       $guru_id = Guru::where('nip', $request->nip)->first();
+       // dd($guru_id->nama);
          $user = Sentinel::registerAndActivate([
-                'first_name' => $request->get('nama'),
+                'nama' => $request->get('nama'),
+                'guru_id' => $guru_id->id,
                 'email' => $request->get('email'),
                 'password' => ('123456'),
                  ]);
