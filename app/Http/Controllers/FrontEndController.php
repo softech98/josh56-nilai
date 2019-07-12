@@ -67,7 +67,7 @@ class FrontEndController extends JoshController
             // Try to log the user in
             if ($user=  Sentinel::authenticate($request->only('email', 'password'), $request->get('remember-me', 0))) {
                 //Activity log for login
-                activity($user->full_name)
+                activity($user->nama)
                     ->performedOn($user)
                     ->causedBy($user)
                     ->log('LoggedIn');

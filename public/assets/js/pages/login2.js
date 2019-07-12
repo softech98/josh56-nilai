@@ -14,10 +14,8 @@ $(document).ready(function () {
                 validators: {
                     notEmpty: {
                         message: 'The email address is required'
-                    },
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
                     }
+					
                 }
             },
             password: {

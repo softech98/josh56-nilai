@@ -123,7 +123,7 @@ class UsersController extends JoshController
                     ->send(new Register($data));
             }
             // Activity log for New user create
-            activity($user->full_name)
+            activity($user->nama)
                 ->performedOn($user)
                 ->causedBy($user)
                 ->log('New User Created by '.Sentinel::getUser()->full_name);
