@@ -1,4 +1,4 @@
-<ul id="menu" class="page-sidebar-menu">
+<ul id="menu" class="page-sidebar-menu" style="margin-top: 20px">
 <?php $prefix = Request::route()->getPrefix(); ?>
     <li {!! (Request::is($prefix.'/dashboard') ? 'class="active"' : '') !!}>
         {{-- @if(Sentinel::inRole('admin')) --}}
@@ -75,7 +75,8 @@
             <span class="title">Users</span>
         </a>
     </li>
-    <li {!! (Request::is('admin/groups') || Request::is('admin/groups/create') || Request::is('admin/groups/*') ? 'class="active"' : '') !!}>
+    
+    {{-- <li {!! (Request::is('admin/groups') || Request::is('admin/groups/create') || Request::is('admin/groups/*') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="users" data-size="18" data-c="#418BCA" data-hc="#418BCA"
                data-loop="true"></i>
@@ -89,14 +90,14 @@
                     Group List
                 </a>
             </li>
-            {{-- <li {!! (Request::is('admin/groups/create') ? 'class="active" id="active"' : '') !!}>
+            <li {!! (Request::is('admin/groups/create') ? 'class="active" id="active"' : '') !!}>
                 <a href="{{ URL::to('($prefix.'/'') }}">
                     <i class="fa fa-angle-double-right"></i>
                     Add New Group
                 </a>
-            </li> --}}
+            </li>
         </ul>
-    </li>
+    </li> --}}
     
     <li {!! (Request::is('admin/datatables') || Request::is('admin/editable_datatables') || Request::is('admin/dropzone') || Request::is('admin/multiple_upload') || Request::is('admin/custom_datatables')|| Request::is('admin/selectfilter') ? 'class="active"' : '') !!}>
         <a href="#">
@@ -595,13 +596,13 @@
     </li>
     
     
-    <li {!! (Request::is('admin/fixedmenu') ? 'class="active"' : '') !!}>
+    {{-- <li {!! (Request::is('admin/fixedmenu') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to('admin/fixedmenu') }}">
             <i class="livicon" data-name="list-ul" data-size="18" data-c="#1DA1F2" data-hc="#1DA1F2"
                data-loop="true"></i>
             Fixed Menu and Header
         </a>
-    </li>
+    </li> --}}
     @endif
     @if(Sentinel::inRole('guru'))
     <li {!! (Request::is('guru/kompetensi') ? 'class="active"' : '') !!}>

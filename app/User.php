@@ -12,7 +12,7 @@ class User extends EloquentUser
 	 */
 
 	protected $table = 'users';
-
+	public static $jenis_kelamin = ['Pria' => 'Pria', 'Wanita' => 'Wanita'];
 	/**
 	 * The attributes to be fillable from the model.
 	 *

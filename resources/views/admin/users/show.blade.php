@@ -70,10 +70,10 @@
                                                 @if($user->pic)
                                                     <img src="{!! url('/').'/uploads/users/'.$user->pic !!}" alt="img"
                                                          class="img-fluid"/>
-                                                @elseif($user->gender === "male")
+                                                @elseif($user->gender === "Pria")
                                                     <img src="{{ asset('assets/images/authors/avatar3.png') }}" alt="..."
                                                          class="img-fluid"/>
-                                                @elseif($user->gender === "female")
+                                                @elseif($user->gender === "Wanita")
                                                     <img src="{{ asset('assets/images/authors/avatar5.png') }}" alt="..."
                                                          class="img-fluid"/>
                                                 @else
@@ -134,6 +134,8 @@
                                                         </tr>
                                                     </table>
                                                 </div>
+                                <a href="{{ route('admin.users.index') }}" class='btn btn-success'>Back to List</a>
+                                <a href="javascript:void(0)" id="edit{{$user->id}}" class='btn btn-warning'>Edit</a>
                                             </div>
                                         </div>
                                     </div>

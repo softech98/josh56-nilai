@@ -46,13 +46,13 @@ Users List
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Users List
                  </h4>
-                 <a class="btn btn-labeled btn-primary pull-right" href="{{ url('admin/users/create') }}">
-                        <span class="btn-label pull-left">
-                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
-                                   data-hc="white"></i>
-                            </span>
+                  <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="add" href="javascript:void(0)">
+                                        <span class="btn-label pull-left">
+                                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
+                                                   data-hc="white"></i>
+                                            </span>
                                 <span class="label-text align-middle">Tambah User</span>
-                </a>
+                            </button>
             </div>
             <br>
                 <div class="card-body">
@@ -85,10 +85,15 @@ Users List
 @section('footer_scripts')
 <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
-<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-type="text/javascript"></script>
 <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
 <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrapwizard/jquery.bootstrap.wizard.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/pages/adduser.js') }}"></script>
 
 <script>
     $(function() {
@@ -164,5 +169,12 @@ type="text/javascript"></script>
         modal.find('.modal-footer a').prop("href",$url_path+"/admin/users/"+$recipient+"/delete");
     })
 </script>
+<script type="text/javascript">
+        $('#add').click(function(){
+            $('#myModal').modal('show');
+            $('.modal-title').html("Tambah User");
+            $('.modal-body').load('{!! route("admin.users.create") !!}')
+        });
+    </script>
  
 @stop

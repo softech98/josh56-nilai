@@ -21,10 +21,10 @@ $("#dob").datetimepicker({
 });
 $("#commentForm").bootstrapValidator({
     fields: {
-        first_name: {
+        nama: {
             validators: {
                 notEmpty: {
-                    message: 'The first name is required'
+                    message: 'The name is required'
                 }
             },
             required: true,

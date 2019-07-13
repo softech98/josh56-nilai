@@ -52,7 +52,7 @@ class FrontEndController extends JoshController
                 return Redirect ('guru/dashboard');
         }
         // Show the login page
-        return view('admin/login2');
+        return view('admin/login');
     }
 
     /**

@@ -32,7 +32,8 @@
     <?php $prefix = Request::route()->getPrefix(); ?>
 <header class="header">
     <a href="{{ route('admin.dashboard') }}" class="logo">
-        <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
+        {{-- <img src="{{ asset('assets/img/logo.png') }}" alt="logo"> --}}
+        <h3 style="color: white;margin-top: 10px;">SMKN 1 Jambi</h3>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
@@ -133,7 +134,8 @@
             <div class="page-sidebar  sidebar-nav">
                 <div class="nav_icons">
                     <ul class="sidebar_threeicons">
-                        <li>
+                        {{-- <li class="header">MAIN NAVIGATION</li> --}}
+                        {{-- <li>
                             <a href="{{ URL::to('admin/advanced_tables') }}">
                                 <i class="livicon" data-name="table" title="Advanced tables" data-loop="true"
                                    data-color="#418BCA" data-hc="#418BCA" data-s="25"></i>
@@ -156,7 +158,7 @@
                                 <i class="livicon" data-name="user" title="Users" data-loop="true"
                                    data-color="#6CC66C" data-hc="#6CC66C" data-s="25"></i>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="clearfix"></div>

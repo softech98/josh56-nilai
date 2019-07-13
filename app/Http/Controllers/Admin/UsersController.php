@@ -59,7 +59,7 @@ class UsersController extends JoshController
             })
             ->addColumn('actions',function($user) {
                 $actions = '<a href='. route('admin.users.show', $user->id) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view user"></i></a>
-                            <a href='. route('admin.users.edit', $user->id) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="update user"></i></a>';
+                            <a href='. route('admin.users.edit', $user->id) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update user"></i></a>';
                 if ((Sentinel::getUser()->id != $user->id) && ($user->id != 1)) {
                     $actions .= '<a href='. route('admin.users.confirm-delete', $user->id) .' data-id="'.$user->id.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>';
                 }
@@ -78,9 +78,9 @@ class UsersController extends JoshController
     {
         // Get all the available groups
         $groups = Sentinel::getRoleRepository()->all();
-
+        $jenis_kelamin      = User::$jenis_kelamin;
         // Show the page
-        return view('admin.users.create', compact('groups'));
+        return view('admin.users.create', compact('groups', 'jenis_kelamin'));
     }
 
     /**
@@ -104,13 +104,20 @@ class UsersController extends JoshController
 
         try {
             // Register the user
-            $user = Sentinel::register($request->except('_token', 'password_confirm', 'group', 'activate', 'pic_file'), $activate);
-
+            // $user = Sentinel::register($request->except('_token', 'password_confirm', 'group', 'activate', 'pic_file'), $activate);
+                $user =Sentinel::registerAndActivate(array(
+            'email'       => $request->email,
+            'password'    => $request->password,
+            'nama'  => $request->nama,
+            'username'  => $request->username,
+            'gender'  => $request->gender,
+        ));
             //add user to 'User' group
             $role = Sentinel::findRoleById($request->get('group'));
             if ($role) {
                 $role->users()->attach($user);
             }
+
             //check for activation and send activation mail if not activated by default
             if (!$request->get('activate')) {
                 // Data to be used on the email view
@@ -123,7 +130,7 @@ class UsersController extends JoshController
                     ->send(new Register($data));
             }
             // Activity log for New user create
-            activity($user->nama)
+            activity($user->full_name)
                 ->performedOn($user)
                 ->causedBy($user)
                 ->log('New User Created by '.Sentinel::getUser()->full_name);
