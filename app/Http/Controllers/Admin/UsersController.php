@@ -100,18 +100,19 @@ class UsersController extends JoshController
             $request['pic'] = $safeName;
         }
         //check whether use should be activated by default or not
-        $activate = $request->get('activate') ? true : false;
+        $activate = true;
+        // $activate = $request->get('activate') ? true : false;
 
         try {
             // Register the user
             // $user = Sentinel::register($request->except('_token', 'password_confirm', 'group', 'activate', 'pic_file'), $activate);
-                $user =Sentinel::registerAndActivate(array(
+                $user =Sentinel::registerAndActivate([
             'email'       => $request->email,
-            'password'    => $request->password,
+            'password'    => ($request->password),
             'nama'  => $request->nama,
             'username'  => $request->username,
             'gender'  => $request->gender,
-        ));
+        ]);
             //add user to 'User' group
             $role = Sentinel::findRoleById($request->get('group'));
             if ($role) {
@@ -119,21 +120,21 @@ class UsersController extends JoshController
             }
 
             //check for activation and send activation mail if not activated by default
-            if (!$request->get('activate')) {
-                // Data to be used on the email view
-                $data =[
-                    'user_name' => $user->nama ,
-                    'activationUrl' => URL::route('activate', [$user->id, Activation::create($user)->code])
-                ];
-                // Send the activation code through email
-                Mail::to($user->email)
-                    ->send(new Register($data));
-            }
+            // if (!$request->get('activate')) {
+            //     // Data to be used on the email view
+            //     $data =[
+            //         'user_name' => $user->nama ,
+            //         'activationUrl' => URL::route('activate', [$user->id, Activation::create($user)->code])
+            //     ];
+            //     // Send the activation code through email
+            //     Mail::to($user->email)
+            //         ->send(new Register($data));
+            // }
             // Activity log for New user create
-            activity($user->full_name)
-                ->performedOn($user)
-                ->causedBy($user)
-                ->log('New User Created by '.Sentinel::getUser()->full_name);
+            // activity($user->full_name)
+            //     ->performedOn($user)
+            //     ->causedBy($user)
+            //     ->log('New User Created by '.Sentinel::getUser()->full_name);
             // Redirect to the home page with success menu
             return Redirect::route('admin.users.index')->with('success', trans('users/message.success.create'));
 

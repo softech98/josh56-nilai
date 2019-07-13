@@ -14,7 +14,7 @@
                             {{ Form::number('nip',null,array('id'=>'nip','class'=>'form-control','placeholder' => 'Nomor Induk Pegawai','autofocus', 'required', 'minlength'=>'18', 'maxlength'=>'18')) }}
                             <small class="text-danger">{{ $errors->first('nip') }}</small>
                         </div>
-                        <div class="col-lg-5 col-md-6">
+                        <div class="col-lg-6 col-md-6">
                             {{ Form::text('nama',null,array('class'=>'form-control','placeholder' => 'Nama Guru','autofocus', 'required')) }}
                             <small class="text-danger">{{ $errors->first('nama') }}</small>
                         </div>
@@ -26,8 +26,8 @@
                         {{ Form::email('email',null,array('class'=>'form-control','placeholder' => 'Alamat E-mail','autofocus', 'required')) }}
                         <small class="text-danger">{{ $errors->first('email') }}</small>
                     </div>
-                    <div class="col-lg-5 col-md-8">
-                        {!! Form::select('jenis_kelamin',$jenis_kelamin, null, ['class' => 'form-control select2', 'placeholder'=>'--jenis kelamin--', 'required']) !!}
+                    <div class="col-lg-6 col-md-6">
+                        {!! Form::text('username', null, ['class' => 'form-control', 'placeholder'=>'Username', 'required']) !!}
                         <small class="text-danger">{{ $errors->first('jenis_kelamin') }}</small>
                     </div>
                 </div>
@@ -36,10 +36,14 @@
             <div class="form-grup">
                 <div class="row">
 
-                    <div class="col-lg-10 col-md-8">
+                    <div class="col-lg-6 col-md-6">
                      {{ Form::textarea('alamat',null,array('class'=>'form-control','placeholder' => 'Alamat','autofocus','rows'=>'3', 'required')) }}
                      <small class="text-danger">{{ $errors->first('alamat') }}</small>
                  </div>
+                 <div class="col-lg-6 col-md-6">
+                        {!! Form::select('jenis_kelamin',$jenis_kelamin, null, ['class' => 'form-control select2', 'placeholder'=>'--jenis kelamin--', 'required']) !!}
+                        <small class="text-danger">{{ $errors->first('jenis_kelamin') }}</small>
+                    </div>
              </div>
 
          </div>

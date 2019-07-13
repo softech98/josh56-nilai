@@ -54,7 +54,7 @@
             <div class="col-lg-6 col-md-6">
                <div class="fileinput fileinput-new" data-provides="fileinput">
                 <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;">
-                    <img src="http://placehold.it/200x200" alt="profile pic">
+                    <img src=" {{ asset('assets/images/authors/no_avatar.jpg') }} " alt="profile pic">
                 </div>
                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"></div>
                 <div>
@@ -81,7 +81,7 @@
             <span class="help-block">{{ $errors->first('group', ':message') }}</span>
                                                 <input id="activate" name="activate" type="hidden"
                                                        class="pos-rel p-l-30 custom-checkbox"
-                                                       value="1">
+                                                       value="1" checked="checked">
         </div>
     </div>
 </div>
@@ -97,7 +97,8 @@
  </div>
 </div>
 </div>
-{!! Form::close() !!}
+</form>
+{{-- {!! Form::close() !!} --}}
 </div>
 
 </div>

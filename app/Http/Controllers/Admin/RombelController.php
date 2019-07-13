@@ -215,8 +215,23 @@ class RombelController extends Controller
 
     public function gurumapelSimpan(Request $request, Rombel $rombel)
     {
+// dd($request->all());
+        $mapelguru = null;
 
-        for ($i=0; $i < count ($request->mapel_id); $i++) { 
+        for ($i=0; $i < count ($request->mapel_id); $i++) {
+
+        /*----------  Untuk Cek di database jika sudah ada,dan guru akan dihilangkan maka di database akan dihapus perulangan berhenti ----------*/
+        // if ($request->guru_id)
+
+        
+        /*----------  Untuk Cek di database jika sudah ada, akan next ----------*/
+        $checkRombelIdAndMapelId = MapelGuru::where('rombel_id', '=', $rombel->id)->where('mapel_id', $request->mapel_id[$i])->first();
+
+        if ($request->guru_id[$i] === null || $checkRombelIdAndMapelId !== null )
+        {
+         continue; 
+        }
+
             $mapelguru[] = [
                     'rombel_id' => $request->rombel_id[$i],
                     'jurusan_id' => $request->jurusan_id[$i],
@@ -224,17 +239,15 @@ class RombelController extends Controller
                     'guru_id' => $request->guru_id[$i],
                 ];
         }
-
         // $this->validate($request, [
         //     // 'mapel_id' => 'required|max:10',
             
         // ]);
 
 
-        $checkRombelId = MapelGuru::where('rombel_id', '=', $rombel->id)->first();
+        $checkRombelId = MapelGuru::where('rombel_id', '=', $rombel->id)->whereNotIn('mapel_id', $request->mapel_id)->first();
 
-
-        if($checkRombelId === null)
+        if($checkRombelId === null && $mapelguru !== null)
         {
             MapelGuru::insert($mapelguru);
         }
@@ -247,6 +260,7 @@ class RombelController extends Controller
                ]);
             }
         }
+       
 
       return back()->with('success', 'Data Berhasil diTambahkan');
     }

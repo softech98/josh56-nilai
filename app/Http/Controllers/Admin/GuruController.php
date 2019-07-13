@@ -65,16 +65,19 @@ class GuruController extends Controller
         ]);
 
 
-        Guru::create($request->all());
-       $guru_id = Guru::where('nip', $request->nip)->first();
+        $guruCreate = Guru::create($request->except(['username']));
+        // dduser($guruCreate->id);
+       // $guru_id = Guru::where('nip', $request->nip)->first();
        // dd($guru_id->nama);
          $user = Sentinel::registerAndActivate([
                 'nama' => $request->get('nama'),
-                'guru_id' => $guru_id->id,
+                'guru_id' => $guruCreate->id,
+                'username' => $request->get('username'),
                 'email' => $request->get('email'),
                 'password' => ('123456'),
                  ]);
 
+        // $guruCreate->save();
             //add user to 'User' group
             $role = Sentinel::findRoleById(2);
             $role->users()->attach($user);
@@ -195,7 +198,7 @@ class GuruController extends Controller
     {
         // $gurus = Guru::get(['id', 'email', 'nama', 'nip','tempat_lahir','tgl_lahir','jenis_kelamin','alamat','noTelp','foto','created_at']);
         // $guru = Guru::select(['foto', 'nama', 'nip', 'created_at', 'hp','jenis_kelamin']);
-        $guru = Guru::all();
+        $guru = Guru::orderBy('created_at', 'desc')->get();
         return DataTables::of($guru)
         ->addIndexColumn()
         ->addColumn('actions',function($guru) {

@@ -83,7 +83,7 @@ Dashboard
             <br />
             <div class="card-body">
                 <div class="table-responsive-lg table-responsive-sm table-responsive-md">
-                    @if(count($mapelguru->toArray()) > 0)
+                    @if(count($mapelguru->toArray()) > 0 && $mapelguru != null)
                     <table class="table table-bordered " id="table">
                         <thead>
                             <tr class="filters">

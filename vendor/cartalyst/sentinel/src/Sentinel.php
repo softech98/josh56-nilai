@@ -430,7 +430,7 @@ class Sentinel
     /**
      * Sets the closure which resolves the request credentials.
      *
-     * @param  \Closure  $requestCredentials
+     * @param  \Closure  $requestCredentialsfu
      * @return void
      */
     public function setRequestCredentials(Closure $requestCredentials)

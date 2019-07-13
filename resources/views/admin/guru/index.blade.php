@@ -99,7 +99,7 @@ type="text/javascript"></script>
             processing: true,
             serverSide: true,
             deferRender: true,
-            order: [['6', 'DESC']],
+            // order: [['6', 'DESC']],
             ajax: '{!! route('admin.guru.data') !!}',
             columns: [
             { data: 'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},

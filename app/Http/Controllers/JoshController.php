@@ -118,7 +118,8 @@ class JoshController extends Controller {
             ->get();
        /*----------  Guru Mapel Get  ----------*/
        $guru = Sentinel::getUser();
-       $mapelguru = MapelGuru::where('guru_id', $guru->guru_id)->get();
+
+       $mapelguru = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->get();
 
        $getnamamapel = [];
        $getrombel = [];

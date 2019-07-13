@@ -24,10 +24,13 @@ class User extends EloquentUser
 
 	protected $fillable = [
         'email',
+        'guru_id',
         'username',
         'password',
         'nama',
         'permissions',
+        'gender',
+        'pic',
     ];
 
     protected $loginNames = ['email', 'username'];
@@ -44,16 +47,14 @@ class User extends EloquentUser
 	*/
 	// use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     protected $appends = ['full_name'];
     public function getFullNameAttribute()
     {
         return str_limit($this->nama, 30);
     }
-    public function country() {
-        return $this->belongsTo( Country::class );
-    }
+   
     public function gurus()
 	{
     	return $this->hasOne('App\Guru');
