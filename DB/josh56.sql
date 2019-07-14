@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jul 2019 pada 13.39
+-- Waktu pembuatan: 14 Jul 2019 pada 07.25
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.2.12
 
@@ -45,7 +45,6 @@ CREATE TABLE `activations` (
 INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`, `created_at`, `updated_at`) VALUES
 (1, 1, 'FBMhdQXSSr1uKZjYYrPm0iuvceIPkP00', 1, '2019-06-23 03:29:43', '2019-06-23 03:29:43', '2019-06-23 03:29:43'),
 (2, 2, '8SOCyUQlR4xz8Lx4zLFpcXAp68TCTFzE', 1, '2019-06-23 03:29:43', '2019-06-23 03:29:43', '2019-06-23 03:29:43'),
-(3, 3, 'wsade2Bg7q3x6SPCqdwq5TomM0uwMCpZ', 1, '2019-06-23 09:56:56', '2019-06-23 09:56:56', '2019-06-23 09:56:56'),
 (4, 4, 'JfRaM3yvQFy44UIhhTGRsHd4mF0HrCSj', 1, '2019-06-23 09:56:56', '2019-06-23 09:56:56', '2019-06-23 09:56:56'),
 (5, 5, 'gZ9lIC5BeIxjynE2Ty1QuiFrjyf8QAZf', 1, '2019-06-23 09:56:57', '2019-06-23 09:56:57', '2019-06-23 09:56:57'),
 (8, 8, 'j05ay2TvefgWaTdJpCsMM3hREtZvQ76N', 1, '2019-06-27 22:50:10', '2019-06-27 22:50:10', '2019-06-27 22:50:10'),
@@ -60,7 +59,11 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (17, 17, 'tzFBptf7QtzIsCTdJfdcXQb50YvX1Nbt', 1, '2019-06-28 21:11:03', '2019-06-28 21:11:03', '2019-06-28 21:11:03'),
 (20, 20, 'preWMkgv76ZlI22E5RHCbGsOmaGFSbFS', 1, '2019-06-28 21:54:18', '2019-06-28 21:54:18', '2019-06-28 21:54:18'),
 (21, 21, '4YmuhXEdVrWomTwE5vgdMdc9VxOPRwsV', 1, '2019-06-28 21:54:50', '2019-06-28 21:54:50', '2019-06-28 21:54:50'),
-(22, 22, 'BLgYbLT701joB3Wdly3fkR2g6mzMAT25', 1, '2019-06-28 22:11:24', '2019-06-28 22:11:24', '2019-06-28 22:11:24');
+(22, 22, 'BLgYbLT701joB3Wdly3fkR2g6mzMAT25', 1, '2019-06-28 22:11:24', '2019-06-28 22:11:24', '2019-06-28 22:11:24'),
+(24, 5, 'CHAgplhmYlyf2f9syMf7TeXeqpnXJCRR', 1, '2019-07-13 08:48:44', '2019-07-13 08:48:44', '2019-07-13 08:48:44'),
+(25, 6, 'aUmb9RNzFfWcAIKnqK0JKDa23w6ci2Fw', 1, '2019-07-13 10:29:18', '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
+(26, 7, 'e4Ujx2TtFyeLk6C8IttmJaycDlcmsX7T', 1, '2019-07-13 10:41:24', '2019-07-13 10:41:24', '2019-07-13 10:41:24'),
+(27, 8, 'fdLXpL377W5NYy1M9olyvFTLf4PiJc9D', 1, '2019-07-13 10:44:19', '2019-07-13 10:44:19', '2019-07-13 10:44:19');
 
 -- --------------------------------------------------------
 
@@ -86,183 +89,28 @@ CREATE TABLE `activity_log` (
 --
 
 INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_id`, `subject_type`, `causer_id`, `causer_type`, `properties`, `created_at`, `updated_at`) VALUES
-(1, 'Ajimat Pradipta', 'LoggedIn', 5, 'App\\User', 5, 'App\\User', '[]', '2019-06-23 10:27:39', '2019-06-23 10:27:39'),
-(2, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-23 10:28:16', '2019-06-23 10:28:16'),
-(3, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-23 12:30:54', '2019-06-23 12:30:54'),
-(4, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-23 14:48:23', '2019-06-23 14:48:23'),
-(5, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-23 15:00:03', '2019-06-23 15:00:03'),
-(6, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-23 18:43:43', '2019-06-23 18:43:43'),
-(7, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-23 19:47:43', '2019-06-23 19:47:43'),
-(8, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-23 19:54:44', '2019-06-23 19:54:44'),
-(9, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-23 19:54:54', '2019-06-23 19:54:54'),
-(10, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-24 03:09:32', '2019-06-24 03:09:32'),
-(11, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-24 03:25:11', '2019-06-24 03:25:11'),
-(12, 'Ilham Saputra', 'User Updated by Ilham Saputra', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-24 04:16:21', '2019-06-24 04:16:21'),
-(13, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 09:41:51', '2019-06-25 09:41:51'),
-(14, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 09:50:57', '2019-06-25 09:50:57'),
-(15, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 09:57:25', '2019-06-25 09:57:25'),
-(16, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 12:22:26', '2019-06-25 12:22:26'),
-(17, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 13:17:09', '2019-06-25 13:17:09'),
-(18, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 16:58:21', '2019-06-25 16:58:21'),
-(19, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 17:16:58', '2019-06-25 17:16:58'),
-(20, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 17:19:23', '2019-06-25 17:19:23'),
-(21, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 17:20:16', '2019-06-25 17:20:16'),
-(22, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 17:20:50', '2019-06-25 17:20:50'),
-(23, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 17:21:48', '2019-06-25 17:21:48'),
-(24, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 17:22:56', '2019-06-25 17:22:56'),
-(25, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 17:23:20', '2019-06-25 17:23:20'),
-(26, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 18:28:22', '2019-06-25 18:28:22'),
-(27, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 18:33:44', '2019-06-25 18:33:44'),
-(28, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 18:33:48', '2019-06-25 18:33:48'),
-(29, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 18:41:07', '2019-06-25 18:41:07'),
-(30, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 18:41:11', '2019-06-25 18:41:11'),
-(31, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 18:48:45', '2019-06-25 18:48:45'),
-(32, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 18:49:15', '2019-06-25 18:49:15'),
-(33, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 18:57:06', '2019-06-25 18:57:06'),
-(34, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 18:57:11', '2019-06-25 18:57:11'),
-(35, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 19:08:15', '2019-06-25 19:08:15'),
-(36, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 19:09:20', '2019-06-25 19:09:20'),
-(37, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-25 19:27:36', '2019-06-25 19:27:36'),
-(38, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 19:27:50', '2019-06-25 19:27:50'),
-(39, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-25 22:58:18', '2019-06-25 22:58:18'),
-(40, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-26 19:38:57', '2019-06-26 19:38:57'),
-(41, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-26 23:27:12', '2019-06-26 23:27:12'),
-(42, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 06:45:25', '2019-06-27 06:45:25'),
-(43, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 06:45:35', '2019-06-27 06:45:35'),
-(44, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-27 06:46:45', '2019-06-27 06:46:45'),
-(45, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-06-27 06:50:35', '2019-06-27 06:50:35'),
-(46, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 06:50:39', '2019-06-27 06:50:39'),
-(47, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 10:04:51', '2019-06-27 10:04:51'),
-(48, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 15:39:09', '2019-06-27 15:39:09'),
-(49, 'Latika Anggriawan', 'User deleted by Ilham Saputra', 7, 'App\\User', 7, 'App\\User', '[]', '2019-06-27 15:50:41', '2019-06-27 15:50:41'),
-(50, 'Prasetya Farida', 'User deleted by Ilham Saputra', 6, 'App\\User', 6, 'App\\User', '[]', '2019-06-27 16:01:11', '2019-06-27 16:01:11'),
-(51, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 16:18:08', '2019-06-27 16:18:08'),
-(52, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 16:18:20', '2019-06-27 16:18:20'),
-(53, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 16:19:20', '2019-06-27 16:19:20'),
-(54, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 16:19:24', '2019-06-27 16:19:24'),
-(55, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 20:04:01', '2019-06-27 20:04:01'),
-(56, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 22:20:11', '2019-06-27 22:20:11'),
-(57, 'Jono ', 'Registered', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-27 22:50:11', '2019-06-27 22:50:11'),
-(58, 'Jono ', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-27 22:57:19', '2019-06-27 22:57:19'),
-(59, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 22:57:24', '2019-06-27 22:57:24'),
-(60, 'Sanja ', 'Registered', 9, 'App\\User', 9, 'App\\User', '[]', '2019-06-27 23:03:49', '2019-06-27 23:03:49'),
-(61, 'Sanja ', 'LoggedOut', 9, 'App\\User', 9, 'App\\User', '[]', '2019-06-27 23:05:37', '2019-06-27 23:05:37'),
-(62, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:05:42', '2019-06-27 23:05:42'),
-(63, 'Burhan ', 'New User Created by Ilham Saputra', 10, 'App\\User', 10, 'App\\User', '[]', '2019-06-27 23:07:00', '2019-06-27 23:07:00'),
-(64, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:08:19', '2019-06-27 23:08:19'),
-(65, 'Jono ', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-27 23:08:32', '2019-06-27 23:08:32'),
-(66, 'Jono ', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-27 23:09:00', '2019-06-27 23:09:00'),
-(67, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:19:19', '2019-06-27 23:19:19'),
-(68, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:20:54', '2019-06-27 23:20:54'),
-(69, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:21:05', '2019-06-27 23:21:05'),
-(70, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:24:45', '2019-06-27 23:24:45'),
-(71, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:24:50', '2019-06-27 23:24:50'),
-(72, 'Jono ', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-27 23:26:10', '2019-06-27 23:26:10'),
-(73, 'Jono ', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-27 23:27:30', '2019-06-27 23:27:30'),
-(74, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:27:33', '2019-06-27 23:27:33'),
-(75, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:27:42', '2019-06-27 23:27:42'),
-(76, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-27 23:27:46', '2019-06-27 23:27:46'),
-(77, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-28 12:23:10', '2019-06-28 12:23:10'),
-(78, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-28 12:58:53', '2019-06-28 12:58:53'),
-(79, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-28 12:58:58', '2019-06-28 12:58:58'),
-(80, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-28 12:59:03', '2019-06-28 12:59:03'),
-(81, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-28 12:59:09', '2019-06-28 12:59:09'),
-(82, 'Jono ', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-28 12:59:18', '2019-06-28 12:59:18'),
-(83, 'Jono ', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-06-28 13:00:20', '2019-06-28 13:00:20'),
-(84, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-28 13:00:54', '2019-06-28 13:00:54'),
-(85, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-28 17:50:57', '2019-06-28 17:50:57'),
-(86, 'Guru123 ', 'New User Created by Ilham Saputra', 11, 'App\\User', 11, 'App\\User', '[]', '2019-06-28 19:26:53', '2019-06-28 19:26:53'),
-(87, 'Guru123 ', 'New User Created by Ilham Saputra', 12, 'App\\User', 12, 'App\\User', '[]', '2019-06-28 19:29:31', '2019-06-28 19:29:31'),
-(88, 'Joni ', 'New User Created by Ilham Saputra', 13, 'App\\User', 13, 'App\\User', '[]', '2019-06-28 20:56:25', '2019-06-28 20:56:25'),
-(89, 'Bela ', 'New User Created by Ilham Saputra', 14, 'App\\User', 14, 'App\\User', '[]', '2019-06-28 21:00:00', '2019-06-28 21:00:00'),
-(90, 'Beebe ', 'New User Created by Ilham Saputra', 15, 'App\\User', 15, 'App\\User', '[]', '2019-06-28 21:06:27', '2019-06-28 21:06:27'),
-(91, 'Multimedia ', 'New User Created by Ilham Saputra', 16, 'App\\User', 16, 'App\\User', '[]', '2019-06-28 21:07:21', '2019-06-28 21:07:21'),
-(92, 'coba2 ', 'New User Created by Ilham Saputra', 17, 'App\\User', 17, 'App\\User', '[]', '2019-06-28 21:11:03', '2019-06-28 21:11:03'),
-(93, 'Coba3 ', 'New User Created by Ilham Saputra', 18, 'App\\User', 18, 'App\\User', '[]', '2019-06-28 21:35:07', '2019-06-28 21:35:07'),
-(94, 'Tes123 ', 'New User Created by Ilham Saputra', 19, 'App\\User', 19, 'App\\User', '[]', '2019-06-28 21:38:24', '2019-06-28 21:38:24'),
-(95, 'Tes123 ', 'User deleted by Ilham Saputra', 19, 'App\\User', 19, 'App\\User', '[]', '2019-06-28 21:41:31', '2019-06-28 21:41:31'),
-(96, 'Coba3 ', 'User deleted by Ilham Saputra', 18, 'App\\User', 18, 'App\\User', '[]', '2019-06-28 21:41:59', '2019-06-28 21:41:59'),
-(97, 'CObaan ', 'New User Created by Ilham Saputra', 20, 'App\\User', 20, 'App\\User', '[]', '2019-06-28 21:54:19', '2019-06-28 21:54:19'),
-(98, 'Guru123 ', 'New User Created by Ilham Saputra', 21, 'App\\User', 21, 'App\\User', '[]', '2019-06-28 21:54:50', '2019-06-28 21:54:50'),
-(99, 'coba2 ', 'New User Created by Ilham Saputra', 22, 'App\\User', 22, 'App\\User', '[]', '2019-06-28 22:11:24', '2019-06-28 22:11:24'),
-(100, 'Multimedia ', 'New User Created by Ilham Saputra', 23, 'App\\User', 23, 'App\\User', '[]', '2019-06-28 22:12:46', '2019-06-28 22:12:46'),
-(101, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-30 14:04:08', '2019-06-30 14:04:08'),
-(102, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-30 19:57:06', '2019-06-30 19:57:06'),
-(103, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-06-30 19:57:09', '2019-06-30 19:57:09'),
-(104, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-01 05:17:33', '2019-07-01 05:17:33'),
-(105, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-01 16:14:10', '2019-07-01 16:14:10'),
-(106, 'Multimedia Kira', 'User Updated by Ilham Saputra', 23, 'App\\User', 23, 'App\\User', '[]', '2019-07-01 17:19:25', '2019-07-01 17:19:25'),
-(107, 'Joko Widodo', 'New User Created by Ilham Saputra', 24, 'App\\User', 24, 'App\\User', '[]', '2019-07-01 17:24:23', '2019-07-01 17:24:23'),
-(108, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-02 00:24:34', '2019-07-02 00:24:34'),
-(109, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-02 06:48:34', '2019-07-02 06:48:34'),
-(110, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-03 02:44:31', '2019-07-03 02:44:31'),
-(111, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-03 17:40:34', '2019-07-03 17:40:34'),
-(112, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-04 16:21:28', '2019-07-04 16:21:28'),
-(113, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-04 16:25:49', '2019-07-04 16:25:49'),
-(114, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-04 16:31:52', '2019-07-04 16:31:52'),
-(115, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 01:28:18', '2019-07-06 01:28:18'),
-(116, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 01:34:30', '2019-07-06 01:34:30'),
-(117, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 01:35:57', '2019-07-06 01:35:57'),
-(118, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 01:38:20', '2019-07-06 01:38:20'),
-(119, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 01:41:56', '2019-07-06 01:41:56'),
-(120, 'Ilham Saputra', 'User Updated by Ilham Saputra', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 01:44:15', '2019-07-06 01:44:15'),
-(121, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 02:40:15', '2019-07-06 02:40:15'),
-(122, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 02:52:54', '2019-07-06 02:52:54'),
-(123, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 02:58:27', '2019-07-06 02:58:27'),
-(124, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:02:43', '2019-07-06 03:02:43'),
-(125, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:04:45', '2019-07-06 03:04:45'),
-(126, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:34:28', '2019-07-06 03:34:28'),
-(127, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:34:31', '2019-07-06 03:34:31'),
-(128, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:35:28', '2019-07-06 03:35:28'),
-(129, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:35:47', '2019-07-06 03:35:47'),
-(130, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-06 03:37:12', '2019-07-06 03:37:12'),
-(131, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-06 03:38:09', '2019-07-06 03:38:09'),
-(132, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:38:15', '2019-07-06 03:38:15'),
-(133, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 03:40:02', '2019-07-06 03:40:02'),
-(134, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 05:57:29', '2019-07-06 05:57:29'),
-(135, 'Ilham Saputra', 'User Updated by Ilham Saputra', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 05:59:59', '2019-07-06 05:59:59'),
-(136, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 06:00:10', '2019-07-06 06:00:10'),
-(137, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 07:51:55', '2019-07-06 07:51:55'),
-(138, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 21:16:06', '2019-07-06 21:16:06'),
-(139, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-06 22:36:45', '2019-07-06 22:36:45'),
-(140, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-06 22:36:57', '2019-07-06 22:36:57'),
-(141, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-06 23:03:54', '2019-07-06 23:03:54'),
-(142, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-06 23:04:01', '2019-07-06 23:04:01'),
-(143, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-07 00:34:18', '2019-07-07 00:34:18'),
-(144, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 11:29:39', '2019-07-07 11:29:39'),
-(145, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 11:43:36', '2019-07-07 11:43:36'),
-(146, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 12:39:27', '2019-07-07 12:39:27'),
-(147, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 12:43:11', '2019-07-07 12:43:11'),
-(148, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 12:43:13', '2019-07-07 12:43:13'),
-(149, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-07 14:00:27', '2019-07-07 14:00:27'),
-(150, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 16:59:09', '2019-07-07 16:59:09'),
-(151, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 16:59:21', '2019-07-07 16:59:21'),
-(152, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 17:00:37', '2019-07-07 17:00:37'),
-(153, 'Multimedia Kira', 'LoggedIn', 23, 'App\\User', 23, 'App\\User', '[]', '2019-07-07 17:00:45', '2019-07-07 17:00:45'),
-(154, 'Multimedia Kira', 'LoggedOut', 23, 'App\\User', 23, 'App\\User', '[]', '2019-07-07 18:04:38', '2019-07-07 18:04:38'),
-(155, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 18:04:41', '2019-07-07 18:04:41'),
-(156, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-07 18:05:16', '2019-07-07 18:05:16'),
-(157, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-07 18:05:21', '2019-07-07 18:05:21'),
-(158, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-07 23:25:58', '2019-07-07 23:25:58'),
-(159, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 01:54:01', '2019-07-08 01:54:01'),
-(160, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-08 01:54:12', '2019-07-08 01:54:12'),
-(161, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-08 02:25:38', '2019-07-08 02:25:38'),
-(162, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-08 03:14:28', '2019-07-08 03:14:28'),
-(163, 'Ilham Saputra', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-08 03:41:09', '2019-07-08 03:41:09'),
-(164, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 03:41:20', '2019-07-08 03:41:20'),
-(165, 'Pengguna Saputra', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 04:18:45', '2019-07-08 04:18:45'),
-(166, 'Joko Widodo', 'LoggedIn', 24, 'App\\User', 24, 'App\\User', '[]', '2019-07-08 04:18:55', '2019-07-08 04:18:55'),
-(167, 'Pengguna Saputra', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-08 07:28:59', '2019-07-08 07:28:59'),
-(168, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 02:07:03', '2019-07-11 02:07:03'),
-(169, 'Multimedia Kira', 'User deleted by Ilham Saputra', 23, 'App\\User', 23, 'App\\User', '[]', '2019-07-11 02:57:55', '2019-07-11 02:57:55'),
-(170, 'Ilham Saputra', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 06:49:15', '2019-07-11 06:49:15'),
-(171, 'Joko Widodo', 'User deleted by Ilham Saputra', 24, 'App\\User', 24, 'App\\User', '[]', '2019-07-11 06:49:46', '2019-07-11 06:49:46'),
-(172, 'Coba 123', 'New User Created by Ilham Saputra', 25, 'App\\User', 25, 'App\\User', '[]', '2019-07-11 06:51:48', '2019-07-11 06:51:48'),
-(173, 'Coba 123', 'User deleted by Ilham Saputra', 25, 'App\\User', 25, 'App\\User', '[]', '2019-07-11 06:53:09', '2019-07-11 06:53:09'),
-(174, ' ', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:19:36', '2019-07-11 07:19:36'),
-(175, ' ', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:19:42', '2019-07-11 07:19:42'),
-(176, ' ', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:27:05', '2019-07-11 07:27:05'),
-(177, ' ', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-11 07:37:10', '2019-07-11 07:37:10');
+(1, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 07:40:20', '2019-07-13 07:40:20'),
+(2, 'joko', 'User Updated by Ilham', 3, 'App\\User', 3, 'App\\User', '[]', '2019-07-13 08:33:07', '2019-07-13 08:33:07'),
+(3, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 08:34:03', '2019-07-13 08:34:03'),
+(4, 'joko', 'LoggedIn', 3, 'App\\User', 3, 'App\\User', '[]', '2019-07-13 08:34:12', '2019-07-13 08:34:12'),
+(5, 'joko', 'LoggedOut', 3, 'App\\User', 3, 'App\\User', '[]', '2019-07-13 08:36:17', '2019-07-13 08:36:17'),
+(6, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 08:36:27', '2019-07-13 08:36:27'),
+(7, 'joko', 'User deleted by Ilham', 3, 'App\\User', 3, 'App\\User', '[]', '2019-07-13 08:38:08', '2019-07-13 08:38:08'),
+(8, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 08:49:04', '2019-07-13 08:49:04'),
+(9, 'joko', 'LoggedIn', 5, 'App\\User', 5, 'App\\User', '[]', '2019-07-13 08:49:13', '2019-07-13 08:49:13'),
+(10, 'joko', 'LoggedOut', 5, 'App\\User', 5, 'App\\User', '[]', '2019-07-13 08:51:12', '2019-07-13 08:51:12'),
+(11, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 08:51:19', '2019-07-13 08:51:19'),
+(12, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 09:56:35', '2019-07-13 09:56:35'),
+(13, 'joko', 'LoggedIn', 5, 'App\\User', 5, 'App\\User', '[]', '2019-07-13 09:56:53', '2019-07-13 09:56:53'),
+(14, 'joko', 'LoggedOut', 5, 'App\\User', 5, 'App\\User', '[]', '2019-07-13 10:15:10', '2019-07-13 10:15:10'),
+(15, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-13 10:15:23', '2019-07-13 10:15:23'),
+(16, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-13 10:15:36', '2019-07-13 10:15:36'),
+(17, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 10:15:42', '2019-07-13 10:15:42'),
+(18, 'Ramdan', 'New User Created by Ilham', 6, 'App\\User', 6, 'App\\User', '[]', '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
+(19, 'Riawan', 'New User Created by Ilham', 7, 'App\\User', 7, 'App\\User', '[]', '2019-07-13 10:41:24', '2019-07-13 10:41:24'),
+(20, 'Riawan', 'New User Created by Ilham', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-13 10:44:19', '2019-07-13 10:44:19'),
+(21, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 11:14:38', '2019-07-13 11:14:38'),
+(22, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-13 11:14:54', '2019-07-13 11:14:54');
 
 -- --------------------------------------------------------
 
@@ -331,7 +179,7 @@ CREATE TABLE `is_guru` (
 --
 
 INSERT INTO `is_guru` (`id`, `nip`, `email`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `hp`, `foto`, `created_at`, `updated_at`) VALUES
-(13, '198765452356987453', 'multi@gmail.com', 'Multimedia', '', '1929-09-11', 'L', 'Jambi', NULL, NULL, '2019-06-28 22:12:45', '2019-06-28 22:12:45'),
+(1, '198765452356987453', 'multi@gmail.com', 'Multimedia', '', '1929-09-11', 'L', 'Jambi', NULL, NULL, '2019-06-28 22:12:45', '2019-06-28 22:12:45'),
 (14, '114602786777458553', 'kawaca.budiyanto@januar.in', 'Himawan Luhung Adriansyah S.Sos', 'Kotamobagu', '1927-01-27', 'L', 'Gg. Sutarjo No. 212, Tegal 17211, DIY', '(+62)81066656', NULL, '2019-06-08 21:04:10', '2019-04-30 01:26:39'),
 (15, '100958282164806572', 'simanjuntak.salimah@yahoo.co.id', 'Latika Farida', 'Administrasi Jakarta Utara', '2014-10-28', 'P', 'Kpg. Imam Bonjol No. 681, Bandar Lampung 86390, Gorontalo', '(+62)83338289', NULL, '2019-01-15 13:32:32', '2019-04-03 02:43:46'),
 (16, '122544523254377141', 'kayla38@safitri.co', 'Hardana Aris Manullang S.Ked', 'Administrasi Jakarta Timur', '1973-12-28', 'L', 'Jln. Kusmanto No. 397, Kupang 21840, KalSel', '(+62)86142818', NULL, '2019-04-22 09:09:36', '2019-04-09 21:30:09'),
@@ -351,7 +199,9 @@ INSERT INTO `is_guru` (`id`, `nip`, `email`, `nama`, `tempat_lahir`, `tanggal_la
 (30, '143787882873344835', 'shania08@nasyiah.my.id', 'Lutfan Darmana Latupono', 'Bengkulu', '1963-07-22', 'L', 'Ki. Babakan No. 912, Sungai Penuh 93126, MalUt', '(+62)80839214', NULL, '2019-06-18 07:28:06', '2019-03-17 00:45:00'),
 (31, '109100497483158286', 'budi.lazuardi@gmail.com', 'Ina Widiastuti S.Pt', 'Kupang', '1973-01-08', 'P', 'Gg. Bappenas No. 5, Ambon 88695, SulUt', '(+62)81618448', NULL, '2019-03-21 19:48:07', '2019-05-26 22:41:21'),
 (32, '103408144908846292', 'isiregar@riyanti.or.id', 'Zamira Kuswandari', 'Padangpanjang', '1923-05-15', 'L', 'Ki. Baya Kali Bungur No. 485, Jambi 94585, SumUt', '(+62)86890111', '1.JPG', '2019-04-30 01:00:50', '2019-02-23 13:10:34'),
-(33, '161276502210615751', 'gatot05@wastuti.info', 'Mila Aryani S.Gz', 'Kotamobagu', '1926-01-29', 'L', 'Jln. Sumpah Pemuda No. 452, Tidore Kepulauan 49369, JaTim', '(+62)89717913', NULL, '2019-03-23 11:36:27', '2019-03-05 11:01:20');
+(33, '161276502210615751', 'gatot05@wastuti.info', 'Mila Aryani S.Gz', 'Kotamobagu', '1926-01-29', 'L', 'Jln. Sumpah Pemuda No. 452, Tidore Kepulauan 49369, JaTim', '(+62)89717913', NULL, '2019-03-23 11:36:27', '2019-03-05 11:01:20'),
+(34, '103408144908846297', 'ramdan@yahoo.com', 'Ramdan', '', '2000-07-02', 'L', 'Jambi', '08526687989', NULL, '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
+(37, '103408144908846298', 'riawan@gmail.com', 'Riawan', '', '1998-02-22', 'L', 'Jambi', '081377815153', NULL, '2019-07-13 10:44:18', '2019-07-13 10:44:18');
 
 -- --------------------------------------------------------
 
@@ -436,11 +286,13 @@ CREATE TABLE `is_mapel_gurus` (
 --
 
 INSERT INTO `is_mapel_gurus` (`id`, `rombel_id`, `mapel_id`, `guru_id`, `jurusan_id`) VALUES
-(3, 1, 1, 15, 1),
-(4, 2, 2, 15, 1),
-(5, 1, 3, 31, 1),
-(6, 7, 4, 32, 2),
-(7, 7, 5, NULL, 2);
+(3, 1, 1, 14, 1),
+(4, 2, 2, 17, 1),
+(5, 1, 3, NULL, 1),
+(12, 8, 4, NULL, 2),
+(13, 8, 5, 31, 2),
+(14, 2, 1, 14, 1),
+(15, 2, 3, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -689,7 +541,9 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (103, 24, 'VuXDmXjMp0JOwFVZrVPt3u8cX0kChw0S', '2019-07-08 04:18:55', '2019-07-08 04:18:55'),
 (104, 2, '8dmR8CKSIR7JTICt70nlSODiw6JAM7Ui', '2019-07-08 07:28:59', '2019-07-08 07:28:59'),
 (105, 1, 'qtZw3o2FcUWuu89ene8JIrCKNRu7TMBY', '2019-07-11 02:07:02', '2019-07-11 02:07:02'),
-(108, 1, 'ioPc80aAFUP1Dy704fcOnGdmXuIHkgm8', '2019-07-11 07:37:10', '2019-07-11 07:37:10');
+(108, 1, 'ioPc80aAFUP1Dy704fcOnGdmXuIHkgm8', '2019-07-11 07:37:10', '2019-07-11 07:37:10'),
+(112, 1, 'QGNC0weTnjLY7fRg8DyZbCcUoFa1BZi8', '2019-07-12 09:22:51', '2019-07-12 09:22:51'),
+(121, 2, 'tvxBiFNFPITWOupeVzFvXWOe1JNQCpv5', '2019-07-13 11:14:54', '2019-07-13 11:14:54');
 
 -- --------------------------------------------------------
 
@@ -751,28 +605,9 @@ CREATE TABLE `role_users` (
 INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALUES
 (1, 1, '2019-06-23 03:29:43', '2019-06-23 03:29:43'),
 (2, 2, '2019-06-23 03:29:44', '2019-06-23 03:29:44'),
-(3, 2, '2019-06-23 09:56:56', '2019-06-23 09:56:56'),
-(4, 2, '2019-06-23 09:56:56', '2019-06-23 09:56:56'),
-(5, 2, '2019-06-23 09:56:57', '2019-06-23 09:56:57'),
-(6, 1, '2019-06-23 09:56:57', '2019-06-23 09:56:57'),
-(7, 1, '2019-06-23 09:56:57', '2019-06-23 09:56:57'),
-(8, 2, '2019-06-27 22:50:10', '2019-06-27 22:50:10'),
-(9, 2, '2019-06-27 23:03:49', '2019-06-27 23:03:49'),
-(10, 2, '2019-06-27 23:07:00', '2019-06-27 23:07:00'),
-(11, 2, '2019-06-28 19:26:53', '2019-06-28 19:26:53'),
-(12, 2, '2019-06-28 19:29:31', '2019-06-28 19:29:31'),
-(13, 2, '2019-06-28 20:56:25', '2019-06-28 20:56:25'),
-(14, 2, '2019-06-28 20:59:59', '2019-06-28 20:59:59'),
-(15, 2, '2019-06-28 21:06:27', '2019-06-28 21:06:27'),
-(16, 2, '2019-06-28 21:07:21', '2019-06-28 21:07:21'),
-(17, 2, '2019-06-28 21:11:03', '2019-06-28 21:11:03'),
-(18, 2, '2019-06-28 21:35:07', '2019-06-28 21:35:07'),
-(19, 2, '2019-06-28 21:38:24', '2019-06-28 21:38:24'),
-(20, 2, '2019-06-28 21:54:18', '2019-06-28 21:54:18'),
-(21, 2, '2019-06-28 21:54:50', '2019-06-28 21:54:50'),
-(22, 2, '2019-06-28 22:11:24', '2019-06-28 22:11:24'),
-(23, 2, '2019-06-28 22:12:46', '2019-06-28 22:12:46'),
-(24, 2, '2019-07-01 17:24:23', '2019-07-01 17:24:23');
+(5, 2, '2019-07-13 08:48:44', '2019-07-13 08:48:44'),
+(6, 2, '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
+(8, 2, '2019-07-13 10:44:19', '2019-07-13 10:44:19');
 
 -- --------------------------------------------------------
 
@@ -844,7 +679,9 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (25, NULL, 'global', NULL, '2019-07-06 03:36:27', '2019-07-06 03:36:27'),
 (26, NULL, 'ip', '192.168.20.10', '2019-07-06 03:36:27', '2019-07-06 03:36:27'),
 (27, NULL, 'global', NULL, '2019-07-07 14:00:11', '2019-07-07 14:00:11'),
-(28, NULL, 'ip', '192.168.20.20', '2019-07-07 14:00:11', '2019-07-07 14:00:11');
+(28, NULL, 'ip', '192.168.20.20', '2019-07-07 14:00:11', '2019-07-07 14:00:11'),
+(29, NULL, 'global', NULL, '2019-07-12 08:51:16', '2019-07-12 08:51:16'),
+(30, NULL, 'ip', '::1', '2019-07-12 08:51:17', '2019-07-12 08:51:17');
 
 -- --------------------------------------------------------
 
@@ -854,7 +691,7 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `guru_id` int(11) NOT NULL,
+  `guru_id` int(10) UNSIGNED DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -872,8 +709,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `guru_id`, `email`, `username`, `password`, `permissions`, `last_login`, `nama`, `created_at`, `updated_at`, `gender`, `pic`) VALUES
-(1, 0, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-11 07:37:10', 'Ilham', '2019-06-23 03:29:43', '2019-07-11 07:37:10', 'male', 'ebMfH2q1wO.jpeg'),
-(2, 15, 'user@user.com', '', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-08 07:28:59', 'Pengguna', '2019-06-23 03:29:43', '2019-07-08 07:28:59', NULL, NULL);
+(1, NULL, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-13 10:15:42', 'Ilham', '2019-06-23 03:29:43', '2019-07-13 10:15:42', 'male', 'ebMfH2q1wO.jpeg'),
+(2, 15, 'user@user.com', 'user', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-13 11:14:54', 'Pengguna', '2019-06-23 03:29:43', '2019-07-13 11:14:54', NULL, NULL),
+(5, NULL, 'joko@gmail.com', 'joko', '$2y$10$LD2JGglSNDghzCs6jmS0LeS/A9pwA.3wTqW0XAwFJHYEUD0U.9Onu', NULL, '2019-07-13 09:56:53', 'joko', '2019-07-13 08:48:44', '2019-07-13 09:56:53', 'Pria', NULL),
+(6, NULL, 'ramdan@yahoo.com', 'ramdan12', '$2y$10$bKDN9iLn0RqShs/0s7UAU.oq.c4llHpaeIQNQnCzs0ikWdfZyBtv.', NULL, NULL, 'Ramdan', '2019-07-13 10:29:18', '2019-07-13 10:29:18', NULL, NULL),
+(8, 37, 'riawan@gmail.com', 'riawan', '$2y$10$3.P6GeDAJLM6LPe5GMuyq.uWdNENxpJ1Ty.U4RiJGzK7MvBCGV3pO', NULL, NULL, 'Riawan', '2019-07-13 10:44:19', '2019-07-13 10:44:19', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1001,7 +841,8 @@ ALTER TABLE `throttle`
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `guru_id` (`guru_id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -1011,13 +852,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `activations`
 --
 ALTER TABLE `activations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `datatables`
@@ -1035,7 +876,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT untuk tabel `is_guru`
 --
 ALTER TABLE `is_guru`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_jurusan`
@@ -1059,7 +900,7 @@ ALTER TABLE `is_mapel`
 -- AUTO_INCREMENT untuk tabel `is_mapel_gurus`
 --
 ALTER TABLE `is_mapel_gurus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_periode`
@@ -1083,7 +924,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT untuk tabel `reminders`
@@ -1107,13 +948,29 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT untuk tabel `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `role_users`
+--
+ALTER TABLE `role_users`
+  ADD CONSTRAINT `role_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `is_guru` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
