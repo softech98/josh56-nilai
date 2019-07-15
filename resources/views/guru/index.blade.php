@@ -99,7 +99,7 @@ Dashboard
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $m->nama}}</td>
-                                <td> {{$getrombel[$index]->tingkat}}{{$getrombel[$index]->namaRombel}}</td>
+                                <td> {{$getrombel[$index]->tingkat}} {{$getrombel[$index]->namaRombel}}</td>
                                 <td> {{$getrombel[$index]->guru->nama}}</td>
                                 <td> {{$getrombel[$index]->siswa->where('rombel_id', '=', $getrombel[$index]->id)->count()}}</td>
                             </tr>

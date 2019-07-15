@@ -64,7 +64,7 @@ Daftar Kompetensi
                                 <th>Kode</th>
                                 <th>Mata Pelajaran</th>
                                 <th>Tingkat</th>
-                                <th>Kompetensi Dasar</th>
+                                <th width="50%">Kompetensi Dasar</th>
                                 <th>Actions</th>
                                 <th><a href="javascript:void(0)"><i class="livicon" id="bulk_delete" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete selected guru"></i></a></th>
                             </tr>
@@ -91,37 +91,23 @@ type="text/javascript"></script>
 <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
 <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
 
-{{-- <script>
+<script>
     $(function() {
         var table = $('#table').DataTable({
             processing: true,
             serverSide: true,
             deferRender: true,
-            order: [['6', 'DESC']],
-            ajax: '{!! route('admin.guru.data') !!}',
+            ajax: '{!! route('guru.kompetensi.data') !!}',
             columns: [
-            { data: 'DT_RowIndex', name:'DT_RowIndex', orderable: false, searchable: false},
-            { data: 'foto', name: 'foto',
-            render: function( data, type, row ) {
-                if(data)
-                    return "<img src=\"{{ asset('uploads/image')}}/" + data + "\" height=\"100\" width=\"100\"/>";
-                else if(row.jenis_kelamin === 'L')
-                    return "<img src=\"{{ asset('assets/images/authors/avatar3.png') }}" + "\" height=\"100\" width=\"100\"/>";
-                else
-                    return "<img src=\"{{ asset('assets/images/authors/avatar5.png') }}" + "\" height=\"100\" width=\"100\"/>";
-                // return "<img src=\"/assets/images/authors/no_avatar.jpg" + "\" height=\"100\"/>";
-                
-            }
-        },
-        { data: 'nip', name: 'nip' },
-        { data: 'nama', name: 'nama' },
-        { data: 'jenis_kelamin', name: 'jenis_kelamin' },
-        { data: 'hp', name: 'hp' },
-        { data: 'created_at', name: 'created_at' },
-        { data: 'actions', name: 'actions', orderable: false, searchable: false },
-        { data: 'checkbox', name: 'checkbox', orderable: false, searchable: false }
-        ]
-    });
+                {data: 'DT_RowIndex', orderable: false, searchable: false },
+                { data: 'kode', name: 'kode' },
+                { data: 'mapel_id', name: 'mapel_id' },
+                { data: 'tingkat', name: 'tingkat' },
+                { data: 'kompetensi_dasar', name: 'kompetensi_dasar' },
+                { data: 'actions', name: 'actions', orderable: false, searchable: false },
+                { data: 'checkbox', name: 'checkbox', orderable: false, searchable: false }
+                ]
+            });
         table.on( 'draw', function () {
             $('.livicon').each(function(){
                 $(this).updateLivicon();
@@ -129,7 +115,7 @@ type="text/javascript"></script>
         } );
     });
 
-</script> --}}
+</script>
 
  <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -168,14 +154,14 @@ type="text/javascript"></script>
         })
     </script>
 
-   {{--  <script type="text/javascript">
+    <script type="text/javascript">
         $('#add').click(function(){
             $('#myModal').modal('show');
-            $('.modal-title').html("Tambah Data Guru");
-            $('.modal-body').load('{!! route("admin.guru.create") !!}')
+            $('.modal-title').html("Tambah Data Kompetensi");
+            $('.modal-body').load('{!! route("guru.kompetensi.create") !!}')
         });
     </script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).on('click', '.edit{{$guru->id}}', function(){
             var nip = $(this).data('id');
             $.get("{{ route('admin.guru.index') }}" +'/' + nip +'/edit', function (data) {

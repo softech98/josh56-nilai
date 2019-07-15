@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jul 2019 pada 07.25
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 7.2.12
+-- Waktu pembuatan: 15 Jul 2019 pada 10.03
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -110,7 +110,20 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_id`, `subj
 (19, 'Riawan', 'New User Created by Ilham', 7, 'App\\User', 7, 'App\\User', '[]', '2019-07-13 10:41:24', '2019-07-13 10:41:24'),
 (20, 'Riawan', 'New User Created by Ilham', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-13 10:44:19', '2019-07-13 10:44:19'),
 (21, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-13 11:14:38', '2019-07-13 11:14:38'),
-(22, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-13 11:14:54', '2019-07-13 11:14:54');
+(22, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-13 11:14:54', '2019-07-13 11:14:54'),
+(23, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 01:14:49', '2019-07-15 01:14:49'),
+(24, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-15 03:20:35', '2019-07-15 03:20:35'),
+(25, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-15 03:20:43', '2019-07-15 03:20:43'),
+(26, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 03:20:47', '2019-07-15 03:20:47'),
+(27, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 03:24:52', '2019-07-15 03:24:52'),
+(28, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 03:25:56', '2019-07-15 03:25:56'),
+(29, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 03:48:05', '2019-07-15 03:48:05'),
+(30, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 03:49:12', '2019-07-15 03:49:12'),
+(31, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 07:08:05', '2019-07-15 07:08:05'),
+(32, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 07:19:44', '2019-07-15 07:19:44'),
+(33, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 07:19:49', '2019-07-15 07:19:49'),
+(34, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 07:36:37', '2019-07-15 07:36:37'),
+(35, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 07:36:45', '2019-07-15 07:36:45');
 
 -- --------------------------------------------------------
 
@@ -234,12 +247,19 @@ INSERT INTO `is_jurusan` (`id`, `nama`, `singkatan`) VALUES
 
 CREATE TABLE `is_kompetensi` (
   `id` int(10) UNSIGNED NOT NULL,
-  `id_kompetensi` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kode` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `aspek` enum('K','P') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_mapel` int(11) NOT NULL,
+  `mapel_id` int(10) NOT NULL,
   `tingkat` enum('10','11','12') COLLATE utf8mb4_unicode_ci NOT NULL,
   `kompetensi_dasar` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `is_kompetensi`
+--
+
+INSERT INTO `is_kompetensi` (`id`, `kode`, `aspek`, `mapel_id`, `tingkat`, `kompetensi_dasar`) VALUES
+(1, '3.1', 'P', 1, '10', 'Menganalisis Q.S. Al-Anfal (8) : 72); Q.S. Al-Hujurat (49) : 12; dan QS Al-Hujurat (49) : 10; serta hadits tentang kontrol diri (mujahadah an-nafs), prasangka baik (husnuzzhan), dan persaudaraan (ukhuwah)');
 
 -- --------------------------------------------------------
 
@@ -278,21 +298,21 @@ CREATE TABLE `is_mapel_gurus` (
   `rombel_id` int(11) DEFAULT NULL,
   `mapel_id` int(11) DEFAULT NULL,
   `guru_id` int(11) DEFAULT NULL,
-  `jurusan_id` int(11) DEFAULT NULL
+  `jurusan_id` int(11) DEFAULT NULL,
+  `periode_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `is_mapel_gurus`
 --
 
-INSERT INTO `is_mapel_gurus` (`id`, `rombel_id`, `mapel_id`, `guru_id`, `jurusan_id`) VALUES
-(3, 1, 1, 14, 1),
-(4, 2, 2, 17, 1),
-(5, 1, 3, NULL, 1),
-(12, 8, 4, NULL, 2),
-(13, 8, 5, 31, 2),
-(14, 2, 1, 14, 1),
-(15, 2, 3, NULL, 1);
+INSERT INTO `is_mapel_gurus` (`id`, `rombel_id`, `mapel_id`, `guru_id`, `jurusan_id`, `periode_id`) VALUES
+(3, 1, 1, 14, 1, 3),
+(4, 2, 2, 17, 1, 3),
+(5, 1, 3, 15, 1, 3),
+(12, 8, 4, 37, 2, 3),
+(13, 8, 5, 31, 2, 3),
+(14, 2, 1, 37, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -304,18 +324,19 @@ CREATE TABLE `is_periode` (
   `id` int(10) UNSIGNED NOT NULL,
   `mulai` int(11) NOT NULL,
   `selesai` int(11) NOT NULL,
-  `semester` int(11) NOT NULL
+  `semester` int(11) NOT NULL,
+  `aktif` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `is_periode`
 --
 
-INSERT INTO `is_periode` (`id`, `mulai`, `selesai`, `semester`) VALUES
-(1, 2018, 2019, 1),
-(2, 2018, 2019, 2),
-(3, 2019, 2020, 1),
-(4, 2019, 2020, 2);
+INSERT INTO `is_periode` (`id`, `mulai`, `selesai`, `semester`, `aktif`) VALUES
+(1, 2018, 2019, 1, 0),
+(2, 2018, 2019, 2, 0),
+(3, 2019, 2020, 1, 1),
+(4, 2019, 2020, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -337,7 +358,7 @@ CREATE TABLE `is_rombel` (
 --
 
 INSERT INTO `is_rombel` (`id`, `namaRombel`, `jurusan_id`, `tingkat`, `periode_id`, `guru_id`) VALUES
-(1, 'TKJ 1', 1, '10', 2, '14'),
+(1, 'TKJ 1', 1, '10', 1, '14'),
 (2, 'TKJ 2', 1, '10', 1, '15'),
 (3, 'TKJ 1', 1, '11', 1, '16'),
 (4, 'TKJ 2', 1, '11', 1, '17'),
@@ -543,7 +564,10 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (105, 1, 'qtZw3o2FcUWuu89ene8JIrCKNRu7TMBY', '2019-07-11 02:07:02', '2019-07-11 02:07:02'),
 (108, 1, 'ioPc80aAFUP1Dy704fcOnGdmXuIHkgm8', '2019-07-11 07:37:10', '2019-07-11 07:37:10'),
 (112, 1, 'QGNC0weTnjLY7fRg8DyZbCcUoFa1BZi8', '2019-07-12 09:22:51', '2019-07-12 09:22:51'),
-(121, 2, 'tvxBiFNFPITWOupeVzFvXWOe1JNQCpv5', '2019-07-13 11:14:54', '2019-07-13 11:14:54');
+(121, 2, 'tvxBiFNFPITWOupeVzFvXWOe1JNQCpv5', '2019-07-13 11:14:54', '2019-07-13 11:14:54'),
+(122, 2, 'v5rhaX9QOIqT91OzN6sIpi32cxPDZvkb', '2019-07-15 01:14:48', '2019-07-15 01:14:48'),
+(126, 8, 'g7JWbXrLBiGTwgFF6FXCuqhQig0BWfKs', '2019-07-15 03:49:12', '2019-07-15 03:49:12'),
+(129, 8, 'qiUK7hVCJocvEv9KK2ZbRCLIkn3ww8X1', '2019-07-15 07:36:45', '2019-07-15 07:36:45');
 
 -- --------------------------------------------------------
 
@@ -681,7 +705,22 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (27, NULL, 'global', NULL, '2019-07-07 14:00:11', '2019-07-07 14:00:11'),
 (28, NULL, 'ip', '192.168.20.20', '2019-07-07 14:00:11', '2019-07-07 14:00:11'),
 (29, NULL, 'global', NULL, '2019-07-12 08:51:16', '2019-07-12 08:51:16'),
-(30, NULL, 'ip', '::1', '2019-07-12 08:51:17', '2019-07-12 08:51:17');
+(30, NULL, 'ip', '::1', '2019-07-12 08:51:17', '2019-07-12 08:51:17'),
+(31, NULL, 'global', NULL, '2019-07-15 03:48:12', '2019-07-15 03:48:12'),
+(32, NULL, 'ip', '::1', '2019-07-15 03:48:12', '2019-07-15 03:48:12'),
+(33, 8, 'user', NULL, '2019-07-15 03:48:12', '2019-07-15 03:48:12'),
+(34, NULL, 'global', NULL, '2019-07-15 03:48:23', '2019-07-15 03:48:23'),
+(35, NULL, 'ip', '::1', '2019-07-15 03:48:23', '2019-07-15 03:48:23'),
+(36, 8, 'user', NULL, '2019-07-15 03:48:23', '2019-07-15 03:48:23'),
+(37, NULL, 'global', NULL, '2019-07-15 03:48:31', '2019-07-15 03:48:31'),
+(38, NULL, 'ip', '::1', '2019-07-15 03:48:31', '2019-07-15 03:48:31'),
+(39, 8, 'user', NULL, '2019-07-15 03:48:31', '2019-07-15 03:48:31'),
+(40, NULL, 'global', NULL, '2019-07-15 03:48:53', '2019-07-15 03:48:53'),
+(41, NULL, 'ip', '::1', '2019-07-15 03:48:53', '2019-07-15 03:48:53'),
+(42, 8, 'user', NULL, '2019-07-15 03:48:53', '2019-07-15 03:48:53'),
+(43, NULL, 'global', NULL, '2019-07-15 03:49:02', '2019-07-15 03:49:02'),
+(44, NULL, 'ip', '::1', '2019-07-15 03:49:02', '2019-07-15 03:49:02'),
+(45, 8, 'user', NULL, '2019-07-15 03:49:02', '2019-07-15 03:49:02');
 
 -- --------------------------------------------------------
 
@@ -709,11 +748,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `guru_id`, `email`, `username`, `password`, `permissions`, `last_login`, `nama`, `created_at`, `updated_at`, `gender`, `pic`) VALUES
-(1, NULL, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-13 10:15:42', 'Ilham', '2019-06-23 03:29:43', '2019-07-13 10:15:42', 'male', 'ebMfH2q1wO.jpeg'),
-(2, 15, 'user@user.com', 'user', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-13 11:14:54', 'Pengguna', '2019-06-23 03:29:43', '2019-07-13 11:14:54', NULL, NULL),
+(1, NULL, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-15 03:20:33', 'Ilham', '2019-06-23 03:29:43', '2019-07-15 03:20:33', 'male', 'ebMfH2q1wO.jpeg'),
+(2, NULL, 'user@user.com', 'user', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-15 07:19:49', 'Pengguna', '2019-06-23 03:29:43', '2019-07-15 07:19:49', NULL, NULL),
 (5, NULL, 'joko@gmail.com', 'joko', '$2y$10$LD2JGglSNDghzCs6jmS0LeS/A9pwA.3wTqW0XAwFJHYEUD0U.9Onu', NULL, '2019-07-13 09:56:53', 'joko', '2019-07-13 08:48:44', '2019-07-13 09:56:53', 'Pria', NULL),
 (6, NULL, 'ramdan@yahoo.com', 'ramdan12', '$2y$10$bKDN9iLn0RqShs/0s7UAU.oq.c4llHpaeIQNQnCzs0ikWdfZyBtv.', NULL, NULL, 'Ramdan', '2019-07-13 10:29:18', '2019-07-13 10:29:18', NULL, NULL),
-(8, 37, 'riawan@gmail.com', 'riawan', '$2y$10$3.P6GeDAJLM6LPe5GMuyq.uWdNENxpJ1Ty.U4RiJGzK7MvBCGV3pO', NULL, NULL, 'Riawan', '2019-07-13 10:44:19', '2019-07-13 10:44:19', NULL, NULL);
+(8, 37, 'riawan@gmail.com', 'riawan', '$2y$10$3.P6GeDAJLM6LPe5GMuyq.uWdNENxpJ1Ty.U4RiJGzK7MvBCGV3pO', NULL, '2019-07-15 07:36:45', 'Riawan', '2019-07-13 10:44:19', '2019-07-15 07:36:45', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -772,7 +811,8 @@ ALTER TABLE `is_mapel`
 -- Indeks untuk tabel `is_mapel_gurus`
 --
 ALTER TABLE `is_mapel_gurus`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `periode_id` (`periode_id`);
 
 --
 -- Indeks untuk tabel `is_periode`
@@ -858,7 +898,7 @@ ALTER TABLE `activations`
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `datatables`
@@ -888,7 +928,7 @@ ALTER TABLE `is_jurusan`
 -- AUTO_INCREMENT untuk tabel `is_kompetensi`
 --
 ALTER TABLE `is_kompetensi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_mapel`
@@ -924,7 +964,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT untuk tabel `reminders`
@@ -948,7 +988,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT untuk tabel `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -959,6 +999,12 @@ ALTER TABLE `users`
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `is_mapel_gurus`
+--
+ALTER TABLE `is_mapel_gurus`
+  ADD CONSTRAINT `is_mapel_gurus_ibfk_1` FOREIGN KEY (`periode_id`) REFERENCES `is_periode` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `role_users`

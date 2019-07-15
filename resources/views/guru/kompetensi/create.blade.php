@@ -5,59 +5,45 @@
         <div class="card">
             <!-- CSRF Token -->
             <div class="card-body ">
-                {{ Form::model($guru, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }}
+                {{ Form::model($kompetensi, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }}
                 {{ csrf_field() }}
-                
+                {!! Form::hidden('periode', $periode->id) !!}
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            {{ Form::number('nip',null,array('id'=>'nip','class'=>'form-control','placeholder' => 'Nomor Induk Pegawai','autofocus', 'required', 'minlength'=>'18', 'maxlength'=>'18')) }}
-                            <small class="text-danger">{{ $errors->first('nip') }}</small>
+                            {!! Form::select('rombel',$getrombel, null, ['class' => 'form-control', 'placeholder'=>'--Pilih Rombel--', 'required']) !!}
+                            <small class="text-danger">{{ $errors->first('rombel') }}</small>
                         </div>
                         <div class="col-lg-5 col-md-6">
-                            {{ Form::text('nama',null,array('class'=>'form-control','placeholder' => 'Nama Guru','autofocus', 'required')) }}
+                            {!! Form::select('mapel_id',$getnamamapel, null, ['class' => 'form-control', 'placeholder'=>'--Pilih Mapel--', 'required']) !!}
                             <small class="text-danger">{{ $errors->first('nama') }}</small>
                         </div>
                     </div>
                 </div>
-                <div class="form-grup">
+                <div class="form-group">
                     <div class="row">
                      <div class="col-lg-6 col-md-6">
-                        {{ Form::email('email',null,array('class'=>'form-control','placeholder' => 'Alamat E-mail','autofocus', 'required')) }}
-                        <small class="text-danger">{{ $errors->first('email') }}</small>
+                        {{ Form::text('kode',null,array('class'=>'form-control','placeholder' => 'Kode KD','autofocus', 'required')) }}
+                        <small class="text-danger">{{ $errors->first('kode') }}</small>
                     </div>
                     <div class="col-lg-5 col-md-8">
-                        {!! Form::select('jenis_kelamin',$jenis_kelamin, null, ['class' => 'form-control select2', 'placeholder'=>'--jenis kelamin--', 'required']) !!}
-                        <small class="text-danger">{{ $errors->first('jenis_kelamin') }}</small>
+                        {!! Form::select('aspek',['P'=>'Pengetahuan','K'=>'Keterampilan'], null,['class' => 'form-control select2', 'placeholder'=>'--Aspek Penilaian--', 'required']) !!}
+                        <small class="text-danger">{{ $errors->first('aspek') }}</small>
                     </div>
                 </div>
             </div>
             <br>
-            <div class="form-grup">
+            <div class="form-group">
                 <div class="row">
 
                     <div class="col-lg-10 col-md-8">
-                     {{ Form::textarea('alamat',null,array('class'=>'form-control','placeholder' => 'Alamat','autofocus','rows'=>'3', 'required')) }}
-                     <small class="text-danger">{{ $errors->first('alamat') }}</small>
+                     {{ Form::textarea('kompetensi_dasar',null,array('class'=>'form-control','placeholder' => 'Isi Kompetensi','autofocus','rows'=>'3', 'required')) }}
+                     <small class="text-danger">{{ $errors->first('kompetensi_dasar') }}</small>
                  </div>
              </div>
 
          </div>
          <br>
-         <div class="form-group">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    {!! Form::label('tanggal_lahir', 'Tanggal Lahir') !!}
-                    {{ Form::date('tanggal_lahir',null,array('class'=>'form-control','placeholder' => 'Tanggal Lahir','autofocus', 'required')) }}
-                    <small class="text-danger">{{ $errors->first('tanggal_lahir') }}</small>
-                </div>
-                <div class="col-lg-5 col-md-5">
-                    {!! Form::label('noTelp', 'No Hp') !!}
-                    {{ Form::text('hp',null,array('class'=>'form-control','placeholder' => 'No HP','autofocus')) }}
-                    <small class="text-danger">{{ $errors->first('hp') }}</small>
-                </div>
-            </div>
-        </div>
         <div class="button-group">
             <div class="row">
                 <div class="col-md-4">

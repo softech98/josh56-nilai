@@ -270,12 +270,15 @@ Route::get('users/{id}', 'Admin\UsersController@show');
     })->name('401');
 });
 
-Route::group(['prefix' => 'guru','middleware' => 'guru'], function () {
-     Route::get('data', 'Guru\KompetensiController@data')->name('kompetensi.data');
-        Route::get('{kompetensi}/delete', 'Guru\KompetensiController@destroy')->name('kompetensi.delete');
-        Route::get('{kompetensi}/confirm-delete', 'Guru\KompetensiController@getModalDelete')->name('kompetensi.confirm-delete');
-Route::resource('kompetensi', 'Guru\KompetensiController');
-});
+Route::group(['prefix' => 'guru','namespace'=>'Guru', 'middleware' => 'guru', 'as' => 'guru.'], function () {
+
+     Route::group([ 'prefix' => 'kompetensi'], function () {
+     Route::get('data', 'KompetensiController@data')->name('kompetensi.data');
+        Route::get('{kompetensi}/delete', 'KompetensiController@destroy')->name('kompetensi.delete');
+        Route::get('{kompetensi}/confirm-delete', 'KompetensiController@getModalDelete')->name('kompetensi.confirm-delete');
+        });
+Route::resource('kompetensi', 'KompetensiController');
+ });
 
 # contact form
 Route::post('contact', 'FrontEndController@postContact')->name('contact');

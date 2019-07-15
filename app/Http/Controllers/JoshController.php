@@ -129,19 +129,12 @@ class JoshController extends Controller {
             $getrombel[] = Rombel::find($m->rombel_id);
         }
 
-        // dd($getrombel[1]->namaRombel);
-
-       // $mapels_id = $mapelguru->mapel_id;
-       // $getmapel = Mapel::where('id',$mapelguru)->get();
-       // dd ($m->nama);
-
         if(Sentinel::check())
             if(Sentinel::inRole('admin'))
             {
             return view('admin.index',[ 'user_count'=>$user_count,'siswa_count'=>$siswa_count,'guru_count'=>$guru_count,'users'=>$users] );
             }
         else{
-            // return view ('guru.index',$data, ['mapelguru'=>$mapelguru]);
             return view ('guru.index', compact('mapelguru','getnamamapel','getrombel'));
             }
         else{
