@@ -13,15 +13,15 @@ class Jurusan extends Model
 
      public function rombels()
     {
-           return $this->hasMany('\App\Rombel');
+           return $this->hasMany('\App\Rombel', 'jurusan_id');
     }
 
     public function mapel()
     {
-    	return $this->hasMany(Mapel::class);
+    	return $this->hasMany(Mapel::class, 'jurusan_id');
     }
     public function mapelguru()
     {
-      return $this->hasMany('App\MapelGuru');
+      return $this->hasMany('App\MapelGuru', 'jurusan_id');
     }
 }

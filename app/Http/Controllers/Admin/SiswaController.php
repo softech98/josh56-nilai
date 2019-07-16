@@ -35,7 +35,7 @@ class SiswaController extends Controller
         ->addColumn('actions',function($siswa) { 
             $btn = '<a href='. route('admin.siswa.show', $siswa->nis) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view detail siswa"></i></a>
                     <a href="javascript:void(0)" class="edit" data-id="'.$siswa->nis.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="edit siswa"></i></a>';
-            $btn .= '<a href='. route('admin.siswa.confirm-delete', $siswa->nis) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete siswa"></i></a>';
+            $btn .= '<a href='. route('admin.siswa.confirm-delete', $siswa->nis) .' data-id="'.$siswa->nis.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete siswa"></i></a>';
                 return $btn;
             })
         ->addColumn('checkbox', '<input type="checkbox" name="siswa_checkbox[]" class="siswa_checkbox" value="{{$nis}}" />')
@@ -197,10 +197,10 @@ class SiswaController extends Controller
             $siswa->delete();
 
             // Redirect to the group management page
-            return Redirect::route('siswa.index')->with('success', 'Data Berhasil Dihapus');
+            return Redirect::route('admin.siswa.index')->with('success', 'Data Berhasil Dihapus');
         } catch (GroupNotFoundException $e) {
             // Redirect to the group management page
-            return Redirect::route('siswa.index')->with('error', 'Kelas Not Found', compact('id'));
+            return Redirect::route('admin.siswa.index')->with('error', 'Kelas Not Found', compact('id'));
         }
     }
 

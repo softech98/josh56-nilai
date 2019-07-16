@@ -70,10 +70,10 @@
                                                 @if($user->pic)
                                                     <img src="{!! url('/').'/uploads/users/'.$user->pic !!}" alt="img"
                                                          class="img-fluid"/>
-                                                @elseif($user->gender === "Pria")
+                                                @elseif($user->gender === "Laki-Laki")
                                                     <img src="{{ asset('assets/images/authors/avatar3.png') }}" alt="..."
                                                          class="img-fluid"/>
-                                                @elseif($user->gender === "Wanita")
+                                                @elseif($user->gender === "Perempuan")
                                                     <img src="{{ asset('assets/images/authors/avatar5.png') }}" alt="..."
                                                          class="img-fluid"/>
                                                 @else
@@ -110,7 +110,11 @@
                                                                 Jenis Kelamin
                                                             </td>
                                                             <td>
-                                                                {{ $user->gender }}
+                                                                @if($user->gender == 'L')
+                                                                Laki-laki
+                                                                @else 
+                                                                Perempuan
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         

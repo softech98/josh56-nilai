@@ -27,8 +27,8 @@
                         <small class="text-danger">{{ $errors->first('email') }}</small>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        {!! Form::text('username', null, ['class' => 'form-control', 'placeholder'=>'Username', 'required']) !!}
-                        <small class="text-danger">{{ $errors->first('jenis_kelamin') }}</small>
+                        {!! Form::text('username', $guru->users->username, ['class' => 'form-control', 'placeholder'=>'Username', 'required']) !!}
+                        <small class="text-danger">{{ $errors->first('username') }}</small>
                     </div>
                 </div>
             </div>

@@ -1,9 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 
 body {
-    background: #dfdfdf;
+    /*background: #dfdfdf;*/
+    /*background: url(../../images/bg.jpg);
     position: relative;
     display: block;
+    font-family: 'lato';*/
+    background: url(../../images/bg.jpg);
+    background-color: #444;
     font-family: 'lato';
 }
 

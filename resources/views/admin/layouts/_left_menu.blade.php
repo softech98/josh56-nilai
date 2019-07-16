@@ -145,28 +145,6 @@
             </li>
         </ul>
     </li>
-    <li {!! ( Request::is('admin/laravel_chart') || Request::is('admin/database_chart') ? 'class="active"' : '') !!}>
-        <a href="#">
-            <i class="livicon" data-name="barchart" data-size="18" data-c="#418BCA" data-hc="#418BCA"
-               data-loop="true"></i>
-            <span class="title">Laravel Charts</span>
-            <span class="fa arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li {!! (Request::is('admin/laravel_chart') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/laravel_chart') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Simple charts
-                </a>
-            </li>
-            <li {!! (Request::is('admin/database_chart') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/database_chart') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Database Charts
-                </a>
-            </li>
-        </ul>
-    </li>
 
     <li {!! (Request::is('admin/form_builder') || Request::is('admin/form_builder2') || Request::is('admin/buttonbuilder') || Request::is('admin/gridmanager') ? 'class="active"' : '') !!}>
         <a href="#">
@@ -175,12 +153,6 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            {{--<li {!! (Request::is('admin/form_builder') ? 'class="active"' : '') !!}>--}}
-                {{--<a href="{{ URL::to('admin/form_builder') }}">--}}
-                    {{--<i class="fa fa-angle-double-right"></i>--}}
-                    {{--Form Builder--}}
-                {{--</a>--}}
-            {{--</li>--}}
             <li {!! (Request::is('admin/form_builder2') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('admin/form_builder2') }}">
                     <i class="fa fa-angle-double-right"></i>
@@ -267,13 +239,8 @@
                     Form Wizards
                 </a>
             </li>
-            {{--<li {!! (Request::is('admin/accordionformwizard') ? 'class="active"' : '') !!}>--}}
-                {{--<a href="{{ URL::to('admin/accordionformwizard') }}">--}}
-                    {{--<i class="fa fa-angle-double-right"></i>--}}
-                    {{--Accordion Wizards--}}
-                {{--</a>--}}
-            {{--</li>--}}
-
+            
+    
             <li {!! (Request::is('admin/datepicker') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('admin/datepicker') }}">
                     <i class="fa fa-angle-double-right"></i>
@@ -510,82 +477,6 @@
             {{--</li>--}}
         </ul>
     </li>
-    <li {!! (Request::is('admin/charts') || Request::is('admin/piecharts') || Request::is('admin/charts_animation') || Request::is('admin/jscharts') || Request::is('admin/sparklinecharts') ? 'class="active"' : '') !!}>
-        <a href="#">
-            <i class="livicon" data-name="barchart" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
-               data-loop="true"></i>
-            <span class="title">Charts</span>
-            <span class="fa arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li {!! (Request::is('admin/charts') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/charts') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Flot Charts
-                </a>
-            </li>
-            <li {!! (Request::is('admin/piecharts') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/piecharts') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Pie Charts
-                </a>
-            </li>
-            <li {!! (Request::is('admin/charts_animation') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/charts_animation') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Animated Charts
-                </a>
-            </li>
-            <li {!! (Request::is('admin/jscharts') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/jscharts') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    JS Charts
-                </a>
-            </li>
-            <li {!! (Request::is('admin/sparklinecharts') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/sparklinecharts') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Sparkline Charts
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li {!! (Request::is('admin/calendar') ? 'class="active"' : '') !!}>
-        <a href="{{ URL::to('admin/calendar') }}">
-            <i class="livicon" data-c="#F89A14" data-hc="#F89A14" data-name="calendar" data-size="18"
-               data-loop="true"></i>
-            Calendar
-            <span class="badge badge-danger event_count">7</span>
-        </a>
-    </li>
-    <li {!! (Request::is('admin/inbox') || Request::is('admin/compose') || Request::is('admin/view_mail') ? 'class="active"' : '') !!}>
-        <a href="#">
-            <i class="livicon" data-name="mail" data-size="18" data-c="#67C5DF" data-hc="#67C5DF"
-               data-loop="true"></i>
-            <span class="title">Email</span>
-            <span class="fa arrow"></span>
-        </a>
-        <ul class="sub-menu">
-            <li {!! (Request::is('admin/inbox') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/inbox') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Inbox
-                </a>
-            </li>
-            <li {!! (Request::is('admin/compose') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/compose') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Compose
-                </a>
-            </li>
-            <li {!! (Request::is('admin/view_mail') ? 'class="active"' : '') !!}>
-                <a href="{{ URL::to('admin/view_mail') }}">
-                    <i class="fa fa-angle-double-right"></i>
-                    Single Mail
-                </a>
-            </li>
-        </ul>
-    </li>
     <li {!! (Request::is('admin/tasks') ? 'class="active"' : '') !!}>
         <a href="{{ URL::to('admin/tasks') }}">
             <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="list-ul" data-size="18"
@@ -618,6 +509,29 @@
                data-loop="true"></i>
             Data Siswa
         </a>
+    </li>
+
+
+    <li {!! (Request::is('guru/pengetahuan') || Request::is('guru/keterampilan') ? 'class="active"' : '') !!}>
+        <a href="#">
+            <i class="livicon"  data-name="wrench" data-size="18" data-c="#6CC66C" data-hc="#6CC66C" data-loop="true"></i>
+            <span class="title">Penilaian</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li {!! (Request::is('guru/form_builder2') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to($prefix.'/pengetahuan') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Penilaian Pengetahuan
+                </a>
+            </li>
+            <li {!! (Request::is('guru/buttonbuilder') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to($prefix.'/keterampilan') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    Penilaian Keterampilan
+                </a>
+            </li>
+        </ul>
     </li>
     @endif
     <!-- Menus generated by CRUD generator -->

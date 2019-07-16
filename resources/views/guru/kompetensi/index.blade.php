@@ -57,6 +57,7 @@ Daftar Kompetensi
             <br />
             <div class="card-body">
                 <div class="table-responsive-lg table-responsive-sm table-responsive-md">
+                     @if(count($mapelguru->toArray()) > 0 && $mapelguru != null)
                     <table class="table table-bordered " id="table">
                         <thead>
                             <tr class="filters">
@@ -74,6 +75,11 @@ Daftar Kompetensi
 
                         </tbody>
                     </table>
+                    @else
+                    <table class="table table-bordered table-striped table-hover">
+                        <tr><td class="text-center">Anda tidak memiliki jadwal mengajar!</td></tr>
+                    </table>
+                    @endif
                 </div>
             </div>
         </div>
@@ -101,7 +107,7 @@ type="text/javascript"></script>
             columns: [
                 {data: 'DT_RowIndex', orderable: false, searchable: false },
                 { data: 'kode', name: 'kode' },
-                { data: 'mapel_id', name: 'mapel_id' },
+                { data: 'mapels.nama', name: 'mapel'},
                 { data: 'tingkat', name: 'tingkat' },
                 { data: 'kompetensi_dasar', name: 'kompetensi_dasar' },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false },
@@ -150,7 +156,7 @@ type="text/javascript"></script>
             var button = $(event.relatedTarget)
             var $recipient = button.data('id');
             var modal = $(this)
-            modal.find('.modal-footer a').prop("href",$url_path+"/admin/guru/"+ $recipient +"/delete");
+            modal.find('.modal-footer a').prop("href",$url_path+"/guru/kompetensi/"+ $recipient +"/delete");
         })
     </script>
 

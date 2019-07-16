@@ -170,10 +170,23 @@ Data Mata Pelajaran
     });
 
 </script>
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" title="delete" aria-labelledby="kelas_delete_confirm_title" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"></div>
-  </div>
+<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteLabel">Delete Mata Pelajaran</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+               Apakah anda yakin akan menghapus Mata Pelajaran ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a  type="button" class="btn btn-danger Remove_square">Delete</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
 </div>
 <script>
 $(function () {
@@ -181,6 +194,14 @@ $(function () {
         $(this).removeData('bs.modal');
     });
 });
+
+ var $url_path = '{!! url('/') !!}';
+    $('#delete_confirm').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var $recipient = button.data('id');
+        var modal = $(this)
+        modal.find('.modal-footer a').prop("href",$url_path+"/admin/mapel/"+$recipient+"/delete");
+    })
 </script>
 <script type="text/javascript">
     $(document).on('click', '.edit{{$mapel->id}}', function(){

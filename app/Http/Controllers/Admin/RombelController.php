@@ -43,15 +43,16 @@ class RombelController extends Controller
     public function create()
     {
         $data['judul']      = "Tambah Rombel";
-        $data['rombel'] = new Rombel();
-        $tingkat = Rombel::$tingkat;
-        $data['jurusan'] = Jurusan::pluck('singkatan','id');
+        $data['rombel']     = new Rombel();
+        $tingkat            = Rombel::$tingkat;
+        $periode            = Periode::where('aktif',1)->first();
+        $data['jurusan']    = Jurusan::pluck('singkatan','id');
         $data['wali_kelas'] = Guru::orderBy('nama')->pluck('nama','id');
-        $data['periode'] = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
+        // $data['periode']    = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
         $data['method']     = "POST";
         $data['btn_submit'] = "Simpan";
         $data['action']     = 'Admin\RombelController@store';
-        return view('admin.rombel.create', $data, compact ('tingkat'));
+        return view('admin.rombel.create', $data, compact ('tingkat', 'periode'));
     }
 
     /**
@@ -70,7 +71,7 @@ class RombelController extends Controller
         ]);
         Rombel::create($request->all());
 
-      return back()->with('success', 'Data Berhasil diTambahkan');
+      return back()->with('success', 'Data Berhasil ditambahkan');
     }
 
     /**
@@ -94,7 +95,7 @@ class RombelController extends Controller
     {
        $data['judul']      = "Edit Data Rombel";
        $data['rombel']     = Rombel::findOrFail($id);
-       $data['periode']    = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
+      $periode            = Periode::where('aktif',1)->first();
        $data['jurusan']    = Jurusan::pluck('singkatan','id');
        $tingkat            = Rombel::$tingkat;
        $data['wali_kelas'] = Guru::pluck('nama','id');
@@ -102,7 +103,7 @@ class RombelController extends Controller
        $data['btn_submit'] = "UPDATE";
        $data['action']     = array('Admin\RombelController@update', $id);
 
-        return view('admin.rombel.create',$data, compact('tingkat'));       
+       return view('admin.rombel.create',$data, compact('tingkat', 'periode'));       
     }
 
     /**
@@ -186,7 +187,7 @@ class RombelController extends Controller
         })
          ->addColumn('actions',function($rombel) {
             $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$rombel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update rombel"></i></a>';
-            $actions .= '<a href='. route('admin.rombel.confirm-delete', $rombel->id) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete rombel"></i></a>';
+            $actions .= '<a href='. route('admin.rombel.confirm-delete', $rombel->id) .' data-id="'.$rombel->id.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete rombel"></i></a>';
                 return $actions;
             })
             ->rawColumns(['actions', 'mapels'])
@@ -262,6 +263,6 @@ class RombelController extends Controller
         }
        
 
-      return back()->with('success', 'Data Berhasil diTambahkan');
+      return back()->with('success', 'Data Berhasil ditambahkan');
     }
 }

@@ -17,11 +17,11 @@ class Mapel extends Model
     }
     public function mapelguru()
     {
-      return $this->hasMany('App\MapelGuru');
+      return $this->hasMany('App\MapelGuru', 'mapel_id');
     }
 
     public function kompetensi()
     {
-      return $this->hasMany('App\Kompetensi');
+      return $this->hasMany('App\Kompetensi', 'mapel_id');
     }
 }

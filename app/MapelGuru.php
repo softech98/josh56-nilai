@@ -17,15 +17,15 @@ class MapelGuru extends Model
 
      public function rombel()
     {
-           return $this->belongsTo('\App\Rombel');
+           return $this->belongsTo('\App\Rombel', 'rombel_id');
     }
 
      public function guru()
     {
-           return $this->belongsTo('\App\Guru');
+           return $this->belongsTo('\App\Guru', 'guru_id');
     }
     public function mapel()
     {
-           return $this->belongsTo('\App\Mapel');
+           return $this->belongsTo('\App\Mapel', 'mapel_id');
     }
 }

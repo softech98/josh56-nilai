@@ -112,6 +112,7 @@ class UsersController extends JoshController
             'nama'  => $request->nama,
             'username'  => $request->username,
             'gender'  => $request->gender,
+            'pic' => $request->pic,
         ]);
             //add user to 'User' group
             $role = Sentinel::findRoleById($request->get('group'));

@@ -13,6 +13,6 @@ class Kompetensi extends Model
 
     public function mapels()
     {
-           return $this->belongsTo('\App\Mapel');
+           return $this->belongsTo('\App\Mapel', 'mapel_id');
     }
 }

@@ -205,7 +205,7 @@ type="text/javascript"></script>
                     data:{id:id},
                     success:function(data)
                     {
-                        // alert(data);
+                        alert('Data terhapus');
                         $('#table').DataTable().ajax.reload();
                         
                         // msg.css('display', 'block');

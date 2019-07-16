@@ -11,11 +11,11 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            {!! Form::select('rombel',$getrombel, null, ['class' => 'form-control', 'placeholder'=>'--Pilih Rombel--', 'required']) !!}
                             <small class="text-danger">{{ $errors->first('rombel') }}</small>
+                            {!! Form::select('tingkat',['10'=>'10', '11'=>'11', '12'=>'12'], null, ['class' => 'form-control', 'placeholder'=>'--Pilih Tingkat--', 'required']) !!}
                         </div>
-                        <div class="col-lg-5 col-md-6">
-                            {!! Form::select('mapel_id',$getnamamapel, null, ['class' => 'form-control', 'placeholder'=>'--Pilih Mapel--', 'required']) !!}
+                        <div class="col-lg-6 col-md-6">
+                            {!! Form::select('mapel_id', $getnamamapel, null, ['class' => 'form-control', 'placeholder'=>'--Pilih Mapel--', 'required']) !!}
                             <small class="text-danger">{{ $errors->first('nama') }}</small>
                         </div>
                     </div>

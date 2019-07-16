@@ -273,11 +273,17 @@ Route::get('users/{id}', 'Admin\UsersController@show');
 Route::group(['prefix' => 'guru','namespace'=>'Guru', 'middleware' => 'guru', 'as' => 'guru.'], function () {
 
      Route::group([ 'prefix' => 'kompetensi'], function () {
-     Route::get('data', 'KompetensiController@data')->name('kompetensi.data');
+        Route::get('data', 'KompetensiController@data')->name('kompetensi.data');
         Route::get('{kompetensi}/delete', 'KompetensiController@destroy')->name('kompetensi.delete');
         Route::get('{kompetensi}/confirm-delete', 'KompetensiController@getModalDelete')->name('kompetensi.confirm-delete');
         });
-Route::resource('kompetensi', 'KompetensiController');
+    Route::resource('kompetensi', 'KompetensiController');
+
+    Route::group([ 'prefix' => 'siswa'], function () {
+        Route::get('guru/siswa/data', 'SiswaController@data')->name('siswa.data');
+        });
+    Route::resource('siswa', 'SiswaController');
+    Route::get('/pengetahuan', 'NilaiController@pengetahuan');
  });
 
 # contact form

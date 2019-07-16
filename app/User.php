@@ -12,7 +12,7 @@ class User extends EloquentUser
 	 */
 
 	protected $table = 'users';
-	public static $jenis_kelamin = ['Pria' => 'Pria', 'Wanita' => 'Wanita'];
+	public static $jenis_kelamin = ['L' => 'Laki-Laki', 'P' => 'Perempuan'];
 	/**
 	 * The attributes to be fillable from the model.
 	 *
@@ -57,7 +57,7 @@ class User extends EloquentUser
    
     public function gurus()
 	{
-    	return $this->hasOne('App\Guru');
+    	return $this->hasOne('App\Guru', 'guru_id');
     }
 
 }

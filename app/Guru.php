@@ -12,16 +12,16 @@ class Guru extends Model
     protected $fillable = [];
 	public function users()
 	{
-    	return $this->hasOne('App\User', 'email')->withDefault();
+    	return $this->hasOne('App\User', 'guru_id')->withDefault();
     }
         public function rombel()
     {
-        return $this->hasOne('App\Rombel')->withDefault();
+        return $this->hasOne('App\Rombel', 'guru_id')->withDefault();
     }
 
     public function mapelguru()
     {
-      return $this->hasMany('App\MapelGuru');
+      return $this->hasMany('App\MapelGuru', 'guru_id');
     }
 
     public function getCreatedAtAttribute()

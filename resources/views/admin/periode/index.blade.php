@@ -37,7 +37,7 @@ Data Periode
         <div class="col-md-6">
             <div class="card panel-primary ">
                 <div class="card-heading clearfix">
-                    <h4 class="card-title pull-left"> <i class="livicon" data-name="home" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    <h4 class="card-title pull-left"> <i class="livicon" data-name="calendar" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                        Periode
                     </h4>
                     {{-- <div class="pull-right">
@@ -55,6 +55,7 @@ Data Periode
                                     <th width="20px">No.</th>
                                     <th>Tahun</th>
                                     <th>Semester</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -87,6 +88,7 @@ Data Periode
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             { data: 'mulai' },
             { data: 'semester', name: 'semester' },
+            { data: 'aktif', name: 'aktif' },
             { data: 'actions', name: 'actions', orderable: false, searchable: false }
             ],
             columnDefs: [
@@ -111,6 +113,21 @@ Data Periode
                                      }
                                      return row.semester;
                                  }
+                             },
+                             {
+                                 targets: [ 3],
+                                   "orderable": false,
+                                 render: function (data, type, row, meta) {
+                                    var label = 'label-danger';
+                                    if (data==0) {
+                                        label = 'label-danger';
+                                        row.aktif = 'Non Aktif';
+                                    } else {
+                                        label = 'label-success';
+                                        row.aktif = 'Aktif';
+                                    }
+                                    return '<span class="label ' + label + '">' + row.aktif + '</span>';
+                                }
                              }
                              ],
              responsive: true
@@ -123,16 +140,36 @@ Data Periode
     });
 
 </script>
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" title="delete" aria-labelledby="kelas_delete_confirm_title" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"></div>
-  </div>
-</div>
+<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteLabel">Delete Periode</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin ingin menghapus Periode ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a  type="button" class="btn btn-danger Remove_square">Delete</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
 <script>
 $(function () {
     $('body').on('hidden.bs.modal', '.modal', function () {
         $(this).removeData('bs.modal');
     });
 });
+
+ var $url_path = '{!! url('/') !!}';
+    $('#delete_confirm').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var $recipient = button.data('id');
+        var modal = $(this)
+        modal.find('.modal-footer a').prop("href",$url_path+"/admin/periode/"+$recipient+"/delete");
+    })
 </script>
 @stop

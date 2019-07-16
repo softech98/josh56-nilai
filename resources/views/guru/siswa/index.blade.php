@@ -46,20 +46,13 @@ Data Siswa
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="flag" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Siswa
                  </h4>
-                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="add" href="javascript:void(0)">
-                                        <span class="btn-label pull-left">
-                                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
-                                                   data-hc="white"></i>
-                                            </span>
-                                <span class="label-text align-middle">Tambah Siswa</span>
-                            </button>
+                 
                                     
                     {{-- <div class="pull-right">
                     <a href="{{ route('kelas.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
                 </div> --}}
             </div>
             <br />
-            @include('admin.siswa.modal')
             <div class="card-body">
 
                 {{-- @if ($roles->count() >= 1) --}}
@@ -74,11 +67,10 @@ Data Siswa
                                 <th>Rombel</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Action</th>
-                                <th><a href="javascript:void(0)"><i class="livicon" id="bulk_delete" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete selected siswa"></i></a></th>
                             </tr>
                         </thead>
                         <tbody>
-                            </tbody>
+                        </tbody>
                         </table>
                        
                     </div>
@@ -112,7 +104,7 @@ Data Siswa
                 serverSide: true,
                 order: [ [3, 'asc'] ],
                 type : "get",
-                ajax: '{!! route('admin.siswa.index') !!}',
+                ajax: '{!! route('guru.siswa.index') !!}',
                 columns: [
                 {data: 'DT_RowIndex', name: 'is_siswa.DT_RowIndex',orderable: false, searchable: false },
                 { data: 'nis', name: 'nis' },
@@ -120,7 +112,6 @@ Data Siswa
                 { data: 'rombel', name: 'rombel' },
                 { data: 'jenis_kelamin', name: 'jenis_kelamin' },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false },
-                { data: 'checkbox', orderable: false, searchable: false },
                 ],
                 responsive: true,
                 
@@ -162,70 +153,7 @@ Data Siswa
             });
         });
 
-        var $url_path = '{!! url('/') !!}';
-        $('#delete_confirm').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var $recipient = button.data('id');
-            var modal = $(this)
-            modal.find('.modal-footer a').prop("href",$url_path+"/admin/siswa/"+ $recipient +"/delete");
-        })
     </script>
-    <script type="text/javascript">
-        $('#add').click(function(){
-            $('#myModal').modal('show');
-             $('.modal-title').html("Tambah Data Siswa");
-            $('.modal-body').load('{!! route("admin.siswa.create") !!}')
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).on('click', '.edit{{$siswa->nis}}', function(){
-            var nis = $(this).data('id');
-            $.get("{{ route('admin.siswa.index') }}" +'/' + nis +'/edit', function (data) {
-              $('#myModal').modal('show');
-              $('.modal-body').html(data);
-              
-          })
-        });
-
-        $(document).on('click', '#bulk_delete', function(){
-            var nis = [];
-            
-            if(confirm("Are you sure you want to Delete this data?"))
-            {
-                $('.siswa_checkbox:checked').each(function(){
-                    if ($(this).val().length < 5)
-                    {
-                        nis.push('0' + $(this).val());
-                    }else
-                    {
-                        nis.push($(this).val());
-                    }
-                });
-
-                if(nis.length > 0)
-                {
-                    var msg = $('#msg');
-                    $.ajax({
-                        url:"{{ route('admin.siswa.massremove')}}",
-                        data:{nis:nis},
-                        success:function(data)
-                        {
-                        alert('Data Terhapus');
-                        $('#table').DataTable().ajax.reload();
-                        
-                        msg.css('display', 'block');
-                        $('#msgMuncul').text('Data Berhasil Terhapus');
-                        msg.fadeOut(5000);
-                        $('#msgMuncul').text('');
-                    }
-                });
-                }
-                else
-                {
-                    alert("Please select atleast one checkbox");
-                }
-            }
-        });
-    </script>
+   
     
     @stop

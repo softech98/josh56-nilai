@@ -8,12 +8,13 @@
                     <!-- CSRF Token -->
 
                     {{ csrf_field() }}
+                    {!! Form::hidden('periode_id', $periode->id) !!}
                     <br>
                     <div class="form-group">
                         <div class="row">
                         {!! Form::label('namaROmbel', 'Nama Rombel',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
-                           {{ Form::text('namaRombel',null,array('class'=>'form-control','placeholder' => 'Nama Rombel','autofocus')) }}
+                           {{ Form::text('namaRombel',null,array('class'=>'form-control','placeholder' => 'Nama Rombel','autofocus' ,'required' => 'required')) }}
                          <small class="text-danger">{{ $errors->first('namaRombel') }}</small>
                      </div>
                         {!! Form::label('jurusan', 'Jurusan',[ 'class' => 'col-sm-2', 'control-label']) !!}
@@ -30,14 +31,14 @@
                             {!! Form::select('tingkat', $tingkat, null, ['id' => 'tingkat', 'class' => 'form-control', 'required' => 'required','placeholder'=>'--Pilih Tingkat--']) !!}
                             <small class="text-danger">{{ $errors->first('tingkat') }}</small>
                         </div>
-                        {!! Form::label('periode', 'Periode',[ 'class' => 'col-sm-2', 'control-label']) !!}
+                        {!! Form::label('guru_id', 'Wali Kelas',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
-                            {!! Form::select('periode_id', $periode, null, ['id' => 'periode', 'class' => 'form-control', 'required' => 'required',]) !!}
-                            <small class="text-danger">{{ $errors->first('periode_id') }}</small>
+                            {!! Form::select('guru_id', $wali_kelas, null, ['id' => 'walikelas', 'class' => 'form-control select2', 'placeholder'=>'']) !!}
+                            <small class="text-danger">{{ $errors->first('guru_id') }}</small>
                         </div>
                     </div>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="row">
                         {!! Form::label('guru_id', 'Wali Kelas',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
@@ -45,12 +46,12 @@
                             <small class="text-danger">{{ $errors->first('guru_id') }}</small>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                     <div class="form-group">
                         <div class="row">
-                        <div class="col-md-6 col-sm-8">
-                            <button class="btn btn-warning btn-responsive" data-dismiss="modal" id="reload">Kembali</button>
-                            <button type="submit" class="btn btn-success btn-responsive">
+                        <div class="col-md-6 col-sm-8 ">
+                            <button type="reset" class="btn btn-danger btn-responsive ">Reset</button>
+                            <button type="submit" class="btn btn-success btn-responsive ">
                                 {{ $btn_submit }}
                             </button>
                         </div>

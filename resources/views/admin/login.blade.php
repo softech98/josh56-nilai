@@ -38,7 +38,7 @@
             </div>
         </div>
         </div>
-        <div class="row vertical-offset-100">
+        <div class="row">
             <!-- Notifications -->
             <div class="col-sm-6 col-sm-offset-3  col-md-5 col-md-offset-4 col-lg-4 col-lg-offset-4 mx-auto">
 
@@ -94,7 +94,7 @@
                                 </p> --}}
                             </form>
                         </div>
-                        <div id="register" class="animate form">
+                       {{--  <div id="register" class="animate form">
                             <form action="{{ route('admin.signup') }}" autocomplete="on" method="post" role="form" id="register_here">
                                 <h3 class="black_bg my-3">
                                     <img src="{{ asset('assets/img/logo.png') }}" alt="josh logo">
@@ -212,7 +212,7 @@
                                     </a>
                                 </p>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

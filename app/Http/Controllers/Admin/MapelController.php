@@ -162,7 +162,7 @@ class MapelController extends Controller
         })
         ->addColumn('actions',function($mapel) {
             $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$mapel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update mapel"></i></a>';
-            $actions .= '<a href='. route('admin.mapel.confirm-delete', $mapel->id) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete mapel"></i></a>';
+            $actions .= '<a href='. route('admin.mapel.confirm-delete', $mapel->id) .' data-id="'.$mapel->id.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete mapel"></i></a>';
                 return $actions;
             })
             ->rawColumns(['actions'])

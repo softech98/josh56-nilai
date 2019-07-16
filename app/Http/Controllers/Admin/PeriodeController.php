@@ -28,7 +28,7 @@ class PeriodeController extends Controller
         ->addIndexColumn()
         ->addColumn('actions',function($periode) {
             $btn = '<a href='. route('admin.periode.edit', $periode->id) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update periode"></i></a>';
-            $btn .= '<a href='. route('admin.periode.confirm-delete', $periode->id) .' data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete periode"></i></a>';
+            $btn .= '<a href='. route('admin.periode.confirm-delete', $periode->id) .' data-id="'.$periode->id.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete periode"></i></a>';
                 return $btn;
             })
             ->rawColumns(['actions'])

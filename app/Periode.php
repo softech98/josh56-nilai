@@ -13,6 +13,6 @@ class Periode extends Model
 
      public function rombel()
     {
-           return $this->hasMany('\App\Rombel')->withDefault();
+           return $this->hasMany('\App\Rombel', 'periode_id')->withDefault();
     }
 }

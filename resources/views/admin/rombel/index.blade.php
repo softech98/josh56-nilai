@@ -44,7 +44,7 @@ Data Rombel
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-            <div class="card panel-danger ">
+            <div class="card panel-primary ">
                 <div class="card-heading clearfix icon-buttons">
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="home" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                        Rombel
@@ -83,7 +83,7 @@ Data Rombel
                                     {{-- <th>Jurusan</th> --}}
                                     <th>Wali Kelas</th>
                                     <th>Mata Pelajaran</th>
-                                    <th>Periode</th>
+                                    {{-- <th>Periode</th> --}}
                                     <th>Action</th>
                                     
                                 </tr>
@@ -138,18 +138,18 @@ Data Rombel
             // { data: 'jurusans.singkatan', name: 'singkatan', searchable: false, orderable: false},
             { data: 'guru.nama', name: 'walikelas', searchable: false, orderable: false },
             { data: 'mapels', name: 'mapels', searchable: false, orderable: false },
-            { data: 'periode.mulai', name: 'periode', searchable: false, orderable: false},
+            // { data: 'periode.mulai', name: 'periode', searchable: false, orderable: false},
             { data: 'actions', name: 'actions', orderable: false, searchable: false }
             ],
-            columnDefs: [
-                             {
-                                 targets: [ 5 ],
-                                 "orderable": false,
-                                 render: function ( data, type, row ) {
-                                     return data+'/'+row.periode.selesai;
-                                 }
-                             },
-                             ],
+            // columnDefs: [
+            //                  {
+            //                      targets: [ 5 ],
+            //                      "orderable": false,
+            //                      render: function ( data, type, row ) {
+            //                          return data+'/'+row.periode.selesai;
+            //                      }
+            //                  },
+            //                  ],
              responsive: true
         });
         table.on( 'draw', function () {
@@ -171,17 +171,39 @@ Data Rombel
     });
 
 </script>
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" title="delete" aria-labelledby="kelas_delete_confirm_title" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content"></div>
-  </div>
-</div>
+<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="deleteLabel">Delete Rombel</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin akan menghapus rombongan belajar ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a  type="button" class="btn btn-danger Remove_square">Delete</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        
+    </div>
 <script>
 $(function () {
     $('body').on('hidden.bs.modal', '.modal', function () {
         $(this).removeData('bs.modal');
     });
 });
+
+var $url_path = '{!! url('/') !!}';
+        $('#delete_confirm').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var $recipient = button.data('id');
+            var modal = $(this)
+            modal.find('.modal-footer a').prop("href",$url_path+"/admin/rombel/"+ $recipient +"/delete");
+        })
 </script>
 <script type="text/javascript">
     $(document).on('click', '.edit{{$rombel->id}}', function(){

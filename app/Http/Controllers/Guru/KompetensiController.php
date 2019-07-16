@@ -30,7 +30,9 @@ class KompetensiController extends Controller
      */
     public function index()
     {
-        return view ('guru.kompetensi.index');
+        $guru = Sentinel::getUser();
+        $mapelguru = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->get();
+        return view ('guru.kompetensi.index', compact('mapelguru'));
     }
 
     /**
@@ -41,16 +43,22 @@ class KompetensiController extends Controller
     public function create()
     {
        $kompetensi         = new Kompetensi();
-       $guru               = Sentinel::getUser();
+       $gurulogin               = Sentinel::getUser();
        $periode            = Periode::where('aktif',1)->first();
-       $mapelguru          = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->get();
-       $getnamamapel       = [];
-       $getrombel          = [];
-       foreach($mapelguru as $m)
-      {
-             $getrombel[]   = Rombel::where('id', $m->rombel_id)->pluck('namaRombel', 'tingkat');
-             $getnamamapel[] = Mapel::where('id',$m->mapel_id)->pluck('nama','id');
-      }
+       
+       // if($gurulogin->guru_id)
+       // {
+       //  $getnamamapel = MapelGuru::where('guru_id', $gurulogin->guru_id)->groupBy('mapel_id')->get();
+       // }
+       // dd($getnamamapel);
+       
+       $mapelguru          = MapelGuru::where('guru_id', $gurulogin->guru_id ?? 0)->groupBy('mapel_id')->get();
+       // $getnamamapel       = [];
+       // $getrombel          = [];
+
+       $getrombel   = Rombel::whereIn('id', $mapelguru->pluck('rombel_id'))->pluck('namaRombel', 'tingkat');
+       $getnamamapel = Mapel::whereIn('id', $mapelguru->pluck('mapel_id'))->pluck('nama','id');
+
        $data['method']     = "POST";
        $data['btn_submit'] = "Simpan";
        $data['action']     = 'Guru\KompetensiController@store';
@@ -155,7 +163,7 @@ class KompetensiController extends Controller
             $kompetensi = Kompetensi::with('jurusans','guru','periode')->where('tingkat', $request->tingkatSelect);
         }
         else{
-        $kompetensi = Kompetensi::where('mapel_id',$m->mapel_id)->get();
+        $kompetensi = Kompetensi::with('mapels')->where('mapel_id',$m->mapel_id)->get(['mapel_id','kode','tingkat','kompetensi_dasar','id']);
         }
     }
         return DataTables::of($kompetensi)

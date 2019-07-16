@@ -80,6 +80,12 @@ View Guru Details
                                                         </td>
                                                     </tr>
                                                     <tr>
+                                                        <td>Username</td>
+                                                        <td>
+                                                            {{ $guru->users->username }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>E-Mail</td>
                                                         <td>
                                                             {{ $guru->email }}

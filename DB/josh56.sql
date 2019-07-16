@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jul 2019 pada 10.03
+-- Waktu pembuatan: 16 Jul 2019 pada 15.58
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -48,7 +48,6 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (4, 4, 'JfRaM3yvQFy44UIhhTGRsHd4mF0HrCSj', 1, '2019-06-23 09:56:56', '2019-06-23 09:56:56', '2019-06-23 09:56:56'),
 (5, 5, 'gZ9lIC5BeIxjynE2Ty1QuiFrjyf8QAZf', 1, '2019-06-23 09:56:57', '2019-06-23 09:56:57', '2019-06-23 09:56:57'),
 (8, 8, 'j05ay2TvefgWaTdJpCsMM3hREtZvQ76N', 1, '2019-06-27 22:50:10', '2019-06-27 22:50:10', '2019-06-27 22:50:10'),
-(9, 9, 'KH8XWSG2R0wXuzeeRFD7NzrVLcJ6id9h', 1, '2019-06-27 23:03:49', '2019-06-27 23:03:49', '2019-06-27 23:03:49'),
 (10, 10, 'pVR142b2GPXq1n8OV40X8mOSFEcwN5zI', 1, '2019-06-27 23:07:00', '2019-06-27 23:07:00', '2019-06-27 23:07:00'),
 (11, 11, '2caLoDfc8QAO5wpZHnuzpi5bZyzXyeUU', 1, '2019-06-28 19:26:53', '2019-06-28 19:26:53', '2019-06-28 19:26:53'),
 (12, 12, '6yfTcoTmBzMmGtyvY7hnRWKwYOM7Ki0B', 1, '2019-06-28 19:29:31', '2019-06-28 19:29:31', '2019-06-28 19:29:31'),
@@ -63,7 +62,8 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (24, 5, 'CHAgplhmYlyf2f9syMf7TeXeqpnXJCRR', 1, '2019-07-13 08:48:44', '2019-07-13 08:48:44', '2019-07-13 08:48:44'),
 (25, 6, 'aUmb9RNzFfWcAIKnqK0JKDa23w6ci2Fw', 1, '2019-07-13 10:29:18', '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
 (26, 7, 'e4Ujx2TtFyeLk6C8IttmJaycDlcmsX7T', 1, '2019-07-13 10:41:24', '2019-07-13 10:41:24', '2019-07-13 10:41:24'),
-(27, 8, 'fdLXpL377W5NYy1M9olyvFTLf4PiJc9D', 1, '2019-07-13 10:44:19', '2019-07-13 10:44:19', '2019-07-13 10:44:19');
+(27, 8, 'fdLXpL377W5NYy1M9olyvFTLf4PiJc9D', 1, '2019-07-13 10:44:19', '2019-07-13 10:44:19', '2019-07-13 10:44:19'),
+(29, 10, 'yNVMjpBrD8erZttV1ZMXn4kQoOZSkiSl', 1, '2019-07-16 04:03:02', '2019-07-16 04:03:01', '2019-07-16 04:03:02');
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,36 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_id`, `subj
 (32, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 07:19:44', '2019-07-15 07:19:44'),
 (33, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 07:19:49', '2019-07-15 07:19:49'),
 (34, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 07:36:37', '2019-07-15 07:36:37'),
-(35, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 07:36:45', '2019-07-15 07:36:45');
+(35, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 07:36:45', '2019-07-15 07:36:45'),
+(36, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 11:57:12', '2019-07-15 11:57:12'),
+(37, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-15 11:57:45', '2019-07-15 11:57:45'),
+(38, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 11:57:53', '2019-07-15 11:57:53'),
+(39, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 12:32:44', '2019-07-15 12:32:44'),
+(40, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-15 12:32:48', '2019-07-15 12:32:48'),
+(41, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-15 12:33:16', '2019-07-15 12:33:16'),
+(42, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-15 12:33:26', '2019-07-15 12:33:26'),
+(43, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 01:32:51', '2019-07-16 01:32:51'),
+(44, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 03:52:20', '2019-07-16 03:52:20'),
+(45, 'admin2', 'LoggedIn', 9, 'App\\User', 9, 'App\\User', '[]', '2019-07-16 03:52:27', '2019-07-16 03:52:27'),
+(46, 'admin2', 'LoggedOut', 9, 'App\\User', 9, 'App\\User', '[]', '2019-07-16 04:00:44', '2019-07-16 04:00:44'),
+(47, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 04:00:47', '2019-07-16 04:00:47'),
+(48, 'admin2', 'User deleted by Ilham', 9, 'App\\User', 9, 'App\\User', '[]', '2019-07-16 04:01:03', '2019-07-16 04:01:03'),
+(49, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 04:03:32', '2019-07-16 04:03:32'),
+(50, 'Admin Kedua', 'LoggedIn', 10, 'App\\User', 10, 'App\\User', '[]', '2019-07-16 04:03:38', '2019-07-16 04:03:38'),
+(51, 'Admin Kedua', 'LoggedOut', 10, 'App\\User', 10, 'App\\User', '[]', '2019-07-16 04:06:20', '2019-07-16 04:06:20'),
+(52, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 04:26:24', '2019-07-16 04:26:24'),
+(53, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 04:27:21', '2019-07-16 04:27:21'),
+(54, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 04:37:55', '2019-07-16 04:37:55'),
+(55, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 04:39:42', '2019-07-16 04:39:42'),
+(56, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 04:39:54', '2019-07-16 04:39:54'),
+(57, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 08:02:53', '2019-07-16 08:02:53'),
+(58, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-16 08:03:16', '2019-07-16 08:03:16'),
+(59, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 08:03:26', '2019-07-16 08:03:26'),
+(60, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 08:24:25', '2019-07-16 08:24:25'),
+(61, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 09:39:53', '2019-07-16 09:39:53'),
+(62, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-16 09:40:00', '2019-07-16 09:40:00'),
+(63, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-16 09:47:38', '2019-07-16 09:47:38'),
+(64, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 09:47:46', '2019-07-16 09:47:46');
 
 -- --------------------------------------------------------
 
@@ -193,27 +222,17 @@ CREATE TABLE `is_guru` (
 
 INSERT INTO `is_guru` (`id`, `nip`, `email`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `hp`, `foto`, `created_at`, `updated_at`) VALUES
 (1, '198765452356987453', 'multi@gmail.com', 'Multimedia', '', '1929-09-11', 'L', 'Jambi', NULL, NULL, '2019-06-28 22:12:45', '2019-06-28 22:12:45'),
-(14, '114602786777458553', 'kawaca.budiyanto@januar.in', 'Himawan Luhung Adriansyah S.Sos', 'Kotamobagu', '1927-01-27', 'L', 'Gg. Sutarjo No. 212, Tegal 17211, DIY', '(+62)81066656', NULL, '2019-06-08 21:04:10', '2019-04-30 01:26:39'),
 (15, '100958282164806572', 'simanjuntak.salimah@yahoo.co.id', 'Latika Farida', 'Administrasi Jakarta Utara', '2014-10-28', 'P', 'Kpg. Imam Bonjol No. 681, Bandar Lampung 86390, Gorontalo', '(+62)83338289', NULL, '2019-01-15 13:32:32', '2019-04-03 02:43:46'),
-(16, '122544523254377141', 'kayla38@safitri.co', 'Hardana Aris Manullang S.Ked', 'Administrasi Jakarta Timur', '1973-12-28', 'L', 'Jln. Kusmanto No. 397, Kupang 21840, KalSel', '(+62)86142818', NULL, '2019-04-22 09:09:36', '2019-04-09 21:30:09'),
-(17, '114520763463305260', 'puti.nurdiyanti@pertiwi.or.id', 'Mala Safitri', 'Sungai Penuh', '1941-05-04', 'P', 'Ki. Bara No. 484, Payakumbuh 37258, SumUt', '(+62)81974616', NULL, '2019-04-19 19:51:12', '2019-01-31 13:33:44'),
 (18, '118677000847568283', 'rriyanti@kuswoyo.in', 'Dadap Sitompul S.IP', 'Tidore Kepulauan', '1955-02-14', 'P', 'Gg. Daan No. 72, Sungai Penuh 99714, JaTim', '(+62)82454502', NULL, '2019-03-10 00:32:09', '2019-02-28 17:50:39'),
 (19, '122959108105881502', 'jutami@yahoo.com', 'Irsad Emong Gunawan S.Farm', 'Bandung', '1958-10-14', 'L', 'Gg. Cemara No. 376, Pekalongan 94585, MalUt', '(+62)87458191', NULL, '2019-02-17 00:57:23', '2019-04-30 04:21:34'),
 (20, '105579532035900536', 'balapati82@yahoo.co.id', 'Cawisadi Yahya Utama M.Farm', 'Banjar', '2004-07-20', 'P', 'Jr. Lembong No. 274, Makassar 78179, KalBar', '(+62)81431088', NULL, '2019-05-18 10:39:33', '2019-03-03 17:52:38'),
 (21, '120253957665899022', 'dsamosir@riyanti.co', 'Yuni Nasyiah S.Pt', 'Bandar Lampung', '1948-12-25', 'P', 'Kpg. Sam Ratulangi No. 908, Ambon 31365, KalUt', '(+62)84800192', NULL, '2019-01-16 15:48:25', '2019-02-05 13:15:54'),
-(22, '135054868804990983', 'malik.wacana@yahoo.com', 'Ega Zulkarnain', 'Gunungsitoli', '1978-12-26', 'P', 'Jln. Gremet No. 839, Surakarta 80077, KalBar', '(+62)81288924', NULL, '2019-04-16 02:02:11', '2019-06-12 19:54:19'),
-(23, '156569982120893988', 'xputra@yahoo.co.id', 'Nrima Hardiansyah', 'Cimahi', '1970-04-07', 'L', 'Ds. Sutarto No. 968, Bukittinggi 44328, DKI', '(+62)86281553', NULL, '2019-05-04 18:59:40', '2019-05-02 21:14:45'),
 (24, '102776139797069180', 'ellis45@yahoo.co.id', 'Umar Kusumo S.E.', 'Metro', '2007-12-31', 'L', 'Ds. Supono No. 344, Pekanbaru 67395, BaBel', '(+62)81626857', NULL, '2019-05-25 08:59:27', '2019-06-14 14:07:10'),
 (25, '191676654316602108', 'latika25@yahoo.co.id', 'Ihsan Manullang', 'Bukittinggi', '1941-08-25', 'P', 'Ki. Achmad Yani No. 199, Padang 61766, SulUt', '(+62)89349940', NULL, '2019-05-23 08:37:27', '2019-03-15 19:47:41'),
-(26, '155881280107968827', 'skuswandari@suartini.in', 'Jarwi Prakasa', 'Tanjung Pinang', '1923-05-14', 'P', 'Kpg. Imam No. 986, Salatiga 83081, KalTeng', '(+62)81647865', NULL, '2019-04-07 11:27:11', '2019-05-27 15:25:02'),
-(27, '199688238239266172', 'cemani60@yahoo.com', 'Adikara Habibi', 'Sukabumi', '1935-11-27', 'P', 'Dk. Ciumbuleuit No. 30, Denpasar 66780, JaTeng', '(+62)83592415', NULL, '2019-06-19 14:25:26', '2019-02-07 13:15:46'),
 (28, '166172290282872027', 'nuraini.yusuf@oktaviani.biz', 'Wulan Nasyiah', 'Blitar', '1921-07-24', 'L', 'Kpg. PHH. Mustofa No. 962, Bekasi 58564, JaTeng', '(+62)84022410', NULL, '2019-03-19 04:04:08', '2019-06-06 07:50:57'),
 (29, '161663597478225219', 'hariyah.eluh@puspita.biz', 'Carla Kania Pertiwi', 'Dumai', '2008-06-03', 'P', 'Ds. Ronggowarsito No. 274, Manado 74352, DKI', '(+62)80391479', NULL, '2019-02-23 13:11:03', '2019-06-02 05:48:43'),
-(30, '143787882873344835', 'shania08@nasyiah.my.id', 'Lutfan Darmana Latupono', 'Bengkulu', '1963-07-22', 'L', 'Ki. Babakan No. 912, Sungai Penuh 93126, MalUt', '(+62)80839214', NULL, '2019-06-18 07:28:06', '2019-03-17 00:45:00'),
 (31, '109100497483158286', 'budi.lazuardi@gmail.com', 'Ina Widiastuti S.Pt', 'Kupang', '1973-01-08', 'P', 'Gg. Bappenas No. 5, Ambon 88695, SulUt', '(+62)81618448', NULL, '2019-03-21 19:48:07', '2019-05-26 22:41:21'),
 (32, '103408144908846292', 'isiregar@riyanti.or.id', 'Zamira Kuswandari', 'Padangpanjang', '1923-05-15', 'L', 'Ki. Baya Kali Bungur No. 485, Jambi 94585, SumUt', '(+62)86890111', '1.JPG', '2019-04-30 01:00:50', '2019-02-23 13:10:34'),
-(33, '161276502210615751', 'gatot05@wastuti.info', 'Mila Aryani S.Gz', 'Kotamobagu', '1926-01-29', 'L', 'Jln. Sumpah Pemuda No. 452, Tidore Kepulauan 49369, JaTim', '(+62)89717913', NULL, '2019-03-23 11:36:27', '2019-03-05 11:01:20'),
-(34, '103408144908846297', 'ramdan@yahoo.com', 'Ramdan', '', '2000-07-02', 'L', 'Jambi', '08526687989', NULL, '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
 (37, '103408144908846298', 'riawan@gmail.com', 'Riawan', '', '1998-02-22', 'L', 'Jambi', '081377815153', NULL, '2019-07-13 10:44:18', '2019-07-13 10:44:18');
 
 -- --------------------------------------------------------
@@ -259,7 +278,10 @@ CREATE TABLE `is_kompetensi` (
 --
 
 INSERT INTO `is_kompetensi` (`id`, `kode`, `aspek`, `mapel_id`, `tingkat`, `kompetensi_dasar`) VALUES
-(1, '3.1', 'P', 1, '10', 'Menganalisis Q.S. Al-Anfal (8) : 72); Q.S. Al-Hujurat (49) : 12; dan QS Al-Hujurat (49) : 10; serta hadits tentang kontrol diri (mujahadah an-nafs), prasangka baik (husnuzzhan), dan persaudaraan (ukhuwah)');
+(1, '3.1', 'P', 1, '10', 'Menganalisis Q.S. Al-Anfal (8) : 72); Q.S. Al-Hujurat (49) : 12; dan QS Al-Hujurat (49) : 10; serta hadits tentang kontrol diri (mujahadah an-nafs), prasangka baik (husnuzzhan), dan persaudaraan (ukhuwah)'),
+(2, '3.2', 'P', 1, '10', 'Memahami manfaat dan hikmah kontrol diri (mujahadah an-nafs), prasangka baik (husnuzzhan) dan persaudaraan (ukhuwah), dan menerapkannya dalam kehidupan'),
+(3, '3.3', 'P', 1, '10', 'Menganalisis  Q.S. Al-Isra\' (17) : 32, dan Q.S. An-Nur (24) : 2, serta hadits tentang larangan pergaulan bebas dan perbuatan zina.'),
+(5, '3.1', 'P', 1, '12', 'menganalisis dan mengevaluasi makna Q.S. Ali Imran/3: 190-191, dan Q.S. Ali Imran/3: 159, serta Hadis tentang berpikir kritis dan bersikap demokratis');
 
 -- --------------------------------------------------------
 
@@ -312,7 +334,8 @@ INSERT INTO `is_mapel_gurus` (`id`, `rombel_id`, `mapel_id`, `guru_id`, `jurusan
 (5, 1, 3, 15, 1, 3),
 (12, 8, 4, 37, 2, 3),
 (13, 8, 5, 31, 2, 3),
-(14, 2, 1, 37, 1, 3);
+(14, 2, 1, 37, 1, 3),
+(15, 5, 1, 37, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -358,15 +381,16 @@ CREATE TABLE `is_rombel` (
 --
 
 INSERT INTO `is_rombel` (`id`, `namaRombel`, `jurusan_id`, `tingkat`, `periode_id`, `guru_id`) VALUES
-(1, 'TKJ 1', 1, '10', 1, '14'),
-(2, 'TKJ 2', 1, '10', 1, '15'),
-(3, 'TKJ 1', 1, '11', 1, '16'),
-(4, 'TKJ 2', 1, '11', 1, '17'),
-(5, 'TKJ 1', 1, '12', 1, '18'),
-(6, 'TKJ 2', 1, '12', 1, '19'),
-(7, 'AK 1', 2, '10', 1, '20'),
-(8, 'AK 2', 2, '10', 1, '21'),
-(9, 'AK 3', 2, '10', 1, '22');
+(1, 'TKJ 1', 1, '10', 3, '24'),
+(2, 'TKJ 2', 1, '10', 3, '15'),
+(3, 'TKJ 1', 1, '11', 3, '25'),
+(4, 'TKJ 2', 1, '11', 3, '32'),
+(5, 'TKJ 1', 1, '12', 3, '18'),
+(6, 'TKJ 2', 1, '12', 3, '19'),
+(7, 'AK 1', 2, '10', 3, '20'),
+(8, 'AK 2', 2, '10', 3, '21'),
+(9, 'AK 3', 2, '10', 3, '31'),
+(10, 'AK 1', 2, '11', 3, '28');
 
 -- --------------------------------------------------------
 
@@ -393,20 +417,18 @@ CREATE TABLE `is_siswa` (
 --
 
 INSERT INTO `is_siswa` (`nis`, `nisn`, `rombel_id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `agama`, `alamat`, `created_at`, `updated_at`) VALUES
-('10233', '9391546804', 2, 'Galar Irnanto Pranowo', 'Bima', '1932-05-13', 'L', 'Buddha', 'Jr. Gambang No. 11, Pematangsiantar 11739, KalTim', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
+('10233', '9391546804', 8, 'Galar Irnanto Pranowo', 'Bima', '1932-05-13', 'L', 'Buddha', 'Jr. Gambang No. 11, Pematangsiantar 11739, KalTim', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('12546', '9545358715', 2, 'Ilham Saputra', 'Jambi', '1998-09-22', 'L', 'Islam', 'Jambi', '2019-06-27 11:41:36', '2019-07-07 15:11:20'),
 ('14560', '9531638126', 3, 'Kasiyah Nabila Mayasari', 'Bitung', '1935-12-18', 'P', 'Hindu', 'Dk. Sadang Serang No. 136, Banda Aceh 74917, DKI', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
 ('14592', '9742538683', 3, 'Jumadi Saputra', 'Bitung', '1969-07-16', 'P', 'Kristen Katolik', 'Ki. Supomo No. 923, Banjarmasin 95690, SulSel', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
 ('15468', '9087420200', 3, 'Gilda Nabila Wahyuni', 'Semarang', '1961-07-20', 'P', 'Islam', 'Jr. Sumpah Pemuda No. 281, Bontang 64758, KalTim', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
 ('17147', '9509233253', 1, 'Mustika Firgantoro', 'Ternate', '1961-02-26', 'L', 'Kristen Protestan', 'Jln. Dipatiukur No. 599, Yogyakarta 26707, JaBar', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
-('18252', '9976429807', 3, 'Darmanto Kuswoyo', 'Banjarbaru', '1975-04-04', 'L', 'Buddha', 'Kpg. Supomo No. 166, Padang 23993, Aceh', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
 ('19864', '9973084387', 1, 'Tami Ella Wijayanti S.IP', 'Pasuruan', '1947-07-21', 'P', 'Islam', 'Kpg. Dipatiukur No. 764, Sibolga 66206, Aceh', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('20721', '9221487445', 3, 'Gamanto Permadi', 'Pontianak', '2006-01-25', 'L', 'Buddha', 'Dk. Babadan No. 655, Cilegon 72526, NTB', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('21141', '9750148307', 2, 'Patricia Rahayu', 'Padang', '1991-12-05', 'L', 'Buddha', 'Jln. Basmol Raya No. 285, Depok 62257, Lampung', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('22049', '9685352078', 3, 'Respati Samosir', 'Lubuklinggau', '1984-03-01', 'L', 'Buddha', 'Dk. Bayan No. 151, Bogor 52257, SumSel', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
 ('22351', '9477486202', 2, 'Jaswadi Megantara', 'Pagar Alam', '1938-10-26', 'L', 'Buddha', 'Jln. Suryo No. 939, Madiun 28153, Banten', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
 ('24406', '9755570663', 2, 'Umaya Umaya Sihombing', 'Subulussalam', '1975-12-26', 'L', 'Islam', 'Jln. Samanhudi No. 202, Bima 90535, NTT', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
-('26476', '9888850267', 1, 'Wasis Manullang', 'Padangsidempuan', '1995-07-01', 'P', 'Islam', 'Ds. Lada No. 343, Probolinggo 71688, SulTeng', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
 ('32244', '9930360854', 2, 'Yunita Yolanda', 'Denpasar', '1980-03-05', 'L', 'Kristen Katolik', 'Kpg. Abdullah No. 838, Makassar 70757, KalTim', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('40229', '9033569776', 2, 'Eva Rahayu Puspita', 'Padang', '2006-06-23', 'P', 'Kristen Protestan', 'Ds. Sukabumi No. 781, Lhokseumawe 24666, Bengkulu', '2019-07-07 15:19:10', '2019-07-07 15:19:10'),
 ('46612', '9090883185', 2, 'Jono Damanik S.Pt', 'Kendari', '1957-07-17', 'L', 'Hindu', 'Dk. Bakau Griya Utama No. 546, Bukittinggi 32454, Aceh', '2019-07-07 15:19:09', '2019-07-07 15:19:09'),
@@ -415,19 +437,15 @@ INSERT INTO `is_siswa` (`nis`, `nisn`, `rombel_id`, `nama`, `tempat_lahir`, `tan
 ('47951', '9910577070', 2, 'Bancar Elon Samosir', 'Tarakan', '1970-12-24', 'L', 'Hindu', 'Jr. Pasirkoja No. 755, Tual 35908, Riau', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('48867', '9484038524', 3, 'Gadang Saputra', 'Depok', '1997-09-28', 'P', 'Buddha', 'Psr. Gremet No. 29, Ternate 67058, SumUt', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('49773', '9369796898', 2, 'Danu Putra', 'Gunungsitoli', '2009-11-19', 'P', 'Kristen Protestan', 'Jln. Villa No. 494, Cimahi 71666, JaBar', '2019-07-07 15:19:10', '2019-07-07 15:19:10'),
-('49893', '9404870999', 1, 'Gina Intan Pratiwi S.Gz', 'Malang', '1996-01-25', 'P', 'Kristen Katolik', 'Jr. Gajah No. 7, Bontang 66850, SumBar', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
 ('51174', '9693609735', 3, 'Vanesa Almira Palastri M.Kom.', 'Bandung', '1951-01-15', 'P', 'Kristen Protestan', 'Jr. Bank Dagang Negara No. 715, Malang 25518, Papua', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
-('51935', '9460775642', 3, 'Wira Kenes Siregar', 'Samarinda', '1923-09-19', 'P', 'Kristen Protestan', 'Jln. Sukajadi No. 485, Makassar 10478, SumUt', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
 ('52529', '9988399359', 2, 'Elisa Padma Farida', 'Pekalongan', '1999-02-26', 'L', 'Hindu', 'Gg. Suryo Pranoto No. 861, Makassar 20632, JaTim', '2019-07-07 15:19:09', '2019-07-07 15:19:09'),
-('55861', '9380250905', 1, 'Jati Putra', 'Pagar Alam', '1959-12-05', 'P', 'Buddha', 'Ki. Bagas Pati No. 925, Sibolga 18255, Maluku', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
 ('57572', '9069559054', 1, 'Adikara Putra', 'Bau-Bau', '1939-08-21', 'L', 'Buddha', 'Gg. Merdeka No. 970, Administrasi Jakarta Utara 24797, SulBar', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
 ('57946', '9848890122', 2, 'Daliman Iswahyudi S.E.', 'Surakarta', '2012-06-20', 'P', 'Kristen Protestan', 'Jr. Pelajar Pejuang 45 No. 510, Sungai Penuh 41994, Lampung', '2019-07-07 15:19:10', '2019-07-07 15:19:10'),
 ('60461', '9809814921', 1, 'Uda Dasa Wasita', 'Kediri', '1991-04-25', 'P', 'Islam', 'Dk. Tambak No. 100, Sabang 66472, Lampung', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
 ('61134', '9221300671', 2, 'Maya Safitri', 'Metro', '1967-12-02', 'L', 'Hindu', 'Psr. B.Agam 1 No. 224, Bekasi 87477, KalUt', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
 ('61135', '9095439069', 4, 'Queen Widya Yolanda S.Sos', 'Bukittinggi', '2006-09-13', 'L', 'Buddha', 'Kpg. Reksoninten No. 400, Dumai 95281, MalUt', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
-('63785', '9522043020', 2, 'Budi Hairyanto Ardianto', 'Bandar Lampung', '1961-09-14', 'L', 'Kristen Protestan', 'Dk. Kebangkitan Nasional No. 661, Sukabumi 89955, KepR', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
+('63785', '9522043020', 8, 'Budi Hairyanto Ardianto', 'Bandar Lampung', '1961-09-14', 'L', 'Kristen Protestan', 'Dk. Kebangkitan Nasional No. 661, Sukabumi 89955, KepR', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
 ('67132', '9031212766', 3, 'Sarah Puspita', 'Tebing Tinggi', '1991-10-04', 'P', 'Kristen Protestan', 'Jln. Baung No. 240, Banjarbaru 99597, NTB', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
-('68460', '9925709662', 3, 'Asmianto Imam Ardianto S.Sos', 'Administrasi Jakarta Timur', '1966-11-28', 'P', 'Islam', 'Ki. Raya Ujungberung No. 288, Banjarbaru 30877, NTB', '2019-07-07 15:19:10', '2019-07-07 15:19:10'),
 ('69124', '9101526640', 4, 'Salsabila Zalindra Hassanah', 'Bukittinggi', '1986-12-01', 'L', 'Hindu', 'Kpg. Labu No. 354, Pariaman 99764, SulTra', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
 ('69584', '9753816722', 2, 'Jati Emong Rajasa', 'Bogor', '1992-08-17', 'P', 'Hindu', 'Jr. Nakula No. 517, Binjai 36345, KalSel', '2019-07-07 15:19:09', '2019-07-07 15:19:09'),
 ('71089', '9396557533', 4, 'Dipa Lasmanto Marbun', 'Tanjungbalai', '1960-07-08', 'L', 'Islam', 'Jr. Sudiarto No. 772, Payakumbuh 91605, MalUt', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
@@ -435,7 +453,6 @@ INSERT INTO `is_siswa` (`nis`, `nisn`, `rombel_id`, `nama`, `tempat_lahir`, `tan
 ('74758', '9698786270', 4, 'Lurhur Lasmanto Prasasta M.Kom.', 'Gunungsitoli', '1958-03-04', 'L', 'Islam', 'Ds. Yosodipuro No. 333, Tegal 23795, KalUt', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
 ('74952', '9665466140', 3, 'Mujur Dagel Sinaga S.Gz', 'Surakarta', '2018-03-31', 'L', 'Islam', 'Ds. Basuki Rahmat  No. 467, Medan 24548, KalTim', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
 ('76659', '9333350530', 1, 'Septi Siti Permata S.Sos', 'Manado', '2003-03-31', 'P', 'Kristen Protestan', 'Jr. Honggowongso No. 576, Makassar 49331, SulTra', '2019-07-07 15:19:09', '2019-07-07 15:19:09'),
-('81396', '9177460560', 3, 'Hafshah Permata', 'Depok', '2004-10-22', 'L', 'Islam', 'Dk. Nanas No. 66, Tomohon 33399, Maluku', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
 ('83217', '9048422517', 2, 'Karen Nabila Lailasari M.Farm', 'Bitung', '1956-12-22', 'P', 'Buddha', 'Dk. Padma No. 609, Bukittinggi 82544, SumBar', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
 ('83860', '9972627904', 1, 'Farah Wijayanti S.H.', 'Cirebon', '1980-11-27', 'P', 'Kristen Protestan', 'Ds. Bahagia No. 985, Banda Aceh 97369, KalTeng', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
 ('89597', '9608039001', 3, 'Clara Iriana Wastuti', 'Sabang', '1951-11-11', 'L', 'Islam', 'Jln. Dahlia No. 809, Palembang 56386, KalSel', '2019-07-07 15:19:08', '2019-07-07 15:19:08'),
@@ -567,7 +584,11 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (121, 2, 'tvxBiFNFPITWOupeVzFvXWOe1JNQCpv5', '2019-07-13 11:14:54', '2019-07-13 11:14:54'),
 (122, 2, 'v5rhaX9QOIqT91OzN6sIpi32cxPDZvkb', '2019-07-15 01:14:48', '2019-07-15 01:14:48'),
 (126, 8, 'g7JWbXrLBiGTwgFF6FXCuqhQig0BWfKs', '2019-07-15 03:49:12', '2019-07-15 03:49:12'),
-(129, 8, 'qiUK7hVCJocvEv9KK2ZbRCLIkn3ww8X1', '2019-07-15 07:36:45', '2019-07-15 07:36:45');
+(129, 8, 'qiUK7hVCJocvEv9KK2ZbRCLIkn3ww8X1', '2019-07-15 07:36:45', '2019-07-15 07:36:45'),
+(133, 8, 'b7TqbQ4cDqA85GMbcaH7M5fWfmCgqxnD', '2019-07-15 12:33:26', '2019-07-15 12:33:26'),
+(140, 8, 'h88VSHqeH8ck1TrL8aP2LXcLqr9EVPgJ', '2019-07-16 04:39:53', '2019-07-16 04:39:53'),
+(142, 8, '9KwXVy5mv54RQFnIMKNo77kzVA3xZn4W', '2019-07-16 08:03:26', '2019-07-16 08:03:26'),
+(145, 8, 'MB7v6B9wRh4TiPIFWYiidGqsqC79Y14R', '2019-07-16 09:47:46', '2019-07-16 09:47:46');
 
 -- --------------------------------------------------------
 
@@ -606,8 +627,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `slug`, `name`, `permissions`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'Admin', '{\"admin\":1}', '2019-06-23 03:29:43', '2019-06-23 03:29:43'),
-(2, 'guru', 'Guru', NULL, '2019-06-23 03:29:43', '2019-06-23 03:29:43'),
-(4, 'siswa', 'Siswa', NULL, '2019-06-27 21:13:53', '2019-06-27 21:13:53');
+(2, 'guru', 'Guru', NULL, '2019-06-23 03:29:43', '2019-06-23 03:29:43');
 
 -- --------------------------------------------------------
 
@@ -631,7 +651,8 @@ INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALU
 (2, 2, '2019-06-23 03:29:44', '2019-06-23 03:29:44'),
 (5, 2, '2019-07-13 08:48:44', '2019-07-13 08:48:44'),
 (6, 2, '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
-(8, 2, '2019-07-13 10:44:19', '2019-07-13 10:44:19');
+(8, 2, '2019-07-13 10:44:19', '2019-07-13 10:44:19'),
+(10, 1, '2019-07-16 04:03:02', '2019-07-16 04:03:02');
 
 -- --------------------------------------------------------
 
@@ -720,7 +741,21 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (42, 8, 'user', NULL, '2019-07-15 03:48:53', '2019-07-15 03:48:53'),
 (43, NULL, 'global', NULL, '2019-07-15 03:49:02', '2019-07-15 03:49:02'),
 (44, NULL, 'ip', '::1', '2019-07-15 03:49:02', '2019-07-15 03:49:02'),
-(45, 8, 'user', NULL, '2019-07-15 03:49:02', '2019-07-15 03:49:02');
+(45, 8, 'user', NULL, '2019-07-15 03:49:02', '2019-07-15 03:49:02'),
+(46, NULL, 'global', NULL, '2019-07-16 04:36:35', '2019-07-16 04:36:35'),
+(47, NULL, 'ip', '::1', '2019-07-16 04:36:35', '2019-07-16 04:36:35'),
+(48, NULL, 'global', NULL, '2019-07-16 04:36:46', '2019-07-16 04:36:46'),
+(49, NULL, 'ip', '::1', '2019-07-16 04:36:46', '2019-07-16 04:36:46'),
+(50, 1, 'user', NULL, '2019-07-16 04:36:46', '2019-07-16 04:36:46'),
+(51, NULL, 'global', NULL, '2019-07-16 04:37:04', '2019-07-16 04:37:04'),
+(52, NULL, 'ip', '::1', '2019-07-16 04:37:04', '2019-07-16 04:37:04'),
+(53, 1, 'user', NULL, '2019-07-16 04:37:04', '2019-07-16 04:37:04'),
+(54, NULL, 'global', NULL, '2019-07-16 04:37:11', '2019-07-16 04:37:11'),
+(55, NULL, 'ip', '::1', '2019-07-16 04:37:11', '2019-07-16 04:37:11'),
+(56, 1, 'user', NULL, '2019-07-16 04:37:11', '2019-07-16 04:37:11'),
+(57, NULL, 'global', NULL, '2019-07-16 04:37:19', '2019-07-16 04:37:19'),
+(58, NULL, 'ip', '::1', '2019-07-16 04:37:19', '2019-07-16 04:37:19'),
+(59, 1, 'user', NULL, '2019-07-16 04:37:20', '2019-07-16 04:37:20');
 
 -- --------------------------------------------------------
 
@@ -739,7 +774,7 @@ CREATE TABLE `users` (
   `nama` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `gender` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` enum('L','P') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pic` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -748,11 +783,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `guru_id`, `email`, `username`, `password`, `permissions`, `last_login`, `nama`, `created_at`, `updated_at`, `gender`, `pic`) VALUES
-(1, NULL, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-15 03:20:33', 'Ilham', '2019-06-23 03:29:43', '2019-07-15 03:20:33', 'male', 'ebMfH2q1wO.jpeg'),
-(2, NULL, 'user@user.com', 'user', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-15 07:19:49', 'Pengguna', '2019-06-23 03:29:43', '2019-07-15 07:19:49', NULL, NULL),
-(5, NULL, 'joko@gmail.com', 'joko', '$2y$10$LD2JGglSNDghzCs6jmS0LeS/A9pwA.3wTqW0XAwFJHYEUD0U.9Onu', NULL, '2019-07-13 09:56:53', 'joko', '2019-07-13 08:48:44', '2019-07-13 09:56:53', 'Pria', NULL),
-(6, NULL, 'ramdan@yahoo.com', 'ramdan12', '$2y$10$bKDN9iLn0RqShs/0s7UAU.oq.c4llHpaeIQNQnCzs0ikWdfZyBtv.', NULL, NULL, 'Ramdan', '2019-07-13 10:29:18', '2019-07-13 10:29:18', NULL, NULL),
-(8, 37, 'riawan@gmail.com', 'riawan', '$2y$10$3.P6GeDAJLM6LPe5GMuyq.uWdNENxpJ1Ty.U4RiJGzK7MvBCGV3pO', NULL, '2019-07-15 07:36:45', 'Riawan', '2019-07-13 10:44:19', '2019-07-15 07:36:45', NULL, NULL);
+(1, NULL, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-16 08:02:52', 'Ilham', '2019-06-23 03:29:43', '2019-07-16 08:02:52', 'L', 'ebMfH2q1wO.jpeg'),
+(2, NULL, 'user@user.com', 'user', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-16 09:40:00', 'Pengguna', '2019-06-23 03:29:43', '2019-07-16 09:40:00', 'L', NULL),
+(5, NULL, 'joko@gmail.com', 'joko', '$2y$10$LD2JGglSNDghzCs6jmS0LeS/A9pwA.3wTqW0XAwFJHYEUD0U.9Onu', NULL, '2019-07-13 09:56:53', 'joko', '2019-07-13 08:48:44', '2019-07-13 09:56:53', 'L', NULL),
+(6, NULL, 'ramdan@yahoo.com', 'ramdan12', '$2y$10$bKDN9iLn0RqShs/0s7UAU.oq.c4llHpaeIQNQnCzs0ikWdfZyBtv.', NULL, NULL, 'Ramdan', '2019-07-13 10:29:18', '2019-07-13 10:29:18', 'P', NULL),
+(8, 37, 'riawan@gmail.com', 'riawan', '$2y$10$3.P6GeDAJLM6LPe5GMuyq.uWdNENxpJ1Ty.U4RiJGzK7MvBCGV3pO', NULL, '2019-07-16 09:47:46', 'Riawan', '2019-07-13 10:44:19', '2019-07-16 09:47:46', 'P', NULL),
+(10, NULL, 'admin2@admin.com', 'admin2', '$2y$10$yNhFbCjYyPRUCFEMiOoLPOiTW4vejDtfCaN8gGq1ojSragS8ybGl6', NULL, '2019-07-16 04:03:38', 'Admin Kedua', '2019-07-16 04:03:01', '2019-07-16 04:03:38', 'L', '4d1z3eoNfx.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -892,13 +928,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `activations`
 --
 ALTER TABLE `activations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT untuk tabel `datatables`
@@ -928,7 +964,7 @@ ALTER TABLE `is_jurusan`
 -- AUTO_INCREMENT untuk tabel `is_kompetensi`
 --
 ALTER TABLE `is_kompetensi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_mapel`
@@ -952,7 +988,7 @@ ALTER TABLE `is_periode`
 -- AUTO_INCREMENT untuk tabel `is_rombel`
 --
 ALTER TABLE `is_rombel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -964,7 +1000,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT untuk tabel `reminders`
@@ -988,13 +1024,13 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT untuk tabel `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
