@@ -35,7 +35,7 @@ class AuthController extends JoshController
         }
 
         // Show the page
-        return view('admin.login2');
+        return view('admin.login');
     }
 
     /**
@@ -256,7 +256,7 @@ class AuthController extends JoshController
 
 
         // Redirect to the users page
-        return redirect('signin')->with('success', 'You have successfully logged out!');
+        return redirect('login')->with('success', 'You have successfully logged out!');
     }
 
     /**
