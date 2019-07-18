@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jul 2019 pada 15.58
+-- Waktu pembuatan: 18 Jul 2019 pada 02.52
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -340,6 +340,26 @@ INSERT INTO `is_mapel_gurus` (`id`, `rombel_id`, `mapel_id`, `guru_id`, `jurusan
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `is_nilai`
+--
+
+CREATE TABLE `is_nilai` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `periode_id` int(11) NOT NULL,
+  `aspek` enum('K','P') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rombel_id` int(10) UNSIGNED NOT NULL,
+  `mapel_id` int(10) UNSIGNED NOT NULL,
+  `siswa_nis` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nilai` int(11) NOT NULL,
+  `kd_id` int(11) NOT NULL,
+  `ket` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `is_periode`
 --
 
@@ -500,7 +520,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (51, '2019_06_24_114811_create_jurusans_table', 4),
 (52, '2019_06_24_114912_create_periodes_table', 4),
 (53, '2019_06_24_114942_create_mapels_table', 4),
-(54, '2019_06_26_075506_create_mapel_gurus_table', 5);
+(54, '2019_06_26_075506_create_mapel_gurus_table', 5),
+(56, '2019_07_08_000845_create_kompetensis_table', 6);
 
 -- --------------------------------------------------------
 
@@ -767,7 +788,7 @@ CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `guru_id` int(10) UNSIGNED DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `permissions` text COLLATE utf8mb4_unicode_ci,
   `last_login` timestamp NULL DEFAULT NULL,
@@ -849,6 +870,15 @@ ALTER TABLE `is_mapel`
 ALTER TABLE `is_mapel_gurus`
   ADD PRIMARY KEY (`id`),
   ADD KEY `periode_id` (`periode_id`);
+
+--
+-- Indeks untuk tabel `is_nilai`
+--
+ALTER TABLE `is_nilai`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `mapel_id` (`mapel_id`),
+  ADD KEY `rombel_id` (`rombel_id`),
+  ADD KEY `siswa_nis` (`siswa_nis`);
 
 --
 -- Indeks untuk tabel `is_periode`
@@ -979,6 +1009,12 @@ ALTER TABLE `is_mapel_gurus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT untuk tabel `is_nilai`
+--
+ALTER TABLE `is_nilai`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `is_periode`
 --
 ALTER TABLE `is_periode`
@@ -994,7 +1030,7 @@ ALTER TABLE `is_rombel`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT untuk tabel `persistences`
@@ -1041,6 +1077,14 @@ ALTER TABLE `users`
 --
 ALTER TABLE `is_mapel_gurus`
   ADD CONSTRAINT `is_mapel_gurus_ibfk_1` FOREIGN KEY (`periode_id`) REFERENCES `is_periode` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `is_nilai`
+--
+ALTER TABLE `is_nilai`
+  ADD CONSTRAINT `is_nilai_ibfk_1` FOREIGN KEY (`mapel_id`) REFERENCES `is_mapel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `is_nilai_ibfk_2` FOREIGN KEY (`rombel_id`) REFERENCES `is_rombel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `is_nilai_ibfk_3` FOREIGN KEY (`siswa_nis`) REFERENCES `is_siswa` (`nis`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `role_users`

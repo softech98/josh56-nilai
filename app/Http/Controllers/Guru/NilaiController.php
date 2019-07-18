@@ -1,10 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guru;
 
 use App\Nilai;
+use App\Siswa;
+use App\Rombel;
+use App\MapelGuru;
 use Illuminate\Http\Request;
+use App\Http\Controllers\JoshController;
 use App\Http\Controllers\Controller;
+use Yajra\DataTables\DataTables;
+use Redirect;
+use Sentinel;
+use URL;
+use View;
+use Validator;
+use DB;
+use Response;
 
 class NilaiController extends Controller
 {
@@ -15,7 +27,7 @@ class NilaiController extends Controller
      */
     public function index()
     {
-        //
+        return view ('guru.nilai.index');
     }
 
     /**
