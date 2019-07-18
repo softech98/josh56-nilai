@@ -93,17 +93,12 @@ Penilaian Pengetahuan
                 </div>
             </div>
         </div>
-    </div>
                    {!! Form::close() !!}
+    </div>
 
             <div class="card panel-primary ">
                 <div class="card-heading clearfix">
-                    <h4 class="card-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                       Kompetensi Dasar
-                   </h4>
-
                </div>
-               <br />
             <div class="card-body">
                 <div class="table-responsive-lg table-responsive-sm table-responsive-md">
                      {{-- @if(count($mapelguru->toArray()) > 0 && $mapelguru != null) --}}

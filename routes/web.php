@@ -283,7 +283,7 @@ Route::group(['prefix' => 'guru','namespace'=>'Guru', 'middleware' => 'guru', 'a
         Route::get('guru/siswa/data', 'SiswaController@data')->name('siswa.data');
         });
     Route::resource('siswa', 'SiswaController');
-    Route::get('/pengetahuan', 'NilaiController@pengetahuan');
+    Route::get('/pengetahuan', 'NilaiController@nPengetahuan');
  });
 
 # contact form

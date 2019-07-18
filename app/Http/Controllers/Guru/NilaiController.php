@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Guru;
 use App\Nilai;
 use App\Siswa;
 use App\Rombel;
+use App\Mapel;
 use App\MapelGuru;
+use App\Periode;
 use Illuminate\Http\Request;
 use App\Http\Controllers\JoshController;
 use App\Http\Controllers\Controller;
@@ -27,7 +29,28 @@ class NilaiController extends Controller
      */
     public function index()
     {
-        return view ('guru.nilai.index');
+        $gurulogin               = Sentinel::getUser();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
+        $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->pluck('namaRombel', 'id');
+        $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
+        $getperiode = Periode::where('aktif', 1)->first();
+        // dd($getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')');
+        $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
+        return view ('guru.nilai.index',$data);
+    }
+
+     public function nPengetahuan()
+    {
+        $gurulogin               = Sentinel::getUser();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
+        $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->pluck('namaRombel', 'id');
+        $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
+        $getperiode = Periode::where('aktif', 1)->first();
+        // dd($getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')');
+        $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
+        return view ('guru.nilai.pengetahuan',$data);
     }
 
     /**
