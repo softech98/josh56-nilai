@@ -1,4 +1,6 @@
 <?php
+
+
 // include_once 'web_builder.php';
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,12 @@
 */
 
 // Route::pattern('slug', '[a-z0-9- _]+');
+
+
+//edited by ramdan riawan
+// Route::get('')
+Route::get('getMapelFromRombel/{rombel}', 'Guru\NilaiController@getMapelFromRombel');
+
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
 
@@ -286,6 +294,7 @@ Route::group(['prefix' => 'guru','namespace'=>'Guru', 'middleware' => 'guru', 'a
     Route::get('/pengetahuan', 'NilaiController@nPengetahuan');
     Route::get('/keterampilan', 'NilaiController@nKeterampilan');
     Route::get('/laporan-penilaian', 'NilaiController@nKeterampilan');
+    Route::get('/getmapelguru', 'NilaiController@getMapel');
  });
 
 # contact form
@@ -299,3 +308,5 @@ Route::get('/', ['as' => 'home', function () {
 
 Route::get('{name?}', 'FrontEndController@showFrontEndView');
 # End of frontend views
+
+

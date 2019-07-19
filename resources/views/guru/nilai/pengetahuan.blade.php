@@ -107,6 +107,8 @@ Penilaian Pengetahuan
                             <tr class="filters">
                                 <th rowspan="2" style="vertical-align: middle;">Nama Siswa</th>
                                 <th colspan="6" class="text-center">Kompetensi Dasar</th>
+                                <th rowspan="2" style="vertical-align: middle;">NTS</th>
+                                <th rowspan="2" style="vertical-align: middle;">NAS</th>
                                 <th rowspan="2" style="vertical-align: middle;">Rata-Rata Nilai</th>
                             </tr>
                             <tr>
@@ -146,11 +148,15 @@ type="text/javascript"></script>
 <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
 
 <script>
-    $(document).ready(function(){
-        $('form.ajax').on('submit', function(e){
+    $('#rombel_id').on('change', function(e){
+        console.log(e);
+        var rombel_id = e.target.val
 
+        $.get('/getmapel?rombel_id=' + rombel_id, function(data){
+            //success data
+            console.log(data);
         })
-    })
+    });
 </script>
 
 {{-- <script>

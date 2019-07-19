@@ -27,12 +27,13 @@ class NilaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $gurulogin               = Sentinel::getUser();
         $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
         // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
-        $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->pluck('namaRombel', 'id');
+        // $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->pluck('namaRombel', 'id');
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
         $getperiode = Periode::where('aktif', 1)->first();
         // dd($getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')');
@@ -45,10 +46,9 @@ class NilaiController extends Controller
         $gurulogin               = Sentinel::getUser();
         $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
         // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
-        $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->pluck('namaRombel', 'id');
+        $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
         $getperiode = Periode::where('aktif', 1)->first();
-        // dd($getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')');
         $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
         return view ('guru.nilai.pengetahuan',$data);
     }
@@ -58,10 +58,9 @@ class NilaiController extends Controller
         $gurulogin               = Sentinel::getUser();
         $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
         // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
-        $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->pluck('namaRombel', 'id');
+        $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
         $getperiode = Periode::where('aktif', 1)->first();
-        // dd($getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')');
         $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
         return view ('guru.nilai.keterampilan', $data);
     }
@@ -131,5 +130,28 @@ class NilaiController extends Controller
     public function destroy(Nilai $nilai)
     {
         //
+    }
+
+
+    // edited by ramdan
+    public function getSiswaFromRombel(Request $request, Rombel $rombel)
+    {
+
+    }
+
+    public function getMapel()
+    {
+        $gurulogin               = Sentinel::getUser();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
+        dd($data['mapel']);
+    }
+    public function getmapelguru()
+    {
+        return $this->getMapel();
+    }
+    public function getMapelFromRombel(Request $request, Rombel $rombel)
+    {
+        dd($rombel);
     }
 }
