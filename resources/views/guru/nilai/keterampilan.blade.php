@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Penilaian Pengetahuan
+Penilaian Keterampilan
 @parent
 @stop
 
@@ -24,7 +24,7 @@ Penilaian Pengetahuan
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>Penilaian Pengetahuan</h1>
+    <h1>Penilaian Keterampilan</h1>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">
@@ -33,7 +33,7 @@ Penilaian Pengetahuan
             </a>
         </li>
         <li><a href="#"> Penilaian</a></li>
-        <li class="active">Penilaian Pengetahuan</li>
+        <li class="active">Penilaian Keterampilan</li>
     </ol>
 </section>
 

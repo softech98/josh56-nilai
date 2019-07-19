@@ -284,6 +284,8 @@ Route::group(['prefix' => 'guru','namespace'=>'Guru', 'middleware' => 'guru', 'a
         });
     Route::resource('siswa', 'SiswaController');
     Route::get('/pengetahuan', 'NilaiController@nPengetahuan');
+    Route::get('/keterampilan', 'NilaiController@nKeterampilan');
+    Route::get('/laporan-penilaian', 'NilaiController@nKeterampilan');
  });
 
 # contact form
