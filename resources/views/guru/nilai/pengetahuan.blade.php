@@ -112,13 +112,7 @@ Penilaian Pengetahuan
                                 <th rowspan="2" style="vertical-align: middle;">NAS</th>
                                 <th rowspan="2" style="vertical-align: middle;">Rata-Rata Nilai</th>
                             </tr>                            
-                            <tr>
-                                <th>3.1</th>
-                                <th>3.2</th>
-                                <th>3.3</th>
-                                <th>3.4</th>
-                                <th>3.5</th>
-                                <th>3.6</th>
+                            <tr id='rowKd'>
                             </tr>
                         </thead>
                         <tbody>
@@ -168,38 +162,7 @@ type="text/javascript"></script>
             })
         })
 
-        $.get(`{{ route("getSiswaFromRombel") }}/${$(this).val()}` , function(response) {
-            $("#table tbody tr").remove();
-            // $("#table thead tr:eq(1)").empty();
-
-            $.each(response, function(index, siswa) { 
-                var row = `
-                    <tr>
-                        <td>${siswa.nama}</td>`;
-
-                        var rowKd = '';
-                        for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
-                        {
-                            if ( $('#jml_nilai').val() === "" )
-                            {
-                                alert("Mohon inputkan jumlah nilai!");
-                                return;
-                            }
-
-                            // $("#table thead tr:eq(1)").append('<th>1</th>');
-                            rowKd += `<td></td>`;
-                        }
-
-                        row = row + rowKd + `
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                    `;
-
-                $("#table tbody").append(row);
-            });
-        });
+        
     }
     });
 
@@ -213,8 +176,46 @@ type="text/javascript"></script>
             $.each(data, function(index, mapel){
                 
             })
-        })
-    })
+        });
+
+        $.get(`{{ route("getSiswaFromRombel") }}/${$('#rombel_id').val()}` , function(response) {
+
+            // untuk judul KD
+            $("#table thead tr#rowKd").empty();
+            
+            if ( $('#jml_nilai').val() === "" )
+            {
+                return;
+            }
+            
+            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
+            {
+	            $("#table thead tr#rowKd").append(`<th>${i}</th>`);
+            }
+
+            //untuk isi baris tabel
+            $("#table tbody tr").remove();
+
+            $.each(response, function(index, siswa) { 
+                var row = `<tr><td>${siswa.nama}</td>`;
+                var rowKd = '';
+                
+	            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
+	            {
+	                rowKd += `<td>${i}</td>`;
+	            }
+
+                row = row + rowKd + `
+                        <td></td>
+                        <td></td>
+                        <td></td>
+	            </tr>
+	            `;
+
+	            $("#table tbody").append(row);
+	        });
+    });
+});
 </script>
 
 {{-- <script>
