@@ -107,7 +107,7 @@ Penilaian Pengetahuan
                         <thead>
                             <tr class="filters">
                                 <th rowspan="2" style="vertical-align: middle;">Nama Siswa</th>
-                                <th colspan="6" class="text-center">Kompetensi Dasar</th>
+                                <th colspan="6" class="text-center" id='colsKd'>Kompetensi Dasar</th>
                                 <th rowspan="2" style="vertical-align: middle;">NTS</th>
                                 <th rowspan="2" style="vertical-align: middle;">NAS</th>
                                 <th rowspan="2" style="vertical-align: middle;">Rata-Rata Nilai</th>
@@ -187,8 +187,12 @@ type="text/javascript"></script>
             {
                 return;
             }
+
+            var jml_nilai = parseInt($('#jml_nilai').val());
             
-            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
+            $('#colsKd').attr('colspan', jml_nilai);
+            
+            for (var i = 0; i <  jml_nilai; i++) 
             {
 	            $("#table thead tr#rowKd").append(`<th>${i}</th>`);
             }
