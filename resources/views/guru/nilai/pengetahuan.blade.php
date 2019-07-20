@@ -41,6 +41,7 @@ Penilaian Pengetahuan
 <section class="content paddingleft_right15">
     {{-- {{ Form::model($pengetahuan, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }} --}}
     {!! Form::open() !!}
+    <input type="hidden" id="aspek" name="aspek" value="P">
     <div class="row">
         <div class="col-12">
             <hr>
@@ -189,13 +190,33 @@ type="text/javascript"></script>
             }
 
             var jml_nilai = parseInt($('#jml_nilai').val());
-            
+
             $('#colsKd').attr('colspan', jml_nilai);
             
-            for (var i = 0; i <  jml_nilai; i++) 
-            {
-	            $("#table thead tr#rowKd").append(`<th>${i}</th>`);
-            }
+
+            // untuk dapatkan kompetensi dasar berdasarkan rombel dan tingkatt
+            var tingkat = parseInt($('#rombel_id option:selected').text());
+            var aspek = $('#aspek').val();
+            var mapel = $('#mapel_id').val();
+            
+            $.get(`{{ route("getKdFromTingkatAspekAndMapel") }}/${tingkat}/${aspek}/${mapel}`, function(response) {
+            	$.each(response, function(index, kd) {
+
+            		var option = '';
+		            for (let i = 0; i <  jml_nilai; i++) 
+		            {
+		            	option += `<option value='${response[i].id}'>${response[i].kode} | ${response[i].kompetensi_dasar}</option>`;
+		            }
+
+		            $("#table thead tr#rowKd").append(`
+		            	<td>
+			            	<select name='kompetensi[]' class='form-control'>
+				        		${option}    	
+			            	</select>
+		            	</td>
+		            	`);
+            	});
+            });
 
             //untuk isi baris tabel
             $("#table tbody tr").remove();
@@ -206,18 +227,21 @@ type="text/javascript"></script>
                 
 	            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
 	            {
-	                rowKd += `<td>${i}</td>`;
+	                rowKd += `<td>
+	                	<input type='number' name='nilai[${index}][]' placeholder='Input Nilai Kd' class='form-control' max="100" min='0'/>
+	                </td>`;
 	            }
 
                 row = row + rowKd + `
-                        <td></td>
-                        <td></td>
+                        <td><input type='number' name='nilai[${index}]['nts']' placeholder='Input Nilai Nts' class='form-control'  max="100" min='0' /></td>
+                        <td><input type='number' name='nilai[${index}]['nas']' placeholder='Input Nilai Nas' class='form-control'  max="100" min='0'/></td>
                         <td></td>
 	            </tr>
 	            `;
 
 	            $("#table tbody").append(row);
-	        });
+	    });
+
     });
 });
 </script>

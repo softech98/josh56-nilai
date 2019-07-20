@@ -8,6 +8,7 @@ use App\Rombel;
 use App\Mapel;
 use App\MapelGuru;
 use App\Periode;
+use App\Kompetensi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\JoshController;
 use App\Http\Controllers\Controller;
@@ -42,6 +43,7 @@ class NilaiController extends Controller
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
         $getperiode = Periode::where('aktif', 1)->first();
         $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
+
         return view ('guru.nilai.pengetahuan',$data);
     }
 
@@ -145,6 +147,11 @@ class NilaiController extends Controller
     public function getSiswaFromRombel(Request $request, Rombel $rombel)
     {
         return response()->json(Siswa::where('rombel_id', $rombel->id)->get());
+    }
+
+    public function getKdFromTingkatAspekAndMapel($tingkat, $aspek, Mapel $mapel)
+    {
+        return response()->json(Kompetensi::where('tingkat', $tingkat)->where('aspek', $aspek)->where('mapel_id', $mapel->id)->get());
     }
 
 }

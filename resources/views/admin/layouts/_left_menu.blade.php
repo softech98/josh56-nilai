@@ -61,13 +61,6 @@
            
         </ul>
     </li>
-    <li {!! (Request::is('admin/activity_log') ? 'class="active"' : '') !!}>
-        <a href="{{  URL::to('admin/activity_log') }}">
-            <i class="livicon" data-name="eye-open" data-size="18" data-c="#F89A14" data-hc="#F89A14"
-               data-loop="true"></i>
-            Activity Log
-        </a>
-    </li>
     <li {!! (Request::is('admin/users') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to($prefix.'/users') }}">
             <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
@@ -75,6 +68,14 @@
             <span class="title">Users</span>
         </a>
     </li>
+    <li {!! (Request::is('admin/activity_log') ? 'class="active"' : '') !!}>
+        <a href="{{  URL::to('admin/activity_log') }}">
+            <i class="livicon" data-name="eye-open" data-size="18" data-c="#F89A14" data-hc="#F89A14"
+               data-loop="true"></i>
+            Activity Log
+        </a>
+    </li>
+    
     
     {{-- <li {!! (Request::is('admin/groups') || Request::is('admin/groups/create') || Request::is('admin/groups/*') ? 'class="active"' : '') !!}>
         <a href="#">
@@ -99,7 +100,7 @@
         </ul>
     </li> --}}
     
-    <li {!! (Request::is('admin/datatables') || Request::is('admin/editable_datatables') || Request::is('admin/dropzone') || Request::is('admin/multiple_upload') || Request::is('admin/custom_datatables')|| Request::is('admin/selectfilter') ? 'class="active"' : '') !!}>
+    {{-- <li {!! (Request::is('admin/datatables') || Request::is('admin/editable_datatables') || Request::is('admin/dropzone') || Request::is('admin/multiple_upload') || Request::is('admin/custom_datatables')|| Request::is('admin/selectfilter') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="medal" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
@@ -166,9 +167,9 @@
                 </a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
-    <li {!! (Request::is('admin/form_examples') || Request::is('admin/editor') || Request::is('admin/editor2')
+   {{--  <li {!! (Request::is('admin/form_examples') || Request::is('admin/editor') || Request::is('admin/editor2')
     || Request::is('admin/form_layout') || Request::is('admin/validation') || Request::is('admin/formelements') || Request::is('admin/dropdowns')
     || Request::is('admin/radio_checkbox') || Request::is('admin/ratings') || Request::is('admin/form_layouts') || Request::is('admin/formwizard')
     || Request::is('admin/accordionformwizard') || Request::is('admin/datepicker') | Request::is('admin/advanced_datepickers')? 'class="active"' : '') !!}>
@@ -254,8 +255,8 @@
                 </a>
             </li>
         </ul>
-    </li>
-    <li {!! (Request::is('admin/animatedicons') || Request::is('admin/buttons') || Request::is('admin/advanced_buttons') || Request::is('admin/tabs_accordions') || Request::is('admin/panels') || Request::is('admin/icon') || Request::is('admin/color') || Request::is('admin/grid') || Request::is('admin/carousel') || Request::is('admin/advanced_modals') || Request::is('admin/tagsinput') || Request::is('admin/nestable_list') || Request::is('admin/sortable_list') || Request::is('admin/toastr') || Request::is('admin/notifications')|| Request::is('admin/treeview_jstree')|| Request::is('admin/sweetalert') || Request::is('admin/session_timeout') || Request::is('admin/portlet_draggable') ? 'class="active"' : '') !!}>
+    </li> --}}
+    {{-- <li {!! (Request::is('admin/animatedicons') || Request::is('admin/buttons') || Request::is('admin/advanced_buttons') || Request::is('admin/tabs_accordions') || Request::is('admin/panels') || Request::is('admin/icon') || Request::is('admin/color') || Request::is('admin/grid') || Request::is('admin/carousel') || Request::is('admin/advanced_modals') || Request::is('admin/tagsinput') || Request::is('admin/nestable_list') || Request::is('admin/sortable_list') || Request::is('admin/toastr') || Request::is('admin/notifications')|| Request::is('admin/treeview_jstree')|| Request::is('admin/sweetalert') || Request::is('admin/session_timeout') || Request::is('admin/portlet_draggable') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="brush" data-c="#F89A14" data-hc="#F89A14" data-size="18"
                data-loop="true"></i>
@@ -383,8 +384,8 @@
                 </a>
             </li>
         </ul>
-    </li>
-    <li {!! (Request::is('admin/general') || Request::is('admin/pickers') || Request::is('admin/x-editable') || Request::is('admin/timeline') || Request::is('admin/transitions') || Request::is('admin/sliders') || Request::is('admin/knob') ? 'class="active"' : '') !!}>
+    </li> --}}
+    {{-- <li {!! (Request::is('admin/general') || Request::is('admin/pickers') || Request::is('admin/x-editable') || Request::is('admin/timeline') || Request::is('admin/transitions') || Request::is('admin/sliders') || Request::is('admin/knob') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="lab" data-c="#EF6F6C" data-hc="#EF6F6C" data-size="18"
                data-loop="true"></i>
@@ -404,12 +405,12 @@
                     Pickers
                 </a>
             </li>
-            <!--<li {!! (Request::is('admin/x-editable') ? 'class="active"' : '') !!}>-->
-                <!--<a href="{{ URL::to('admin/x-editable') }}">-->
-                    <!--<i class="fa fa-angle-double-right"></i>-->
-                    <!--X-editable-->
-                <!--</a>-->
-            <!--</li>-->
+            <li {!! (Request::is('admin/x-editable') ? 'class="active"' : '') !!}>
+                <a href="{{ URL::to('admin/x-editable') }}">
+                    <i class="fa fa-angle-double-right"></i>
+                    X-editable
+                </a>
+            </li>
             <li {!! (Request::is('admin/timeline') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to('admin/timeline') }}">
                     <i class="fa fa-angle-double-right"></i>
@@ -435,8 +436,8 @@
                 </a>
             </li>
         </ul>
-    </li>
-    <li {!! (Request::is('admin/simple_table') || Request::is('admin/responsive_tables') || Request::is('admin/advanced_tables') || Request::is('admin/advanced_tables2') || Request::is('admin/jtable') ? 'class="active"' : '') !!}>
+    </li> --}}
+   {{--  <li {!! (Request::is('admin/simple_table') || Request::is('admin/responsive_tables') || Request::is('admin/advanced_tables') || Request::is('admin/advanced_tables2') || Request::is('admin/jtable') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="table" data-c="#418BCA" data-hc="#418BCA" data-size="18"
                data-loop="true"></i>
@@ -476,15 +477,15 @@
                 {{--</a>--}}
             {{--</li>--}}
         </ul>
-    </li>
-    <li {!! (Request::is('admin/tasks') ? 'class="active"' : '') !!}>
+    </li> --}}
+    {{-- <li {!! (Request::is('admin/tasks') ? 'class="active"' : '') !!}>
         <a href="{{ URL::to('admin/tasks') }}">
             <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="list-ul" data-size="18"
                data-loop="true"></i>
             Tasks
             <span class="badge badge-danger" id="taskcount">{{ Request::get('tasks_count') }}</span>
         </a>
-    </li>
+    </li> --}}
     
     
     {{-- <li {!! (Request::is('admin/fixedmenu') ? 'class="active"' : '') !!}>

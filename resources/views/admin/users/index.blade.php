@@ -175,6 +175,10 @@ Users List
             $('.modal-title').html("Tambah User");
             $('.modal-body').load('{!! route("admin.users.create") !!}')
         });
+
+        /*=====  End of add users  ======*/
+        
+        
     </script>
  
 @stop

@@ -135,10 +135,8 @@ Data Rombel
             { data: 'id',},
             { data: 'namaRombel'},
             { data: 'tingkat', searchable: false },
-            // { data: 'jurusans.singkatan', name: 'singkatan', searchable: false, orderable: false},
             { data: 'guru.nama', name: 'walikelas', searchable: false, orderable: false },
             { data: 'mapels', name: 'mapels', searchable: false, orderable: false },
-            // { data: 'periode.mulai', name: 'periode', searchable: false, orderable: false},
             { data: 'actions', name: 'actions', orderable: false, searchable: false }
             ],
             // columnDefs: [
