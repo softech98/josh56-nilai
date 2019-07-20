@@ -17,8 +17,10 @@
 
 
 //edited by ramdan riawan
-// Route::get('')
+#############
 Route::get('getMapelFromRombel/{rombel}', 'Guru\NilaiController@getMapelFromRombel');
+Route::get('getSiswaFromRombel/{rombel?}', 'Guru\NilaiController@getSiswaFromRombel')->name('getSiswaFromRombel');
+#############
 
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
@@ -294,7 +296,7 @@ Route::group(['prefix' => 'guru','namespace'=>'Guru', 'middleware' => 'guru', 'a
     Route::get('/pengetahuan', 'NilaiController@nPengetahuan');
     Route::get('/keterampilan', 'NilaiController@nKeterampilan');
     Route::get('/laporan-penilaian', 'NilaiController@nKeterampilan');
-    Route::get('/getmapelguru', 'NilaiController@getMapel');
+    Route::get('/getmapel/{id}', 'NilaiController@getMapelFromRombel');
  });
 
 # contact form

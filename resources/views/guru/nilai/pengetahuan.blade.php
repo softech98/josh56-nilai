@@ -40,6 +40,7 @@ Penilaian Pengetahuan
 <!-- Main content -->
 <section class="content paddingleft_right15">
     {{-- {{ Form::model($pengetahuan, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }} --}}
+    {!! Form::open() !!}
     <div class="row">
         <div class="col-12">
             <hr>
@@ -67,7 +68,7 @@ Penilaian Pengetahuan
                     <div class="row">
                         {!! Form::label('mapel_id', 'Mata Pelajaran',[ 'class' => 'col-sm-3', 'control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('mapel_id', $mapel, null, ['id' => 'mapel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Mapel--']) !!}
+                            {!! Form::select('mapel_id', [''], null, ['id' => 'mapel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Mapel--']) !!}
                             <small class="text-danger">{{ $errors->first('mapel_id') }}</small>
                         </div>
                     </div>
@@ -84,8 +85,8 @@ Penilaian Pengetahuan
                  <div class="form-group">
                         <div class="row">
                         <div class="col-md-6 col-sm-8 ">
-                            <button type="reset" class="btn btn-danger btn-responsive ">Reset</button>
-                            <button type="submit" class="btn btn-success btn-responsive ">
+                            {{-- <button type="reset" class="btn btn-danger btn-responsive ">Reset</button> --}}
+                            <button type="submit" class="btn btn-success btn-responsive" style="display:none;">
                                 {{-- {{ $btn_submit }} --}}Submit
                             </button>
                         </div>
@@ -93,7 +94,7 @@ Penilaian Pengetahuan
                 </div>
             </div>
         </div>
-                   {{-- {!! Form::close() !!} --}}
+                   {!! Form::close() !!}
     </div>
 
             <div class="card panel-primary ">
@@ -110,7 +111,7 @@ Penilaian Pengetahuan
                                 <th rowspan="2" style="vertical-align: middle;">NTS</th>
                                 <th rowspan="2" style="vertical-align: middle;">NAS</th>
                                 <th rowspan="2" style="vertical-align: middle;">Rata-Rata Nilai</th>
-                            </tr>
+                            </tr>                            
                             <tr>
                                 <th>3.1</th>
                                 <th>3.2</th>
@@ -150,13 +151,70 @@ type="text/javascript"></script>
 <script>
     $('#rombel_id').on('change', function(e){
         console.log(e);
-        var rombel_id = e.target.val
-
-        $.get('/getmapel?rombel_id=' + rombel_id, function(data){
+        var romb_id = e.target.value;
+        if(romb_id == '')
+        {
+            romb_id = 0;
+            $('#mapel_id').empty();
+            $('#mapel_id').append('<option value="">--Pilih Mapel--</option>');
+        }
+        else
+        {
+        $.get('getmapel/' + romb_id, function(data){
             //success data
-            console.log(data);
+            $('#mapel_id').empty();
+            $.each(data, function(index, mapel){
+                $('#mapel_id').append('<option value="'+mapel.id+'">'+mapel.nama+'</option>');
+            })
         })
+
+        $.get(`{{ route("getSiswaFromRombel") }}/${$(this).val()}` , function(response) {
+            $("#table tbody tr").remove();
+            // $("#table thead tr:eq(1)").empty();
+
+            $.each(response, function(index, siswa) { 
+                var row = `
+                    <tr>
+                        <td>${siswa.nama}</td>`;
+
+                        var rowKd = '';
+                        for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
+                        {
+                            if ( $('#jml_nilai').val() === "" )
+                            {
+                                alert("Mohon inputkan jumlah nilai!");
+                                return;
+                            }
+
+                            // $("#table thead tr:eq(1)").append('<th>1</th>');
+                            rowKd += `<td></td>`;
+                        }
+
+                        row = row + rowKd + `
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                    `;
+
+                $("#table tbody").append(row);
+            });
+        });
+    }
     });
+
+    /*=====  End of getMapel  ======*/
+    $('#jml_nilai').on('change', function(e){
+        console.log(e);
+        var jml_nilai = e.target.value;
+
+        $.get('getbanyakNilai/' + jml_nilai, function(data){
+            // success data
+            $.each(data, function(index, mapel){
+                
+            })
+        })
+    })
 </script>
 
 {{-- <script>

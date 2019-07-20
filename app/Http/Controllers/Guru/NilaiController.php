@@ -27,18 +27,10 @@ class NilaiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function index()
+    public function gurulogin()
     {
-        $gurulogin               = Sentinel::getUser();
-        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
-        // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
-        // $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->pluck('namaRombel', 'id');
-        $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
-        $getperiode = Periode::where('aktif', 1)->first();
-        // dd($getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')');
-        $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
-        return view ('guru.nilai.index',$data);
+        $gurulogins       = Sentinel::getUser()->guru_id;
+        return $gurulogins;
     }
 
      public function nPengetahuan()
@@ -133,25 +125,26 @@ class NilaiController extends Controller
     }
 
 
+    public function getMapelFromRombel($id)
+    {
+        $rombel_id = $id;
+        $getmapelguru = MapelGuru::where('guru_id', $this->gurulogin())->where('rombel_id', $rombel_id)->get();
+        $getmapel = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->get();
+        // return $getmapel;
+        return Response::json($getmapel);
+    }
+    
+    public function getmapelgurus()
+    {
+        $gurulogin               = Sentinel::getUser();
+        $getmapelguru = MapelGuru::where(['guru_id', $gurulogin->guru_id], ['rombel_id', ])->get();
+        return $getmapelguru;
+    }
+
     // edited by ramdan
     public function getSiswaFromRombel(Request $request, Rombel $rombel)
     {
-
+        return response()->json(Siswa::where('rombel_id', $rombel->id)->get());
     }
 
-    public function getMapel()
-    {
-        $gurulogin               = Sentinel::getUser();
-        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
-        $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
-        dd($data['mapel']);
-    }
-    public function getmapelguru()
-    {
-        return $this->getMapel();
-    }
-    public function getMapelFromRombel(Request $request, Rombel $rombel)
-    {
-        dd($rombel);
-    }
 }
