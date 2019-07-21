@@ -73,8 +73,8 @@ class KompetensiController extends Controller
      */
     public function store(Request $request)
     {
-        Kompetensi::create($request->except('periode','rombel',''));
-        return back()->with('success', 'Data Berhasil diTambahkan');
+        Kompetensi::create($request->all());
+        return back()->with('success', 'Data Berhasil ditambahkan');
     }
 
     /**
@@ -117,7 +117,16 @@ class KompetensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kompetensi = Kompetensi::findOrFail($id);
+        $this->validate($request, [
+            'tingkat' => 'required|string|max:30',
+            'kode' => 'required|numeric|',
+            'mapel_id' => 'required',
+            'kompetensi_dasar' => 'required',
+        ]);
+        $kompetensi->update($request->all());
+        return back()->with('success', 'Data berhasil di Update');
+
     }
 
     /**

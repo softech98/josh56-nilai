@@ -46,12 +46,13 @@ Data Siswa
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="flag" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Siswa
                  </h4>
-                 
-                                    
-                    {{-- <div class="pull-right">
-                    <a href="{{ route('kelas.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
-                </div> --}}
             </div>
+            <div class="row">
+                            <div class="col-md-4 my-2 ml-4">
+                                {!! Form::select('jurusan', $jurusan , null,['class' => 'form-control', 'id' => 'jurusan', 'placeholder' => '--Filter Jurusan--']) !!}
+                            </div>
+                            
+                            </div>
             <br />
             <div class="card-body">
 
@@ -98,13 +99,19 @@ Data Siswa
 
     <script>
         $(function() {
+            var jurusanSelect;
             var table = $('#table').DataTable({
 
                 processing: true,
                 serverSide: true,
                 order: [ [3, 'asc'] ],
                 type : "get",
-                ajax: '{!! route('guru.siswa.index') !!}',
+                ajax: {
+                url: '{{route('guru.siswa.index')}}',
+                data: function (d) {
+                d.jurusanSelect = jurusanSelect;
+            }
+        },
                 columns: [
                 {data: 'DT_RowIndex', name: 'is_siswa.DT_RowIndex',orderable: false, searchable: false },
                 { data: 'nis', name: 'nis' },
@@ -115,16 +122,19 @@ Data Siswa
                 ],
                 responsive: true,
                 
-                
+              });
+        table.on( 'draw', function () {
+            $('.livicon').each(function(){
+                $(this).updateLivicon();
+            });
+        } );
 
+         $('#jurusan').click(function () {
+                jurusanSelect = $(this).val();
+                table.draw();
 
             });
-            table.on( 'draw', function () {
-                $('.livicon').each(function(){
-                    $(this).updateLivicon();
-                });
-            } );
-        });
+    });
 
     </script>
     <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">

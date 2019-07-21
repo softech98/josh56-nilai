@@ -149,7 +149,7 @@ class GuruController extends Controller
             'alamat' => 'required',
         ]);
         $guru->update($request->all());
-        return back()->with('success', trans('message.success.update'));
+        return back()->with('success', 'Data berhasil di Update');
     }
 
     /**

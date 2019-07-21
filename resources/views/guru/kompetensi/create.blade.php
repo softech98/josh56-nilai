@@ -7,11 +7,11 @@
             <div class="card-body ">
                 {{ Form::model($kompetensi, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }}
                 {{ csrf_field() }}
-                {!! Form::hidden('periode', $periode->id) !!}
+                {{-- {!! Form::hidden('periode', $periode->id) !!} --}}
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            <small class="text-danger">{{ $errors->first('rombel') }}</small>
+                            <small class="text-danger">{{ $errors->first('tingkat') }}</small>
                             {!! Form::select('tingkat',['10'=>'10', '11'=>'11', '12'=>'12'], null, ['class' => 'form-control', 'placeholder'=>'--Pilih Tingkat--', 'required']) !!}
                         </div>
                         <div class="col-lg-6 col-md-6">

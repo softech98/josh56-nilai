@@ -39,7 +39,7 @@ Penilaian Pengetahuan
 
 <!-- Main content -->
 <section class="content paddingleft_right15">
-    {{-- {{ Form::model($pengetahuan, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }} --}}
+    
     {!! Form::open() !!}
     <input type="hidden" id="aspek" name="aspek" value="P">
     <div class="row">
@@ -78,7 +78,7 @@ Penilaian Pengetahuan
                     <div class="row">
                         {!! Form::label('jumlah_penilaian', 'Jumlah Penilaian',[ 'class' => 'col-sm-3', 'control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('jumlah_penilaian', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'12',], null, ['id' => 'jml_nilai', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jumlah Penilaian atau KD--']) !!}
+                            {!! Form::select('jumlah_penilaian', ['3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'12',], null, ['id' => 'jml_nilai', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jumlah Penilaian atau KD--']) !!}
                             <small class="text-danger">{{ $errors->first('jumlah_penilaian') }}</small>
                         </div>
                     </div>
@@ -95,7 +95,6 @@ Penilaian Pengetahuan
                 </div>
             </div>
         </div>
-                   {!! Form::close() !!}
     </div>
 
             <div class="card panel-primary ">
@@ -121,6 +120,9 @@ Penilaian Pengetahuan
 
                         </tbody>
                     </table>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                                       {!! Form::close() !!}
+
                    {{--  @else
                     <table class="table table-bordered table-striped table-hover">
                         <tr><td class="text-center">Anda tidak memiliki jadwal mengajar!</td></tr>
@@ -200,12 +202,12 @@ type="text/javascript"></script>
             var mapel = $('#mapel_id').val();
             
             $.get(`{{ route("getKdFromTingkatAspekAndMapel") }}/${tingkat}/${aspek}/${mapel}`, function(response) {
-            	$.each(response, function(index, kd) {
+            	for (let h = 0; h <  jml_nilai; h++)  {
 
             		var option = '';
-		            for (let i = 0; i <  jml_nilai; i++) 
+		            for (let i = 0; i <  response.length; i++) 
 		            {
-		            	option += `<option value='${response[i].id}'>${response[i].kode} | ${response[i].kompetensi_dasar}</option>`;
+		            	option += `<option value='${response[i].id}'>${response[i].kode}</option>`;
 		            }
 
 		            $("#table thead tr#rowKd").append(`
@@ -215,7 +217,7 @@ type="text/javascript"></script>
 			            	</select>
 		            	</td>
 		            	`);
-            	});
+            	};
             });
 
             //untuk isi baris tabel
@@ -228,13 +230,13 @@ type="text/javascript"></script>
 	            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
 	            {
 	                rowKd += `<td>
-	                	<input type='number' name='nilai[${index}][]' placeholder='Input Nilai Kd' class='form-control' max="100" min='0'/>
+	                	<input type='number' name='nilai[${index}][]' placeholder='' class='form-control' max="100" min='0'/>
 	                </td>`;
 	            }
 
                 row = row + rowKd + `
-                        <td><input type='number' name='nilai[${index}]['nts']' placeholder='Input Nilai Nts' class='form-control'  max="100" min='0' /></td>
-                        <td><input type='number' name='nilai[${index}]['nas']' placeholder='Input Nilai Nas' class='form-control'  max="100" min='0'/></td>
+                        <td><input type='number' name='nilai[${index}]['nts']' placeholder='' class='form-control'  max="100" min='0' /></td>
+                        <td><input type='number' name='nilai[${index}]['nas']' placeholder='' class='form-control'  max="100" min='0'/></td>
                         <td></td>
 	            </tr>
 	            `;
@@ -246,31 +248,6 @@ type="text/javascript"></script>
 });
 </script>
 
-{{-- <script>
-    $(function() {
-        var table = $('#table').DataTable({
-            processing: true,
-            serverSide: true,
-            deferRender: true,
-            ajax: '{!! route('guru.kompetensi.data') !!}',
-            columns: [
-                {data: 'DT_RowIndex', orderable: false, searchable: false },
-                { data: 'kode', name: 'kode' },
-                { data: 'mapels.nama', name: 'mapel'},
-                { data: 'tingkat', name: 'tingkat' },
-                { data: 'kompetensi_dasar', name: 'kompetensi_dasar' },
-                { data: 'actions', name: 'actions', orderable: false, searchable: false },
-                { data: 'checkbox', name: 'checkbox', orderable: false, searchable: false }
-                ]
-            });
-        table.on( 'draw', function () {
-            $('.livicon').each(function(){
-                $(this).updateLivicon();
-            });
-        } );
-    });
-
-</script> --}}
 
 <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -291,30 +268,6 @@ type="text/javascript"></script>
     </div>
 
 </div>
-<!-- /.modal-dialog -->
+@stop
 
-    {{-- <script>
-        $(function () {
-           $('body').on('hidden.bs.modal', '.modal', function () {
-              $(this).removeData('bs.modal');
-          });
-       });
 
-        var $url_path = '{!! url('/') !!}';
-        $('#delete_confirm').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var $recipient = button.data('id');
-            var modal = $(this)
-            modal.find('.modal-footer a').prop("href",$url_path+"/guru/kompetensi/"+ $recipient +"/delete");
-        })
-    </script>
-
-    <script type="text/javascript">
-        $('#add').click(function(){
-            $('#myModal').modal('show');
-            $('.modal-title').html("Tambah Data Kompetensi");
-            $('.modal-body').load('{!! route("guru.kompetensi.create") !!}')
-        });
-    </script> --}}
-
-    @stop

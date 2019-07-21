@@ -1,3 +1,4 @@
+
 @extends('admin/layouts/default')
 
 {{-- Page title --}}

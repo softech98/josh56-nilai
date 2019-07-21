@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use App\Siswa;
 use App\Rombel;
+use App\Jurusan;
 use App\MapelGuru;
 use Illuminate\Http\Request;
 use App\Http\Controllers\JoshController;
@@ -26,6 +27,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
+        $jurusan = Jurusan::pluck('nama','id');
+        $jurusan['all']='Select All';
         if(request()->ajax()) {
         $gurulogin               = Sentinel::getUser();
             $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
@@ -39,7 +42,12 @@ class SiswaController extends Controller
 
       // }
 
+        // if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
+        //     $siswa = Siswa::with('jurusan')->whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->pluck('jurusan_id')->get();
+        // }
+        // else{
         $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
+        // }
 
        // $siswa = Siswa::where('rombel_id', );
        // $siswa = Siswa::leftJoin('is_rombel', 'is_siswa.rombel_id', '=', 'is_rombel.id')
@@ -58,7 +66,7 @@ class SiswaController extends Controller
             ->make(true);
         }
        
-        return view('guru.siswa.index');
+        return view('guru.siswa.index', compact('jurusan'));
     }
 
     /**
