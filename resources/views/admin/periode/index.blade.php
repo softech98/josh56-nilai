@@ -82,6 +82,7 @@ Data Periode
         var table = $('#table').DataTable({
             processing: true,
             serverSide: true,
+            searching: false,
             type : "get",
             ajax: '{!! route('admin.periode.index') !!}',
             columns: [

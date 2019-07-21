@@ -167,13 +167,16 @@ class RombelController extends Controller
     {
         
         if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
-            $rombel = Rombel::with('jurusans','guru','periode')->where('jurusan_id', $request->jurusanSelect);
+            $rombel = Rombel::with('jurusans','guru')->where('jurusan_id', $request->jurusanSelect);
         }
         else if ($request->tingkatSelect != null && $request->tingkatSelect != "all" ) {
-            $rombel = Rombel::with('jurusans','guru','periode')->where('tingkat', $request->tingkatSelect);
+            $rombel = Rombel::with('jurusans','guru')->where('tingkat', $request->tingkatSelect);
+        }
+        else if ($request->tingkatSelect != null && $request->tingkatSelect != "all" && $request->jurusanSelect != null && $request->jurusanSelect != "all") {
+            $rombel = Rombel::with('jurusans','guru')->where('jurusan_id', $request->jurusanSelect)->where('tingkat', $request->tingkatSelect);
         }
         else{
-        $rombel = Rombel::with('jurusans','guru','periode')->get(['id', 'namaRombel', 'tingkat', 'periode_id', 'jurusan_id', 'guru_id']);
+        $rombel = Rombel::with('jurusans','guru')->get(['id', 'namaRombel', 'tingkat', 'periode_id', 'jurusan_id', 'guru_id']);
         }
         return DataTables::of($rombel)
         ->addColumn('mapels', function($rombel){

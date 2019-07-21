@@ -48,7 +48,7 @@ Data Mata Pelajaran
                                                 <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
                                                    data-hc="white"></i>
                                             </span>
-                                <span class="label-text align-middle">Tambah Rombel</span>
+                                <span class="label-text align-middle">Tambah Mapel</span>
                             </button>
                 </div>
                  <div class="row">

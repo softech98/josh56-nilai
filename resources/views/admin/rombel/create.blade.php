@@ -50,7 +50,9 @@
                     <div class="form-group">
                         <div class="row">
                         <div class="col-md-6 col-sm-8 ">
-                            <button type="reset" class="btn btn-danger btn-responsive ">Reset</button>
+                             @if($method == 'POST')
+                           <button type="reset" class="btn btn-danger resetModal" aria-hidden="true">Reset</button>
+                           @endif 
                             <button type="submit" class="btn btn-success btn-responsive ">
                                 {{ $btn_submit }}
                             </button>

@@ -167,10 +167,10 @@ type="text/javascript"></script>
             $('.modal-body').load('{!! route("guru.kompetensi.create") !!}')
         });
     </script>
-    {{-- <script type="text/javascript">
-        $(document).on('click', '.edit{{$guru->id}}', function(){
+    <script type="text/javascript">
+        $(document).on('click', '.edit{{$kompetensi->id}}', function(){
             var nip = $(this).data('id');
-            $.get("{{ route('admin.guru.index') }}" +'/' + nip +'/edit', function (data) {
+            $.get("{{ route('guru.kompetensi.index') }}" +'/' + nip +'/edit', function (data) {
               $('#myModal').modal('show');
               $('.modal-title').html("Edit Data Guru");
               $('.modal-body').html(data);  
@@ -212,5 +212,5 @@ type="text/javascript"></script>
         }
     });
 
-    </script> --}}
+    </script>
     @stop

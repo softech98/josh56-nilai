@@ -108,6 +108,7 @@ Data Jurusan
         var table = $('#table').DataTable({
             processing: true,
             serverSide: true,
+            searching: false,
             type : "get",
             ajax: '{!! route('admin.jurusan.data') !!}',
             columns: [

@@ -137,7 +137,7 @@ class UsersController extends JoshController
             //     ->causedBy($user)
             //     ->log('New User Created by '.Sentinel::getUser()->full_name);
             // Redirect to the home page with success menu
-            return Redirect::route('admin.users.index')->with('success', trans('users/message.success.create'));
+            return Redirect::route('admin.users.index')->with('success', 'User berhasil ditambahkan');
 
         } catch (LoginRequiredException $e) {
             $error = trans('admin/users/message.user_login_required');
@@ -269,7 +269,7 @@ class UsersController extends JoshController
                     ->causedBy($user)
                     ->log('User Updated by '.Sentinel::getUser()->full_name);
                 // Redirect to the user page
-                return Redirect::route('admin.users.edit', $user)->with('success', $success);
+                return Redirect::route('admin.users.index', $user)->with('success', 'User Berhasil di update');
             }
 
             // Prepare the error message
@@ -279,7 +279,7 @@ class UsersController extends JoshController
             $error = trans('users/message.user_not_found', compact('id'));
 
             // Redirect to the user management page
-            return Redirect::route('admin.users.index')->with('error', $error);
+            return Redirect::route('admin.users.edit')->with('error', $error);
         }
 
         // Redirect to the user page

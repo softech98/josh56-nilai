@@ -117,7 +117,7 @@ Data Siswa
                 {data: 'DT_RowIndex', name: 'is_siswa.DT_RowIndex',orderable: false, searchable: false },
                 { data: 'nis', name: 'nis' },
                 { data: 'nama', name: 'nama' },
-                { data: 'rombel', name: 'rombel' },
+                { data: 'rombel', name: 'rombel', searchable: false },
                 { data: 'jenis_kelamin', name: 'jenis_kelamin' },
                 { data: 'actions', name: 'actions', orderable: false, searchable: false },
                 { data: 'checkbox', orderable: false, searchable: false },

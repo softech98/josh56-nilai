@@ -36,7 +36,7 @@
      <div class="ui-group-buttons col-sm-9 pull-right">
         <button type="submit" class="btn btn-primary">{{$btn_submit}} </button>
         <div class="or or-lg"></div>
-        <button type="button" class="btn btn-danger">Batal</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
     </div>
 </form>
 </div>

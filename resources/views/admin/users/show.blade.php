@@ -139,7 +139,7 @@
                                                     </table>
                                                 </div>
                                 <a href="{{ route('admin.users.index') }}" class='btn btn-success'>Back to List</a>
-                                <a href="javascript:void(0)" id="edit{{$user->id}}" class='btn btn-warning'>Edit</a>
+                                <a href="{{ route('admin.users.edit', $user->id) }}" id="edit{{$user->id}}" class='btn btn-warning'>Edit</a>
                                             </div>
                                         </div>
                                     </div>

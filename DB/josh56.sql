@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jul 2019 pada 02.52
+-- Waktu pembuatan: 21 Jul 2019 pada 09.08
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -46,7 +46,6 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (1, 1, 'FBMhdQXSSr1uKZjYYrPm0iuvceIPkP00', 1, '2019-06-23 03:29:43', '2019-06-23 03:29:43', '2019-06-23 03:29:43'),
 (2, 2, '8SOCyUQlR4xz8Lx4zLFpcXAp68TCTFzE', 1, '2019-06-23 03:29:43', '2019-06-23 03:29:43', '2019-06-23 03:29:43'),
 (4, 4, 'JfRaM3yvQFy44UIhhTGRsHd4mF0HrCSj', 1, '2019-06-23 09:56:56', '2019-06-23 09:56:56', '2019-06-23 09:56:56'),
-(5, 5, 'gZ9lIC5BeIxjynE2Ty1QuiFrjyf8QAZf', 1, '2019-06-23 09:56:57', '2019-06-23 09:56:57', '2019-06-23 09:56:57'),
 (8, 8, 'j05ay2TvefgWaTdJpCsMM3hREtZvQ76N', 1, '2019-06-27 22:50:10', '2019-06-27 22:50:10', '2019-06-27 22:50:10'),
 (10, 10, 'pVR142b2GPXq1n8OV40X8mOSFEcwN5zI', 1, '2019-06-27 23:07:00', '2019-06-27 23:07:00', '2019-06-27 23:07:00'),
 (11, 11, '2caLoDfc8QAO5wpZHnuzpi5bZyzXyeUU', 1, '2019-06-28 19:26:53', '2019-06-28 19:26:53', '2019-06-28 19:26:53'),
@@ -63,7 +62,12 @@ INSERT INTO `activations` (`id`, `user_id`, `code`, `completed`, `completed_at`,
 (25, 6, 'aUmb9RNzFfWcAIKnqK0JKDa23w6ci2Fw', 1, '2019-07-13 10:29:18', '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
 (26, 7, 'e4Ujx2TtFyeLk6C8IttmJaycDlcmsX7T', 1, '2019-07-13 10:41:24', '2019-07-13 10:41:24', '2019-07-13 10:41:24'),
 (27, 8, 'fdLXpL377W5NYy1M9olyvFTLf4PiJc9D', 1, '2019-07-13 10:44:19', '2019-07-13 10:44:19', '2019-07-13 10:44:19'),
-(29, 10, 'yNVMjpBrD8erZttV1ZMXn4kQoOZSkiSl', 1, '2019-07-16 04:03:02', '2019-07-16 04:03:01', '2019-07-16 04:03:02');
+(29, 10, 'yNVMjpBrD8erZttV1ZMXn4kQoOZSkiSl', 1, '2019-07-16 04:03:02', '2019-07-16 04:03:01', '2019-07-16 04:03:02'),
+(30, 5, '775LLqYfRNlWXVrQ3igZHpj6scWM9cdD', 1, '2019-07-20 15:25:10', '2019-07-20 15:24:36', '2019-07-20 15:25:10'),
+(31, 11, '6qdsQe9Bax8BwbedZ2fX09IOGo4Ih6fb', 1, '2019-07-21 05:48:43', '2019-07-21 05:48:42', '2019-07-21 05:48:43'),
+(32, 12, 'zZrZbu0VZfAO0034qHcQV8vgaKpZxhV0', 1, '2019-07-21 05:54:36', '2019-07-21 05:54:36', '2019-07-21 05:54:36'),
+(33, 13, 'UbLWRyQ3q98VvNP29ui5HkzUYZ1dPLb0', 1, '2019-07-21 05:56:19', '2019-07-21 05:56:19', '2019-07-21 05:56:19'),
+(34, 14, 'fKp9bfiEfman7IyUXb516UecsGE65u99', 1, '2019-07-21 07:05:37', '2019-07-21 07:05:37', '2019-07-21 07:05:37');
 
 -- --------------------------------------------------------
 
@@ -152,7 +156,49 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_id`, `subj
 (61, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 09:39:53', '2019-07-16 09:39:53'),
 (62, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-16 09:40:00', '2019-07-16 09:40:00'),
 (63, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-16 09:47:38', '2019-07-16 09:47:38'),
-(64, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 09:47:46', '2019-07-16 09:47:46');
+(64, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-16 09:47:46', '2019-07-16 09:47:46'),
+(65, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-18 13:59:55', '2019-07-18 13:59:55'),
+(66, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-18 15:19:32', '2019-07-18 15:19:32'),
+(67, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-18 15:27:09', '2019-07-18 15:27:09'),
+(68, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-18 16:17:39', '2019-07-18 16:17:39'),
+(69, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-18 16:17:43', '2019-07-18 16:17:43'),
+(70, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-18 16:19:40', '2019-07-18 16:19:40'),
+(71, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-18 16:19:50', '2019-07-18 16:19:50'),
+(72, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-19 19:14:01', '2019-07-19 19:14:01'),
+(73, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-19 23:35:58', '2019-07-19 23:35:58'),
+(74, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 02:17:38', '2019-07-20 02:17:38'),
+(75, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 07:29:28', '2019-07-20 07:29:28'),
+(76, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 11:10:01', '2019-07-20 11:10:01'),
+(77, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 13:11:22', '2019-07-20 13:11:22'),
+(78, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 13:25:16', '2019-07-20 13:25:16'),
+(79, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 13:51:37', '2019-07-20 13:51:37'),
+(80, 'Riawan', 'LoggedOut', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 13:52:53', '2019-07-20 13:52:53'),
+(81, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 13:52:57', '2019-07-20 13:52:57'),
+(82, 'Admin Kedua', 'User Updated by Ilham', 10, 'App\\User', 10, 'App\\User', '[]', '2019-07-20 14:56:24', '2019-07-20 14:56:24'),
+(83, 'Admin Kedua', 'User Updated by Ilham', 10, 'App\\User', 10, 'App\\User', '[]', '2019-07-20 15:08:29', '2019-07-20 15:08:29'),
+(84, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:22:52', '2019-07-20 15:22:52'),
+(85, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:24:18', '2019-07-20 15:24:18'),
+(86, 'joko', 'User Updated by Ilham', 5, 'App\\User', 5, 'App\\User', '[]', '2019-07-20 15:25:10', '2019-07-20 15:25:10'),
+(87, 'Ilham', 'User Updated by Ilham', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:35:41', '2019-07-20 15:35:41'),
+(88, 'Ilham', 'User Updated by Ilham', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:35:51', '2019-07-20 15:35:51'),
+(89, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:36:28', '2019-07-20 15:36:28'),
+(90, 'Ilham', 'User Updated by Ilham', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:36:42', '2019-07-20 15:36:42'),
+(91, 'Ilham', 'User Updated by Ilham', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:36:50', '2019-07-20 15:36:50'),
+(92, 'Ilham', 'LoggedOut', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 15:38:14', '2019-07-20 15:38:14'),
+(93, 'Pengguna', 'LoggedIn', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-20 15:38:42', '2019-07-20 15:38:42'),
+(94, 'Pengguna', 'LoggedOut', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-20 15:42:09', '2019-07-20 15:42:09'),
+(95, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-20 15:46:58', '2019-07-20 15:46:58'),
+(96, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-20 16:15:57', '2019-07-20 16:15:57'),
+(97, 'Riawan', 'LoggedIn', 8, 'App\\User', 8, 'App\\User', '[]', '2019-07-21 05:21:43', '2019-07-21 05:21:43'),
+(98, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-21 05:43:06', '2019-07-21 05:43:06'),
+(99, 'Rifka Simamora', 'New User Created by Ilham', 11, 'App\\User', 11, 'App\\User', '[]', '2019-07-21 05:48:43', '2019-07-21 05:48:43'),
+(100, 'dfdf', 'New User Created by Ilham', 12, 'App\\User', 12, 'App\\User', '[]', '2019-07-21 05:54:37', '2019-07-21 05:54:37'),
+(101, 'ererer', 'New User Created by Ilham', 13, 'App\\User', 13, 'App\\User', '[]', '2019-07-21 05:56:19', '2019-07-21 05:56:19'),
+(102, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-21 05:58:15', '2019-07-21 05:58:15'),
+(103, 'Ilham', 'LoggedIn', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-21 06:10:16', '2019-07-21 06:10:16'),
+(104, 'Ilham', 'User Updated by Ilham', 1, 'App\\User', 1, 'App\\User', '[]', '2019-07-21 07:00:35', '2019-07-21 07:00:35'),
+(105, 'Pengguna', 'User Updated by Ilham', 2, 'App\\User', 2, 'App\\User', '[]', '2019-07-21 07:03:19', '2019-07-21 07:03:19'),
+(106, 'Dini', 'User Updated by Ilham', 14, 'App\\User', 14, 'App\\User', '[]', '2019-07-21 07:05:58', '2019-07-21 07:05:58');
 
 -- --------------------------------------------------------
 
@@ -281,7 +327,8 @@ INSERT INTO `is_kompetensi` (`id`, `kode`, `aspek`, `mapel_id`, `tingkat`, `komp
 (1, '3.1', 'P', 1, '10', 'Menganalisis Q.S. Al-Anfal (8) : 72); Q.S. Al-Hujurat (49) : 12; dan QS Al-Hujurat (49) : 10; serta hadits tentang kontrol diri (mujahadah an-nafs), prasangka baik (husnuzzhan), dan persaudaraan (ukhuwah)'),
 (2, '3.2', 'P', 1, '10', 'Memahami manfaat dan hikmah kontrol diri (mujahadah an-nafs), prasangka baik (husnuzzhan) dan persaudaraan (ukhuwah), dan menerapkannya dalam kehidupan'),
 (3, '3.3', 'P', 1, '10', 'Menganalisis  Q.S. Al-Isra\' (17) : 32, dan Q.S. An-Nur (24) : 2, serta hadits tentang larangan pergaulan bebas dan perbuatan zina.'),
-(5, '3.1', 'P', 1, '12', 'menganalisis dan mengevaluasi makna Q.S. Ali Imran/3: 190-191, dan Q.S. Ali Imran/3: 159, serta Hadis tentang berpikir kritis dan bersikap demokratis');
+(5, '3.1', 'P', 1, '12', 'menganalisis dan mengevaluasi makna Q.S. Ali Imran/3: 190-191, dan Q.S. Ali Imran/3: 159, serta Hadis tentang berpikir kritis dan bersikap demokratis'),
+(6, '3.1', 'P', 4, '10', 'Dasar Pengetahuan Akuntansi');
 
 -- --------------------------------------------------------
 
@@ -307,7 +354,8 @@ INSERT INTO `is_mapel` (`id`, `jurusan_id`, `nama`, `k1`, `k2`, `k3`) VALUES
 (2, 1, 'Bahasa Indonesia', 1, 1, 1),
 (3, 1, 'Matematika', 1, 1, 1),
 (4, 2, 'Dasar Akuntansi', 1, 0, 0),
-(5, 2, 'Pendidikan Agama & Budi Pekerti', 1, 1, 1);
+(5, 2, 'Pendidikan Agama & Budi Pekerti', 1, 1, 1),
+(6, 4, 'Dasar Pemasaran', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -333,7 +381,7 @@ INSERT INTO `is_mapel_gurus` (`id`, `rombel_id`, `mapel_id`, `guru_id`, `jurusan
 (4, 2, 2, 17, 1, 3),
 (5, 1, 3, 15, 1, 3),
 (12, 8, 4, 37, 2, 3),
-(13, 8, 5, 31, 2, 3),
+(13, 8, 5, 1, 2, 3),
 (14, 2, 1, 37, 1, 3),
 (15, 5, 1, 37, 1, NULL);
 
@@ -379,7 +427,8 @@ INSERT INTO `is_periode` (`id`, `mulai`, `selesai`, `semester`, `aktif`) VALUES
 (1, 2018, 2019, 1, 0),
 (2, 2018, 2019, 2, 0),
 (3, 2019, 2020, 1, 1),
-(4, 2019, 2020, 2, 0);
+(4, 2019, 2020, 2, 0),
+(5, 2017, 2018, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -401,7 +450,7 @@ CREATE TABLE `is_rombel` (
 --
 
 INSERT INTO `is_rombel` (`id`, `namaRombel`, `jurusan_id`, `tingkat`, `periode_id`, `guru_id`) VALUES
-(1, 'TKJ 1', 1, '10', 3, '24'),
+(1, 'TKJ 1', 1, '10', 3, '21'),
 (2, 'TKJ 2', 1, '10', 3, '15'),
 (3, 'TKJ 1', 1, '11', 3, '25'),
 (4, 'TKJ 2', 1, '11', 3, '32'),
@@ -410,7 +459,8 @@ INSERT INTO `is_rombel` (`id`, `namaRombel`, `jurusan_id`, `tingkat`, `periode_i
 (7, 'AK 1', 2, '10', 3, '20'),
 (8, 'AK 2', 2, '10', 3, '21'),
 (9, 'AK 3', 2, '10', 3, '31'),
-(10, 'AK 1', 2, '11', 3, '28');
+(10, 'AK 1', 2, '11', 3, '28'),
+(12, 'AK 2', 2, '11', 3, '37');
 
 -- --------------------------------------------------------
 
@@ -437,7 +487,7 @@ CREATE TABLE `is_siswa` (
 --
 
 INSERT INTO `is_siswa` (`nis`, `nisn`, `rombel_id`, `nama`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `agama`, `alamat`, `created_at`, `updated_at`) VALUES
-('10233', '9391546804', 8, 'Galar Irnanto Pranowo', 'Bima', '1932-05-13', 'L', 'Buddha', 'Jr. Gambang No. 11, Pematangsiantar 11739, KalTim', '2019-07-07 15:19:07', '2019-07-07 15:19:07'),
+('10233', '9391546804', 8, 'Galar Irnanto Pranowo', 'Bima', '1932-05-13', 'L', 'Hindu', 'Jr. Gambang No. 11, Pematangsiantar 11739, KalTim', '2019-07-07 15:19:07', '2019-07-21 06:02:43'),
 ('12546', '9545358715', 2, 'Ilham Saputra', 'Jambi', '1998-09-22', 'L', 'Islam', 'Jambi', '2019-06-27 11:41:36', '2019-07-07 15:11:20'),
 ('14560', '9531638126', 3, 'Kasiyah Nabila Mayasari', 'Bitung', '1935-12-18', 'P', 'Hindu', 'Dk. Sadang Serang No. 136, Banda Aceh 74917, DKI', '2019-07-07 15:19:11', '2019-07-07 15:19:11'),
 ('14592', '9742538683', 3, 'Jumadi Saputra', 'Bitung', '1969-07-16', 'P', 'Kristen Katolik', 'Ki. Supomo No. 923, Banjarmasin 95690, SulSel', '2019-07-07 15:19:05', '2019-07-07 15:19:05'),
@@ -609,7 +659,24 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (133, 8, 'b7TqbQ4cDqA85GMbcaH7M5fWfmCgqxnD', '2019-07-15 12:33:26', '2019-07-15 12:33:26'),
 (140, 8, 'h88VSHqeH8ck1TrL8aP2LXcLqr9EVPgJ', '2019-07-16 04:39:53', '2019-07-16 04:39:53'),
 (142, 8, '9KwXVy5mv54RQFnIMKNo77kzVA3xZn4W', '2019-07-16 08:03:26', '2019-07-16 08:03:26'),
-(145, 8, 'MB7v6B9wRh4TiPIFWYiidGqsqC79Y14R', '2019-07-16 09:47:46', '2019-07-16 09:47:46');
+(145, 8, 'MB7v6B9wRh4TiPIFWYiidGqsqC79Y14R', '2019-07-16 09:47:46', '2019-07-16 09:47:46'),
+(149, 8, 'Hi5TNaLhmXtALhuXSynlWG6STTTlDeDr', '2019-07-18 16:19:50', '2019-07-18 16:19:50'),
+(150, 8, 'aogrYELxobsQlyX5DpALZn1hqTOnFClV', '2019-07-19 19:14:01', '2019-07-19 19:14:01'),
+(151, 8, '1zBgg61v3YzeGoqJA4AJBWbTreTzsqhZ', '2019-07-19 23:35:57', '2019-07-19 23:35:57'),
+(152, 8, 'LYChKTdyYnaU4OTcflSBreu6T1Br9IGZ', '2019-07-20 02:17:38', '2019-07-20 02:17:38'),
+(153, 8, 'BvJtkRAe2Eg4QbNMF9vYzSVXKOaspM79', '2019-07-20 07:29:28', '2019-07-20 07:29:28'),
+(154, 8, 'gzFGolEkCHwoNLUmSHAvseDaz8dzcmgW', '2019-07-20 11:10:01', '2019-07-20 11:10:01'),
+(155, 8, 'Nr0jbqeTavXmUaAUhPaZeC6YqKq1o3tv', '2019-07-20 13:11:22', '2019-07-20 13:11:22'),
+(156, 8, 'j0IdzoCpv2sJz28tFOfu532tsLak9ge3', '2019-07-20 13:25:16', '2019-07-20 13:25:16'),
+(158, 1, 'cDym78jDziOIDXnC85RKRLotMUnwghxx', '2019-07-20 13:52:57', '2019-07-20 13:52:57'),
+(160, 1, 'hI8Li3hbGzWnVOHhFDdh6TKGHr6q4K0D', '2019-07-20 15:24:18', '2019-07-20 15:24:18'),
+(161, 1, 'yBhDzkyB9NtFc67gJxpDsDbll4eQsyny', '2019-07-20 15:36:28', '2019-07-20 15:36:28'),
+(163, 8, 'qzsfiVoa96N9UoAPnPiMHVDnSmIT86J8', '2019-07-20 15:46:58', '2019-07-20 15:46:58'),
+(164, 1, 'PtsVtC1RtGhERvGXsEZjAwrSn4L2Pw4F', '2019-07-20 16:15:57', '2019-07-20 16:15:57'),
+(165, 8, 'v3SVjuACIhMnJPnWfCs8pjsUdlXRmgjk', '2019-07-21 05:21:42', '2019-07-21 05:21:42'),
+(166, 1, 'ZlFkI4rAfSxAq4aLaoH2Df7r3EwS6eMD', '2019-07-21 05:43:06', '2019-07-21 05:43:06'),
+(167, 1, 'fHA4H5ogaUQTJQxVNTCSpoD1EOMjbCbQ', '2019-07-21 05:58:15', '2019-07-21 05:58:15'),
+(168, 1, 'yJEFYNd3MU2EwO6RDKYAUvdNXRMwloEQ', '2019-07-21 06:10:02', '2019-07-21 06:10:02');
 
 -- --------------------------------------------------------
 
@@ -673,7 +740,8 @@ INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALU
 (5, 2, '2019-07-13 08:48:44', '2019-07-13 08:48:44'),
 (6, 2, '2019-07-13 10:29:18', '2019-07-13 10:29:18'),
 (8, 2, '2019-07-13 10:44:19', '2019-07-13 10:44:19'),
-(10, 1, '2019-07-16 04:03:02', '2019-07-16 04:03:02');
+(10, 1, '2019-07-16 04:03:02', '2019-07-16 04:03:02'),
+(14, 2, '2019-07-21 07:05:37', '2019-07-21 07:05:37');
 
 -- --------------------------------------------------------
 
@@ -776,7 +844,15 @@ INSERT INTO `throttle` (`id`, `user_id`, `type`, `ip`, `created_at`, `updated_at
 (56, 1, 'user', NULL, '2019-07-16 04:37:11', '2019-07-16 04:37:11'),
 (57, NULL, 'global', NULL, '2019-07-16 04:37:19', '2019-07-16 04:37:19'),
 (58, NULL, 'ip', '::1', '2019-07-16 04:37:19', '2019-07-16 04:37:19'),
-(59, 1, 'user', NULL, '2019-07-16 04:37:20', '2019-07-16 04:37:20');
+(59, 1, 'user', NULL, '2019-07-16 04:37:20', '2019-07-16 04:37:20'),
+(60, NULL, 'global', NULL, '2019-07-20 13:25:08', '2019-07-20 13:25:08'),
+(61, NULL, 'ip', '10.13.165.239', '2019-07-20 13:25:08', '2019-07-20 13:25:08'),
+(62, NULL, 'global', NULL, '2019-07-20 15:35:45', '2019-07-20 15:35:45'),
+(63, NULL, 'ip', '115.178.192.244', '2019-07-20 15:35:45', '2019-07-20 15:35:45'),
+(64, NULL, 'global', NULL, '2019-07-20 15:38:23', '2019-07-20 15:38:23'),
+(65, NULL, 'ip', '::1', '2019-07-20 15:38:23', '2019-07-20 15:38:23'),
+(66, NULL, 'global', NULL, '2019-07-20 15:38:32', '2019-07-20 15:38:32'),
+(67, NULL, 'ip', '::1', '2019-07-20 15:38:32', '2019-07-20 15:38:32');
 
 -- --------------------------------------------------------
 
@@ -804,12 +880,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `guru_id`, `email`, `username`, `password`, `permissions`, `last_login`, `nama`, `created_at`, `updated_at`, `gender`, `pic`) VALUES
-(1, NULL, 'admin@admin.com', 'admin', '$2y$10$m2BigNxcIST8CXeI7g8pCeZiBAFH1av0kcdTFrzSF45OyQHgQCiOO', NULL, '2019-07-16 08:02:52', 'Ilham', '2019-06-23 03:29:43', '2019-07-16 08:02:52', 'L', 'ebMfH2q1wO.jpeg'),
-(2, NULL, 'user@user.com', 'user', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-16 09:40:00', 'Pengguna', '2019-06-23 03:29:43', '2019-07-16 09:40:00', 'L', NULL),
+(1, NULL, 'admin@admin.com', 'admin', '$2y$10$Bvnvz2AN/OnO6jVfcdn0VOUoHXYC45cT4euaWnCtP5.mCLG9wOZeO', NULL, '2019-07-21 06:10:07', 'Ilham', '2019-06-23 03:29:43', '2019-07-21 07:00:35', 'P', 'ebMfH2q1wO.jpeg'),
+(2, NULL, 'user@user.com', 'user', '$2y$10$NnVrNKJQ0ahjpNRGF1zgfuQG4mdh6HoF1JqHcgwYy90OKqLodiYim', NULL, '2019-07-20 15:38:42', 'Pengguna', '2019-06-23 03:29:43', '2019-07-20 15:38:42', 'L', NULL),
 (5, NULL, 'joko@gmail.com', 'joko', '$2y$10$LD2JGglSNDghzCs6jmS0LeS/A9pwA.3wTqW0XAwFJHYEUD0U.9Onu', NULL, '2019-07-13 09:56:53', 'joko', '2019-07-13 08:48:44', '2019-07-13 09:56:53', 'L', NULL),
 (6, NULL, 'ramdan@yahoo.com', 'ramdan12', '$2y$10$bKDN9iLn0RqShs/0s7UAU.oq.c4llHpaeIQNQnCzs0ikWdfZyBtv.', NULL, NULL, 'Ramdan', '2019-07-13 10:29:18', '2019-07-13 10:29:18', 'P', NULL),
-(8, 37, 'riawan@gmail.com', 'riawan', '$2y$10$3.P6GeDAJLM6LPe5GMuyq.uWdNENxpJ1Ty.U4RiJGzK7MvBCGV3pO', NULL, '2019-07-16 09:47:46', 'Riawan', '2019-07-13 10:44:19', '2019-07-16 09:47:46', 'P', NULL),
-(10, NULL, 'admin2@admin.com', 'admin2', '$2y$10$yNhFbCjYyPRUCFEMiOoLPOiTW4vejDtfCaN8gGq1ojSragS8ybGl6', NULL, '2019-07-16 04:03:38', 'Admin Kedua', '2019-07-16 04:03:01', '2019-07-16 04:03:38', 'L', '4d1z3eoNfx.jpeg');
+(8, 37, 'riawan@gmail.com', 'riawan', '$2y$10$3.P6GeDAJLM6LPe5GMuyq.uWdNENxpJ1Ty.U4RiJGzK7MvBCGV3pO', NULL, '2019-07-21 05:21:43', 'Riawan', '2019-07-13 10:44:19', '2019-07-21 05:21:43', 'P', NULL),
+(10, NULL, 'admin2@admin.com', 'admin2', '$2y$10$yNhFbCjYyPRUCFEMiOoLPOiTW4vejDtfCaN8gGq1ojSragS8ybGl6', NULL, '2019-07-16 04:03:38', 'Admin Kedua', '2019-07-16 04:03:01', '2019-07-16 04:03:38', 'L', '4d1z3eoNfx.jpeg'),
+(14, NULL, 'dini@gmail.com', 'dini123', '$2y$10$Xcb07XyGUngKl5J1/9x76u0hnRUiXtPGaaxSxge2c8roBwy5KFJqy', NULL, NULL, 'Dini', '2019-07-21 07:05:37', '2019-07-21 07:05:37', 'P', NULL);
 
 --
 -- Indexes for dumped tables
@@ -958,13 +1035,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `activations`
 --
 ALTER TABLE `activations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT untuk tabel `datatables`
@@ -982,25 +1059,25 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT untuk tabel `is_guru`
 --
 ALTER TABLE `is_guru`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_jurusan`
 --
 ALTER TABLE `is_jurusan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_kompetensi`
 --
 ALTER TABLE `is_kompetensi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_mapel`
 --
 ALTER TABLE `is_mapel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_mapel_gurus`
@@ -1018,13 +1095,13 @@ ALTER TABLE `is_nilai`
 -- AUTO_INCREMENT untuk tabel `is_periode`
 --
 ALTER TABLE `is_periode`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `is_rombel`
 --
 ALTER TABLE `is_rombel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -1036,7 +1113,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT untuk tabel `reminders`
@@ -1060,13 +1137,13 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT untuk tabel `throttle`
 --
 ALTER TABLE `throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

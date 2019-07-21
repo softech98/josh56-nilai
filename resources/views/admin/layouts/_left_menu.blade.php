@@ -470,14 +470,14 @@
                     Responsive Datatables
                 </a>
             </li>
-            {{--<li {!! (Request::is('admin/jtable') ? 'class="active"' : '') !!}>--}}
+            {{-<li {!! (Request::is('admin/jtable') ? 'class="active"' : '') !!}>--}}
                 {{--<a href="{{ URL::to('admin/jtable') }}">--}}
                     {{--<i class="fa fa-angle-double-right"></i>--}}
                     {{--JTable--}}
                 {{--</a>--}}
             {{--</li>--}}
-        </ul>
-    </li> --}}
+        {{-- </ul> --}}
+    {{-- </li> --}}
     {{-- <li {!! (Request::is('admin/tasks') ? 'class="active"' : '') !!}>
         <a href="{{ URL::to('admin/tasks') }}">
             <i class="livicon" data-c="#EF6F6C" data-hc="#EF6F6C" data-name="list-ul" data-size="18"

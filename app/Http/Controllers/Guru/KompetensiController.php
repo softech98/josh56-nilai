@@ -30,9 +30,10 @@ class KompetensiController extends Controller
      */
     public function index()
     {
+        $kompetensi = new Kompetensi;
         $guru = Sentinel::getUser();
         $mapelguru = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->get();
-        return view ('guru.kompetensi.index', compact('mapelguru'));
+        return view ('guru.kompetensi.index', compact('mapelguru','kompetensi'));
     }
 
     /**
@@ -50,7 +51,6 @@ class KompetensiController extends Controller
        // {
        //  $getnamamapel = MapelGuru::where('guru_id', $gurulogin->guru_id)->groupBy('mapel_id')->get();
        // }
-       // dd($getnamamapel);
        
        $mapelguru          = MapelGuru::where('guru_id', $gurulogin->guru_id ?? 0)->groupBy('mapel_id')->get();
        // $getnamamapel       = [];
@@ -94,9 +94,18 @@ class KompetensiController extends Controller
      * @param  \App\Kompetensi  $kompetensi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kompetensi $kompetensi)
+    public function edit($id)
     {
-        //
+        $data['kompetensi'] = Kompetensi::findOrFail($id);
+        $gurulogin               = Sentinel::getUser();
+        $mapelguru          = MapelGuru::where('guru_id', $gurulogin->guru_id ?? 0)->groupBy('mapel_id')->get();
+       $getrombel   = Rombel::whereIn('id', $mapelguru->pluck('rombel_id'))->pluck('namaRombel', 'tingkat');
+       $data['getnamamapel'] = Mapel::whereIn('id', $mapelguru->pluck('mapel_id'))->pluck('nama','id');
+        $data['periode']            = Periode::where('aktif',1)->first();
+        $data['method']     = "PUT";
+        $data['btn_submit'] = "Update";
+        $data['action']     = array('Guru\KompetensiController@update', $id);
+        return view('guru.kompetensi.create',$data);
     }
 
     /**
@@ -106,7 +115,7 @@ class KompetensiController extends Controller
      * @param  \App\Kompetensi  $kompetensi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kompetensi $kompetensi)
+    public function update(Request $request, $id)
     {
         //
     }

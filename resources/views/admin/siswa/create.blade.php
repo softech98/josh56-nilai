@@ -69,9 +69,11 @@
         </div>
         <div class="button-group">
             <div class="row">
+                    @if($method == 'POST')
                 <div class="col-md-4">
-                   <button type="reset" class="btn btn-danger btn-block resetModal" aria-hidden="true">Reset</button>   
+                   <button type="reset" class="btn btn-danger btn-block resetModal" aria-hidden="true">Reset</button>
                </div>
+                   @endif   
                <div class="col-md-4">
                 <button type="submit" class="btn btn-info btn-block " id="btncheck">
                     {{ $btn_submit }}

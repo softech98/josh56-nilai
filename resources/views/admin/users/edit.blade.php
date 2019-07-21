@@ -1,4 +1,4 @@
-@extends('admin.layouts/default')
+    @extends('admin.layouts/default')
 
 {{-- Page title --}}
 @section('title')
@@ -192,9 +192,10 @@ Edit User
                                                     </div>
                                                     </div>
                                                     </div>
+                                                    <a href="{{ route('admin.users.index') }}" class='btn btn-warning'>Back to List</a>
                                                     <button type="submit" class="btn btn-info " id="btncheck">
-                    Update
-                </button>
+                                                    Update
+                                                </button>
                                                     
                                                     </form>
                                                     </div>
