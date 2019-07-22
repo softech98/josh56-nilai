@@ -19,7 +19,7 @@
 //edited by ramdan riawan
 #############
 Route::get('getMapelFromRombel/{rombel}', 'Guru\NilaiController@getMapelFromRombel');
-Route::get('getSiswaFromRombel/{rombel?}', 'Guru\NilaiController@getSiswaFromRombel')->name('getSiswaFromRombel');
+Route::get('getSiswaFromRombel/{rombel?}/{aspek?}', 'Guru\NilaiController@getSiswaFromRombel')->name('getSiswaFromRombel');
 Route::get('getKdFromTingkatAspekAndMapel/{tingkat?}/{aspek?}/{mapel?}', 'Guru\NilaiController@getKdFromTingkatAspekAndMapel')->name('getKdFromTingkatAspekAndMapel');
 Route::post("nilai", "Guru\NilaiController@store")->name("nilaiStore");
 #############
@@ -299,6 +299,8 @@ Route::group(['prefix' => 'guru','namespace'=>'Guru', 'middleware' => 'guru', 'a
     Route::get('/keterampilan', 'NilaiController@nKeterampilan');
     Route::get('/laporan-penilaian', 'LaporanController@index');
     Route::get('/getmapel/{id}', 'NilaiController@getMapelFromRombel');
+    Route::get('getSiswaFromRombel/{rombel?}/', 'LaporanController@getSiswaFromRombel')->name('getSiswa');
+    
  });
 
 # contact form

@@ -42,4 +42,10 @@ class LaporanController extends Controller
         $gurulogins       = Sentinel::getUser()->guru_id;
         return $gurulogins;
     }
+    public function getSiswaFromRombel(Request $request, Rombel $rombel)
+    {
+        
+        return response()->json(Siswa::where('rombel_id', $rombel->id)->with("nilai_akhir")->get());
+
+    }
 }

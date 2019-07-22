@@ -98,7 +98,6 @@ Penilaian Pengetahuan
             </div>
         </div>
     </div>
-
             <div class="card panel-primary ">
                 <div class="card-heading clearfix">
                </div>
@@ -168,7 +167,7 @@ type="text/javascript"></script>
         }
     });
 
-    /*=====  End of getMapel  ======*/
+    //fungsi untuk mengambil data dari database
     function getSiswaFromRombel()
     {
         var jml_nilai = $('#jml_nilai').val();
@@ -180,7 +179,8 @@ type="text/javascript"></script>
             })
         });
 
-        $.get(`{{ route("getSiswaFromRombel") }}/${$('#rombel_id').val()}` , function(response) {
+        //ambil data siswa berdasarkan rombel id
+        $.get(`{{ route("getSiswaFromRombel") }}/${$('#rombel_id').val()}/${$("#aspek").val()}` , function(response) {
 
             // untuk judul KD
             $("#table thead tr#rowKd").empty();
@@ -233,6 +233,7 @@ type="text/javascript"></script>
                 for (var i = 0; i < jml_nilai; i++) 
                 {
 
+                    //jika data nilai siswanya ada dan jumlah inputan yg berisi nilainya akan diisikan otomatis, lebih dari itu maka inputan kosong yang akan ditampilkan
                     if ( siswa.nilais.length > 1 && siswa.nilais.length > i)
                     {
                         rowKd += `<td>
@@ -252,6 +253,7 @@ type="text/javascript"></script>
                     }
                 }
 
+                //jika siswa memiliki nilai akhir
                 if ( siswa.nilai_akhir )
                 {
                     row = row + rowKd + `
@@ -283,25 +285,6 @@ type="text/javascript"></script>
 </script>
 
 
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="deleteLabel">Delete Kompetensi</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                Are you sure to delete this Kompetensi? This operation is irreversible.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a  type="button" class="btn btn-danger Remove_square">Delete</a>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-
-</div>
 @stop
 
 

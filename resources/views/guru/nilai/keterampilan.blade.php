@@ -146,6 +146,7 @@ type="text/javascript"></script>
 <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
 <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
 
+
 <script>
     $('#rombel_id').on('change', function(e){
         var romb_id = e.target.value;
@@ -168,7 +169,7 @@ type="text/javascript"></script>
         }
     });
 
-    /*=====  End of getMapel  ======*/
+    //fungsi untuk mengambil data dari database
     function getSiswaFromRombel()
     {
         var jml_nilai = $('#jml_nilai').val();
@@ -180,7 +181,8 @@ type="text/javascript"></script>
             })
         });
 
-        $.get(`{{ route("getSiswaFromRombel") }}/${$('#rombel_id').val()}` , function(response) {
+        //ambil data siswa berdasarkan rombel id
+        $.get(`{{ route("getSiswaFromRombel") }}/${$('#rombel_id').val()}/${$("#aspek").val()}` , function(response) {
 
             // untuk judul KD
             $("#table thead tr#rowKd").empty();
@@ -188,7 +190,7 @@ type="text/javascript"></script>
             if ( $('#jml_nilai').val() === "" )
             {
                 return;
-            }
+            }   
 
             var jml_nilai = parseInt($('#jml_nilai').val());
 
@@ -233,6 +235,7 @@ type="text/javascript"></script>
                 for (var i = 0; i < jml_nilai; i++) 
                 {
 
+                    //jika data nilai siswanya ada dan jumlah inputan yg berisi nilainya akan diisikan otomatis, lebih dari itu maka inputan kosong yang akan ditampilkan
                     if ( siswa.nilais.length > 1 && siswa.nilais.length > i)
                     {
                         rowKd += `<td>
@@ -252,6 +255,7 @@ type="text/javascript"></script>
                     }
                 }
 
+                //jika siswa memiliki nilai akhir
                 if ( siswa.nilai_akhir )
                 {
                     row = row + rowKd + `
@@ -281,7 +285,6 @@ type="text/javascript"></script>
        getSiswaFromRombel(); 
     });
 </script>
-
 
 <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

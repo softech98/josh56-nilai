@@ -106,4 +106,63 @@ Penilaian Pengetahuan
 			</div>
 		</div>
 			</section>
-			@stop
+@stop
+
+		{{-- page level scripts --}}
+@section('footer_scripts')
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
+<script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
+<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
+type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
+<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+
+
+<script>
+    $('#rombel_id').on('change', function(e){
+        var romb_id = e.target.value;
+
+        if(romb_id == '')
+        {
+            romb_id = 0;
+            $('#mapel_id').empty();
+            $('#mapel_id').append('<option value="">--Pilih Mapel--</option>');
+        }
+        else
+        {
+            $.get('getmapel/' + romb_id, function(data){
+                //success data
+                $('#mapel_id').empty();
+                $.each(data, function(index, mapel){
+                    $('#mapel_id').append('<option value="'+mapel.id+'">'+mapel.nama+'</option>');
+                })
+            })
+
+			$.get(`{{ route("guru.getSiswa") }}/${$('#rombel_id').val()}` , function(response) {
+				$("#table tbody tr").remove();
+
+			        $.each(response, function(index, siswa) { 
+			            var row = `<tr><td>${siswa.nama}</td>`;
+			    if ( siswa.nilai_akhir )
+                {
+                    row = row +  `
+                            <td style='text-align:center;'>${siswa.nilai_akhir.rerata_nilai}</td>
+                    </tr>
+                    `;
+                }else
+                {
+                    row = row + `
+                            <td style='text-align:center;'>0</td>
+                    </tr>
+                    `;
+                }
+
+			            $("#table tbody").append(row);
+		        })
+	        })
+		}
+
+    });
+    
+</script>
+@stop

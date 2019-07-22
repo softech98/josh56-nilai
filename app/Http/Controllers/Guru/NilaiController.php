@@ -83,7 +83,7 @@ class NilaiController extends Controller
         //
 
         $data = $request->except(['_token']);
-        $data['success'] = "Berhasil";
+        $data['success'] = "Berhasil Menyimpan Nilai";
 
         $data['mapel_guru'] = MapelGuru::where('rombel_id', $request->rombel_id)->where('guru_id', $this->gurulogin())->where('periode_id', $request->periode_id)->first()->mapel->toArray();
 
@@ -100,9 +100,8 @@ class NilaiController extends Controller
 
             foreach ($request->kompetensi as $index => $kompetensi)
             {
+                //jika belum ada maka data nilai akan dibuat, namun jika sudah ada maka data nilai akan diupdate
                 $nilai = Nilai::where('periode_id', $request->periode_id)->where('aspek', $request->aspek)->where('rombel_id', $request->rombel_id)->where('mapel_id', $request->mapel_id)->where('siswa_nis', $siswa['nis'])->where('kd_id', $kompetensi);
-
-                $rerata_nilai = round((array_sum($request->siswa[$siswaIndex]['nilai']) + $request->siswa[$siswaIndex]['nilai_akhir']['nas'] + $request->siswa[$siswaIndex]['nilai_akhir']['nts']) / ($request->jumlah_penilaian + 2));
 
                 if( !$nilai->first() )
                 {
@@ -116,13 +115,6 @@ class NilaiController extends Controller
                         'kd_id' => $kompetensi
                     ]);
 
-                    NilaiAkhir::create([
-                        'aspek' => $request->aspek,
-                        'siswa_nis' => $siswa['nis'],
-                        'nts' => $siswa['nilai_akhir']['nts'] ?? 0,
-                        'nas' => $siswa['nilai_akhir']['nas'] ?? 0,
-                        'rerata_nilai' => $rerata_nilai
-                    ]);
                 }else
                 {
                     $nilai->update([
@@ -135,63 +127,35 @@ class NilaiController extends Controller
                         'kd_id' => $kompetensi
                     ]);
 
-                    NilaiAkhir::where('siswa_nis', $siswa['nis'])->update([
-                        'aspek' => $request->aspek,
-                        'siswa_nis' => $siswa['nis'],
-                        'nts' => $siswa['nilai_akhir']['nts'] ?? 0,
-                        'nas' => $siswa['nilai_akhir']['nas'] ?? 0,
-                        'rerata_nilai' => $rerata_nilai
-                    ]);
                 }
+            }
+
+            //untuk yang nilai akhir, jika belum ada maka insert tapi jika sudah ada maka update
+            $nilai_akhir = NilaiAkhir::where('aspek', $request->aspek)->where('siswa_nis', $siswa['nis']);
+            $rerata_nilai = round((array_sum($request->siswa[$siswaIndex]['nilai']) + $request->siswa[$siswaIndex]['nilai_akhir']['nas'] + $request->siswa[$siswaIndex]['nilai_akhir']['nts']) / ($request->jumlah_penilaian + 2));
+
+            if( !$nilai_akhir->first() )
+            {
+                NilaiAkhir::create([
+                    'aspek' => $request->aspek,
+                    'siswa_nis' => $siswa['nis'],
+                    'nts' => $siswa['nilai_akhir']['nts'] ?? 0,
+                    'nas' => $siswa['nilai_akhir']['nas'] ?? 0,
+                    'rerata_nilai' => $rerata_nilai
+                ]);
+            }else
+            {
+                $nilai_akhir->update([
+                    'aspek' => $request->aspek,
+                    'siswa_nis' => $siswa['nis'],
+                    'nts' => $siswa['nilai_akhir']['nts'] ?? 0,
+                    'nas' => $siswa['nilai_akhir']['nas'] ?? 0,
+                    'rerata_nilai' => $rerata_nilai
+                ]);
             }
         }
 
         return back()->with($data);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Nilai  $nilai
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Nilai $nilai)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Nilai  $nilai
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Nilai $nilai)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Nilai  $nilai
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Nilai $nilai)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Nilai  $nilai
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Nilai $nilai)
-    {
-        //
     }
 
 
@@ -212,9 +176,13 @@ class NilaiController extends Controller
     }
 
     // edited by ramdan
-    public function getSiswaFromRombel(Request $request, Rombel $rombel)
+    public function getSiswaFromRombel(Request $request, Rombel $rombel, $aspek)
     {
-        return response()->json(Siswa::where('rombel_id', $rombel->id)->with("nilais")->with("nilai_akhir")->get());
+        $aspekFilter = function($query) use($aspek) {
+            $query->where('aspek', $aspek);
+        };
+
+        return response()->json(Siswa::where('rombel_id', $rombel->id)->with(["nilais" => $aspekFilter])->with(["nilai_akhir" => $aspekFilter])->get());
     }
 
     public function getKdFromTingkatAspekAndMapel($tingkat, $aspek, Mapel $mapel)
