@@ -27,7 +27,7 @@ Penilaian Pengetahuan
     <h1>Penilaian Pengetahuan</h1>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('admin.dashboard') }}">
+        <a href="{{ url('guru/dashboard') }}">
                 <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
                 Dashboard
             </a>
@@ -62,7 +62,7 @@ Penilaian Pengetahuan
                     <div class="row">
                         {!! Form::label('rombel_id', 'Rombongan Belajar',[ 'class' => 'col-sm-3', 'control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('rombel_id', $rombel, null, ['id' => 'rombel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Rombel--']) !!}
+                            {!! Form::select('rombel_id', $rombel, session()->get('rombel_id') ?? 0, ['id' => 'rombel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Rombel--']) !!}
                             <small class="text-danger">{{ $errors->first('rombel_id') }}</small>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ Penilaian Pengetahuan
                     <div class="row">
                         {!! Form::label('mapel_id', 'Mata Pelajaran',[ 'class' => 'col-sm-3', 'control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('mapel_id', [''], null, ['id' => 'mapel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Mapel--']) !!}
+                            {!! Form::select('mapel_id', session()->get('mapel_guru') ?? [''], session()->get('mapel_id') ?? 0, ['id' => 'mapel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Mapel--']) !!}
                             <small class="text-danger">{{ $errors->first('mapel_id') }}</small>
                         </div>
                     </div>
@@ -80,7 +80,7 @@ Penilaian Pengetahuan
                     <div class="row">
                         {!! Form::label('jumlah_penilaian', 'Jumlah Penilaian',[ 'class' => 'col-sm-3', 'control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('jumlah_penilaian', ['3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'12',], null, ['id' => 'jml_nilai', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jumlah Penilaian atau KD--']) !!}
+                            {!! Form::select('jumlah_penilaian', ['3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10'], session()->get('jumlah_penilaian'), ['id' => 'jml_nilai', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jumlah Penilaian atau KD--']) !!}
                             <small class="text-danger">{{ $errors->first('jumlah_penilaian') }}</small>
                         </div>
                     </div>
@@ -119,7 +119,6 @@ Penilaian Pengetahuan
                         </thead>
                         <tbody>
 
-
                         </tbody>
                     </table>
                     <button type="submit" class="btn btn-success">Simpan</button>
@@ -149,8 +148,8 @@ type="text/javascript"></script>
 
 <script>
     $('#rombel_id').on('change', function(e){
-        console.log(e);
         var romb_id = e.target.value;
+
         if(romb_id == '')
         {
             romb_id = 0;
@@ -159,22 +158,20 @@ type="text/javascript"></script>
         }
         else
         {
-        $.get('getmapel/' + romb_id, function(data){
-            //success data
-            $('#mapel_id').empty();
-            $.each(data, function(index, mapel){
-                $('#mapel_id').append('<option value="'+mapel.id+'">'+mapel.nama+'</option>');
+            $.get('getmapel/' + romb_id, function(data){
+                //success data
+                $('#mapel_id').empty();
+                $.each(data, function(index, mapel){
+                    $('#mapel_id').append('<option value="'+mapel.id+'">'+mapel.nama+'</option>');
+                })
             })
-        })
-
-        
-    }
+        }
     });
 
     /*=====  End of getMapel  ======*/
-    $('#jml_nilai').on('change', function(e){
-        console.log(e);
-        var jml_nilai = e.target.value;
+    function getSiswaFromRombel()
+    {
+        var jml_nilai = $('#jml_nilai').val();
 
         $.get('getbanyakNilai/' + jml_nilai, function(data){
             // success data
@@ -203,22 +200,26 @@ type="text/javascript"></script>
             var mapel = $('#mapel_id').val();
             
             $.get(`{{ route("getKdFromTingkatAspekAndMapel") }}/${tingkat}/${aspek}/${mapel}`, function(response) {
-            	for (let h = 0; h <  jml_nilai; h++)  {
+                for (let h = 0; h <  jml_nilai; h++)  {
 
-            		var option = '';
-		            for (let i = 0; i <  response.length; i++) 
-		            {
-		            	option += `<option value='${response[i].id}'>${response[i].kode}</option>`;
-		            }
+                    var option = '';
+                    for (let i = 0; i <  response.length; i++) 
+                    {
+                        option += `<option value='${response[i].id}'>${response[i].kode}</option>`;
+                    }
 
-		            $("#table thead tr#rowKd").append(`
-		            	<td>
-			            	<select name='kompetensi[]' class='form-control'>
-				        		${option}    	
-			            	</select>
-		            	</td>
-		            	`);
-            	};
+                    $("#table thead tr#rowKd").append(`
+                        <td>
+                            <select name='kompetensi[]' class='form-control kompetensi'>
+                                ${option}       
+                            </select>
+                        </td>
+                        `);
+
+                    //
+
+                    $(`.kompetensi:eq(${h}) option:eq(${h})`).attr("selected", "selected");
+                };
             });
 
             //untuk isi baris tabel
@@ -227,29 +228,58 @@ type="text/javascript"></script>
             $.each(response, function(index, siswa) { 
                 var row = `<tr><td>${siswa.nama}</td>`;
                 var rowKd = '';
+                var jml_nilai = parseInt($('#jml_nilai').val());
                 
-	            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
-	            {
-	                rowKd += `<td>
+                for (var i = 0; i < jml_nilai; i++) 
+                {
 
-                        <input type='hidden' name='siswa[${index}][nis]' value='${siswa.nis}' placeholder='' class='form-control' max="100" min='0'/>
+                    if ( siswa.nilais.length > 1 && siswa.nilais.length > i)
+                    {
+                        rowKd += `<td>
 
-	                	<input type='number' name='siswa[${index}][nilai][]' value='${siswa.nilais[i].nilai}' placeholder='' class='form-control' max="100" min='0'/>
-	                </td>`;
-	            }
+                            <input type='hidden' name='siswa[${index}][nis]' value='${siswa.nis}' placeholder='' class='form-control' max="100" min='0'/>
 
-                row = row + rowKd + `
-                        <td><input type='number' name='siswa[${index}][nilai_akhir][nts]' value="${siswa.nilai_akhir.nts}" placeholder='' class='form-control'  max="100" min='0' /></td>
-                        <td><input type='number' name='siswa[${index}][nilai_akhir][nas]' value="${siswa.nilai_akhir.nas}" placeholder='' class='form-control'  max="100" min='0'/></td>
-                        <td>${siswa.nilai_akhir.rerata_nilai}</td>
-	            </tr>
-	            `;
+                            <input type='number' name='siswa[${index}][nilai][]' value='${siswa.nilais[i].nilai}' placeholder='' class='form-control' max="100" min='0'/>
+                        </td>`;
+                    }else
+                    {
+                        rowKd += `<td>
 
-	            $("#table tbody").append(row);
-	    });
+                            <input type='hidden' name='siswa[${index}][nis]' value='${siswa.nis}' placeholder='' class='form-control' max="100" min='0'/>
+
+                            <input type='number' name='siswa[${index}][nilai][]' value='' placeholder='' class='form-control' max="100" min='0'/>
+                        </td>`;
+                    }
+                }
+
+                if ( siswa.nilai_akhir )
+                {
+                    row = row + rowKd + `
+                            <td><input type='number' name='siswa[${index}][nilai_akhir][nts]' value="${siswa.nilai_akhir.nts}" placeholder='' class='form-control'  max="100" min='0' /></td>
+                            <td><input type='number' name='siswa[${index}][nilai_akhir][nas]' value="${siswa.nilai_akhir.nas}" placeholder='' class='form-control'  max="100" min='0'/></td>
+                            <td>${siswa.nilai_akhir.rerata_nilai}</td>
+                    </tr>
+                    `;
+                }else
+                {
+                    row = row + rowKd + `
+                            <td><input type='number' name='siswa[${index}][nilai_akhir][nts]' value="" placeholder='' class='form-control'  max="100" min='0' /></td>
+                            <td><input type='number' name='siswa[${index}][nilai_akhir][nas]' value="" placeholder='' class='form-control'  max="100" min='0'/></td>
+                            <td></td>
+                    </tr>
+                    `;
+                }
+
+                $("#table tbody").append(row);
+        });
 
     });
-});
+    }
+
+    getSiswaFromRombel();
+    $('#jml_nilai').on('change', function(){
+       getSiswaFromRombel(); 
+    });
 </script>
 
 

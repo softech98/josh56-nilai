@@ -58,7 +58,7 @@ class NilaiController extends Controller
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
         $getperiode = Periode::where('aktif', 1)->first();
         $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
-        return view ('guru.nilai.keterampilan', $data);
+        return view ('guru.nilai.keterampilan', $data,compact('getperiode'));
     }
 
    
@@ -81,8 +81,23 @@ class NilaiController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data = $request->except(['_token']);
+        $data['success'] = "Berhasil";
+
+        $data['mapel_guru'] = MapelGuru::where('rombel_id', $request->rombel_id)->where('guru_id', $this->gurulogin())->where('periode_id', $request->periode_id)->first()->mapel->toArray();
+
+        $data['mapel_guru'] = [
+            $data['mapel_guru']['id'] => $data['mapel_guru']['nama']
+        ];
+
+        $data['siswas'] = Siswa::where('rombel_id', $request->rombel_id)->with("nilais")->with("nilai_akhir")->get();
+
         foreach ($request->siswa as $siswaIndex => $siswa)
         {
+            //jika nilainya tidak ada maka akan next aja tanpa insert ataupun update
+            if( array_sum($siswa['nilai']) === 0 && $siswa['nilai_akhir']['nts'] === null  && $siswa['nilai_akhir']['nas'] === null ) continue;
+
             foreach ($request->kompetensi as $index => $kompetensi)
             {
                 $nilai = Nilai::where('periode_id', $request->periode_id)->where('aspek', $request->aspek)->where('rombel_id', $request->rombel_id)->where('mapel_id', $request->mapel_id)->where('siswa_nis', $siswa['nis'])->where('kd_id', $kompetensi);
@@ -97,14 +112,15 @@ class NilaiController extends Controller
                         'rombel_id' => $request->rombel_id,
                         'mapel_id' => $request->mapel_id,
                         'siswa_nis' => $siswa['nis'],
-                        'nilai' => $siswa['nilai'][$index],
+                        'nilai' => $siswa['nilai'][$index] ?? 0,
                         'kd_id' => $kompetensi
                     ]);
 
                     NilaiAkhir::create([
+                        'aspek' => $request->aspek,
                         'siswa_nis' => $siswa['nis'],
-                        'nts' => $siswa['nilai_akhir']['nts'],
-                        'nas' => $siswa['nilai_akhir']['nas'],
+                        'nts' => $siswa['nilai_akhir']['nts'] ?? 0,
+                        'nas' => $siswa['nilai_akhir']['nas'] ?? 0,
                         'rerata_nilai' => $rerata_nilai
                     ]);
                 }else
@@ -115,22 +131,22 @@ class NilaiController extends Controller
                         'rombel_id' => $request->rombel_id,
                         'mapel_id' => $request->mapel_id,
                         'siswa_nis' => $siswa['nis'],
-                        'nilai' => $siswa['nilai'][$index],
+                        'nilai' => $siswa['nilai'][$index] ?? 0,
                         'kd_id' => $kompetensi
                     ]);
 
-
                     NilaiAkhir::where('siswa_nis', $siswa['nis'])->update([
+                        'aspek' => $request->aspek,
                         'siswa_nis' => $siswa['nis'],
-                        'nts' => $siswa['nilai_akhir']['nts'],
-                        'nas' => $siswa['nilai_akhir']['nas'],
+                        'nts' => $siswa['nilai_akhir']['nts'] ?? 0,
+                        'nas' => $siswa['nilai_akhir']['nas'] ?? 0,
                         'rerata_nilai' => $rerata_nilai
                     ]);
                 }
             }
         }
 
-        return back()->with('success', "Berhasil");
+        return back()->with($data);
     }
 
     /**
