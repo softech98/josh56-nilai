@@ -39,7 +39,9 @@ Penilaian Keterampilan
 
 <!-- Main content -->
 <section class="content paddingleft_right15">
-    {{-- {{ Form::model($pengetahuan, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }} --}}
+    
+    {!! Form::open() !!}
+    <input type="hidden" id="aspek" name="aspek" value="P">
     <div class="row">
         <div class="col-12">
             <hr>
@@ -67,7 +69,7 @@ Penilaian Keterampilan
                     <div class="row">
                         {!! Form::label('mapel_id', 'Mata Pelajaran',[ 'class' => 'col-sm-3', 'control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('mapel_id', $mapel, null, ['id' => 'mapel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Mapel--']) !!}
+                            {!! Form::select('mapel_id', [''], null, ['id' => 'mapel_id', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Mapel--']) !!}
                             <small class="text-danger">{{ $errors->first('mapel_id') }}</small>
                         </div>
                     </div>
@@ -76,7 +78,7 @@ Penilaian Keterampilan
                     <div class="row">
                         {!! Form::label('jumlah_penilaian', 'Jumlah Penilaian',[ 'class' => 'col-sm-3', 'control-label']) !!}
                         <div class="col-md-6">
-                            {!! Form::select('jumlah_penilaian', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'12',], null, ['id' => 'jml_nilai', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jumlah Penilaian atau KD--']) !!}
+                            {!! Form::select('jumlah_penilaian', ['3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'12',], null, ['id' => 'jml_nilai', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jumlah Penilaian atau KD--']) !!}
                             <small class="text-danger">{{ $errors->first('jumlah_penilaian') }}</small>
                         </div>
                     </div>
@@ -84,8 +86,8 @@ Penilaian Keterampilan
                  <div class="form-group">
                         <div class="row">
                         <div class="col-md-6 col-sm-8 ">
-                            <button type="reset" class="btn btn-danger btn-responsive ">Reset</button>
-                            <button type="submit" class="btn btn-success btn-responsive ">
+                            {{-- <button type="reset" class="btn btn-danger btn-responsive ">Reset</button> --}}
+                            <button type="submit" class="btn btn-success btn-responsive" style="display:none;">
                                 {{-- {{ $btn_submit }} --}}Submit
                             </button>
                         </div>
@@ -93,7 +95,6 @@ Penilaian Keterampilan
                 </div>
             </div>
         </div>
-                   {{-- {!! Form::close() !!} --}}
     </div>
 
             <div class="card panel-primary ">
@@ -106,16 +107,12 @@ Penilaian Keterampilan
                         <thead>
                             <tr class="filters">
                                 <th rowspan="2" style="vertical-align: middle;">Nama Siswa</th>
-                                <th colspan="6" class="text-center">Kompetensi Dasar</th>
+                                <th colspan="6" class="text-center" id='colsKd'>Kompetensi Dasar</th>
+                                <th rowspan="2" style="vertical-align: middle;">NTS</th>
+                                <th rowspan="2" style="vertical-align: middle;">NAS</th>
                                 <th rowspan="2" style="vertical-align: middle;">Rata-Rata Nilai</th>
-                            </tr>
-                            <tr>
-                                <th>3.1</th>
-                                <th>3.2</th>
-                                <th>3.3</th>
-                                <th>3.4</th>
-                                <th>3.5</th>
-                                <th>3.6</th>
+                            </tr>                            
+                            <tr id='rowKd'>
                             </tr>
                         </thead>
                         <tbody>
@@ -123,6 +120,9 @@ Penilaian Keterampilan
 
                         </tbody>
                     </table>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                                       {!! Form::close() !!}
+
                    {{--  @else
                     <table class="table table-bordered table-striped table-hover">
                         <tr><td class="text-center">Anda tidak memiliki jadwal mengajar!</td></tr>
@@ -146,38 +146,108 @@ type="text/javascript"></script>
 <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
 
 <script>
-    $(document).ready(function(){
-        $('form.ajax').on('submit', function(e){
-
+    $('#rombel_id').on('change', function(e){
+        console.log(e);
+        var romb_id = e.target.value;
+        if(romb_id == '')
+        {
+            romb_id = 0;
+            $('#mapel_id').empty();
+            $('#mapel_id').append('<option value="">--Pilih Mapel--</option>');
+        }
+        else
+        {
+        $.get('getmapel/' + romb_id, function(data){
+            //success data
+            $('#mapel_id').empty();
+            $.each(data, function(index, mapel){
+                $('#mapel_id').append('<option value="'+mapel.id+'">'+mapel.nama+'</option>');
+            })
         })
-    })
-</script>
 
-{{-- <script>
-    $(function() {
-        var table = $('#table').DataTable({
-            processing: true,
-            serverSide: true,
-            deferRender: true,
-            ajax: '{!! route('guru.kompetensi.data') !!}',
-            columns: [
-                {data: 'DT_RowIndex', orderable: false, searchable: false },
-                { data: 'kode', name: 'kode' },
-                { data: 'mapels.nama', name: 'mapel'},
-                { data: 'tingkat', name: 'tingkat' },
-                { data: 'kompetensi_dasar', name: 'kompetensi_dasar' },
-                { data: 'actions', name: 'actions', orderable: false, searchable: false },
-                { data: 'checkbox', name: 'checkbox', orderable: false, searchable: false }
-                ]
-            });
-        table.on( 'draw', function () {
-            $('.livicon').each(function(){
-                $(this).updateLivicon();
-            });
-        } );
+        
+    }
     });
 
-</script> --}}
+    /*=====  End of getMapel  ======*/
+    $('#jml_nilai').on('change', function(e){
+        console.log(e);
+        var jml_nilai = e.target.value;
+
+        $.get('getbanyakNilai/' + jml_nilai, function(data){
+            // success data
+            $.each(data, function(index, mapel){
+                
+            })
+        });
+
+        $.get(`{{ route("getSiswaFromRombel") }}/${$('#rombel_id').val()}` , function(response) {
+
+            // untuk judul KD
+            $("#table thead tr#rowKd").empty();
+            
+            if ( $('#jml_nilai').val() === "" )
+            {
+                return;
+            }
+
+            var jml_nilai = parseInt($('#jml_nilai').val());
+
+            $('#colsKd').attr('colspan', jml_nilai);
+            
+
+            // untuk dapatkan kompetensi dasar berdasarkan rombel dan tingkatt
+            var tingkat = parseInt($('#rombel_id option:selected').text());
+            var aspek = $('#aspek').val();
+            var mapel = $('#mapel_id').val();
+            
+            $.get(`{{ route("getKdFromTingkatAspekAndMapel") }}/${tingkat}/${aspek}/${mapel}`, function(response) {
+            	for (let h = 0; h <  jml_nilai; h++)  {
+
+            		var option = '';
+		            for (let i = 0; i <  response.length; i++) 
+		            {
+		            	option += `<option value='${response[i].id}'>${response[i].kode}</option>`;
+		            }
+
+		            $("#table thead tr#rowKd").append(`
+		            	<td>
+			            	<select name='kompetensi[]' class='form-control'>
+				        		${option}    	
+			            	</select>
+		            	</td>
+		            	`);
+            	};
+            });
+
+            //untuk isi baris tabel
+            $("#table tbody tr").remove();
+
+            $.each(response, function(index, siswa) { 
+                var row = `<tr><td>${siswa.nama}</td>`;
+                var rowKd = '';
+                
+	            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
+	            {
+	                rowKd += `<td>
+	                	<input type='number' name='nilai[${index}][]' placeholder='' class='form-control' max="100" min='0'/>
+	                </td>`;
+	            }
+
+                row = row + rowKd + `
+                        <td><input type='number' name='nilai[${index}]['nts']' placeholder='' class='form-control'  max="100" min='0' /></td>
+                        <td><input type='number' name='nilai[${index}]['nas']' placeholder='' class='form-control'  max="100" min='0'/></td>
+                        <td></td>
+	            </tr>
+	            `;
+
+	            $("#table tbody").append(row);
+	    });
+
+    });
+});
+</script>
+
 
 <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -198,30 +268,6 @@ type="text/javascript"></script>
     </div>
 
 </div>
-<!-- /.modal-dialog -->
+@stop
 
-    {{-- <script>
-        $(function () {
-           $('body').on('hidden.bs.modal', '.modal', function () {
-              $(this).removeData('bs.modal');
-          });
-       });
 
-        var $url_path = '{!! url('/') !!}';
-        $('#delete_confirm').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var $recipient = button.data('id');
-            var modal = $(this)
-            modal.find('.modal-footer a').prop("href",$url_path+"/guru/kompetensi/"+ $recipient +"/delete");
-        })
-    </script>
-
-    <script type="text/javascript">
-        $('#add').click(function(){
-            $('#myModal').modal('show');
-            $('.modal-title').html("Tambah Data Kompetensi");
-            $('.modal-body').load('{!! route("guru.kompetensi.create") !!}')
-        });
-    </script> --}}
-
-    @stop

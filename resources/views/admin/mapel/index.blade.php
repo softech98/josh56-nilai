@@ -170,7 +170,7 @@ Data Mata Pelajaran
     });
 
 </script>
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -187,7 +187,7 @@ Data Mata Pelajaran
         </div>
         <!-- /.modal-content -->
     </div>
-</div>
+</div> --}}
 <script>
 $(function () {
     $('body').on('hidden.bs.modal', '.modal', function () {
@@ -220,5 +220,15 @@ $(function () {
      $('.modal-title').html("Tambah Data Mata Pelajaran");
         $('.modal-body').load('{!! route("admin.mapel.create") !!}')
     });
+
+     $(document).on('click', '.remove{{$mapel->id}}', function(){
+            var nip = $(this).data('id');
+            $.get("{{ route('admin.mapel.index') }}" +'/' + nip +'/confirm-delete', function (data) {
+              $('#myModalsm').modal('show');
+              $('.modal-title').html("Hapus Mata Pelajaran");
+              $('.modal-body').html(data);  
+
+          })
+        }); 
 </script>
 @stop

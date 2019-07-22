@@ -37,8 +37,8 @@
         <div class="row">
             {!! Form::label('semester', 'Semester',[ 'class' => 'col-sm-3', 'control-label']) !!}
             <div class="col-sm-6">
-                <input type="radio" name="semester" value="1">Ganjil &nbsp
-                <input type="radio" name="semester" value="2">Genap
+                <input type="radio" name="semester" value="1" @if($periode->semester == '1') checked="checked" @endif>Ganjil &nbsp
+                <input type="radio" name="semester" value="2" @if($periode->semester == '2') checked="checked" @endif>Genap
                <small class="text-danger">{{ $errors->first('semester') }}</small>
            </div>
        </div>
@@ -47,7 +47,11 @@
    <div class="ui-group-buttons col-sm-9 pull-right">
     <button type="submit" class="btn btn-primary">{{$btn_submit}} </button>
     <div class="or or-lg"></div>
+    @if($method == "POST")
     <button type="reset" class="btn btn-danger">Reset</button>
+    @else
+    <a href=" {{route ('admin.periode.index')}} "><button class="btn btn-danger">Batal</button></a>
+    @endif
 </div>
 </div>
 </form>

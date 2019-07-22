@@ -186,7 +186,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'admin',
 //        Route::delete('delete', 'FileController@delete')->name('delete');
         Route::get('{id}/delete', 'FileController@destroy')->name('file.delete');
         Route::get('data', 'FileController@data')->name('file.data');
-        Route::get('{user}/delete', 'FileController@destroy')->name('users.delete');
+        // Route::get('{user}/delete', 'FileController@destroy')->name('users.delete');
 
     });
 

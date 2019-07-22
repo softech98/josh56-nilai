@@ -169,7 +169,7 @@ Data Rombel
     });
 
 </script>
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -187,7 +187,7 @@ Data Rombel
             <!-- /.modal-content -->
         </div>
         
-    </div>
+    </div> --}}
 <script>
 $(function () {
     $('body').on('hidden.bs.modal', '.modal', function () {
@@ -232,17 +232,18 @@ var $url_path = '{!! url('/') !!}';
           
       })
     });
+
+     $(document).on('click', '.remove{{$rombel->id}}', function(){
+            var nip = $(this).data('id');
+            $.get("{{ route('admin.rombel.index') }}" +'/' + nip +'/confirm-delete', function (data) {
+              $('#myModalsm').modal('show');
+              $('.modal-title').html("Hapus Rombel");
+              $('.modal-body').html(data);  
+
+          })
+        }); 
     </script>
-<script>
-    $(document).ready(function() {
 
-        table = $("#table").DataTable();
-        $("#reload").on("click", function () { 
-         table.ajax.reload(null, false); 
-        });
-
-   });
-</script>
 {{-- <script>
          $("#walikelas").select2({
             placeholder: "--Pilih Walikelas--",

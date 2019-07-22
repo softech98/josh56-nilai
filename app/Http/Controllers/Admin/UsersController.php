@@ -32,7 +32,8 @@ class UsersController extends JoshController
     {
 
         // Show the page
-        return view('admin.users.index');
+        $users = new User();
+        return view('admin.users.index', compact('users'));
     }
 
     /*
@@ -61,7 +62,7 @@ class UsersController extends JoshController
                 $actions = '<a href='. route('admin.users.show', $user->id) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view user"></i></a>
                             <a href='. route('admin.users.edit', $user->id) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update user"></i></a>';
                 if ((Sentinel::getUser()->id != $user->id) && ($user->id != 1)) {
-                    $actions .= '<a href='. route('admin.users.confirm-delete', $user->id) .' data-id="'.$user->id.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>';
+                    $actions .= '<a href="javascript:void(0)" data-id="'.$user->id.'" class="remove"><i class="livicon" data-name="user-remove" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete user"></i></a>';
                 }
                 return $actions;
             })
@@ -310,7 +311,7 @@ class UsersController extends JoshController
     public function getModalDelete($id)
     {
         $model = 'users';
-        $modelbody = 'Anda Yakin Ingin Hapus?';
+        $modelbody = 'Apakah anda Yakin ingin menghapus Data ini?';
         $confirm_route = $error = null;
         try {
             // Get user information
@@ -320,16 +321,17 @@ class UsersController extends JoshController
             if ($user->id === Sentinel::getUser()->id) {
                 // Prepare the error message
                 $error = trans('users/message.error.delete');
-
-                return view('admin.layouts.modal_confirmation', compact('error', 'model','modelbody', 'confirm_route'));
+            return view('admin.layouts.modal_confirmation', compact('error', 'model','modelbody', 'confirm_route'));
             }
+            $confirm_route = route('admin.users.delete', ['id' => $user->id]);
+            return view('admin.layouts.modal_confirmation', compact('error', 'model','modelbody', 'confirm_route'));
         } catch (UserNotFoundException $e) {
             // Prepare the error message
             $error = trans('users/message.user_not_found', compact('id'));
             return view('admin.layouts.modal_confirmation', compact('error', 'model','modelbody', 'confirm_route'));
         }
-        $confirm_route = route('admin.users.delete', ['id' => $user->id]);
-        return view('admin.layouts.modal_confirmation', compact('error', 'model','modelbody', 'confirm_route'));
+        // $confirm_route = route('admin.users.delete', ['id' => $user->id]);
+        // return view('admin.layouts.modal_confirmation', compact('error', 'model','modelbody', 'confirm_route'));
     }
 
     /**

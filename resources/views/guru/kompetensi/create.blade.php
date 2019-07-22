@@ -26,7 +26,7 @@
                         {{ Form::text('kode',null,array('class'=>'form-control','placeholder' => 'Kode KD','autofocus', 'required')) }}
                         <small class="text-danger">{{ $errors->first('kode') }}</small>
                     </div>
-                    <div class="col-lg-5 col-md-8">
+                    <div class="col-lg-6 col-md-6">
                         {!! Form::select('aspek',['P'=>'Pengetahuan','K'=>'Keterampilan'], null,['class' => 'form-control select2', 'placeholder'=>'--Aspek Penilaian--', 'required']) !!}
                         <small class="text-danger">{{ $errors->first('aspek') }}</small>
                     </div>
@@ -46,9 +46,11 @@
          <br>
         <div class="button-group">
             <div class="row">
+            	@if($method == 'POST')
                 <div class="col-md-4">
                    <button type="reset" class="btn btn-danger btn-block resetModal" aria-hidden="true">Reset</button>
                </div>
+               @endif
                <div class="col-md-4">
                 <button type="submit" class="btn btn-info btn-block ">
                     {{ $btn_submit }}

@@ -34,8 +34,8 @@ class SiswaController extends Controller
           ->addIndexColumn()
         ->addColumn('actions',function($siswa) { 
             $btn = '<a href='. route('admin.siswa.show', $siswa->nis) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view detail siswa"></i></a>
-                    <a href="javascript:void(0)" class="edit" data-id="'.$siswa->nis.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="edit siswa"></i></a>';
-            $btn .= '<a href='. route('admin.siswa.confirm-delete', $siswa->nis) .' data-id="'.$siswa->nis.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete siswa"></i></a>';
+                    <a href="javascript:void(0)" class="edit" data-id="'.$siswa->nis.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="edit siswa"></i></a>
+            <a href="javascript:void(0)" class="remove" data-id="'.$siswa->nis.'" ><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete siswa"></i></a>';
                 return $btn;
             })
         ->addColumn('checkbox', '<input type="checkbox" name="siswa_checkbox[]" class="siswa_checkbox" value="{{$nis}}" />')
@@ -175,16 +175,17 @@ class SiswaController extends Controller
      */
     public function getModalDelete($id)
     {
-        $model = 'Siswa';
+        $model = 'Hapus Siswa';
+        $modelbody = 'Apakah anda Yakin ingin menghapus Data ini?';
         $confirm_route = $error = null;
         try {
             // Get group information
             $role = Siswa::findOrFail($id);
-            $confirm_route = route('siswa.delete', ['nis' => $role->nis]);
-            return view('layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+            $confirm_route = route('admin.siswa.delete', ['nis' => $role->nis]);
+            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route','modelbody'));
         } catch (GroupNotFoundException $e) {
             $error = trans('siswa not found', compact('id'));
-            return view('layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
         }
     }
     public function destroy($id)

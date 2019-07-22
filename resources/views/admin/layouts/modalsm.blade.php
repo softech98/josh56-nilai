@@ -1,4 +1,4 @@
-            <div class="modal fade in" id="myModalsm" role="dialog" aria-hidden="false">
+            <div class="modal fade" id="myModalsm" role="dialog" aria-hidden="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header bg-primary">

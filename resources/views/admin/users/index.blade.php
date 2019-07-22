@@ -135,7 +135,7 @@ Users List
 
 </script>
 
-<div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -153,7 +153,7 @@ Users List
         <!-- /.modal-content -->
     </div>
 
-</div>
+</div> --}}
 <!-- /.modal-dialog -->
 <script>
     $(function () {
@@ -178,7 +178,15 @@ Users List
 
         /*=====  End of add users  ======*/
         
-        
+         $(document).on('click', '.remove{{$users->id}}', function(){
+            var nip = $(this).data('id');
+            $.get("{{ route('admin.users.index') }}" +'/' + nip +'/confirm-delete', function (data) {
+              $('#myModalsm').modal('show');
+              $('.modal-title').html("Hapus Users");
+              $('.modal-body').html(data);  
+
+          })
+        }); 
     </script>
  
 @stop

@@ -119,9 +119,37 @@ class MapelController extends Controller
      * @param  \App\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mapel $mapel)
+    public function destroy($id)
     {
-        //
+        try {
+            // Get group information
+            $rombel = Mapel::findOrFail($id);
+
+            // Delete the group
+            $rombel->delete();
+
+            // Redirect to the group management page
+            return Redirect::route('admin.mapel.index')->with('success', 'Data Berhasil Dihapus');
+        } catch (GroupNotFoundException $e) {
+            // Redirect to the group management page
+            return Redirect::route('admin.mapel.index')->with('error', 'Kelas Not Found', compact('id'));
+        }
+    }
+
+    public function getModalDelete($id)
+    {
+       $model = 'Hapus Mata Pelajaran';
+        $modelbody = 'Apakah anda Yakin ingin menghapus Data ini?';
+        $confirm_route = $error = null;
+        try {
+            // Get group information
+            $role = Mapel::findOrFail($id);
+            $confirm_route = route('admin.mapel.delete', ['id' => $role->id]);
+            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route', 'modelbody'));
+        } catch (GroupNotFoundException $e) {
+            $error = trans('mapel not found', compact('id'));
+            return view('admin.layouts.modal_confirmation', compact('error', 'model', 'confirm_route'));
+        }
     }
 
 
@@ -161,8 +189,8 @@ class MapelController extends Controller
             }
         })
         ->addColumn('actions',function($mapel) {
-            $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$mapel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update mapel"></i></a>';
-            $actions .= '<a href='. route('admin.mapel.confirm-delete', $mapel->id) .' data-id="'.$mapel->id.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete mapel"></i></a>';
+            $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$mapel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update mapel"></i></a>
+            <a href="javascript:void(0)" data-id="'.$mapel->id.'" class="remove"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete mapel"></i></a>';
                 return $actions;
             })
             ->rawColumns(['actions'])

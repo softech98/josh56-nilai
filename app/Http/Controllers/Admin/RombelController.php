@@ -140,10 +140,10 @@ class RombelController extends Controller
             $rombel->delete();
 
             // Redirect to the group management page
-            return Redirect('admin/rombel/index')->with('success', 'Data Berhasil Dihapus');
+            return Redirect::route('admin.rombel.index')->with('success', 'Data Berhasil Dihapus');
         } catch (GroupNotFoundException $e) {
             // Redirect to the group management page
-            return Redirect('admin/rombel/index')->with('error', 'Kelas Not Found', compact('id'));
+            return Redirect::route('admin.rombel.index')->with('error', 'Kelas Not Found', compact('id'));
         }
     }
 
@@ -189,8 +189,8 @@ class RombelController extends Controller
                             </button>';
         })
          ->addColumn('actions',function($rombel) {
-            $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$rombel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update rombel"></i></a>';
-            $actions .= '<a href='. route('admin.rombel.confirm-delete', $rombel->id) .' data-id="'.$rombel->id.'" data-toggle="modal" data-target="#delete_confirm"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete rombel"></i></a>';
+            $actions = '<a href="javascript:void(0)" class="edit" data-id="'.$rombel->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="update rombel"></i></a>
+           <a href="javascript:void(0)" data-id="'.$rombel->id.'" class="remove"><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete rombel"></i></a>';
                 return $actions;
             })
             ->rawColumns(['actions', 'mapels'])

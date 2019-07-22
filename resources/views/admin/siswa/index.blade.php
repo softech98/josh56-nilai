@@ -136,7 +136,7 @@ Data Siswa
         });
 
     </script>
-    <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+   {{--  <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -154,7 +154,7 @@ Data Siswa
             <!-- /.modal-content -->
         </div>
         
-    </div>
+    </div> --}}
     <script>
         $(function () {
             $('body').on('hidden.bs.modal', '.modal', function () {
@@ -182,6 +182,15 @@ Data Siswa
             var nis = $(this).data('id');
             $.get("{{ route('admin.siswa.index') }}" +'/' + nis +'/edit', function (data) {
               $('#myModal').modal('show');
+              $('.modal-body').html(data);
+              
+          })
+        });
+
+        $(document).on('click', '.remove{{$siswa->nis}}', function(){
+            var nis = $(this).data('id');
+            $.get("{{ route('admin.siswa.index') }}" +'/' + nis +'/confirm-delete', function (data) {
+              $('#myModalsm').modal('show');
               $('.modal-body').html(data);
               
           })

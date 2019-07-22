@@ -121,8 +121,23 @@ class PeriodeController extends Controller
      * @param  \App\Periode  $periode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Periode $periode)
+    public function destroy($id)
     {
-        //
+         
+       try {
+            // Get group information
+            $siswa = Periode::findOrFail($id);
+
+            // Delete the group
+            $siswa->delete();
+
+            // Redirect to the group management page
+            return Redirect::route('admin.periode.index')->with('success', 'Data Berhasil Dihapus');
+        } catch (GroupNotFoundException $e) {
+            // Redirect to the group management page
+            return Redirect::route('admin.periode.index')->with('error', 'Kelas Not Found', compact('id'));
+        }
     }
+
+
 }

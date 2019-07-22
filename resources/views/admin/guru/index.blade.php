@@ -133,7 +133,7 @@ type="text/javascript"></script>
 
 </script>
 
- <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
+ {{-- <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -151,7 +151,7 @@ type="text/javascript"></script>
             <!-- /.modal-content -->
         </div>
         
-    </div>
+    </div> --}}
     <!-- /.modal-dialog -->
 
     <script>
@@ -183,6 +183,16 @@ type="text/javascript"></script>
             $.get("{{ route('admin.guru.index') }}" +'/' + nip +'/edit', function (data) {
               $('#myModal').modal('show');
               $('.modal-title').html("Edit Data Guru");
+              $('.modal-body').html(data);  
+
+          })
+        });
+
+        $(document).on('click', '.remove{{$guru->id}}', function(){
+            var nip = $(this).data('id');
+            $.get("{{ route('admin.guru.index') }}" +'/' + nip +'/confirm-delete', function (data) {
+              $('#myModalsm').modal('show');
+              $('.modal-title').html("Hapus Guru");
               $('.modal-body').html(data);  
 
           })

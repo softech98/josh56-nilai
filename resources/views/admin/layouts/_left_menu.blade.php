@@ -26,7 +26,7 @@
         </a>
     </li>
     
-    <li {!! (Request::is('admin/jurusan') || Request::is('admin/rombel') || Request::is('admin/mapel') || Request::is('admin/periode') || Request::is('admin/custom_datatables')|| Request::is('admin/selectfilter') ? 'class="active"' : '') !!}>
+    <li {!! (Request::is('admin/jurusan') ||Request::is('admin/jurusan/*') || Request::is('admin/rombel') || Request::is('admin/mapel') || Request::is('admin/periode') ||Request::is('admin/periode/*') || Request::is('admin/custom_datatables')|| Request::is('admin/selectfilter') ? 'class="active"' : '') !!}>
         <a href="#">
             <i class="livicon" data-name="servers" data-size="18" data-c="#FF6A00" data-hc="#FF6A00"
                data-loop="true"></i>
@@ -34,13 +34,13 @@
             <span class="fa arrow"></span>
         </a>
         <ul class="sub-menu">
-            <li {!! (Request::is('admin/periode') ? 'class="active"' : '') !!}>
+            <li {!! (Request::is('admin/periode') ||Request::is('admin/periode/*')  ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to($prefix.'/periode') }}">
                     <i class="fa fa-angle-double-right"></i>
                    Data Periode
                 </a>
             </li>
-            <li {!! (Request::is('admin/jurusan') ? 'class="active"' : '') !!}>
+            <li {!! (Request::is('admin/jurusan') || Request::is('admin/jurusan/*') ? 'class="active"' : '') !!}>
                 <a href="{{ URL::to($prefix.'/jurusan') }}">
                     <i class="fa fa-angle-double-right"></i>
                    Data Jurusan
