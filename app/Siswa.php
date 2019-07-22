@@ -18,6 +18,17 @@ class Siswa extends Model
     {
            return $this->belongsTo('\App\Rombel','rombel_id')->withDefault();
     }
+
+    public function nilais()
+    {
+      return $this->hasMany(\App\Nilai::class, "siswa_nis");
+    }
+
+    public function nilai_akhir()
+    {
+      return $this->belongsTo(\App\NilaiAkhir::class, "nis", "siswa_nis");
+    }
+
     //    public function getCreatedAtAttribute()
 	// {
  //    return \Carbon\Carbon::parse($this->attributes['tgl_lahir'])

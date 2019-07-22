@@ -21,6 +21,7 @@
 Route::get('getMapelFromRombel/{rombel}', 'Guru\NilaiController@getMapelFromRombel');
 Route::get('getSiswaFromRombel/{rombel?}', 'Guru\NilaiController@getSiswaFromRombel')->name('getSiswaFromRombel');
 Route::get('getKdFromTingkatAspekAndMapel/{tingkat?}/{aspek?}/{mapel?}', 'Guru\NilaiController@getKdFromTingkatAspekAndMapel')->name('getKdFromTingkatAspekAndMapel');
+Route::post("nilai", "Guru\NilaiController@store")->name("nilaiStore");
 #############
 
 

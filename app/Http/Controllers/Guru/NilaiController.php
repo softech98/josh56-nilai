@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Guru;
 
+
+use App\NilaiAkhir;
 use App\Nilai;
 use App\Siswa;
 use App\Rombel;
@@ -44,7 +46,7 @@ class NilaiController extends Controller
         $getperiode = Periode::where('aktif', 1)->first();
         $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
 
-        return view ('guru.nilai.pengetahuan',$data);
+        return view ('guru.nilai.pengetahuan',$data, compact('getperiode'));
     }
 
     public function nKeterampilan()
@@ -79,6 +81,56 @@ class NilaiController extends Controller
     public function store(Request $request)
     {
         //
+        foreach ($request->siswa as $siswaIndex => $siswa)
+        {
+            foreach ($request->kompetensi as $index => $kompetensi)
+            {
+                $nilai = Nilai::where('periode_id', $request->periode_id)->where('aspek', $request->aspek)->where('rombel_id', $request->rombel_id)->where('mapel_id', $request->mapel_id)->where('siswa_nis', $siswa['nis'])->where('kd_id', $kompetensi);
+
+                $rerata_nilai = round((array_sum($request->siswa[$siswaIndex]['nilai']) + $request->siswa[$siswaIndex]['nilai_akhir']['nas'] + $request->siswa[$siswaIndex]['nilai_akhir']['nts']) / ($request->jumlah_penilaian + 2));
+
+                if( !$nilai->first() )
+                {
+                    Nilai::create([
+                        'periode_id' => $request->periode_id,
+                        'aspek' => $request->aspek,
+                        'rombel_id' => $request->rombel_id,
+                        'mapel_id' => $request->mapel_id,
+                        'siswa_nis' => $siswa['nis'],
+                        'nilai' => $siswa['nilai'][$index],
+                        'kd_id' => $kompetensi
+                    ]);
+
+                    NilaiAkhir::create([
+                        'siswa_nis' => $siswa['nis'],
+                        'nts' => $siswa['nilai_akhir']['nts'],
+                        'nas' => $siswa['nilai_akhir']['nas'],
+                        'rerata_nilai' => $rerata_nilai
+                    ]);
+                }else
+                {
+                    $nilai->update([
+                        'periode_id' => $request->periode_id,
+                        'aspek' => $request->aspek,
+                        'rombel_id' => $request->rombel_id,
+                        'mapel_id' => $request->mapel_id,
+                        'siswa_nis' => $siswa['nis'],
+                        'nilai' => $siswa['nilai'][$index],
+                        'kd_id' => $kompetensi
+                    ]);
+
+
+                    NilaiAkhir::where('siswa_nis', $siswa['nis'])->update([
+                        'siswa_nis' => $siswa['nis'],
+                        'nts' => $siswa['nilai_akhir']['nts'],
+                        'nas' => $siswa['nilai_akhir']['nas'],
+                        'rerata_nilai' => $rerata_nilai
+                    ]);
+                }
+            }
+        }
+
+        return back()->with('success', "Berhasil");
     }
 
     /**
@@ -146,7 +198,7 @@ class NilaiController extends Controller
     // edited by ramdan
     public function getSiswaFromRombel(Request $request, Rombel $rombel)
     {
-        return response()->json(Siswa::where('rombel_id', $rombel->id)->get());
+        return response()->json(Siswa::where('rombel_id', $rombel->id)->with("nilais")->with("nilai_akhir")->get());
     }
 
     public function getKdFromTingkatAspekAndMapel($tingkat, $aspek, Mapel $mapel)

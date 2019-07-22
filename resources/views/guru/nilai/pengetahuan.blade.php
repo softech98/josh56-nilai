@@ -40,8 +40,10 @@ Penilaian Pengetahuan
 <!-- Main content -->
 <section class="content paddingleft_right15">
     
-    {!! Form::open() !!}
+    <form action="{{ route("nilaiStore") }}" method="post">
+    @csrf
     <input type="hidden" id="aspek" name="aspek" value="P">
+    {!! Form::hidden('periode_id', $getperiode->id) !!}
     <div class="row">
         <div class="col-12">
             <hr>
@@ -194,7 +196,6 @@ type="text/javascript"></script>
             var jml_nilai = parseInt($('#jml_nilai').val());
 
             $('#colsKd').attr('colspan', jml_nilai);
-            
 
             // untuk dapatkan kompetensi dasar berdasarkan rombel dan tingkatt
             var tingkat = parseInt($('#rombel_id option:selected').text());
@@ -230,14 +231,17 @@ type="text/javascript"></script>
 	            for (var i = 0; i < parseInt($('#jml_nilai').val()); i++) 
 	            {
 	                rowKd += `<td>
-	                	<input type='number' name='nilai[${index}][]' placeholder='' class='form-control' max="100" min='0'/>
+
+                        <input type='hidden' name='siswa[${index}][nis]' value='${siswa.nis}' placeholder='' class='form-control' max="100" min='0'/>
+
+	                	<input type='number' name='siswa[${index}][nilai][]' value='${siswa.nilais[i].nilai}' placeholder='' class='form-control' max="100" min='0'/>
 	                </td>`;
 	            }
 
                 row = row + rowKd + `
-                        <td><input type='number' name='nilai[${index}]['nts']' placeholder='' class='form-control'  max="100" min='0' /></td>
-                        <td><input type='number' name='nilai[${index}]['nas']' placeholder='' class='form-control'  max="100" min='0'/></td>
-                        <td></td>
+                        <td><input type='number' name='siswa[${index}][nilai_akhir][nts]' value="${siswa.nilai_akhir.nts}" placeholder='' class='form-control'  max="100" min='0' /></td>
+                        <td><input type='number' name='siswa[${index}][nilai_akhir][nas]' value="${siswa.nilai_akhir.nas}" placeholder='' class='form-control'  max="100" min='0'/></td>
+                        <td>${siswa.nilai_akhir.rerata_nilai}</td>
 	            </tr>
 	            `;
 
