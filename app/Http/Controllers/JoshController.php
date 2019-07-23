@@ -108,6 +108,7 @@ class JoshController extends Controller {
         $user_count =User::count();
         $siswa_count =Siswa::count();
         $guru_count =Guru::count();
+        $rombel_count =Rombel::count();
        
         $users = User::orderBy('id', 'desc')->take(5)->get();
 
@@ -132,7 +133,7 @@ class JoshController extends Controller {
         if(Sentinel::check())
             if(Sentinel::inRole('admin'))
             {
-            return view('admin.index',[ 'user_count'=>$user_count,'siswa_count'=>$siswa_count,'guru_count'=>$guru_count,'users'=>$users] );
+            return view('admin.index',[ 'user_count'=>$user_count,'rombel_count'=>$rombel_count,'siswa_count'=>$siswa_count,'guru_count'=>$guru_count,'users'=>$users] );
             }
         else{
             return view ('guru.index', compact('mapelguru','getnamamapel','getrombel'));

@@ -271,8 +271,9 @@ Route::group(['prefix' => 'guru','middleware' => 'guru'], function () {
     Route::get('dashboard', 'JoshController@showHome');
     Route::get('/', 'JoshController@showHome');
 Route::get('logout', 'FrontEndController@getLogout')->name('logout');
-Route::get('users/{id}/edit', 'Admin\UsersController@edit');
+// Route::get('users/{id}/edit', 'Admin\UsersController@edit');
 Route::get('users/{id}', 'Admin\UsersController@show');
+Route::post('users/passwordreset', 'Admin\UsersController@passwordreset')->name('passwordreset');
 
     Route::get('404', function () {
         return view('errors/404');

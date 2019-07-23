@@ -48,7 +48,7 @@ Penilaian Pengetahuan
 					<div class="row">
 						{!! Form::label('periode_id', 'Periode',[ 'class' => 'col-sm-3', 'control-label']) !!}
 						<div class="col-md-6">
-							{!! Form::select('periode_id', $periode, null, ['id' => 'periode_id', 'class' => 'form-control']) !!}
+							{!! Form::text('periode_id', $periode,  ['id' => 'periode_id', 'class' => 'form-control', 'disabled']) !!}
 							<small class="text-danger">{{ $errors->first('periode_id') }}</small>
 						</div>
 					</div>
@@ -70,6 +70,10 @@ Penilaian Pengetahuan
 							<small class="text-danger">{{ $errors->first('mapel_id') }}</small>
 						</div>
 					</div>
+				</div>
+				<div class="form-group">
+				<a href="#" class="btn btn-success">Export</a>
+				<a href="#" class="btn btn-primary">Import</a>
 				</div>
 				<div class="form-group">
 					<div class="row">
@@ -98,9 +102,6 @@ Penilaian Pengetahuan
 						</tr>
 					</thead>
 					<tbody>
-						<th>Ilham Saputra | 123456</th>
-						<th style="text-align: center">90</th>
-						<th style="text-align: center">80</th>
 					</tbody>
 				</table>
 			</div>
@@ -143,15 +144,27 @@ type="text/javascript"></script>
 
 			        $.each(response, function(index, siswa) { 
 			            var row = `<tr><td>${siswa.nama}</td>`;
-			    if ( siswa.nilai_akhir )
+			    if ( siswa.nilai_akhir_all )
                 {
-                    row = row +  `
-                            <td style='text-align:center;'>${siswa.nilai_akhir.rerata_nilai}</td>
-                    </tr>
-                    `;
+                	if(siswa.nilai_akhir_all[0].aspek == "P")
+                	{
+	                    row = row +  `
+	                            <td style='text-align:center;'>${siswa.nilai_akhir_all[0].rerata_nilai}</td>
+	                            <td style='text-align:center;'>${siswa.nilai_akhir_all[1].rerata_nilai}</td>
+	                    </tr>
+	                    `;
+                	}else
+                	{
+                		row = row +  `
+	                            <td style='text-align:center;'>${siswa.nilai_akhir_all[1].rerata_nilai}</td>
+	                            <td style='text-align:center;'>${siswa.nilai_akhir_all[0].rerata_nilai}</td>
+	                    </tr>
+	                    `;
+                	}
                 }else
                 {
                     row = row + `
+                            <td style='text-align:center;'>0</td>
                             <td style='text-align:center;'>0</td>
                     </tr>
                     `;

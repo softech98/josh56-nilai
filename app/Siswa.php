@@ -24,9 +24,16 @@ class Siswa extends Model
       return $this->hasMany(\App\Nilai::class, "siswa_nis");
     }
 
+    //ini untuk NilaiController
     public function nilai_akhir()
     {
       return $this->belongsTo(\App\NilaiAkhir::class, "nis", "siswa_nis");
+    }
+
+    //ini untuk LaporanController
+    public function nilai_akhir_all()
+    {
+      return $this->hasMany(\App\NilaiAkhir::class, "siswa_nis");
     }
 
     //    public function getCreatedAtAttribute()

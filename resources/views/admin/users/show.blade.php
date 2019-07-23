@@ -20,7 +20,7 @@
 @section('content')
     <section class="content-header">
         <!--section starts-->
-        <h1>User Profile</h1>
+        <h1>Profil Pengguna</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('admin.dashboard') }}">
@@ -42,12 +42,12 @@
                      <li class="nav-item">
                         <a href="#tab1" data-toggle="tab" class="nav-link active">
                             <i class="livicon" data-name="user" data-size="16" data-c="#777"  data-hc="#000" data-loop="true"></i>
-                            User Profile</a>
+                            Profil Pengguna</a>
                     </li>
                     <li class="nav-item">
                         <a href="#tab2" data-toggle="tab" class="nav-link">
                             <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#000" data-hc="#000"></i>
-                            Change Password</a>
+                            Ubah Kata Sandi</a>
                     </li>
 
                 </ul>
@@ -57,10 +57,10 @@
                             <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-heading">
-                                        <h3 class="card-title">
+                                        {{-- <h3 class="card-title">
 
                                             User Profile
-                                        </h3>
+                                        </h3> --}}
 
                                     </div>
                                     <div class="card-body">
@@ -70,10 +70,10 @@
                                                 @if($user->pic)
                                                     <img src="{!! url('/').'/uploads/users/'.$user->pic !!}" alt="img"
                                                          class="img-fluid"/>
-                                                @elseif($user->gender === "Laki-Laki")
+                                                @elseif($user->gender === "L")
                                                     <img src="{{ asset('assets/images/authors/avatar3.png') }}" alt="..."
                                                          class="img-fluid"/>
-                                                @elseif($user->gender === "Perempuan")
+                                                @elseif($user->gender === "P")
                                                     <img src="{{ asset('assets/images/authors/avatar5.png') }}" alt="..."
                                                          class="img-fluid"/>
                                                 @else
@@ -138,8 +138,10 @@
                                                         </tr>
                                                     </table>
                                                 </div>
+                                @if(Sentinel::inRole('admin'))
                                 <a href="{{ route('admin.users.index') }}" class='btn btn-success'>Back to List</a>
                                 <a href="{{ route('admin.users.edit', $user->id) }}" id="edit{{$user->id}}" class='btn btn-warning'>Edit</a>
+                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +158,7 @@
                                             <div class="row">
                                             {{ csrf_field() }}
                                             <label for="inputpassword" class="col-md-3 control-label">
-                                                Password
+                                                Kata Sandi
                                                 <span class='require'>*</span>
                                             </label>
                                             <div class="col-md-9">
@@ -173,7 +175,7 @@
                                         <div class="form-group">
                                             <div class="row">
                                             <label for="inputnumber" class="col-md-3 control-label">
-                                                Confirm Password
+                                                Konfirmasi Kata Sandi
                                                 <span class='require'>*</span>
                                             </label>
                                             <div class="col-md-9">
@@ -216,10 +218,10 @@
                 e.preventDefault();
                 var check = false;
                 if ($('#password').val() ===""){
-                    alert('Please Enter password');
+                    alert('Masukkan Kata Sandi');
                 }
                 else if  ($('#password').val() !== $('#password-confirm').val()) {
-                    alert("confirm password should match with password");
+                    alert("Konfirmasi Kata sandi harus sama dengan Kata Sandi");
                 }
                 else if  ($('#password').val() === $('#password-confirm').val()) {
                     check = true;
@@ -237,10 +239,10 @@
                         },
                         success: function (data) {
                             $('#password, #password-confirm').val('');
-                            alert('password reset successful');
+                            alert('Berhasil Mengubah Kata Sandi!!');
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
-                            alert('error in password reset');
+                            alert('Kesalahan dalam mengubah Kata Sandi');
                         }
                     });
                 }

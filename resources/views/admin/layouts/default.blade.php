@@ -78,11 +78,11 @@
                                 <img src="{!! url('/').'/uploads/users/'.Sentinel::getUser()->pic !!}" alt="img" height="35px" width="35px"
                                      class="rounded-circle img-fluid float-left"/>
 
-                            @elseif(Sentinel::getUser()->gender === "male")
+                            @elseif(Sentinel::getUser()->gender === "L")
                                 <img src="{{ asset('assets/images/authors/avatar3.png') }}" alt="img" height="35px" width="35px"
                                      class="rounded-circle img-fluid float-left"/>
 
-                            @elseif(Sentinel::getUser()->gender === "female")
+                            @elseif(Sentinel::getUser()->gender === "P")
                                 <img src="{{ asset('assets/images/authors/avatar5.png') }}" alt="img" height="35px" width="35px"
                                      class="rounded-circle img-fluid float-left"/>
                             @else
@@ -99,12 +99,14 @@
                             </a>
                         </li>
                         <li role="presentation"></li>
+                        @if(Sentinel::inRole('admin'))
                         <li>
                             <a href="{{ URL::to($prefix.'/users', Sentinel::getUser()->id). '/edit' }}">
                                 <i class="livicon" data-name="gears" data-s="18"></i>
                                 Account Settings
                             </a>
                         </li>
+                        @endif
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">

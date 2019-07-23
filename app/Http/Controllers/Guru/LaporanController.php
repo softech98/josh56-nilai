@@ -28,13 +28,14 @@ class LaporanController extends Controller
 
 	public function index()
 	{
-		$getperiode = Periode::all();
-		// $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
-		$data['periode'] = Periode::all();
+		// $getperiode = Periode::all();
+		$getperiode = Periode::where('aktif', 1)->first();
+		$data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
+		// $data['periode'] = Periode::all();
 		$getmapelguru = MapelGuru::where('guru_id', $this->gurulogin())->get();
         $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
-		return view ('guru.laporan.nilai',$data);
+		return view ('guru.laporan.nilai',$data, compact('getperiode'));
 	}
 
 	public function gurulogin()
@@ -45,7 +46,7 @@ class LaporanController extends Controller
     public function getSiswaFromRombel(Request $request, Rombel $rombel)
     {
         
-        return response()->json(Siswa::where('rombel_id', $rombel->id)->with("nilai_akhir")->get());
+        return response()->json(Siswa::where('rombel_id', $rombel->id)->with("nilai_akhir_all")->get());
 
     }
 }

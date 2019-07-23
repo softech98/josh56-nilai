@@ -77,11 +77,11 @@ Dashboard
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <small class="stat-label">Last Week</small>
+                                    <small class="stat-label">Orang</small>
                                     <h4 id="myTargetElement1.1"></h4>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <small class="stat-label">Last Month</small>
+                                    <small class="stat-label"></small>
                                     <h4 id="myTargetElement1.2"></h4>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@ Dashboard
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <small class="stat-label">Last Week</small>
+                                    <small class="stat-label">Orang</small>
                                     <h4 id="myTargetElement2.1"></h4>
                                 </div>
                                 <div class="col-6 text-right">
@@ -131,7 +131,7 @@ Dashboard
                         <div class="col-12 float-left nopadmar">
                             <div class="row">
                                 <div class="square_box col-6 pull-left">
-                                    <span>Subscribers</span>
+                                    <span>Total Rombel</span>
 
                                     <div class="number" id="myTargetElement3"></div>
                                 </div>
@@ -142,7 +142,7 @@ Dashboard
                            </div>
                            <div class="row">
                             <div class="col-6">
-                                <small class="stat-label">Last Week</small>
+                                <small class="stat-label">rombel</small>
                                 <h4 id="myTargetElement3.1"></h4>
                             </div>
                             <div class="col-6 text-right">
@@ -174,7 +174,7 @@ Dashboard
                      </div>
                      <div class="row">
                         <div class="col-6">
-                            <small class="stat-label">Last Week</small>
+                            <small class="stat-label">Orang</small>
                             <h4 id="myTargetElement4.1"></h4>
                         </div>
                         <div class="col-6 text-right">
@@ -227,6 +227,8 @@ Dashboard
                 decimal: '.' // character to use as a decimal
             };
             var demo = new CountUp("myTargetElement4", 125, {{ $user_count }}, 0, 6, options);
+            demo.start();
+            var demo = new CountUp("myTargetElement3", 125, {{ $rombel_count }}, 0, 6, options);
             demo.start();
             var demo = new CountUp("myTargetElement1", 125, {{ $guru_count }}, 0, 6, options);
             demo.start();

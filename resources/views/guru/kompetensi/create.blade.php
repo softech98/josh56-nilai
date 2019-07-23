@@ -22,13 +22,13 @@
                 </div>
                 <div class="form-group">
                     <div class="row">
-                     <div class="col-lg-6 col-md-6">
-                        {{ Form::text('kode',null,array('class'=>'form-control','placeholder' => 'Kode KD','autofocus', 'required')) }}
-                        <small class="text-danger">{{ $errors->first('kode') }}</small>
-                    </div>
                     <div class="col-lg-6 col-md-6">
                         {!! Form::select('aspek',['P'=>'Pengetahuan','K'=>'Keterampilan'], null,['class' => 'form-control select2', 'placeholder'=>'--Aspek Penilaian--', 'required']) !!}
                         <small class="text-danger">{{ $errors->first('aspek') }}</small>
+                    </div>
+                     <div class="col-lg-6 col-md-6">
+                        {{ Form::text('kode',null,array('class'=>'form-control','placeholder' => 'Kode KD','autofocus', 'required')) }}
+                        <small class="text-danger">{{ $errors->first('kode') }}</small>
                     </div>
                 </div>
             </div>
