@@ -28,7 +28,13 @@ class GuruController extends Controller
     public function index()
     {
         $guru = new Guru();
-        return view('admin.guru.index', compact('guru'));
+        $data['judul']      = "Tambah Guru";
+        $data['guru']      = new Guru();
+        $jenis_kelamin      = Guru::$jenis_kelamin;
+        $data['method']     = "POST";
+        $data['btn_submit'] = "Simpan";
+        $data['action']     = 'Admin\GuruController@store';
+        return view('admin.guru.index',$data, compact('guru','jenis_kelamin'));
     }
 
     /**
@@ -71,6 +77,7 @@ class GuruController extends Controller
                 'guru_id' => $guruCreate->id,
                 'username' => $request->get('username'),
                 'email' => $request->get('email'),
+                'gender' => $request->get('jenis_kelamin'),
                 'password' => ('123456'),
                  ]);
 
@@ -85,7 +92,7 @@ class GuruController extends Controller
                 ->causedBy($user)
                 ->log('New User Created by '.Sentinel::getUser()->full_name);
 
-       return back()->with('success', trans('message.success.create'));
+       return back()->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

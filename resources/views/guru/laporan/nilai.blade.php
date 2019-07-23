@@ -71,21 +71,17 @@ Penilaian Pengetahuan
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-				<a href="#" class="btn btn-success">Export</a>
-				<a href="#" class="btn btn-primary">Import</a>
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col-md-6 col-sm-8 ">
-							{{-- <button type="reset" class="btn btn-danger btn-responsive ">Reset</button> --}}
-							<button type="submit" class="btn btn-success btn-responsive" style="display:none;">
-								{{-- {{ $btn_submit }} --}}Submit
-							</button>
-						</div>
-					</div>
-				</div>
 			</div>
+			<div class="col-12 col-md-6">
+				<button type="button" class="btn btn-labeled btn-primary" href="javascript:void(0)">
+                                        <span class="btn-label pull-left">
+                                                <i class="livicon" data-name="inbox-out" data-size="16" data-loop="true" data-c="#fff"
+                                                   data-hc="white"></i>
+                                            </span>
+                                <span class="label-text align-middle">Export</span>
+                            </button>
+                            <br><br>
+            </div>
 		</div>
 	</div>
 	<div class="card panel-primary ">

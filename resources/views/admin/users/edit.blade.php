@@ -103,7 +103,7 @@ Edit User
 
                                 <div class="form-group ">
 
-                                    <p class="text-primary">If you don't want to change password... please leave them empty</p>
+                                    <p class="text-primary">Jika tidak ingin mengubah password, kosongkan fill password</p>
                                     <div class="row">
                                         <label for="password" class="col-sm-2 control-label">Password *</label>
                                         <div class="col-sm-4 {{ $errors->first('password', 'has-error') }}">

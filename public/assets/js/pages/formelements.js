@@ -1,5 +1,33 @@
 
     $(document).ready(function() {
+        $('input#nip')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+        $('input#username')
+            .minlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-success",
+            limitReachedClass: "label label-danger"
+            });
+        $('input#nis')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+            $('input#nisn')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
         $(
             'input#defaultconfig'
         ).maxlength({
@@ -52,4 +80,6 @@
         });
 
         $('.autogrow_area').autogrow({onInitialize: true});
+
+
     });

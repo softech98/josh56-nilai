@@ -14,12 +14,12 @@
                         <div class="row">
                         {!! Form::label('namaROmbel', 'Nama Rombel',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
-                           {{ Form::text('namaRombel',null,array('class'=>'form-control','placeholder' => 'Nama Rombel','autofocus' ,'required' => 'required')) }}
+                           {{ Form::text('namaRombel',null,array('class'=>'form-control','placeholder' => 'Nama Rombel','autofocus' ,'required' => 'required', 'title'=>'Nama Rombel')) }}
                          <small class="text-danger">{{ $errors->first('namaRombel') }}</small>
                      </div>
                         {!! Form::label('jurusan', 'Jurusan',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
-                            {!! Form::select('jurusan_id', $jurusan, null, ['id' => 'jurusan', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jurusan--']) !!}
+                            {!! Form::select('jurusan_id', $jurusan, null, ['id' => 'jurusan', 'class' => 'form-control', 'required' => 'required', 'placeholder'=>'--Pilih Jurusan--', 'title'=>'Jurusan']) !!}
                             <small class="text-danger">{{ $errors->first('jurusan_id') }}</small>
                         </div>
                     </div>
@@ -28,25 +28,16 @@
                         <div class="row">
                         {!! Form::label('tingkat', 'Tingkatan',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
-                            {!! Form::select('tingkat', $tingkat, null, ['id' => 'tingkat', 'class' => 'form-control', 'required' => 'required','placeholder'=>'--Pilih Tingkat--']) !!}
+                            {!! Form::select('tingkat', $tingkat, null, ['id' => 'tingkat', 'class' => 'form-control', 'required' => 'required','placeholder'=>'--Pilih Tingkat--', 'title'=>'Tingkat']) !!}
                             <small class="text-danger">{{ $errors->first('tingkat') }}</small>
                         </div>
                         {!! Form::label('guru_id', 'Wali Kelas',[ 'class' => 'col-sm-2', 'control-label']) !!}
                         <div class="col-sm-4">
-                            {!! Form::select('guru_id', $wali_kelas, null, ['id' => 'walikelas', 'class' => 'form-control select2', 'placeholder'=>'']) !!}
+                            {!! Form::select('guru_id', $wali_kelas, null, ['id' => 'walikelas', 'class' => 'form-control select2', 'placeholder'=>'', 'title'=>'Walikelas']) !!}
                             <small class="text-danger">{{ $errors->first('guru_id') }}</small>
                         </div>
                     </div>
                     </div>
-                    {{-- <div class="form-group">
-                        <div class="row">
-                        {!! Form::label('guru_id', 'Wali Kelas',[ 'class' => 'col-sm-2', 'control-label']) !!}
-                        <div class="col-sm-4">
-                            {!! Form::select('guru_id', $wali_kelas, null, ['id' => 'walikelas', 'class' => 'form-control select2', 'placeholder'=>'']) !!}
-                            <small class="text-danger">{{ $errors->first('guru_id') }}</small>
-                        </div>
-                    </div>
-                </div> --}}
                     <div class="form-group">
                         <div class="row">
                         <div class="col-md-6 col-sm-8 ">

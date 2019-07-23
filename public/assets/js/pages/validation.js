@@ -108,14 +108,22 @@ $(document).ready(function() {
             nip: {
                 validators: {
                     notEmpty: {
-                        message: 'NIP harus di isi'
+                        message: 'NIP harus di isi dan berupa angka'
+                    },
+                    regexp: {
+                        regexp: /^\d{18,18}$/,
+                        message: 'Masukkan NIP yang Valid, berupa angka'
                     }
                 }
             },
             nis: {
                 validators: {
                     notEmpty: {
-                        message: 'NIS harus di isi'
+                        message: 'NIS harus di isi dan berupa angka'
+                    },
+                    regexp: {
+                        regexp: /^\d{5,5}$/,
+                        message: 'Masukkan NIS yang Valid, hanya angka'
                     }
                 }
             },
@@ -129,7 +137,11 @@ $(document).ready(function() {
              nisn: {
                 validators: {
                     notEmpty: {
-                        message: 'NISN harus di isi'
+                        message: 'NISN harus di isi dan berupa angka'
+                    }, 
+                    regexp: {
+                        regexp: /^\d{10,10}$/,
+                        message: 'Masukkan NISN yang Valid, hanya angka'
                     }
                 }
             },
@@ -137,6 +149,35 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                         message: 'Rombel harus di isi'
+                    }
+                }
+            },
+            tanggal_lahir: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tanggal Lahir harus di isi'
+                    }
+                }
+            },
+            hp: {
+                validators: {
+                    regexp: {
+                        regexp: /^\d{9,13}$/,
+                        message: 'Masukkan No HP yang Valid'
+                    }
+                }
+            },
+            username: {
+                validators: {
+                    notEmpty: {
+                        message: 'Username harus di isi'
+                    }
+                }
+            }, 
+            alamat: {
+                validators: {
+                    notEmpty: {
+                        message: 'Username harus di isi'
                     }
                 }
             },
@@ -171,10 +212,10 @@ $(document).ready(function() {
             email: {
                 validators: {
                     notEmpty: {
-                        message: 'The email address is required'
+                        message: 'Email harus di isi'
                     },
                     emailAddress: {
-                        message: 'The input is not a valid email address'
+                        message: 'Masukkan Email yang valid'
                     }
                 }
             },
@@ -189,7 +230,7 @@ $(document).ready(function() {
             password: {
                 validators: {
                     notEmpty: {
-                        message: 'The password is required and cannot be empty'
+                        message: 'Kata Sandi harus di isi'
                     },
                     different: {
                         field: 'first_name,last_name',
@@ -200,7 +241,7 @@ $(document).ready(function() {
             confirmpassword: {
                 validators: {
                     notEmpty: {
-                        message: 'The Confirm Password is required and cannot be empty'
+                        message: 'Konfirmasi Kata Sandi Harus sama'
                     },
                     identical: {
                         field: 'password'

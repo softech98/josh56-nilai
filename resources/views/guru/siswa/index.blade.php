@@ -49,7 +49,7 @@ Data Siswa
             </div>
             <div class="row">
                             <div class="col-md-4 my-2 ml-4">
-                                {!! Form::select('jurusan', $jurusan , null,['class' => 'form-control', 'id' => 'jurusan', 'placeholder' => '--Filter Jurusan--']) !!}
+                                {!! Form::select('jurusan', $jurusan , null,['class' => 'form-control', 'id' => 'jurusan', 'placeholder' => '--Filter Rombel--']) !!}
                             </div>
                             
                             </div>

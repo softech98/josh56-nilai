@@ -25,13 +25,15 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jurusan = Jurusan::pluck('nama','id');
+        $gurulogin               = Sentinel::getUser();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        $jurusan = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $jurusan['all']='Select All';
         if(request()->ajax()) {
         $gurulogin               = Sentinel::getUser();
-            $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
       
       //       foreach($getmapelguru as $m)
       // {
@@ -42,12 +44,12 @@ class SiswaController extends Controller
 
       // }
 
-        // if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
-        //     $siswa = Siswa::with('jurusan')->whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->pluck('jurusan_id')->get();
-        // }
-        // else{
+        if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
+            $siswa = Siswa::where('rombel_id', $request->jurusanSelect)->get();
+        }   
+        else{
         $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
-        // }
+        }
 
        // $siswa = Siswa::where('rombel_id', );
        // $siswa = Siswa::leftJoin('is_rombel', 'is_siswa.rombel_id', '=', 'is_rombel.id')

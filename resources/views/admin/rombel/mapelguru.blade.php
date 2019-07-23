@@ -2,12 +2,7 @@
 <!-- Main content -->
     <div class="row justify-content-center">
     <div class="col-md-12">
-        <div class="card{{--  panel-primary --}}">
-            {{-- <div class="card-heading clearfix icon-buttons">
-                    <h4 class="card-title pull-left"> <i class="livicon" data-name="home" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                    Rombongan Belajar {{$rombels->tingkat}} {{$rombels->namaRombel}}
-                    </h4>
-                </div> --}}
+        <div class="card">
             <div class="card-body">
                  {{ Form::model($mapelguru, array('action' => $action, 'files' => true, 'method' => $method)) }}
 
@@ -63,7 +58,7 @@
 
  <script>
          $("#guru_mapel").select2({
-            // placeholder: "--Pilih Guru Mapel--",
+            placeholder: "--Pilih Guru Mapel--",
             theme:"bootstrap"
         });
     </script>

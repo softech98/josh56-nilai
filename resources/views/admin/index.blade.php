@@ -103,7 +103,7 @@ Dashboard
                                     <div class="number" id="myTargetElement2"></div>
                                 </div>
                                 <div class="col-6">
-                                    <i class="livicon float-right" data-name="piggybank" data-l="true" data-c="#fff"
+                                    <i class="livicon float-right" data-name="user-flag" data-l="true" data-c="#fff"
                                     data-hc="#fff" data-s="70"></i>
                                 </div>
 
@@ -114,7 +114,7 @@ Dashboard
                                     <h4 id="myTargetElement2.1"></h4>
                                 </div>
                                 <div class="col-6 text-right">
-                                    <small class="stat-label">Last Month</small>
+                                    <small class="stat-label"></small>
                                     <h4 id="myTargetElement2.2"></h4>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@ Dashboard
                                     <div class="number" id="myTargetElement3"></div>
                                 </div>
                                 <div class="col-6">
-                                   <i class="livicon float-right" data-name="archive-add" data-l="true" data-c="#fff"
+                                   <i class="livicon float-right" data-name="sitemap" data-l="true" data-c="#fff"
                                    data-hc="#fff" data-s="70"></i>
                                </div>
                            </div>
@@ -146,7 +146,7 @@ Dashboard
                                 <h4 id="myTargetElement3.1"></h4>
                             </div>
                             <div class="col-6 text-right">
-                                <small class="stat-label">Last Month</small>
+                                <small class="stat-label"></small>
                                 <h4 id="myTargetElement3.2"></h4>
                             </div>
                         </div>
@@ -178,7 +178,7 @@ Dashboard
                             <h4 id="myTargetElement4.1"></h4>
                         </div>
                         <div class="col-6 text-right">
-                            <small class="stat-label">Last Month</small>
+                            <small class="stat-label"></small>
                             <h4 id="myTargetElement4.2"></h4>
                         </div>
                     </div>

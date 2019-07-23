@@ -46,7 +46,7 @@ Data Siswa
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="flag" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Siswa
                  </h4>
-                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="add" href="javascript:void(0)">
+                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="" href="javascript:void(0)" data-target="#modalSiswa">
                                         <span class="btn-label pull-left">
                                                 <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
                                                    data-hc="white"></i>
@@ -59,7 +59,7 @@ Data Siswa
                 </div> --}}
             </div>
             <br />
-            @include('admin.siswa.modal')
+            {{-- @include('admin.siswa.modal') --}}
             <div class="card-body">
 
                 {{-- @if ($roles->count() >= 1) --}}
@@ -95,14 +95,14 @@ Data Siswa
     @section('footer_scripts')
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
+    <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
+    <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
     type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
     <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
-    <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
+<script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
 
     <script>
         $(function() {
@@ -136,29 +136,54 @@ Data Siswa
         });
 
     </script>
-   {{--  <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="deleteLabel">Delete Siswa</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                   Apakah anda yakin akan menghapus Siswa ini?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a  type="button" class="btn btn-danger Remove_square">Delete</a>
+   <div class="modal fade in" id="modalSiswa" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+
+                        <h4 class="modal-title" id="myModalLabel">Tambah Data Siswa</h4>
+                        <button type="button" class="close resetModal" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    @include('admin.siswa.create');
+                    </div>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
         
     </div> --}}
     <script>
         $(function () {
-            $('body').on('hidden.bs.modal', '.modal', function () {
-                $(this).removeData('bs.modal');
+            var originalModal = $('#modalSiswa').clone();
+          $(".modal").on("hidden.bs.modal", function() {
+            $('#modalSiswa').remove();
+            var myClone = originalModal.clone();
+            $('body').append(myClone);
+
+  });
+
+
+            $("#rombel_id").select2({
+            placeholder: "--Pilih Rombel--",
+            theme:"bootstrap"
+        });
+
+            $('input#nis')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+            $('input#nisn')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
             });
         });
 
@@ -172,7 +197,7 @@ Data Siswa
     </script>
     <script type="text/javascript">
         $('#add').click(function(){
-            $('#myModal').modal('show');
+            $('#modalSiswa').modal('show');
              $('.modal-title').html("Tambah Data Siswa");
             $('.modal-body').load('{!! route("admin.siswa.create") !!}')
         });
@@ -182,7 +207,8 @@ Data Siswa
             var nis = $(this).data('id');
             $.get("{{ route('admin.siswa.index') }}" +'/' + nis +'/edit', function (data) {
               $('#myModal').modal('show');
-              $('.modal-body').html(data);
+              $('.modal-title').html('Edit Data Siswa'); 
+              $('.modal-body').html(data); 
               
           })
         });

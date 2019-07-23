@@ -46,7 +46,7 @@ Daftar Guru
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Guru
                  </h4>
-                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="add" href="javascript:void(0)">
+                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="" data-target="#modalGuru" href="javascript:void(0)">
                                         <span class="btn-label pull-left">
                                                 <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
                                                    data-hc="white"></i>
@@ -92,6 +92,9 @@ Daftar Guru
 type="text/javascript"></script>
 <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
 <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
+<script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
+<script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
 
 <script>
     $(function() {
@@ -133,32 +136,49 @@ type="text/javascript"></script>
 
 </script>
 
- {{-- <div class="modal fade" id="delete_confirm" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="deleteLabel">Delete Guru</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure to delete this User? This operation is irreversible.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a  type="button" class="btn btn-danger Remove_square">Delete</a>
+     <div class="modal fade in" id="modalGuru" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+
+                        <h4 class="modal-title" id="myModalLabel">Tambah Data Guru</h4>
+                        <button type="button" class="close resetModal" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    @include('admin.guru.create');
+                    </div>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        
-    </div> --}}
     <!-- /.modal-dialog -->
 
     <script>
         $(function () {
-           $('body').on('hidden.bs.modal', '.modal', function () {
-              $(this).removeData('bs.modal');
-          });
+            var originalModal = $('#modalGuru').clone();
+          $(".modal").on("hidden.bs.modal", function() {
+            $('#modalGuru').remove();
+            var myClone = originalModal.clone();
+            $('body').append(myClone);
+
+  });
+
+           $('input#nip')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+            $('input#hp')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'bottom',
+                warningClass: "label label-success",
+            limitReachedClass: "label label-success"
+            });
        });
 
         var $url_path = '{!! url('/') !!}';

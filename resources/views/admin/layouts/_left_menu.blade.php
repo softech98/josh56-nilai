@@ -1,10 +1,7 @@
 <ul id="menu" class="page-sidebar-menu" style="margin-top: 20px">
 <?php $prefix = Request::route()->getPrefix(); ?>
     <li {!! (Request::is($prefix.'/dashboard') ? 'class="active"' : '') !!}>
-        {{-- @if(Sentinel::inRole('admin')) --}}
         <a href="{{ URL::to($prefix.'/dashboard') }}">
-            {{-- @else --}}
-            {{-- @endif --}}
             <i class="livicon" data-name="dashboard" data-size="18" data-c="#EF6F6C" data-hc="#EF6F6C"
                data-loop="true"></i>
             <span class="title">Dashboard</span>
@@ -61,7 +58,7 @@
            
         </ul>
     </li>
-    <li {!! (Request::is('admin/users') ? 'class="active"' : '') !!}>
+    <li {!! (Request::is('admin/users') ||Request::is('admin/users/*') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to($prefix.'/users') }}">
             <i class="livicon" data-name="user" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
