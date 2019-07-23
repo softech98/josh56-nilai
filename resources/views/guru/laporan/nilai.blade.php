@@ -71,10 +71,10 @@ Penilaian Pengetahuan
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
+				{{-- <div class="form-group">
 				<a href="#" class="btn btn-success">Export</a>
 				<a href="#" class="btn btn-primary">Import</a>
-				</div>
+				</div> --}}
 				<div class="form-group">
 					<div class="row">
 						<div class="col-md-6 col-sm-8 ">
