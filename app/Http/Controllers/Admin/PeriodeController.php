@@ -106,12 +106,14 @@ class PeriodeController extends Controller
      */
    public function update(Request $request, $id)
     {
+        // dd($request->all());
         $periode = Periode::findOrFail($id);
         $this->validate($request, [
             'mulai' => 'required|integer|',
             'selesai' => 'required|integer',
         ]);
-        $periode->update($request->all());
+        Periode::where('aktif','1')->update(['aktif'=>'0']);  
+        $periode->update($request->all()); 
         return redirect('admin/periode')->with('success', 'Data Berhasil di Ubah');
     }
 

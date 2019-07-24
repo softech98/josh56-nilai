@@ -91,7 +91,7 @@ class SiswaController extends Controller
             'nisn' => 'required|numeric|digits:10|unique:is_siswa',
             'nis' => 'required|numeric|digits:5|unique:is_siswa',
             'rombel_id' => 'required',
-            'tanggal_lahir' => 'required|date|after:01-01-1950|before:01-01-2005',
+            'tanggal_lahir' => 'required|date|after:01-01-1950|before:31-01-2005',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
         ]);
@@ -161,7 +161,7 @@ class SiswaController extends Controller
             'nisn' => 'required|numeric|digits:10',
             'nis' => 'required|numeric|digits:5',
             'rombel_id' => 'required',
-            'tanggal_lahir' => 'required|date|after:01-01-1950|before:01-01-2005',
+            'tanggal_lahir' => 'required|date|after:01-01-1950|before:31-01-2005',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
         ]);

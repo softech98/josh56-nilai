@@ -10,7 +10,14 @@ Data Periode
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap4.css') }}" />
 <link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{ asset('assets/vendors/Buttons/css/buttons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/pages/advbuttons.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/css/pages/advbuttons.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/all.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/iCheck/css/line/line.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/bootstrap-switch/css/bootstrap-switch.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/switchery/css/switchery.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/awesomebootstrapcheckbox/css/awesome-bootstrap-checkbox.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/vendors/awesomebootstrapcheckbox/css/build.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/formelements.css') }}"/>
 
 @stop
 
@@ -66,6 +73,7 @@ Data Periode
                 </div>
             </div>
         </div>
+        
         @include('admin.periode.create')
     </div>    <!-- row-->
 </section>
@@ -77,6 +85,13 @@ Data Periode
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/Buttons/js/scrollto.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/Buttons/js/buttons.js') }}" ></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-switch/js/bootstrap-switch.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/switchery/js/switchery.js') }}" ></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"></script>
+    <script language="javascript" type="text/javascript" src="{{ asset('assets/js/pages/radio_checkbox.js') }}"></script>
+
     <script>
     $(function() {
         var table = $('#table').DataTable({

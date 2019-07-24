@@ -7,20 +7,20 @@
 return array(
 
     'account_already_exists' => 'An account with this email already exists.',
-    'account_not_found' => 'Email or password is incorrect.',
-    'account_email_not_found' =>'Email is incorrect.',
+    'account_not_found' => 'Email atau kata sandi salah.',
+    'account_email_not_found' =>'Email salah.',
     'account_not_activated'  => 'This user account is not activated.',
     'account_suspended'      => 'User account suspended because of too many login attempts. Try again after [:delay] seconds',
     'account_banned'         => 'This user account is banned.',
 
     'signin' => array(
-        'error'   => 'There was a problem while trying to log you in, please try again.',
-        'success' => 'You have successfully logged in.',
+        'error'   => 'Terjadi kesalahan ketika login, ulangi kembali.',
+        'success' => 'Anda Berhasil Login.',
     ),
 
     'login' => array(
-        'error'   => 'There was a problem while trying to log you in, please try again.',
-        'success' => 'You have successfully logged in.',
+        'error'   => 'Terjadi kesalahan ketika login, ulangi kembali.',
+        'success' => 'Anda Berhasil Login.',
     ),
 
     'signup' => array(

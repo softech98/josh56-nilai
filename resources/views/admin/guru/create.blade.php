@@ -16,6 +16,8 @@
 <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/pages/formelements.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/vendors/flatpickr/css/material_blue.css') }}" rel="stylesheet"
+      type="text/css"/>
 @stop
 
 
@@ -97,7 +99,16 @@
                         <div class="col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 {!! Form::label('tanggal_lahir', 'Tanggal Lahir') !!}
-                                {{ Form::date('tanggal_lahir',null,array('id'=>'tanggal_lahir','class'=>'form-control','placeholder' => 'Tanggal Lahir','autofocus', 'required', 'title'=>'Tanggal Lahir')) }}
+                                <div class="input-group date">
+                                {{ Form::text('tanggal_lahir',null,array('id'=>'tanggal_lahir' ,'class'=>'form-control','placeholder' => 'Tanggal Lahir','autofocus', 'required', 'title'=>'Tanggal Lahir')) }}
+                                <span class="input-group-append add-on">
+                                            <a class="input-btn" data-toggle>
+                                                <span class="input-group-text remove_radius"> <i class="livicon" data-name="calendar" data-size="23"
+                                                   data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span>
+                                        
+                                </div>
                                 <small class="text-danger">{{ $errors->first('tanggal_lahir') }}</small>
                             </div>
                         </div>
@@ -146,6 +157,20 @@
             <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
             type="text/javascript"></script>
             <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('assets/vendors/flatpickr/js/flatpickr.min.js') }}" type="text/javascript"></script>
+            <script>
+            $(document).ready(function () {
+
+                flatpickr("#tanggal_lahir", {
+                    altInput: true,
+                    altFormat: "d-m-Y",
+                    dateFormat: "Y-m-d",
+                    maxDate: "2005-01-30"
+
+                });
+            });
+
+</script>
 
 {{-- <script type="text/javascript">
     $(function() {

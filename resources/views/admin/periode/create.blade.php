@@ -43,7 +43,16 @@
            </div>
        </div>
    </div>
-
+   @if($method == 'PUT')
+           <div class="form-group">
+               <div class="row">
+                   <label for="aktif" class="col-sm-2">Status</label>
+                    <div class="col-sm-6 pull-right">
+                  <input type="checkbox" class="js-switch" id="aktif" name="aktif" @if($periode->aktif=='1') checked  @endif  value="1" />
+                  </div>
+                </div>
+    </div>
+    @endif
    <div class="ui-group-buttons col-sm-9 pull-right">
     <button type="submit" class="btn btn-primary">{{$btn_submit}} </button>
     <div class="or or-lg"></div>
