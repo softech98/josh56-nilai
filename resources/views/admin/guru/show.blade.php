@@ -130,7 +130,7 @@ View Guru Details
                                     </table>
                                 </div>
                                 <a href="{{ route('admin.guru.index') }}" class='btn btn-success'>Back to List</a>
-                                <a href="javascript:void(0)" id="edit{{$guru->id}}" class='btn btn-warning'>Edit</a>
+                                <a href="{{route ('admin.guru.edit', $guru->id)}}" class='btn btn-warning'>Edit</a>
                             </div>
                         </div>
                     </div>

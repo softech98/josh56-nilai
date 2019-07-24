@@ -34,7 +34,7 @@ class SiswaController extends Controller
           ->addIndexColumn()
         ->addColumn('actions',function($siswa) { 
             $btn = '<a href='. route('admin.siswa.show', $siswa->nis) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view detail siswa"></i></a>
-                    <a href="javascript:void(0)" class="edit" data-id="'.$siswa->nis.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="edit siswa"></i></a>
+                    <a href='. route('admin.siswa.edit', $siswa->nis) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="edit siswa"></i></a>
             <a href="javascript:void(0)" class="remove" data-id="'.$siswa->nis.'" ><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete siswa"></i></a>';
                 return $btn;
             })
@@ -166,7 +166,7 @@ class SiswaController extends Controller
             'agama' => 'required',
         ]);
         $siswa->update($request->all());
-        return back()->with('success', trans('message.success.update'));
+        return Redirect::route('admin.siswa.index')->with('success', trans('message.success.update'));
     }
 
     /**

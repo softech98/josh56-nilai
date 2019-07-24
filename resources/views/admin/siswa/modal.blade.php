@@ -1,49 +1,8 @@
-@extends('admin/layouts/default')
-
-{{-- Page title --}}
-@section('title')
-{{$judul}}
-@parent
-@stop
-
-{{-- page level styles --}}
-@section('header_styles')
-<link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
-<link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
-<link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/css/pages/formelements.css') }}" rel="stylesheet" />
-@stop
-
-
-{{-- Page content --}}
-@section('content')
-<section class="content-header">
-    <h1> {{$judul}} </h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="{{ route('admin.dashboard') }}">
-                <i class="livicon" data-name="home" data-size="14" data-color="#000"></i>
-                Dashboard
-            </a>
-        </li>
-        <li><a href=" {{route('admin.guru.index')}} "> Guru</a></li>
-        <li class="active">{{$judul}}</li>
-    </ol>
-</section>
 
 <!-- Main content -->
 <div class="row justify-content-center">
-    <div class="col-12 col-md-12 col-lg-11">
-        <div class="card panel-primary">
-            <div class="card-heading">
-                        <h3 class="card-title">
-                            <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Form {{$judul}}
-                        </h3>
-                    </div>
+    <div class="col-lg-12">
+        <div class="card">
             <!-- CSRF Token -->
             <div class="card-body ">
                 {{ Form::model($siswa, array('action' => $action, 'files' => true, 'method' => $method, 'id'=>'form-validation3','role'=>'form')) }}
@@ -52,13 +11,13 @@
                 <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                        {{ Form::text('nisn',null,array('id'=>'nisn','class'=>'form-control','placeholder' => 'Nomor Induk Siswa Nasional (10 digit)','autofocus', 'required', 'title'=>'Nomor Induk Siswa Nasional (10 digit)', 'maxlength'=>'10','minlength'=>'10')) }}
+                                        {{ Form::text('nisn',null,array('id'=>'nisn','class'=>'form-control','placeholder' => 'Nomor Induk Siswa Nasional (10 digit)','autofocus', 'required', 'title'=>'Nomor Induk Siswa Nasional (10 digit)', 'maxlength'=>'10',)) }}
                                         <small class="text-danger">{{ $errors->first('nisn') }}</small>
                             </div>
                         </div>
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::text('nis',null,array('id'=>'nis','class'=>'form-control','placeholder' => 'Nomor Induk Siswa (5 digit)','autofocus', 'required', 'title'=>'Nomor Induk Siswa (5 digit)', 'maxlength'=>'5','minlength'=>'5')) }}
+                                    {{ Form::text('nis',null,array('id'=>'nis','class'=>'form-control','placeholder' => 'Nomor Induk Siswa (5 digit)','autofocus', 'required', 'title'=>'Nomor Induk Siswa (5 digit)', 'maxlength'=>'5')) }}
                                     <small class="text-danger">{{ $errors->first('nis') }}</small>
                             </div>
                         </div>
@@ -66,7 +25,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::text('nama',null,array('id'=>'nama','class'=>'form-control','placeholder' => 'Nama Siswa','autofocus', 'required', 'title'=>'Nama Siswa', 'maxlength'=>'30')) }}
+                                    {{ Form::text('nama',null,array('id'=>'nama','class'=>'form-control','placeholder' => 'Nama Siswa','autofocus', 'required', 'title'=>'Nama Siswa')) }}
                                     <small class="text-danger">{{ $errors->first('nama') }}</small>
                                 </div>
                             </div>
@@ -81,7 +40,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::textarea('alamat',null,array('id' => 'alamat','class'=>'form-control','placeholder' => 'Alamat','autofocus','rows'=>'3', 'required', 'title'=>'Alamat', 'maxlength'=>'100')) }}
+                                    {{ Form::textarea('alamat',null,array('id' => 'alamat','class'=>'form-control','placeholder' => 'Alamat','autofocus','rows'=>'3', 'required', 'title'=>'Alamat')) }}
                      <small class="text-danger">{{ $errors->first('alamat') }}</small>
                                 </div>
                             </div>
@@ -100,7 +59,7 @@
                         <div class="col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 {!! Form::label('tempat_lahir', 'Tempat Lahir') !!}
-                                {{ Form::text('tempat_lahir',null,array('id'=>'tempat_lahir' ,'class'=>'form-control','placeholder' => 'Tempat Lahir','autofocus', 'required', 'title'=>'Tempat Lahir','maxlength'=>'20')) }}
+                                {{ Form::text('tempat_lahir',null,array('class'=>'form-control','placeholder' => 'Tempat Lahir','autofocus', 'required', 'title'=>'Tempat Lahir')) }}
                                 <small class="text-danger">{{ $errors->first('tempat_lahir') }}</small>
                             </div>
                         </div>
@@ -119,13 +78,12 @@
                         </div>
                         </div>
                         <div class="row marginTop">
-                            @if($method == 'POST')
-                            <div class="col-2 col-sm-2"></div>
-                            <div class="col-2 col-sm-4">
-                                <button type="reset" class="btn btn-danger btn-block resetModal" aria-hidden="true">Reset</button>
+                            {{-- @if($method == 'POST') --}}
+                            <div class="col-6 col-md-6">
+                                <button type="reset" class="btn btn-danger btn-block resetModal" id="myReset" aria-hidden="true">Reset</button>
                             </div>
-                            @endif
-                            <div class="col-2 col-sm-4">
+                            {{-- @endif --}}
+                            <div class="col-6 col-md-6">
                                <button type="submit" class="btn btn-info btn-block ">
                                 {{ $btn_submit }}
                             </button>
@@ -138,23 +96,53 @@
 </div>
 </div>
 {{-- </div> --}}
-  @stop
-
-@section('footer_scripts')
-{{-- </div> --}}
-
-            <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-            <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
-            type="text/javascript"></script>
-            <!-- InputMask -->
-            <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
-            <!-- date-range-picker -->
-            <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
-            <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
-            <!-- Script formelement -->
-            <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-            type="text/javascript"></script>
-            <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
-
-@stop
+    
+    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
+    type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
+    type="text/javascript"></script>
+    <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+    <!-- InputMask -->
+    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+    <!-- date-range-picker -->
+    <script src="{{ asset('assets/js/pages/autogrow.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"  type="text/javascript"></script>
+    <script>
+         $("#rombel_id").select2({
+            placeholder: "--Pilih Rombel--",
+            theme:"bootstrap"
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+             $(document).ready(function() {
+            $('input#nis')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+            $('input#nisn')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-success",
+            limitReachedClass: "label label-success"
+            });
+        }); 
+            $("#tanggal_lahir").datetimepicker({
+                format: 'DD-MM-YYYY',
+                widgetPositioning:{
+                    vertical:'top'
+                },
+                keepOpen:false,
+                useCurrent: false,
+                maxDate: 'now'
+            });
+        }); 
+            
+    </script>

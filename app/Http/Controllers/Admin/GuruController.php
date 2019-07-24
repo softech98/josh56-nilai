@@ -153,7 +153,7 @@ class GuruController extends Controller
             'alamat' => 'required',
         ]);
         $guruUpdate = $guru->update($request->except(['username']));
-        return back()->with('success', 'Data berhasil di Update');
+        return Redirect::route('admin.guru.index')->with('success', 'Data berhasil di Update');
     }
 
     /**
@@ -207,7 +207,7 @@ class GuruController extends Controller
         ->addIndexColumn()
         ->addColumn('actions',function($guru) {
                 $actions = '<a href='. route('admin.guru.show', $guru->id) .'><i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="view guru"></i></a>
-                            <a href="javascript:void(0)" class="edit" data-id="'.$guru->id.'"><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="edit guru"></i></a>
+                            <a href='. route('admin.guru.edit', $guru->id) .'><i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#f89a14" data-hc="#f89a14" title="edit guru"></i></a>
                     <a href="javascript:void(0)" class="remove" data-id="'.$guru->id.'" ><i class="livicon" data-name="trash" data-size="18" data-loop="true" data-c="#f56954" data-hc="#f56954" title="delete guru"></i></a>';
                 
                 return $actions;

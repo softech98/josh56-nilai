@@ -9,16 +9,18 @@ Daftar Guru
 {{-- page level styles --}}
 @section('header_styles')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap4.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendors/Buttons/css/buttons.css') }}" />
 <link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ asset('assets/css/pages/advbuttons.css') }}" />
 
-<link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
 <link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
 <link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/css/pages/formelements.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/css/pages/formelements.css') }}" rel="stylesheet" /> --}}
 @stop
 
 
@@ -45,15 +47,17 @@ Daftar Guru
             <div class="card panel-primary ">
                 <div class="card-heading clearfix">
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                     Guru
-                 </h4>
-                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="" data-target="#modalGuru" href="javascript:void(0)">
-                                        <span class="btn-label pull-left">
-                                                <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
-                                                   data-hc="white"></i>
-                                            </span>
-                                <span class="label-text align-middle">Tambah Guru</span>
-                            </button>
+                     Daftar Guru
+                 </h4> 
+                 <a href=" {{route ('admin.guru.create')}}">
+                 <button type="button" class="btn btn-labeled btn-primary pull-right" href=" ">
+                    <span class="btn-label pull-left">
+                    <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
+                       data-hc="white"></i>
+                    </span>
+                    <span class="label-text align-middle">Tambah Guru</span>
+                    </button>>
+                </a>
             </div>
             <br />
             <div class="card-body">
@@ -81,7 +85,6 @@ Daftar Guru
             </div>
         </div>
     </div>    <!-- row-->
-    {{-- @include('admin.guru.modal'); --}}
 </section>
 @stop
 
@@ -89,20 +92,12 @@ Daftar Guru
 @section('footer_scripts')
 <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
-<script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-<script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-    type="text/javascript"></script>
-    <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
-<!-- InputMask -->
-    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
-    <!-- date-range-picker -->
-    <script src="{{ asset('assets/js/pages/autogrow.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
-    <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"  type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function() {
+        
+    });
+</script>
 
 <script>
     $(function() {
@@ -144,59 +139,36 @@ Daftar Guru
 
 </script>
 
-     <div class="modal fade in" id="modalGuru" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     <div class="modal fade in" id="modalGuru" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-
-                        <h4 class="modal-title" id="myModalLabel">Tambah Data Guru</h4>
+                        <h4 class="modal-title" id="modalGuruLabel">Tambah Data Guru</h4>
                         <button type="button" class="close resetModal" data-dismiss="modal"
                                 aria-hidden="true">×
                         </button>
                     </div>
                     <div class="modal-body">
-                    @include('admin.guru.create');
+                    {{-- @include('admin.guru.create') --}}
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
     <!-- /.modal-dialog -->
 
     <script>
         $(function () {
             var originalModal = $('#modalGuru').clone();
-          $(".modal").on("hidden.bs.modal", function() {
+            $(".modal").on("hidden.bs.modal", function() {
             $('#modalGuru').remove();
             var myClone = originalModal.clone();
             $('body').append(myClone);
+              });
 
-  });
-
-           $('input#nip')
-            .maxlength({
-                alwaysShow: true,
-                placement: 'top',
-                warningClass: "label label-danger",
-            limitReachedClass: "label label-success"
-            });
-            $('input#hp')
-            .maxlength({
-                alwaysShow: true,
-                placement: 'bottom',
-                warningClass: "label label-success",
-            limitReachedClass: "label label-success"
-            });
            
        });
 
-        var $url_path = '{!! url('/') !!}';
-        $('#delete_confirm').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var $recipient = button.data('id');
-            var modal = $(this)
-            modal.find('.modal-footer a').prop("href",$url_path+"/admin/guru/"+ $recipient +"/delete");
-        })
     </script>
 
     <script type="text/javascript">
@@ -230,7 +202,7 @@ Daftar Guru
         $(document).on('click', '#bulk_delete', function(){
         var id = [];
         
-        if(confirm("Are you sure you want to Delete this data?"))
+        if(confirm("Apakah anda yakin ingin menghapus data ini?"))
         {
             $('.guru_checkbox:checked').each(function(){
                     id.push($(this).val());
@@ -256,10 +228,11 @@ Daftar Guru
             }
             else
             {
-                alert("Please select atleast one checkbox");
+                alert("Pilih salah satu checkbox");
             }
         }
     });
 
     </script>
+
     @stop

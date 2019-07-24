@@ -9,15 +9,9 @@ Data Siswa
 @section('header_styles')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/datatables/css/dataTables.bootstrap4.css') }}" />
 <link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
-
-<link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
-<link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
-<link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/css/pages/formelements.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('assets/vendors/Buttons/css/buttons.css') }}" />
+<link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ asset('assets/css/pages/advbuttons.css') }}" />
 @stop
 
 
@@ -46,13 +40,13 @@ Data Siswa
                     <h4 class="card-title pull-left"> <i class="livicon" data-name="flag" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                      Siswa
                  </h4>
-                 <button type="button" class="btn btn-labeled btn-primary pull-right" data-toggle="modal" id="" href="javascript:void(0)" data-target="#modalSiswa">
+                 <a class="btn btn-labeled btn-primary pull-right" href=" {{route('admin.siswa.create')}} ">
                                         <span class="btn-label pull-left">
                                                 <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff"
                                                    data-hc="white"></i>
                                             </span>
                                 <span class="label-text align-middle">Tambah Siswa</span>
-                            </button>
+                            </a>
                                     
                     {{-- <div class="pull-right">
                     <a href="{{ route('kelas.create') }}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-plus"></span> @lang('button.create')</a>
@@ -95,46 +89,7 @@ Data Siswa
     @section('footer_scripts')
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
-    <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-    <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
-            type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-    type="text/javascript"></script>
-    <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
-<!-- InputMask -->
-    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
-    <!-- date-range-picker -->
-    <script src="{{ asset('assets/js/pages/autogrow.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
-    <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"  type="text/javascript"></script>
-    <script>
-        $(document).ready(function() {
-            $('input#nis').maxlength({
-                alwaysShow: true,
-                placement: 'top',
-                warningClass: "label label-danger",
-            limitReachedClass: "label label-success"
-            });
-            $('input#nisn').maxlength({
-                alwaysShow: true,
-                placement: 'top',
-                warningClass: "label label-danger",
-            limitReachedClass: "label label-success"
-            });
-            $("#tanggal_lahir").datetimepicker({
-                format: 'DD-MM-YYYY',
-                widgetPositioning:{
-                    vertical:'top'
-                },
-                keepOpen:false,
-                useCurrent: false,
-                maxDate: 'now'
-            });
-        }); 
-        </script>
+    
     <script>
         $(function() {
             var table = $('#table').DataTable({
@@ -179,7 +134,7 @@ Data Siswa
                         </button>
                     </div>
                     <div class="modal-body">
-                    @include('admin.siswa.create');
+                    {{-- @include('admin.siswa.create') --}}
                     </div>
                 </div>
             </div>

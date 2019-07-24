@@ -8,14 +8,14 @@
         </a>
     </li>
      @if(Sentinel::inRole('admin'))
-    <li {!! (Request::is('admin/guru') ? 'class="active"' : '') !!}>
+    <li {!! (Request::is('admin/guru') || Request::is('admin/guru/*')  ? 'class="active"' : '') !!}>
         <a href="{{  URL::to($prefix.'/guru') }}">
             <i class="livicon" data-name="users" data-size="18" data-c="#6CC66C" data-hc="#6CC66C"
                data-loop="true"></i>
             Data Guru
         </a>
     </li>
-    <li {!! (Request::is('admin/siswa') ? 'class="active"' : '') !!}>
+    <li {!! (Request::is('admin/siswa')|| Request::is('admin/siswa/*') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to($prefix.'/siswa') }}">
             <i class="livicon" data-name="flag" data-size="18" data-c="#418BCA" data-hc="#418BCA"
                data-loop="true"></i>
