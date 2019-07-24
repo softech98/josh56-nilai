@@ -11,13 +11,13 @@
                 <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                        {{ Form::text('nisn',null,array('id'=>'nisn','class'=>'form-control','placeholder' => 'Nomor Induk Siswa Nasional (10 digit)','autofocus', 'required', 'title'=>'Nomor Induk Siswa Nasional', 'maxlength'=>'10',)) }}
+                                        {{ Form::text('nisn',null,array('id'=>'placement','class'=>'form-control','placeholder' => 'Nomor Induk Siswa Nasional (10 digit)','autofocus', 'required', 'title'=>'Nomor Induk Siswa Nasional (10 digit)', 'maxlength'=>'10',)) }}
                                         <small class="text-danger">{{ $errors->first('nisn') }}</small>
                             </div>
                         </div>
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::text('nis',null,array('id'=>'nis','class'=>'form-control','placeholder' => 'Nomor Induk Siswa','autofocus', 'required', 'title'=>'Nomor Induk Siswa (5 digit)', 'maxlength'=>'5')) }}
+                                    {{ Form::text('nis',null,array('id'=>'nis','class'=>'form-control','placeholder' => 'Nomor Induk Siswa (5 digit)','autofocus', 'required', 'title'=>'Nomor Induk Siswa (5 digit)', 'maxlength'=>'5')) }}
                                     <small class="text-danger">{{ $errors->first('nis') }}</small>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    {{ Form::textarea('alamat',null,array('id' => 'alam     at','class'=>'form-control','placeholder' => 'Alamat','autofocus','rows'=>'3', 'required', 'title'=>'Alamat')) }}
+                                    {{ Form::textarea('alamat',null,array('id' => 'alamat','class'=>'form-control','placeholder' => 'Alamat','autofocus','rows'=>'3', 'required', 'title'=>'Alamat')) }}
                      <small class="text-danger">{{ $errors->first('alamat') }}</small>
                                 </div>
                             </div>
@@ -58,6 +58,7 @@
                         <div class="row">
                         <div class="col-12 col-sm-6 col-md-6">
                             <div class="form-group">
+                                {!! Form::label('tempat_lahir', 'Tempat Lahir') !!}
                                 {{ Form::text('tempat_lahir',null,array('class'=>'form-control','placeholder' => 'Tempat Lahir','autofocus', 'required', 'title'=>'Tempat Lahir')) }}
                                 <small class="text-danger">{{ $errors->first('tempat_lahir') }}</small>
                             </div>
@@ -89,16 +90,41 @@
 </div>
 </div>
 {{-- </div> --}}
-
+    
+    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
+            type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
     type="text/javascript"></script>
     <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+<!-- InputMask -->
+    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+    <!-- date-range-picker -->
+    <script src="{{ asset('assets/js/pages/autogrow.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
     <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
-    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+    <script src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"  type="text/javascript"></script>
 <script>
          $("#rombel_id").select2({
             placeholder: "--Pilih Rombel--",
             theme:"bootstrap"
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('input#nis')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+                 limitReachedClass: "label label-success"
+            });
+            $('input#nisn')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+        }); 
+            
+        </script>

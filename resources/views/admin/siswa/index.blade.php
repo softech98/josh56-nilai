@@ -11,11 +11,11 @@ Data Siswa
 <link href="{{ asset('assets/css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
 
 <link href="{{ asset('assets/vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
+<link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/vendors/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet">
 <link href="{{ asset('assets/vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
-<link href="{{ asset('assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet"/>
-<link href="{{ asset('assets/vendors/iCheck/css/all.css') }}"  rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/css/pages/wizard.css') }}" rel="stylesheet">
 <link href="{{ asset('assets/css/pages/formelements.css') }}" rel="stylesheet" />
 @stop
@@ -97,13 +97,36 @@ Data Siswa
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
     <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
+            type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
     type="text/javascript"></script>
     <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
-<script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
-
+<!-- InputMask -->
+    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+    <!-- date-range-picker -->
+    <script src="{{ asset('assets/js/pages/autogrow.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"  type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('input#nis')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+            $('input#nisn')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+        }); 
+        </script>
     <script>
         $(function() {
             var table = $('#table').DataTable({
@@ -154,7 +177,6 @@ Data Siswa
             </div>
         </div>
         
-    </div> --}}
     <script>
         $(function () {
             var originalModal = $('#modalSiswa').clone();
@@ -165,26 +187,12 @@ Data Siswa
 
   });
 
-
             $("#rombel_id").select2({
             placeholder: "--Pilih Rombel--",
             theme:"bootstrap"
         });
 
-            $('input#nis')
-            .maxlength({
-                alwaysShow: true,
-                placement: 'top',
-                warningClass: "label label-danger",
-            limitReachedClass: "label label-success"
-            });
-            $('input#nisn')
-            .maxlength({
-                alwaysShow: true,
-                placement: 'top',
-                warningClass: "label label-danger",
-            limitReachedClass: "label label-success"
-            });
+            
         });
 
         var $url_path = '{!! url('/') !!}';

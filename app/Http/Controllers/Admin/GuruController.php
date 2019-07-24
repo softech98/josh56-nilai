@@ -62,7 +62,7 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required|string|max:30',
+            'nama' => 'required|string|max:50',
             'nip' => 'required|numeric|digits:18|unique:is_guru',
             'jenis_kelamin' => 'required',
             'email' => 'required|email',
@@ -145,7 +145,7 @@ class GuruController extends Controller
     {
         $guru = Guru::findOrFail($id);
         $this->validate($request, [
-            'nama' => 'required|string|max:30',
+            'nama' => 'required|string|max:50',
             'nip' => 'required|numeric|digits:18',
             'jenis_kelamin' => 'required',
             'email' => 'required|email',

@@ -177,7 +177,7 @@ $(document).ready(function() {
             alamat: {
                 validators: {
                     notEmpty: {
-                        message: 'Username harus di isi'
+                        message: 'Alamat harus di isi'
                     }
                 }
             },

@@ -88,10 +88,37 @@
 </div>
 {{-- </div> --}}
 
-<script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
-type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
-<script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
-<script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
-<script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+<script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
+            type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
+    type="text/javascript"></script>
+        <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
+
+<!-- InputMask -->
+    <script src="{{ asset('assets/vendors/moment/js/moment.min.js') }}" ></script>
+    <!-- date-range-picker -->
+    <script src="{{ asset('assets/js/pages/autogrow.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/bootstrap-maxlength/js/bootstrap-maxlength.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/js/pages/formelements.js') }}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"  type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('input#nip')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'top',
+                warningClass: "label label-danger",
+            limitReachedClass: "label label-success"
+            });
+            $('input#hp')
+            .maxlength({
+                alwaysShow: true,
+                placement: 'bottom',
+                warningClass: "label label-success",
+            limitReachedClass: "label label-success"
+            });
+        }); 
+            
+        </script>
