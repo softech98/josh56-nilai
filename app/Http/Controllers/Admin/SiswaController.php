@@ -29,7 +29,7 @@ class SiswaController extends Controller
        $siswa = Siswa::all();
        
        $siswa = Siswa::leftJoin('is_rombel', 'is_siswa.rombel_id', '=', 'is_rombel.id')
-       ->select(['is_siswa.nis','is_rombel.tingkat as tingkat','is_rombel.namaRombel as rombel','is_siswa.nama', 'is_siswa.jenis_kelamin']);
+       ->select(['is_siswa.nis','is_rombel.tingkat as tingkat','is_rombel.namaRombel as rombel','is_siswa.nama', 'is_siswa.jenis_kelamin'])->latest();
          return DataTables::of($siswa)
           ->addIndexColumn()
         ->addColumn('actions',function($siswa) { 
@@ -91,6 +91,7 @@ class SiswaController extends Controller
             'nisn' => 'required|numeric|digits:10|unique:is_siswa',
             'nis' => 'required|numeric|digits:5|unique:is_siswa',
             'rombel_id' => 'required',
+            'tanggal_lahir' => 'required|date|after:01-01-1950|before:01-01-2005',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
         ]);
@@ -160,6 +161,7 @@ class SiswaController extends Controller
             'nisn' => 'required|numeric|digits:10',
             'nis' => 'required|numeric|digits:5',
             'rombel_id' => 'required',
+            'tanggal_lahir' => 'required|date|after:01-01-1950|before:01-01-2005',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
         ]);

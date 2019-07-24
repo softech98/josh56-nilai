@@ -56,7 +56,7 @@
                         <div class="col-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 {!! Form::label('tanggal_lahir', 'Tanggal Lahir') !!}
-                                {{ Form::date('tanggal_lahir',null,array('class'=>'form-control','placeholder' => 'Tanggal Lahir','autofocus', 'required', 'title'=>'Tanggal Lahir')) }}
+                                {{ Form::date('tanggal_lahir',null,array('id'=>'tanggal_lahir','class'=>'form-control','placeholder' => 'Tanggal Lahir','autofocus', 'required', 'title'=>'Tanggal Lahir')) }}
                                 <small class="text-danger">{{ $errors->first('tanggal_lahir') }}</small>
                             </div>
                         </div>
@@ -92,6 +92,7 @@
             type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}"
     type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
     <script src="{{ asset('assets/js/pages/validation.js') }}" type="text/javascript"></script>
 
@@ -119,6 +120,7 @@
                 warningClass: "label label-success",
             limitReachedClass: "label label-success"
             });
-        }); 
-            
-        </script>
+
+
+        });
+</script>

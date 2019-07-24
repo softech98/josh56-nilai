@@ -95,6 +95,7 @@ Data Siswa
     @section('footer_scripts')
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/jquery.dataTables.js') }}" ></script>
     <script type="text/javascript" src="{{ asset('assets/vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
+    <script src="{{ asset('assets/vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/iCheck/js/icheck.js') }}"></script>
     <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"
@@ -111,19 +112,26 @@ Data Siswa
     <script src="{{ asset('assets/vendors/card/js/jquery.card.js') }}"  type="text/javascript"></script>
     <script>
         $(document).ready(function() {
-            $('input#nis')
-            .maxlength({
+            $('input#nis').maxlength({
                 alwaysShow: true,
                 placement: 'top',
                 warningClass: "label label-danger",
             limitReachedClass: "label label-success"
             });
-            $('input#nisn')
-            .maxlength({
+            $('input#nisn').maxlength({
                 alwaysShow: true,
                 placement: 'top',
                 warningClass: "label label-danger",
             limitReachedClass: "label label-success"
+            });
+            $("#tanggal_lahir").datetimepicker({
+                format: 'DD-MM-YYYY',
+                widgetPositioning:{
+                    vertical:'top'
+                },
+                keepOpen:false,
+                useCurrent: false,
+                maxDate: 'now'
             });
         }); 
         </script>

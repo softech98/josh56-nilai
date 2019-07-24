@@ -66,7 +66,7 @@ class GuruController extends Controller
             'nip' => 'required|numeric|digits:18|unique:is_guru',
             'jenis_kelamin' => 'required',
             'email' => 'required|email',
-            'tanggal_lahir' => 'required',
+            'tanggal_lahir' => 'required|date|after:01-01-1950|before:01-01-2005',
             'alamat' => 'required',
         ]);
 
@@ -149,7 +149,7 @@ class GuruController extends Controller
             'nip' => 'required|numeric|digits:18',
             'jenis_kelamin' => 'required',
             'email' => 'required|email',
-            'tanggal_lahir' => 'required',
+            'tanggal_lahir' => 'required|date|after:01-01-1950|before:01-01-2005',
             'alamat' => 'required',
         ]);
         $guruUpdate = $guru->update($request->except(['username']));

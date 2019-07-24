@@ -50,7 +50,7 @@
     @if($method == "POST")
     <button type="reset" class="btn btn-danger">Reset</button>
     @else
-    <a href=" {{route ('admin.periode.index')}} "><button class="btn btn-danger">Batal</button></a>
+    <a href=" {{route ('admin.periode.index')}} " class="btn btn-danger">Batal</a>
     @endif
 </div>
 </div>
