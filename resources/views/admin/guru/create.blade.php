@@ -100,14 +100,21 @@
                             <div class="form-group">
                                 {!! Form::label('tanggal_lahir', 'Tanggal Lahir') !!}
                                 <div class="input-group date">
+                                    <p class="flatpickr input-group" data-wrap="true" data-clickOpens="false">
                                 {{ Form::text('tanggal_lahir',null,array('id'=>'tanggal_lahir' ,'class'=>'form-control','placeholder' => 'Tanggal Lahir','autofocus', 'required', 'title'=>'Tanggal Lahir')) }}
-                                <span class="input-group-append add-on">
+                                        <span class="input-group-append add-on">
                                             <a class="input-btn" data-toggle>
                                                 <span class="input-group-text remove_radius"> <i class="livicon" data-name="calendar" data-size="23"
                                                    data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
                                             </a>
                                         </span>
-                                        
+                                        {{-- <span class="input-group-append add-on">
+                                            <a class="input-btn" data-clear>
+                                                 <span class="input-group-text"><i class="livicon" data-name="remove" data-size="23"
+                                                   data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span> --}}
+                                        </p>
                                 </div>
                                 <small class="text-danger">{{ $errors->first('tanggal_lahir') }}</small>
                             </div>
@@ -165,7 +172,9 @@
                     altInput: true,
                     altFormat: "d-m-Y",
                     dateFormat: "Y-m-d",
-                    maxDate: "2005-01-30"
+                    maxDate: "2005-01-30",
+
+
 
                 });
             });

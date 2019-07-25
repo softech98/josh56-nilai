@@ -188,6 +188,20 @@ $(document).ready(function() {
                     }
                 }
             },
+            tempat_lahir: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tempat Lahir harus di isi'
+                    }
+                }
+            },
+            tanggal_lahir: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tanggal Lahir harus di isi'
+                    }
+                }
+            },
              jenis_kelamin: {
                 validators: {
                     notEmpty: {

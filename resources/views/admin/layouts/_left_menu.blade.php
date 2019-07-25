@@ -65,13 +65,13 @@
             <span class="title">Users</span>
         </a>
     </li>
-    <li {!! (Request::is('admin/activity_log') ? 'class="active"' : '') !!}>
+   {{--  <li {!! (Request::is('admin/activity_log') ? 'class="active"' : '') !!}>
         <a href="{{  URL::to('admin/activity_log') }}">
             <i class="livicon" data-name="eye-open" data-size="18" data-c="#F89A14" data-hc="#F89A14"
                data-loop="true"></i>
             Activity Log
         </a>
-    </li>
+    </li> --}}
     
     
     {{-- <li {!! (Request::is('admin/groups') || Request::is('admin/groups/create') || Request::is('admin/groups/*') ? 'class="active"' : '') !!}>

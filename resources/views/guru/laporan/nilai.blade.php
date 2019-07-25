@@ -72,7 +72,7 @@ Penilaian Pengetahuan
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-md-6">
+			{{-- <div class="col-12 col-md-6">
 				<button type="button" class="btn btn-labeled btn-primary" href="javascript:void(0)">
                                         <span class="btn-label pull-left">
                                                 <i class="livicon" data-name="inbox-out" data-size="16" data-loop="true" data-c="#fff"
@@ -81,7 +81,7 @@ Penilaian Pengetahuan
                                 <span class="label-text align-middle">Export</span>
                             </button>
                             <br><br>
-            </div>
+            </div> --}}
 		</div>
 	</div>
 	<div class="card panel-primary ">
