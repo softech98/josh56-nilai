@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use App\Siswa;
 use App\Rombel;
+use App\Periode;
 use App\Jurusan;
 use App\MapelGuru;
 use Illuminate\Http\Request;
@@ -28,12 +29,14 @@ class SiswaController extends Controller
     public function index(Request $request)
     {
         $gurulogin               = Sentinel::getUser();
-        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        $getperiode = Periode::where('aktif', '1')->first();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->where('periode_id',$getperiode->id)->get();
         $jurusan = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $jurusan['all']='Select All';
         if(request()->ajax()) {
         $gurulogin               = Sentinel::getUser();
-        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        $getperiode = Periode::where('aktif', '1')->first();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->where('periode_id',$getperiode->id)->get();
       
       //       foreach($getmapelguru as $m)
       // {

@@ -32,7 +32,7 @@ class LaporanController extends Controller
 		$getperiode = Periode::where('aktif', 1)->first();
 		$data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
 		// $data['periode'] = Periode::all();
-		$getmapelguru = MapelGuru::where('guru_id', $this->gurulogin())->get();
+		$getmapelguru = MapelGuru::where('guru_id', $this->gurulogin())->where('periode_id', $getperiode->id)->get();
         $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
 		return view ('guru.laporan.nilai',$data, compact('getperiode'));

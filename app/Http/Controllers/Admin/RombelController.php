@@ -209,6 +209,8 @@ class RombelController extends Controller
        $rombels     = Rombel::findOrFail($id);
        $jurusan[]     = Jurusan::get()->where('id', $rombels->jurusan_id);
        $mapel     = Mapel::get()->where('jurusan_id', $rombels->jurusan_id);
+       $periodeaktif =  Periode::where('aktif', '1')->first();
+
     //    $data['periode']    = Periode::select(DB::Raw('concat_ws(" ", mulai,"-",selesai) as mulai'), 'id')->pluck('mulai','id');
     //    $data['jurusan']    = Jurusan::pluck('singkatan','id');
     //    $tingkat            = Rombel::$tingkat;
@@ -219,7 +221,7 @@ class RombelController extends Controller
        $data['btn_submit'] = "SIMPAN";
        $data['action']     = array('Admin\RombelController@gurumapelSimpan', $id);
 
-        return view('admin.rombel.mapelguru', $data, compact('rombels', 'jurusan','guru', 'mapel'));       
+        return view('admin.rombel.mapelguru', $data, compact('rombels', 'jurusan','guru', 'mapel', 'periodeaktif'));       
     }
 
     public function gurumapelSimpan(Request $request, Rombel $rombel)
@@ -246,6 +248,7 @@ class RombelController extends Controller
                     'jurusan_id' => $request->jurusan_id[$i],
                     'mapel_id' => $request->mapel_id[$i],
                     'guru_id' => $request->guru_id[$i],
+                    'periode_id' => $request->periode_id[$i],
                 ];
         }
         // $this->validate($request, [

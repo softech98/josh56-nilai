@@ -39,11 +39,11 @@ class NilaiController extends Controller
      public function nPengetahuan()
     {
         $gurulogin               = Sentinel::getUser();
-        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        $getperiode = Periode::where('aktif', 1)->first();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->where('periode_id', $getperiode->id)->get();
         // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
         $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
-        $getperiode = Periode::where('aktif', 1)->first();
         $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
 
         return view ('guru.nilai.pengetahuan',$data, compact('getperiode'));
@@ -52,11 +52,12 @@ class NilaiController extends Controller
     public function nKeterampilan()
     {
         $gurulogin               = Sentinel::getUser();
-        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->get();
+        $getperiode = Periode::where('aktif', 1)->first();
+        $getmapelguru = MapelGuru::where('guru_id', $gurulogin->guru_id)->where('periode_id', $getperiode->id)->get();
+
         // $siswa = Siswa::whereIn('rombel_id', $getmapelguru->pluck('rombel_id'))->get();
         $data['rombel'] = Rombel::whereIn('id', $getmapelguru->pluck('rombel_id'))->selectRaw('CONCAT (" ", tingkat," ",namaRombel)as namaRombel, id')->pluck('namaRombel', 'id');
         $data['mapel'] = Mapel::whereIn('id', $getmapelguru->pluck('mapel_id'))->pluck('nama', 'id');
-        $getperiode = Periode::where('aktif', 1)->first();
         $data['periode'] = $getperiode->mulai. '/' .$getperiode->selesai. ' (SMT ' .$getperiode->semester. ')';
         return view ('guru.nilai.keterampilan', $data,compact('getperiode'));
     }

@@ -32,7 +32,8 @@
                                  $guruMapel = $mapelguru->where('mapel_id', '=', $row->id)->where('rombel_id', '=', $rombels->id)->first();
 
                                 @endphp
-                                <td> {!! Form::select('guru_id[]', $guru, $guruMapel === null ? null : $guruMapel->guru_id, ['id' => 'guru_mapel', 'class' => 'form-control select2','placeholder' => "Pilih Guru Mapel"]) !!} </td>
+                                <td> {!! Form::select('guru_id[]', $guru, $guruMapel === null ? null : $guruMapel->guru_id, ['class' => 'guru_mapel form-control select2','placeholder' => "Pilih Guru Mapel"]) !!} {!! Form::hidden('periode_id[]', $periodeaktif->id) !!} </td>
+
                             </tr>
                             @endforeach
                             </tbody>
@@ -56,9 +57,10 @@
    </div>
     <!-- row-->
 
+ <script src="{{ asset('assets/vendors/select2/js/select2.js') }}" type="text/javascript"></script>
  <script>
-         $("#guru_mapel").select2({
+         $(".guru_mapel").select2({
             placeholder: "--Pilih Guru Mapel--",
             theme:"bootstrap"
         });
-    </script>
+</script>

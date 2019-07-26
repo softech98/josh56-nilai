@@ -15,6 +15,7 @@ use App\User;
 use App\Guru;
 use App\Mapel;
 use App\Rombel;
+use App\Periode;
 use App\MapelGuru;
 use App\Siswa;
 use Illuminate\Support\Facades\DB;
@@ -119,8 +120,8 @@ class JoshController extends Controller {
             ->get();
        /*----------  Guru Mapel Get  ----------*/
        $guru = Sentinel::getUser();
-
-       $mapelguru = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->get();
+       $getPeriodeAktif = Periode::where('aktif', '1')->get(['id']);
+       $mapelguru = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->where('periode_id',$getPeriodeAktif)->get();
 
        $getnamamapel = [];
        $getrombel = [];
