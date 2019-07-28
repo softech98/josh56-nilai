@@ -29,7 +29,7 @@
                                 <td> {{$row->nama}}</td>
                                 @php
                                  
-                                 $guruMapel = $mapelguru->where('mapel_id', '=', $row->id)->where('rombel_id', '=', $rombels->id)->first();
+                                 $guruMapel = $mapelguru->where('mapel_id', '=', $row->id)->where('rombel_id', '=', $rombels->id)->where('periode_id', $periodeaktif->id)->first();
 
                                 @endphp
                                 <td> {!! Form::select('guru_id[]', $guru, $guruMapel === null ? null : $guruMapel->guru_id, ['class' => 'guru_mapel form-control select2','placeholder' => "Pilih Guru Mapel"]) !!} {!! Form::hidden('periode_id[]', $periodeaktif->id) !!} </td>

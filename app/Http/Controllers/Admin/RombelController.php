@@ -244,8 +244,8 @@ class RombelController extends Controller
         }
 
             $mapelguru[] = [
-                    'rombel_id' => $request->rombel_id[$i],
-                    'jurusan_id' => $request->jurusan_id[$i],
+                    'rombel_id' => $rombel->id,
+                    'jurusan_id' => $rombel->jurusan_id,
                     'mapel_id' => $request->mapel_id[$i],
                     'guru_id' => $request->guru_id[$i],
                     'periode_id' => $request->periode_id[$i],
@@ -257,7 +257,7 @@ class RombelController extends Controller
         // ]);
 
 
-        $checkRombelId = MapelGuru::where('rombel_id', '=', $rombel->id)->whereNotIn('mapel_id', $request->mapel_id)->first();
+        $checkRombelId = MapelGuru::where('rombel_id', '=', $rombel->id)->where('jurusan_id', $rombel->jurusan_id)->whereNotIn('mapel_id', $request->mapel_id)->first();
 
         if($checkRombelId === null && $mapelguru !== null)
         {
@@ -267,7 +267,7 @@ class RombelController extends Controller
         {
             foreach ($request->mapel_id as $index => $mapel_id)
             {
-               MapelGuru::where('mapel_id', '=', $mapel_id)->update([
+               MapelGuru::where('mapel_id', '=', $mapel_id)->where('rombel_id', $rombel->id)->where('jurusan_id', $rombel->jurusan_id)->update([
                 'guru_id' => $request->guru_id[$index]
                ]);
             }
