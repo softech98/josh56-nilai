@@ -16,7 +16,6 @@
 // Route::pattern('slug', '[a-z0-9- _]+');
 
 
-//edited by ramdan riawan
 #############
 Route::get('getMapelFromRombel/{rombel}', 'Guru\NilaiController@getMapelFromRombel');
 Route::get('getSiswaFromRombel/{rombel?}/{aspek?}', 'Guru\NilaiController@getSiswaFromRombel')->name('getSiswaFromRombel');
@@ -272,7 +271,7 @@ Route::group(['prefix' => 'guru','middleware' => 'guru'], function () {
     Route::get('/', 'JoshController@showHome');
 Route::get('logout', 'FrontEndController@getLogout')->name('logout');
 // Route::get('users/{id}/edit', 'Admin\UsersController@edit');
-Route::get('users/{id}', 'Admin\UsersController@show');
+Route::get('users/{id}', 'Guru\GuruController@show');
 Route::post('users/passwordreset', 'Admin\UsersController@passwordreset')->name('passwordreset');
 
     Route::get('404', function () {
