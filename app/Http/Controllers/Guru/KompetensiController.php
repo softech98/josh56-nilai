@@ -171,19 +171,19 @@ class KompetensiController extends Controller
     public function data(Request $request)
     {
         $guru               = Sentinel::getUser();
-        $getmapelGuru = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->get();
-         foreach($getmapelGuru as $m)
-      {
-        if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
-            $kompetensi = Kompetensi::with('jurusans','guru','periode')->where('jurusan_id', $request->jurusanSelect);
-        }
-        else if ($request->tingkatSelect != null && $request->tingkatSelect != "all" ) {
-            $kompetensi = Kompetensi::with('jurusans','guru','periode')->where('tingkat', $request->tingkatSelect);
-        }
-        else{
-        $kompetensi = Kompetensi::with('mapels')->where('mapel_id',$m->mapel_id)->get(['mapel_id','kode','tingkat','kompetensi_dasar','id']);
-        }
-    }
+        $getmapelGuru = MapelGuru::where('guru_id', $guru->guru_id ?? 0)->first();
+         // foreach($getmapelGuru as $m)
+      // {
+      //   if ($request->jurusanSelect != null && $request->jurusanSelect != "all" ) {
+      //       $kompetensi = Kompetensi::with('jurusans','guru','periode')->where('jurusan_id', $request->jurusanSelect);
+      //   }
+      //   else if ($request->tingkatSelect != null && $request->tingkatSelect != "all" ) {
+      //       $kompetensi = Kompetensi::with('jurusans','guru','periode')->where('tingkat', $request->tingkatSelect);
+      //   }
+      //   else{
+        $kompetensi = Kompetensi::with('mapels')->where('mapel_id',$getmapelGuru->mapel_id)->get(['mapel_id','kode','tingkat','kompetensi_dasar','id']);
+        // }
+    
         return DataTables::of($kompetensi)
                  ->addIndexColumn()
                 ->addColumn('actions',function($kompetensi) {
